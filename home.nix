@@ -166,6 +166,14 @@ in
       shuffle
     ];
   };
+  
+  # adding librewolf dubious setup
+  programs.librewolf = {
+      enable = true;
+      settings = {
+          "privacy.resistFingerprinting" = false;
+      };
+  };
 
   home.packages = with pkgs; [
     nwg-look

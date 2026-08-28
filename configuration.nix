@@ -285,6 +285,8 @@
     vivaldi
     google-chrome
     unstable.brave-origin
+    unstable.librewolf
+    unstable.tor-browser
     
     thunar
     
