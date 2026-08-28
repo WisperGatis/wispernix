@@ -1,0 +1,171 @@
+input {
+  keyboard {
+    xkb {
+      layout "ch,us"
+      variant "fr,"
+      options "grp:alt_shift_toggle"
+    }
+  }
+
+  focus-follows-mouse max-scroll-amount="10%"
+  warp-mouse-to-focus
+}
+
+cursor {
+  xcursor-theme "Aemeath"
+  xcursor-size 24
+  //XCURSOR_PATH "/usr/share/icons:/home/wisp/.local/share/icons"
+}
+
+environment {
+  //DISPLAY ":0"
+  XCURSOR_THEME "Aemeath"
+  XCURSOR_SIZE "24"
+  XCURSOR_PATH "/usr/share/icons:/home/wisp/.local/share/icons"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
+spawn-at-startup "noctalia"
+
+// ✅ Single polkit entry — full path only
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+prefer-no-csd
+
+layout {
+  focus-ring {
+    off
+  }
+
+  border {
+    width 4
+    active-color "#b39ddb"
+    inactive-color "#9575cd"
+  }
+}
+
+// Base rule: rounded corners + blur + transparency for ALL windows
+window-rule {
+  geometry-corner-radius 12
+  clip-to-geometry true
+  draw-border-with-background false
+  opacity 0.40
+
+  background-effect {
+    blur true
+    xray true
+    noise 0.04
+    saturation 1.15
+  }
+}
+
+// Active window: nearly opaque
+window-rule {
+  match is-active=true
+  opacity 0.80
+}
+
+// Inactive windows: slightly transparent
+window-rule {
+  match is-active=false
+  opacity 0.70
+}
+
+// Steam games: fullscreen, fully opaque, no blur
+window-rule {
+  match app-id=r#"^steam_app_\d+$"#
+  open-fullscreen true
+  opacity 1.0
+
+  background-effect {
+    blur false
+  }
+}
+
+binds {
+  // Noctalia v5
+  Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+  Mod+E { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+  Mod+O { spawn "noctalia" "msg" "settings-toggle"; }
+  Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+  Mod+Shift+Escape { spawn "noctalia" "msg" "session-menu-toggle"; }
+
+  // DMS fallback / shell switching
+  Mod+Alt+Space { spawn "dms" "ipc" "call" "launcher" "toggle"; }
+  Mod+Alt+E { spawn "dms" "ipc" "call" "controlCenter" "toggle"; }
+  Mod+Alt+O { spawn "dms" "ipc" "call" "settings" "toggle"; }
+  Mod+Alt+V { spawn "dms" "ipc" "call" "launcher" "clipboard"; }
+  Mod+Alt+Shift+Escape { spawn "dms" "ipc" "call" "sessionMenu" "toggle"; }
+
+  // Screenshot / recorder
+  Print { spawn "noctalia" "msg" "screenshot-region"; }
+  Mod+Shift+R { spawn "noctalia" "msg" "plugin" "noctalia/screen_recorder:service" "all" "toggle"; }
+
+  // Keyboard layout
+  Mod+Shift+L { switch-layout "next"; }
+
+  // Apps
+  Mod+T { spawn "kitty"; }
+  Mod+Q repeat=false { close-window; }
+  Mod+Shift+E { quit; }
+
+  Mod+Shift+A { focus-column-or-monitor-left; }
+  Mod+Shift+D { focus-column-or-monitor-right; }
+
+  // Window / column navigation
+  Mod+Left { focus-column-left; }
+  Mod+Down { focus-window-down; }
+  Mod+Up { focus-window-up; }
+  Mod+Right { focus-column-right; }
+
+  // Workspace navigation
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+
+  // Move column to workspace
+  Mod+Ctrl+1 { move-column-to-workspace 1; }
+  Mod+Ctrl+2 { move-column-to-workspace 2; }
+  Mod+Ctrl+3 { move-column-to-workspace 3; }
+  Mod+Ctrl+4 { move-column-to-workspace 4; }
+  Mod+Ctrl+5 { move-column-to-workspace 5; }
+  Mod+Ctrl+6 { move-column-to-workspace 6; }
+  Mod+Ctrl+7 { move-column-to-workspace 7; }
+  Mod+Ctrl+8 { move-column-to-workspace 8; }
+  Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+  //toggling window floating to move things around.
+  Mod+W { toggle-window-floating; }
+
+  // Layout sizing
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+
+  // Optional useful defaults from niri
+  Mod+BracketLeft { consume-or-expel-window-left; }
+  Mod+BracketRight { consume-or-expel-window-right; }
+  Mod+Comma { consume-window-into-column; }
+  Mod+Period { expel-window-from-column; }
+
+  Mod+R { switch-preset-column-width; }
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+
+  Mod+C { center-column; }
+}
+
+// Monique monitor configuration
+include "monitors.kdl"
+
+//include "dms/cursor.kdl"
+
+
+include "noctalia.kdl"

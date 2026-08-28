@@ -1,0 +1,47 @@
+palette = "noctalia"
+
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+
+# Tout le prompt reste à gauche, sur une seule ligne.
+format = """
+$os$directory$cmd_duration$character"""
+
+[os]
+disabled = false
+format = "[$symbol](bold #89b4fa) "
+
+[os.symbols]
+NixOS = ""
+
+[directory]
+# Garde jusqu'à 8 segments dans le chemin.
+truncation_length = 8
+
+# Ne coupe pas le chemin au root d'un dépôt Git.
+truncate_to_repo = false
+
+# Abrège les dossiers parents à une lettre ; garde le dossier actuel entier.
+fish_style_pwd_dir_length = 1
+
+truncation_symbol = ""
+
+# $read_only montre le cadenas automatiquement lorsque le dossier
+# courant n'est pas accessible en écriture pour ton utilisateur.
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+style = "bold #cba6f7"
+read_only = " "
+read_only_style = "bold #f38ba8"
+
+[cmd_duration]
+# N'affiche la durée qu'à partir de 500 ms.
+min_time = 500
+format = "[$duration](bold #a6e3a1) "
+show_milliseconds = true
+
+[character]
+success_symbol = "[❯](bold #89b4fa)"
+error_symbol = "[❯](bold #f38ba8)"
+vimcmd_symbol = "[❮](bold #a6e3a1)"
