@@ -5,6 +5,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     
+    # The bad bad browser
+    opera-flake = {
+      url = "github:yisuidenghua/opera-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     home-manager = {
      url = "github:nix-community/home-manager?ref=release-26.05";
      inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +40,7 @@
       millennium,
       helium-browser,
       nix-cachyos-kernel,
+      opera-flake,
       ...
     }:
     {
@@ -58,6 +65,7 @@
                 inputs.millennium.overlays.default
                 helium-browser.overlays.default
                 nix-cachyos-kernel.overlays.pinned
+                opera-flake.overlays.default
                 (final: prev: {
                     unstable = import nixpkgs-unstable {
                         inherit (prev) system;

@@ -159,6 +159,8 @@
   programs.virt-manager.enable = true;
   
   programs.fish.enable = true;
+  
+  virtualisation.docker.enable = true;
 
   users.users.wisp = {
     isNormalUser = true;
@@ -169,6 +171,7 @@
      "wheel"
      "video"
      "libvirtd"
+     "docker"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -211,11 +214,13 @@
     neovim
     fresh-editor
     fastfetch
+    unstable.fetch
     btop
     dipc
     tmux
     cava
     yazi
+    linux-wallpaperengine
     unstable.cmatrix
     unstable.zellij
     
@@ -226,6 +231,9 @@
     hyprland
     unstable.noctalia
     unstable.caelestia-cli
+    weathr
+    unstable.concord-tui
+    winboat
 
     kitty
     ghostty
@@ -237,6 +245,7 @@
 
     vesktop
     telegram-desktop
+    unstable.whatsapp-electron
     
     # Burokrasy
     libreoffice
@@ -259,6 +268,8 @@
     unstable.opencode
     jetbrains-toolbox
     claude-code
+    codex
+    waydroid
 
     #dev slop
     #nodejs_26
@@ -288,6 +299,7 @@
     unstable.brave-origin
     unstable.librewolf
     unstable.tor-browser
+    # pkgs.opera
     
     thunar
     

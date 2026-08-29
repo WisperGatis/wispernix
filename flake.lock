@@ -41,11 +41,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787946871,
-        "narHash": "sha256-3z28UlKh02RAkyLKsUOxD+l20WG6Qo+vzg1FCs6OkEw=",
+        "lastModified": 1788010690,
+        "narHash": "sha256-q6N9/jYcZ7iH/kN84pnxA1K82ehsF3VUG5eWXSdQBYQ=",
         "owner": "oxcl",
         "repo": "nix-flake-helium-browser",
-        "rev": "ef8847b8907e95335afa529daa6a71fc0e9ff107",
+        "rev": "4bd54ca0c956d1b976c143fbb194b090422e13fd",
         "type": "github"
       },
       "original": {
@@ -141,11 +141,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1787881163,
-        "narHash": "sha256-6MMlOsBhfWn+KJOlZyyRNR0G/PVMjEfNyQoW0KnKBYI=",
+        "lastModified": 1787965830,
+        "narHash": "sha256-bA1wGQ8pQCPsSMW81MuyBNZDe2LQRI5FMZnMTSYnhUY=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "290b62ec266d15827ab79852483e434eeba912e0",
+        "rev": "20ad7b0f65b60eef3dbe6efefff462989032842b",
         "type": "github"
       },
       "original": {
@@ -204,11 +204,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1787848627,
-        "narHash": "sha256-t3XgpB1iCGH5mR6cXVbwC9II2JdajaPqnlIHvh/unlI=",
+        "lastModified": 1787960808,
+        "narHash": "sha256-RakhMc5yg3VtTkK1Zn/G0wU921ZEwy3J9vJH25dbSeU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7e0fb958bbf98c835549713f15243aabcf9ce741",
+        "rev": "b0aa699cd56b87a41d3e66d89f827c7fbc35ed8d",
         "type": "github"
       },
       "original": {
@@ -263,6 +263,26 @@
         "type": "github"
       }
     },
+    "opera-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775577367,
+        "narHash": "sha256-v8MYIVql0+pFghzZDuyFt3PHlz/Qs1MdOHgfcYZlYRA=",
+        "owner": "yisuidenghua",
+        "repo": "opera-flake",
+        "rev": "3bf0a7ae80c671b97c10841d9bbb5b370ac6f3a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yisuidenghua",
+        "repo": "opera-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "helium-browser": "helium-browser",
@@ -271,6 +291,7 @@
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "opera-flake": "opera-flake",
         "spicetify-nix": "spicetify-nix",
         "zen-browser": "zen-browser"
       }
