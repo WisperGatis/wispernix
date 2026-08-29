@@ -232,6 +232,7 @@
     alacritty
     rio
     foot
+    ratty
     
 
     vesktop

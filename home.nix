@@ -77,6 +77,11 @@ in
     gtk.enable = false;
     x11.enable = true;
   };
+  
+  gtk.iconTheme = {
+    name = "Dracula";
+    package = pkgs.dracula-icon-theme;  
+  };
 
   programs.kitty = {
     enable = true;
