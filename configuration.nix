@@ -300,6 +300,9 @@
     unstable.librewolf
     unstable.tor-browser
     # pkgs.opera
+    floorp-bin
+    # inputs.waterfox.packages.${pkgs.system}.default
+    # Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
     
     thunar
     

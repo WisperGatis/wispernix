@@ -26,6 +26,11 @@
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    waterfox = {
+      url = "github:sammypanda/nixos-waterfox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
@@ -41,6 +46,7 @@
       helium-browser,
       nix-cachyos-kernel,
       opera-flake,
+      waterfox,
       ...
     }:
     {
