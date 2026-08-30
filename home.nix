@@ -134,7 +134,9 @@ in
       enableFishIntegration = true;
     };
   };
-
+  
+  
+  # tmux configurations.
   programs.tmux = {
     enable = true;
 
@@ -159,7 +161,22 @@ in
       set -g @continuum-restore "on"
     '';
   };
+  
+  # neovim config with the usual LV
+  programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+  };
+  
+  xdg.configFile."nvim" = {
+      source = ./config/nvim;
+      recursive = true;
+  };
+  
 
+  # Spicetify configurations.
   programs.spicetify = {
     enable = true;
 

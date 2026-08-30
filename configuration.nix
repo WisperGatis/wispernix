@@ -211,7 +211,7 @@
     vim
     fish
     wget
-    neovim
+    # neovim
     fresh-editor
     fastfetch
     unstable.fetch
