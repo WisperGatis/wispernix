@@ -215,6 +215,7 @@
     fresh-editor
     fastfetch
     unstable.fetch
+    hyfetch
     btop
     dipc
     tmux
