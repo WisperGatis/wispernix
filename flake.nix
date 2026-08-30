@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
+    # Adding mangowm as a flake rather than from nixpkgs
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     home-manager = {
      url = "github:nix-community/home-manager?ref=release-26.05";
      inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +53,7 @@
       nix-cachyos-kernel,
       opera-flake,
       waterfox,
+      mangowm,
       ...
     }:
     {
@@ -59,6 +66,7 @@
           ./hardware-configuration.nix
           ./configuration.nix
           helium-browser.nixosModules.default
+          mangowm.nixosModules.mango
           home-manager.nixosModules.home-manager
           (
             {

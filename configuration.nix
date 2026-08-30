@@ -48,6 +48,7 @@
 
   programs.niri.enable = true;
   programs.hyprland.enable = true;
+  programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
   services.displayManager.sessionPackages = [ pkgs.unstable.mango ];
   
@@ -97,6 +98,7 @@
     };
   };
 
+   # Millennium to make Steam better and allowing theming.
    programs.steam = {
       enable = true;
       package = pkgs.millennium-steam.override {
@@ -162,6 +164,10 @@
   
   virtualisation.docker.enable = true;
 
+  # AMD overclocking.
+  hardware.amdgpu.overdrive.enable = true;
+
+  # user(s)? 
   users.users.wisp = {
     isNormalUser = true;
     description = "wisp";
@@ -201,6 +207,7 @@
     wine-wayland
     winetricks
     protontricks
+    gamemode
     
     # Wallslop
     pkgs.mpvpaper
@@ -240,7 +247,7 @@
     # Niri, mango and Hyprland slop
     niri
     polkit_gnome
-    unstable.mango
+    #unstable.mango
     hyprland
     unstable.noctalia
     unstable.caelestia-cli
