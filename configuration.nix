@@ -284,6 +284,8 @@
     lazygit
     fzf
     uv
+    github-desktop
+    gitbutler
     
 
     mullvad-vpn
