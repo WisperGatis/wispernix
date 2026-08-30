@@ -195,9 +195,17 @@
     # Dubious steam needs
     xwayland-satellite
     
+    # Gaming packages.
+    wine
+    wine-staging
+    wine-wayland
+    winetricks
+    protontricks
+    
     # Wallslop
     pkgs.mpvpaper
     matugen
+    awww
     
     # gnome-slope
     gnome-tweaks
@@ -207,6 +215,9 @@
     gnome-calendar
     gnome-clocks
     gnome-system-monitor
+    
+    # hardware control
+    lact
           
     vim
     fish
@@ -226,6 +237,7 @@
     unstable.zellij
     
 
+    # Niri, mango and Hyprland slop
     niri
     polkit_gnome
     unstable.mango
@@ -236,6 +248,7 @@
     unstable.concord-tui
     winboat
 
+    # Terminals
     kitty
     ghostty
     alacritty
