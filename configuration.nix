@@ -201,6 +201,9 @@
     # Dubious steam needs
     xwayland-satellite
     
+     # Dubious packages somehow needed.
+     unstable.unrar
+    
     # Gaming packages.
     wine
     wine-staging
@@ -212,6 +215,7 @@
     # Wallslop
     pkgs.mpvpaper
     matugen
+    glow
     awww
     
     # gnome-slope
