@@ -166,6 +166,9 @@
 
   # AMD overclocking.
   hardware.amdgpu.overdrive.enable = true;
+  services.lact = {
+      enable = true;
+  };
 
   # user(s)? 
   users.users.wisp = {
