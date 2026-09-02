@@ -302,6 +302,7 @@
     #dev slop
     #nodejs_26
     rustc
+    python3
     rustup
     git
     cmake
