@@ -2,7 +2,7 @@
 
 let
   aemeathCursor = pkgs.stdenvNoCC.mkDerivation {
-    pname = "aemeath-cursor";
+    pname = "Aemeath-cursor";
     version = "1.0";
 
     src = ./config/cursors/Aemeath;
@@ -134,7 +134,7 @@ in
       enableFishIntegration = true;
     };
   };
-  
+
   
   # tmux configurations.
   programs.tmux = {
@@ -186,7 +186,7 @@ in
     extraPackages = with pkgs; [
       # Nix
       nixd
-      nixfmt-rfc-style
+      pkgs.nixfmt
       statix
       deadnix
 
@@ -227,7 +227,7 @@ in
       svelte-language-server
       vue-language-server
       yaml-language-server
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       taplo
       marksman
 

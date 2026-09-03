@@ -118,8 +118,8 @@
     enable = true;
 
     plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
+      pkgs.thunar-archive-plugin
+      pkgs.thunar-volman
     ];
   };
 
@@ -249,6 +249,7 @@
     linux-wallpaperengine
     unstable.cmatrix
     unstable.zellij
+    unstable.herdr
     
 
     # Niri, mango and Hyprland slop
@@ -356,5 +357,5 @@
     users.wisp = import ./home.nix;
   };
 
-  system.stateVersion = "26.05";
+ system.stateVersion = "26.05";
 }
