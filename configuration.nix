@@ -296,8 +296,8 @@
     mailspring
     unstable.opencode
     jetbrains-toolbox
-    claude-code
-    codex
+    unstable.claude-code
+    unstable.codex
     waydroid
 
     #dev slop
@@ -316,6 +316,7 @@
     uv
     github-desktop
     gitbutler
+    pkg-config
     
 
     mullvad-vpn
