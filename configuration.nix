@@ -193,6 +193,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-40.10.5"
+    "ladybird-0-unstable-2026-06-05"
   ];
   
   environment.sessionVariables = {
