@@ -46,6 +46,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Claude slop.
+    claude-desktop = {
+      url = "github:nmcbride/claude-desktop-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
@@ -64,6 +70,7 @@
       mangowm,
       quickemu,
       codex-desktop-linux,
+      claude-desktop,
       ...
     }:
     {
@@ -80,7 +87,13 @@
           helium-browser.nixosModules.default
           mangowm.nixosModules.mango
 
-	  codex-desktop-linux.nixosModules.default 
+	  codex-desktop-linux.nixosModules.default
+
+	  claude-desktop.nixosModules.default
+
+	  {
+	     programs.claude-desktop.enable = true;
+	  }
 
 	  {
 	      programs.codexDesktopLinux = {

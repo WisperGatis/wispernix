@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "claude-desktop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788601432,
+        "narHash": "sha256-tBAsQJuxWlB5WCkGQqEDZqBLhRcmIC8fiQxdZEHAObU=",
+        "owner": "nmcbride",
+        "repo": "claude-desktop-nix",
+        "rev": "df796348ba0127da6d8e57d52ddf6751eca99f14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmcbride",
+        "repo": "claude-desktop-nix",
+        "type": "github"
+      }
+    },
     "codex-desktop-linux": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -465,6 +485,7 @@
     },
     "root": {
       "inputs": {
+        "claude-desktop": "claude-desktop",
         "codex-desktop-linux": "codex-desktop-linux",
         "helium-browser": "helium-browser",
         "home-manager": "home-manager",
