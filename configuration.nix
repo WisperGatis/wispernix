@@ -207,6 +207,7 @@
     
      # Dubious packages somehow needed.
      unstable.unrar
+     ntfs3g
     
     # Gaming packages.
     wine
