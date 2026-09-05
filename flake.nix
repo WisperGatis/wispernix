@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Codex slop.
+    codex-desktop-linux = {
+      url = "github:ilysenko/codex-desktop-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
@@ -57,6 +63,7 @@
       waterfox,
       mangowm,
       quickemu,
+      codex-desktop-linux,
       ...
     }:
     {
@@ -65,11 +72,25 @@
         specialArgs = {
           inherit inputs nixpkgs-unstable zen-browser;
         };
+
+	# Modules . . .
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
           helium-browser.nixosModules.default
           mangowm.nixosModules.mango
+
+	  codex-desktop-linux.nixosModules.default 
+
+	  {
+	      programs.codexDesktopLinux = {
+		enable = true;
+		computerUseUi.enable = true;
+		remoteMobileControl.enable = true;
+		remoteControl.enable = true;
+	      };
+	  }
+
           home-manager.nixosModules.home-manager
           (
             {
