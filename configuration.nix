@@ -28,6 +28,9 @@
   };
 };
 
+  # storage optimizations cuz holy shit
+  nix.settings.auto-optimise-store = true;
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -208,6 +211,7 @@
      # Dubious packages somehow needed.
      unstable.unrar
      ntfs3g
+     vulkan-tools
     
     # Gaming packages.
     wine
