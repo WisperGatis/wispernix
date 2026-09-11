@@ -205,6 +205,9 @@
 
   environment.systemPackages = with pkgs; [
       
+    # Stoopid font that doesn't wanna install itself properly through font packages.
+    google-fonts
+      
     # Dubious steam needs
     xwayland-satellite
     
