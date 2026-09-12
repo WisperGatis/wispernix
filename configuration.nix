@@ -320,6 +320,7 @@
     git
     cmake
     dotnet-sdk
+    dotnet-sdk_10
     ninja
     gcc
     docker
