@@ -309,6 +309,7 @@
     unstable.codex
     unstable.antigravity-cli
     unstable.antigravity-ide
+    unstable.crush
     waydroid
 
     #dev slop
