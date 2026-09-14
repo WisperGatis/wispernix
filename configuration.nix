@@ -287,6 +287,7 @@
     
     # Burokrasy
     libreoffice
+    onlyoffice-desktopeditors
 
     # game slop
     # steam
