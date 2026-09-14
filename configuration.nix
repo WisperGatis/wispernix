@@ -295,6 +295,7 @@
     protonplus
     protonup-qt
     prismlauncher
+    unstable.lunar-client
     unstable.gamescope
 
     # Bigger dev slop
