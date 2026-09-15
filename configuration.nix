@@ -243,6 +243,7 @@
     lact
           
     vim
+    unstable.vscodium
     fish
     wget
     # neovim
@@ -260,6 +261,11 @@
     unstable.zellij
     unstable.herdr
     
+    #Dotnet while we are at it.
+    unstable.dotnet-sdk_10
+    unstable.dotnet-sdk_11
+    roslyn
+    unstable.roslyn-ls
 
     # Niri, mango and Hyprland slop
     niri
@@ -306,6 +312,7 @@
     code-cursor
     mailspring
     unstable.opencode
+    unstable.opencode-desktop
     jetbrains-toolbox
     unstable.claude-code
     unstable.codex
