@@ -54,7 +54,6 @@
   programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
   services.displayManager.sessionPackages = [ pkgs.unstable.mango ];
-  
   # Ajouter COSMIC.
   services.desktopManager.cosmic = {
     enable = true;
@@ -87,6 +86,7 @@
 
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
@@ -210,6 +210,7 @@
       
     # Dubious steam needs
     xwayland-satellite
+    pavucontrol
     
      # Dubious packages somehow needed.
      unstable.unrar
