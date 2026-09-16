@@ -10,6 +10,12 @@
       url = "github:yisuidenghua/opera-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # ai-usagebar
+    ai-usagebar = {
+      url = "github:akitaonrails/ai-usagebar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     # Adding mangowm as a flake rather than from nixpkgs
     mangowm = {
@@ -71,6 +77,7 @@
       quickemu,
       codex-desktop-linux,
       claude-desktop,
+      ai-usagebar,
       ...
     }:
     {

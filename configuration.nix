@@ -197,6 +197,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-40.10.5"
     "ladybird-0-unstable-2026-06-05"
+    "openssl-1.1.1w"
   ];
   
   environment.sessionVariables = {
@@ -261,6 +262,7 @@
     unstable.cmatrix
     unstable.zellij
     unstable.herdr
+    sublime4
     
     #Dotnet while we are at it.
     unstable.dotnet-sdk_10
@@ -340,6 +342,7 @@
     github-desktop
     gitbutler
     pkg-config
+    zig
     
 
     mullvad-vpn
@@ -361,6 +364,9 @@
     # Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
     
     thunar
+
+    # inputs from the flakes.
+    inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
     
     # libvirt, qemu and kvm
     virt-viewer
