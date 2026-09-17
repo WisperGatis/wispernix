@@ -280,6 +280,7 @@
     weathr
     unstable.concord-tui
     winboat
+    unstable.karere
 
     # Terminals
     kitty
