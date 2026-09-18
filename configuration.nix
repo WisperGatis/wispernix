@@ -263,6 +263,8 @@
     unstable.zellij
     unstable.herdr
     sublime4
+    yarn
+    pnpm
     
     #Dotnet while we are at it.
     unstable.dotnet-sdk_10
@@ -310,7 +312,7 @@
     unstable.gamescope
 
     # Bigger dev slop
-    t3code
+    unstable.t3code
     unstable.zed-editor
     vscode
     code-cursor
