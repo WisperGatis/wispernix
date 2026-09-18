@@ -245,6 +245,7 @@
     lact
           
     vim
+    gdb
     unstable.vscodium
     fish
     wget
