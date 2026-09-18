@@ -16,6 +16,10 @@
       url = "github:akitaonrails/ai-usagebar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    linux-wallpaper-engine = {
+      url = "github:jagrat7/linux-wallpaper-engine";
+    };
     
     # Adding mangowm as a flake rather than from nixpkgs
     mangowm = {
@@ -78,6 +82,7 @@
       codex-desktop-linux,
       claude-desktop,
       ai-usagebar,
+      linux-wallpaper-engine,
       ...
     }:
     {
