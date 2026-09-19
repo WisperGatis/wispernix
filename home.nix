@@ -404,6 +404,10 @@ in
     nwg-look
     adw-gtk3
     qt6Packages.qt6ct
+
+    (python3.withPackages (ps: with ps; [
+      pillow
+    ]))
   ];
 
   xdg.configFile = {

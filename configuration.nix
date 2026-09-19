@@ -257,6 +257,7 @@
     btop
     dipc
     tmux
+    unstable.lazygit
     cava
     yazi
     linux-wallpaperengine
