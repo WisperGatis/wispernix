@@ -283,6 +283,7 @@
     weathr
     unstable.concord-tui
     winboat
+    quickemu
     unstable.karere
 
     # Terminals
