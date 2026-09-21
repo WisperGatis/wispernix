@@ -213,10 +213,10 @@
     xwayland-satellite
     pavucontrol
     
-     # Dubious packages somehow needed.
-     unstable.unrar
-     ntfs3g
-     vulkan-tools
+    # Dubious packages somehow needed.
+    unstable.unrar
+    ntfs3g
+    vulkan-tools
     
     # Gaming packages.
     wine
@@ -349,6 +349,7 @@
     gitbutler
     pkg-config
     zig
+    python3Packages.ply
     
 
     mullvad-vpn
