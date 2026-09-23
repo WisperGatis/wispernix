@@ -323,7 +323,8 @@
     unstable.opencode
     unstable.opencode-desktop
     jetbrains-toolbox
-    unstable.claude-code
+    #unstable.claude-code
+    pkgs.claude-code
     unstable.codex
     unstable.antigravity-cli
     unstable.antigravity-ide

@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     linux-wallpaper-engine = {
       url = "github:jagrat7/linux-wallpaper-engine";
     };
@@ -83,6 +88,7 @@
       claude-desktop,
       ai-usagebar,
       linux-wallpaper-engine,
+      claude-code,
       ...
     }:
     {
@@ -98,6 +104,11 @@
           ./configuration.nix
           helium-browser.nixosModules.default
           mangowm.nixosModules.mango
+
+    {
+      nixpkgs.overlays = [ claude-code.overlays.default ];
+      #environment.systemPackages = [ claude-code ];
+    }
 
 	  codex-desktop-linux.nixosModules.default
 
