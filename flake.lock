@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790189417,
-        "narHash": "sha256-GXmibW7WjUJOSz84aXLPJBmQ9ygq6v4rqRHny5TJ3sg=",
+        "lastModified": 1790346364,
+        "narHash": "sha256-TNWt95xPtcF61YPh2mdq+A41VxRWGJuegTjz88JqMOg=",
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
-        "rev": "3f0b771f745c89db1ffb97d6cc67f9650b02ea8a",
+        "rev": "34b7c0c82c7b08006b72c86d053fd13da8678920",
         "type": "github"
       },
       "original": {
@@ -53,11 +53,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1790193712,
-        "narHash": "sha256-f9ri1oARsL50D9mowaBGx2mmcbekvqRoxb9p8owXrVg=",
+        "lastModified": 1790280108,
+        "narHash": "sha256-bApGLOF5XDhf3UCM1/e1yIQCoY5wW1+B88lHkcYlp2U=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "a4ada6cadb755b6fb9f225fe77d5b8211d0d969a",
+        "rev": "f10421316cc6df045497f5aa0009adce648e89ee",
         "type": "github"
       },
       "original": {
@@ -355,11 +355,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1790245585,
-        "narHash": "sha256-uY03eR6IAz6/LEJn7tkwWRqZYoxDGal1ZUGOrCvTsZk=",
+        "lastModified": 1790333315,
+        "narHash": "sha256-oYH3cYTLz1SC2DEsUPglPs7LeSlUuaJ/Z69vrGGaFQE=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "06ca6477c6a20df587b2d89f5e0d7c22679392ff",
+        "rev": "448899edec434d0fe5abd4ecaf0cea981b4b1fbf",
         "type": "github"
       },
       "original": {
