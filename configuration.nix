@@ -267,6 +267,7 @@
     sublime4
     yarn
     pnpm
+    unstable.bun
     
     #Dotnet while we are at it.
     unstable.dotnet-sdk_10
