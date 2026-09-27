@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    obscura-vpn.url = "path:/home/wisp/obscura-vpn";
     
     # The bad bad browser
     opera-flake = {
@@ -102,6 +103,8 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
+          inputs.obscura-vpn.nixosModules.default
+          { services.obscura.enable = true; }
           helium-browser.nixosModules.default
           mangowm.nixosModules.mango
 
