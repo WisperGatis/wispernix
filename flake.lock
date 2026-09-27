@@ -94,11 +94,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790443065,
-        "narHash": "sha256-949J425/towSVgCqdCmj6GJkJDSPSRyf+dr69kWUiFY=",
+        "lastModified": 1790454071,
+        "narHash": "sha256-0B3bjiJKeK2Nvz1NZtCv0PnmCjnIEjNxzS01tH98jXk=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "a440dedf097998e0e3677a310e5452e421ef875d",
+        "rev": "9ed8457c0e34511ddc9c31ba8b89f56ee1e80ae5",
         "type": "github"
       },
       "original": {
@@ -388,11 +388,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1790433548,
-        "narHash": "sha256-vBW3lqUxt03FuUNmOVG7hKLAuEf8D9WgnGtnJCaPzXQ=",
+        "lastModified": 1790467890,
+        "narHash": "sha256-IHX53Ct062kday7wPogsGBLQxanzZ6eyfseEIU+7WEM=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "19d2c4a061077944e5a6f2bb9152567b5ad622d5",
+        "rev": "65a77b5f9f128ab96eea07c018396fd7dab3253b",
         "type": "github"
       },
       "original": {
@@ -587,11 +587,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1790340521,
-        "narHash": "sha256-cRrWlIjVRJ6BHDr9caUdXsZ3owzWIKYHpNmGPHBInIU=",
+        "lastModified": 1790450978,
+        "narHash": "sha256-/eLCD/X9kaWJqPR47+fDozEC87Hjmm3i8gJbYmDAD7g=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f5c082a40f7571c266e74e80ae2e68aadd8a9fc7",
+        "rev": "5e2305d577ca00acbba631b05cb1094d172b29f3",
         "type": "github"
       },
       "original": {
@@ -686,7 +686,6 @@
       "original": {
         "owner": "Sovereign-Engineering",
         "repo": "obscuravpn-client",
-        "rev": "2bc0738c21ae310b73e442f982d9d82671d9dd4d",
         "type": "github"
       }
     },
@@ -697,8 +696,8 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1790464940,
-        "narHash": "sha256-Mb+xgyS2oodk4r8Jjemtb4mjFiiYtG4t74hqNz7h3Vw=",
+        "lastModified": 1790471353,
+        "narHash": "sha256-PfMxTYrj5OtzlZ/VH2g4nuax0rFQMIMguwKib/JIIbY=",
         "path": "/home/wisp/obscura-vpn",
         "type": "path"
       },
