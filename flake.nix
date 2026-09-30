@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    herdr-nix = {
+      url = "github:herdrdev/herdr-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # ai-usagebar
     ai-usagebar = {
       url = "github:akitaonrails/ai-usagebar";
@@ -90,6 +95,7 @@
       ai-usagebar,
       linux-wallpaper-engine,
       claude-code,
+      herdr-nix,
       ...
     }:
     {

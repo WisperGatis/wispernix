@@ -263,7 +263,8 @@
     linux-wallpaperengine
     unstable.cmatrix
     unstable.zellij
-    unstable.herdr
+    #herdr
+    inputs.herdr-nix.packages.${system}.default
     sublime4
     yarn
     pnpm
