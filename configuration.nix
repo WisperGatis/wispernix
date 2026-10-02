@@ -204,6 +204,10 @@
       QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
+  programs.nix-ld = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
       
     # Stoopid font that doesn't wanna install itself properly through font packages.
