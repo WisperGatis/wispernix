@@ -321,7 +321,7 @@
     unstable.gamescope
 
     # Bigger dev slop
-    unstable.t3code
+    t3code
     unstable.zed-editor
     vscode
     code-cursor
