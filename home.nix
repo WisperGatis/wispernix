@@ -124,9 +124,11 @@ in
       {
         plugin = catppuccin;
         extraConfig = ''
-          set -g @catppuccin_flavour "mocha"
-          set -g @catppuccin_window_status_style "rounded"
+          set -ag terminal-overrides ",*:RGB"
+          # set -g @catppuccin_flavour "mocha"
+          # set -g @catppuccin_window_status_style "rounded"
           set -g mouse on
+          source-file -q ~/.config/tmux/themes/noctalia.conf
         '';
       }
     ];
