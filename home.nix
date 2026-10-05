@@ -121,16 +121,15 @@ in
     plugins = with pkgs.tmuxPlugins; [
       resurrect
       continuum
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -ag terminal-overrides ",*:RGB"
-          # set -g @catppuccin_flavour "mocha"
-          # set -g @catppuccin_window_status_style "rounded"
-          set -g mouse on
-          source-file -q ~/.config/tmux/themes/noctalia.conf
-        '';
-      }
+      #{
+        #plugin = catppuccin;
+        #extraConfig = ''
+        #  set -ag terminal-overrides ",*:RGB"
+        # set -g @catppuccin_flavour "mocha"
+        #  set -g @catppuccin_window_status_style "rounded"
+        #  set -g mouse on
+        # '';
+      #}
     ];
     
     extraConfig = ''
@@ -139,6 +138,37 @@ in
 
       # Restaure les sessions sauvées par resurrect.
       set -g @continuum-restore "on"
+        source-file -q ~/.config/tmux/themes/noctalia.conf
+
+      # --- Souris + copie automatique à la sélection (Wayland) ---
+      set -g mouse on
+      set -g set-clipboard on
+      bind -T copy-mode MouseDragEnd1Pane send -X copy-pipe-and-cancel "${pkgs.wl-clipboard}/bin/wl-copy"
+      bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "${pkgs.wl-clipboard}/bin/wl-copy"
+
+      # --- Couleurs 24 bits ---
+      set -ag terminal-overrides ",*:RGB"
+
+      # --- Barre de statut en capsules arrondies ---
+      set -g status on
+      set -g status-position bottom
+      set -g status-interval 2
+      set -g status-justify left
+      set -g status-left-length 40
+      set -g status-right-length 80
+
+      # Nom de l'app qui tourne dans la fenêtre
+      set -g @app '#{?#{||:#{m:*claude*,#{pane_current_command}},#{m:*Claude*,#{pane_title}}},Claude,#{?#{||:#{m:nvim,#{pane_current_command}},#{m:vim,#{pane_current_command}}},Neovim,#{?#{m:opencode,#{pane_current_command}},OpenCode,#{pane_current_command}}}}'
+
+      set -g status-left "#[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b6#[fg=#{@noctalia_on_primary},bg=#{@noctalia_primary},bold] \uf313 #S #[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b4 "
+
+      # Les styles sont portés par les formats, on neutralise ceux du thème
+      set -g window-status-style "default"
+      set -g window-status-last-style "default"
+      set -g window-status-current-style "default"
+      set -g window-status-separator " "
+      set -g window-status-format "#[fg=#{@noctalia_surface_container_highest},bg=#{@noctalia_surface_container_low},nobold]\ue0b6#[fg=#{@noctalia_on_surface_variant},bg=#{@noctalia_surface_container_highest}] #I #{E:@app} #[fg=#{@noctalia_surface_container_highest},bg=#{@noctalia_surface_container_low},nobold]\ue0b4"
+      set -g window-status-current-format "#[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b6#[fg=#{@noctalia_on_primary},bg=#{@noctalia_primary},bold] #I #{E:@app} #[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b4"
     '';
   };
   
