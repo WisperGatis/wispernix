@@ -413,10 +413,10 @@ in
   
   # adding librewolf dubious setup
   programs.librewolf = {
-      enable = true;
-      settings = {
-          "privacy.resistFingerprinting" = false;
-      };
+    enable = true;
+    settings = {
+      "privacy.resistFingerprinting" = false;
+    };
   };
   
   programs.zellij = {
@@ -427,7 +427,7 @@ in
       theme = "noctalia";
 
       # Options Zellij normales : reste géré par Home Manager
-      default_shell = "fish";
+      #default_shell = "fish";
       pane_frames = false;
       mouse_mode = true;
       copy_on_select = true;
