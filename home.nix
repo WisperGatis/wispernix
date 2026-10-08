@@ -595,8 +595,8 @@ in
       output_path = "$XDG_CONFIG_HOME/zellij/themes/noctalia.kdl"
     '';
 
-      "mango/config.conf" = {
-          source = ./config/mango/config.conf;
+      "mango/config.toml" = {
+          source = ./config/mango/config.toml;
           force = true;
       };
   };
