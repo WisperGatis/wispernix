@@ -1,298 +1,193 @@
-
 # =========================
-# MangoWM config
+# Umbriel config
 # Wispie-chan edition 💜
+# Ported from MangoWM config
 # Noctalia V5 + Rio BLZ
-# Format TOML
+# Format TOML  ->  ~/.config/umbriel/config.toml
+# Check it with:  umbriel config validate
 # =========================
 
-[global]
-
 ###########
-# Moniteurs
+# Includes
 ###########
 
-# Les règles des moniteurs se trouvent plus bas
-# dans [[rule.monitor_rule]].
-
-###############
-# Environnement
-###############
-
-# Curseur Rio BLZ
-# Les variables d'environnement sont définies
-# dans la section [env].
-
-#########################
-# Clavier / disposition
-#########################
-
-xkb_rules_layout = "ch"
-xkb_rules_variant = "fr"
-
-###############################
-# Apparence / gaps / bordures
-###############################
-
-# Espacement intérieur entre les fenêtres
-gap_inner_horizontal = 5
-gap_inner_vertical = 5
-
-# Espacement extérieur entre fenêtres et écrans
-gap_outer_horizontal = 10
-gap_outer_vertical = 10
-
-# Épaisseur des bordures
-border_px = 3
-
-#####################################
-# Effets de fenêtre (blur, opacité)
-#####################################
-
-blur = 1
-blur_layer = 0
-blur_optimized = 1
-blur_params_num_passes = 2
-blur_params_radius = 6
-
-border_radius = 14
-focused_opacity = 0.92
-unfocused_opacity = 0.75
-
-################
-# Layout / tags
-################
-
-# Dix workspaces avec disposition tile
-tag_num = 10
-
-# Les règles de disposition sont définies
-# plus bas dans [[rule.tag_rule]].
-
-#############
-# Autostart
-#############
-
-# Shell Noctalia V5
-# Agent Polkit GNOME
-# Curseur Rio BLZ
-# Historique du presse-papiers (texte et images)
-
-exec_once = [
-    "noctalia",
-    "/home/wisp/.local/bin/polkit-gnome-agent",
-    'gsettings set org.gnome.desktop.interface cursor-theme "Rio BLZ"',
-    "gsettings set org.gnome.desktop.interface cursor-size 24",
-    "wl-paste --type text --watch cliphist store",
-    "wl-paste --type image --watch cliphist store"
+# Noctalia V5 theme for Umbriel (replaces mango's `source = noctalia.conf`).
+# Optional: a missing file is ignored and watched, so it reloads once created.
+[include.optional]
+files = [
+  "~/.config/umbriel/noctalia.toml",
 ]
 
-##############################
-# Fichiers de configuration
-##############################
-
-# Thème Noctalia V5 pour MangoWM
-# Fichier généré au format .conf
-# Les couleurs devront être adaptées séparément.
-source = ["/home/wisp/.config/mango/noctalia.conf"]
-
-# DMS Include Configs
-# source = ["./dms/cursor.conf", "./dms/layout.conf"]
-
-
-###############
-# Environnement
-###############
-
-[env]
-
-# Curseur Rio BLZ
-# "XCURSOR_PATH" = "/usr/share/icons:/home/wisp/.local/share/icons"
-# "XCURSOR_THEME" = "Rio BLZ"
-# "XCURSOR_SIZE" = "24"
-
-
 ###########
-# Moniteurs
+# General
 ###########
 
-# Samsung Electric Company LC24RG50 HNMT100624
+[general]
+mod_key = "Super"
+xwayland = true
+show_cheatsheet = false
 
-[[rule.monitor_rule]]
-make = "Samsung Electric Company"
-model = "LC24RG50"
-serial = "HNMT100624"
-width = 1920
-height = 1080
-refresh = 143.981
-x = 0
-y = 0
-scale = 1
-vrr = 1
-rr = 0
+# Autostart (same as mango's exec_once)
+autostart = [
+  "noctalia",
+  "/home/wisp/.local/bin/polkit-gnome-agent",
+  "gsettings set org.gnome.desktop.interface cursor-theme 'Rio BLZ'",
+  "gsettings set org.gnome.desktop.interface cursor-size 24",
+  "wl-paste --type text --watch cliphist store",
+  "wl-paste --type image --watch cliphist store",
+]
 
-# HP Inc. OMEN by HP 25 3CQ95007KT
+###############
+# Environment
+###############
 
-[[rule.monitor_rule]]
-make = "HP Inc."
-model = "OMEN by HP 25"
-serial = "3CQ95007KT"
-width = 1920
-height = 1080
-refresh = 143.992
-x = 1920
-y = 0
-scale = 1
-vrr = 1
-rr = 0
+[environment]
+XCURSOR_PATH = "/usr/share/icons:/home/wisp/.local/share/icons"
+XCURSOR_THEME = "Rio BLZ"
+XCURSOR_SIZE = "24"
 
+###########################
+# Keyboard / cursor / focus
+###########################
 
-################
-# Layout / tags
-################
+[input.keyboard]
+layout = "ch"
+variant = "fr"
+# Niri setup had two layouts; uncomment for ch(fr) + us with Alt+Shift toggle:
+# layout = "ch,us"
+# variant = "fr,"
+# options = "grp:alt_shift_toggle"
 
-# Chaque workspace utilise le layout tile.
+[input.cursor]
+theme = "Rio BLZ"
+size = 24
 
-[[rule.tag_rule]]
-id = 1
-layout_name = "tile"
+###########################
+# Appearance / borders / blur
+###########################
 
-[[rule.tag_rule]]
-id = 2
-layout_name = "tile"
+[appearance]
+border_width = 3
+corner_radius = 14
 
-[[rule.tag_rule]]
-id = 3
-layout_name = "tile"
+[appearance.blur]
+enabled = true
+optimized = true
+passes = 2
+radius = 6
 
-[[rule.tag_rule]]
-id = 4
-layout_name = "tile"
+############
+# Layout
+############
 
-[[rule.tag_rule]]
-id = 5
-layout_name = "tile"
+# Mango's "tile" layout = master + stack.
+# Switch to "scrolling" for Umbriel's niri-style columns.
+[layout]
+mode = "master"
+gap = 5            # mango gap_inner = 5
 
-[[rule.tag_rule]]
-id = 6
-layout_name = "tile"
+# Mango gap_outer = 10: 5 here on top of the 5 gap. Tweak to taste.
+[layout.struts]
+left = 5
+right = 5
+top = 5
+bottom = 5
 
-[[rule.tag_rule]]
-id = 7
-layout_name = "tile"
+##############
+# Window rules
+##############
 
-[[rule.tag_rule]]
-id = 8
-layout_name = "tile"
+# Blur every window (windows must opt in to blur)
+[[window_rule]]
+blur = true
 
-[[rule.tag_rule]]
-id = 9
-layout_name = "tile"
+# focused_opacity / unfocused_opacity from mango
+[[window_rule]]
+match.is_focused = true
+opacity = 0.92
 
-[[rule.tag_rule]]
-id = 10
-layout_name = "tile"
+[[window_rule]]
+match.is_focused = false
+opacity = 0.75
 
+##########
+# Outputs
+##########
 
-############################
-# Raccourcis Noctalia / DMS
-############################
+# Samsung LC24RG50 (left)
+[output."Samsung Electric Company LC24RG50 HNMT100624"]
+mode = "1920x1080@143.981"
+position = [0, 0]
+scale = 1.0
+vrr = "always"
+workspaces = 10
 
-[bind.default]
-
-# Win+Space : launcher Noctalia
-"SUPER+space" = "spawn_shell,noctalia msg panel-toggle launcher"
-
-# Win+Alt+Space : launcher DMS
-"SUPER+ALT+space" = "spawn_shell,dms ipc call launcher toggle"
-
-# Win+O : settings Noctalia
-"SUPER+o" = "spawn_shell,noctalia msg settings-toggle"
-
-# Win+Alt+O : settings DMS
-"SUPER+ALT+o" = "spawn_shell,dms ipc call settings toggle"
-
-# Win+V : clipboard Noctalia
-"SUPER+v" = "spawn_shell,noctalia msg panel-toggle clipboard"
-
-# Win+E : control center Noctalia
-"SUPER+e" = "spawn_shell,noctalia msg panel-toggle control-center"
-
-# Win+Alt+E : control center DMS
-"SUPER+ALT+e" = "spawn_shell,dms ipc call controlCenter toggle"
-
-
-########################
-# Fenêtres / navigation
-########################
-
-# Win+Q : fermer la fenêtre focus
-"SUPER+q" = "killclient"
-
-# Win+Tab : focusstack next
-"SUPER+Tab" = "focusstack,next"
-
-# Win+Shift+F : toggle plein écran
-"SUPER+SHIFT+f" = "togglefullscreen"
-
-# Win+Shift+A / D : changer l'écran focus
-"SUPER+SHIFT+a" = "focusmon,left"
-"SUPER+SHIFT+d" = "focusmon,right"
-
+# HP OMEN by HP 25 (right)
+[output."HP Inc. OMEN by HP 25 3CQ95007KT"]
+mode = "1920x1080@143.992"
+position = [1920, 0]
+scale = 1.0
+vrr = "always"
+workspaces = 10
 
 #############
-# Workspaces
+# Keybinds
 #############
 
-# Win+1 à Win+0 : afficher les tags 1 à 10
+[keybinds]
 
-"SUPER+1" = "view,1,0"
-"SUPER+2" = "view,2,0"
-"SUPER+3" = "view,3,0"
-"SUPER+4" = "view,4,0"
-"SUPER+5" = "view,5,0"
-"SUPER+6" = "view,6,0"
-"SUPER+7" = "view,7,0"
-"SUPER+8" = "view,8,0"
-"SUPER+9" = "view,9,0"
-"SUPER+0" = "view,10,0"
+# --- Noctalia / DMS ---
+"Mod+Space"     = "spawn:noctalia msg panel-toggle launcher"
+"Mod+Alt+Space" = "spawn:dms ipc call launcher toggle"
+"Mod+O"         = "spawn:noctalia msg settings-toggle"
+"Mod+Alt+O"     = "spawn:dms ipc call settings toggle"
+"Mod+V"         = "spawn:noctalia msg panel-toggle clipboard"
+"Mod+E"         = "spawn:noctalia msg panel-toggle control-center"
+"Mod+Alt+E"     = "spawn:dms ipc call controlCenter toggle"
 
+# --- Windows / navigation ---
+"Mod+Q"           = "window-close"
+"Mod+Tab"         = "window-focus-next"
+"Mod+Shift+F"     = "window-toggle-fullscreen"
+"Mod+F"           = "window-toggle-floating"
+"Mod+Shift+A"     = "output-focus-left"
+"Mod+Shift+D"     = "output-focus-right"
 
-#############
-# Programmes
-#############
+# Extras from your niri config
+"Mod+Left"        = "window-focus-left"
+"Mod+Right"       = "window-focus-right"
+"Mod+Up"          = "window-focus-up"
+"Mod+Down"        = "window-focus-down"
 
-# Win+T : ouvrir un terminal
-# Kitty prioritaire, puis Alacritty, Ghostty et Foot
-"SUPER+t" = "spawn_shell,kitty || alacritty || ghostty || foot"
+# --- Workspaces: Mod+1..0 ---
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+"Mod+0" = "workspace-switch:10"
 
-# Print Screen : screenshot Noctalia V5
-"Print" = "spawn_shell,noctalia msg screenshot-region"
+# Move window to workspace (extra, from your niri config)
+"Mod+Ctrl+1" = "window-move-to-workspace:1"
+"Mod+Ctrl+2" = "window-move-to-workspace:2"
+"Mod+Ctrl+3" = "window-move-to-workspace:3"
+"Mod+Ctrl+4" = "window-move-to-workspace:4"
+"Mod+Ctrl+5" = "window-move-to-workspace:5"
+"Mod+Ctrl+6" = "window-move-to-workspace:6"
+"Mod+Ctrl+7" = "window-move-to-workspace:7"
+"Mod+Ctrl+8" = "window-move-to-workspace:8"
+"Mod+Ctrl+9" = "window-move-to-workspace:9"
+"Mod+Ctrl+0" = "window-move-to-workspace:10"
 
+# --- Programs ---
+# Kitty first, then Alacritty, Ghostty, Foot
+"Mod+T" = "spawn:kitty || alacritty || ghostty || foot"
+"Print" = "spawn:noctalia msg screenshot-region"
 
-#######################
-# Raccourcis système
-#######################
-
-# Reload config
-"SUPER+r" = "reload_config"
-
-# Quitter MangoWM
-"SUPER+m" = "quit"
-
-# Activer et désactiver le mode flottant
-"SUPER+f" = "togglefloating"
-
-
-################
-# Mouse bindings
-################
-
-[mousebind.default]
-
-# Win + clic gauche : déplacer une fenêtre
-"SUPER+btn_left" = "moveresize,curmove"
-
-# Win + clic droit : redimensionner une fenêtre
-"SUPER+btn_right" = "moveresize,curresize"
-
+# --- System ---
+"Mod+R" = "config-reload"
+"Mod+M" = "session-quit"
