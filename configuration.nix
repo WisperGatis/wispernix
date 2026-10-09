@@ -53,7 +53,24 @@
   programs.hyprland.enable = true;
   programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
-  services.displayManager.sessionPackages = [ pkgs.unstable.mango ];
+  services.displayManager.sessionPackages = [
+    pkgs.unstable.mango
+
+    # Umbriel session entry for SDDM (uses its start-umbriel launcher).
+    ((pkgs.runCommand "umbriel-session"
+      { passthru.providedSessions = [ "umbriel" ]; }
+      ''
+        mkdir -p $out/share/wayland-sessions
+        cat > $out/share/wayland-sessions/umbriel.desktop <<EOF
+        [Desktop Entry]
+        Name=Umbriel
+        Comment=Umbriel Wayland compositor
+        Exec=${pkgs.unstable.umbriel}/bin/start-umbriel
+        Type=Application
+        DesktopNames=Umbriel
+        EOF
+      ''))
+  ];
   # Ajouter COSMIC.
   services.desktopManager.cosmic = {
     enable = true;
@@ -287,6 +304,7 @@
     hyprland
     unstable.noctalia
     unstable.caelestia-cli
+    unstable.umbriel
     weathr
     unstable.concord-tui
     winboat
@@ -357,6 +375,7 @@
     pkg-config
     zig
     python3Packages.ply
+    inputs.amane.packages.x86_64-linux.default
     
 
     mullvad-vpn
@@ -404,3 +423,4 @@
 
  system.stateVersion = "26.05";
 }
+

@@ -7,16 +7,36 @@
         ]
       },
       "locked": {
-        "lastModified": 1791438152,
-        "narHash": "sha256-s80kyoAr5h6hdFQhy4KdzN69FnNKkBoMG44cjsUHO3k=",
+        "lastModified": 1791478174,
+        "narHash": "sha256-m/hDAS37EdODiRZFCY1nDqmPQSGylOWK+uLbS6goVEA=",
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
-        "rev": "de8b8d6ee381beb0088ab7dd51b21fd16b9adc0c",
+        "rev": "7eabc94fac9880ec48ec3d808d60e2064d0ceefd",
         "type": "github"
       },
       "original": {
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
+        "type": "github"
+      }
+    },
+    "amane": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791437618,
+        "narHash": "sha256-bjJ5K6EEeo8UA97DemyaLLEaLQdNgi0U18in1slP/IM=",
+        "owner": "MystiaFin",
+        "repo": "amane",
+        "rev": "7cf5fac4a98a13ca7098766b9118806073f57952",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MystiaFin",
+        "repo": "amane",
         "type": "github"
       }
     },
@@ -28,11 +48,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1791399799,
-        "narHash": "sha256-OA4FQegGDTcdXsiBjQsrtgmTlY//pdTjmlCAw7lNPYg=",
+        "lastModified": 1791489701,
+        "narHash": "sha256-xV5Rhghg6bwwJTmfhPYivbBHqopDahvuVsjGNdQW5BU=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "a7d0e55859b355f2010a89e99d85999b681562b5",
+        "rev": "261b4c79b90c817841230d8a73a38f72fe5a7b96",
         "type": "github"
       },
       "original": {
@@ -48,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791375828,
-        "narHash": "sha256-FXsEvghuHwnqAEyW2WZa939+9+Ln6v48ivmnhAn4mOw=",
+        "lastModified": 1791462787,
+        "narHash": "sha256-gQ1LhdfgSgfcx0Hn+DmR7lIc6gWiZNQ/5sb7BonclFI=",
         "owner": "nmcbride",
         "repo": "claude-desktop-nix",
-        "rev": "77822c85fbe2f51e069812c6a59573a3aba37f3e",
+        "rev": "fe4eb5f1a5cfd9abe98a771a546ad59f986a594c",
         "type": "github"
       },
       "original": {
@@ -69,11 +89,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791372183,
-        "narHash": "sha256-XPi47Kv3zro0gjRxuj1q+7Tdf6V2uSF+ALJq/eHbyAM=",
+        "lastModified": 1791480839,
+        "narHash": "sha256-Hdh8X/WVuljTBYYI4Z+HzhHsZKIcj3G0os5vx5Tj/aU=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "20a27f51bf1618c4ba661b64512a9124117accd8",
+        "rev": "52d5e361212011a07b61eff8636f41fdf54fe23a",
         "type": "github"
       },
       "original": {
@@ -331,11 +351,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1791438675,
-        "narHash": "sha256-epLwp8wAVfZ9KN3QGtrum4vD5161GkyQklH6BYYvwuo=",
+        "lastModified": 1791463741,
+        "narHash": "sha256-pO3IuoIm+1/AnHSyEr7V1wym9z4eTfi+HiGdRRaBfAE=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "b7a40b6c32530598e38423c96474125acc779f8a",
+        "rev": "c160dd2bfd1b56966ed0f0f195772f6f33c3d3bb",
         "type": "github"
       },
       "original": {
@@ -352,11 +372,11 @@
       },
       "locked": {
         "dir": "packages/nix",
-        "lastModified": 1791044936,
-        "narHash": "sha256-+mNY2lHscvVa4KntAxuRMMFYMYxju06avIKyHooM8EE=",
+        "lastModified": 1791466141,
+        "narHash": "sha256-iy5odE6GLXOtl5PSiT9Sbb5pBAIdY2xNdugbSNz0iT0=",
         "owner": "SteamClientHomebrew",
         "repo": "Millennium",
-        "rev": "63c3928f0306edd83122c0f5b085a9b1a3d60f55",
+        "rev": "fb75bf7629562474a7a4cc06a03bb827de28a601",
         "type": "github"
       },
       "original": {
@@ -481,11 +501,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1791260994,
-        "narHash": "sha256-Miqqk/ammqnTUxaoCyvtwoPeLbI1ksFyLxi/CazZpWY=",
+        "lastModified": 1791456040,
+        "narHash": "sha256-H83yz/do+hjOO0uujHyH8RgtIQP2v7Mw+cLwcZK/xKc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4",
+        "rev": "e7439b6b14ad3cc35d05608ebca9bce01a25f5f8",
         "type": "github"
       },
       "original": {
@@ -673,6 +693,7 @@
     "root": {
       "inputs": {
         "ai-usagebar": "ai-usagebar",
+        "amane": "amane",
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
         "codex-desktop-linux": "codex-desktop-linux",

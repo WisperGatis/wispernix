@@ -28,6 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Amane
+    amane = {
+      url = "github:MystiaFin/amane";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #linux-wallpaper-engine = {
     #  url = "github:jagrat7/linux-wallpaper-engine";
     #};
@@ -96,6 +102,7 @@
      # linux-wallpaper-engine,
       claude-code,
       herdr-nix,
+      amane,
       ...
     }:
     {

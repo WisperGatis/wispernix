@@ -43,6 +43,9 @@ in
     XCURSOR_THEME = "Aemeath";
     XCURSOR_SIZE = "24";
   };
+  
+  #Umbriel enableFishIntegration
+  xdg.configFile."umbriel/config.toml".source = ./config/umbriel/config.toml;
 
   programs.fish = {
     enable = true;
