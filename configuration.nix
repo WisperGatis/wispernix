@@ -305,6 +305,7 @@
     unstable.noctalia
     unstable.caelestia-cli
     unstable.umbriel
+    unstable.noctalia-greeter
     weathr
     unstable.concord-tui
     winboat
