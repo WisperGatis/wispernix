@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791607531,
-        "narHash": "sha256-H4w7tGt8Q7TE24xqMHWv/7Jafll/4rvMLjPzcQX3mYg=",
+        "lastModified": 1791639078,
+        "narHash": "sha256-JvPT3Df/tSYRi77oCJpUmfm8l2w9E+mDKhPeWIM16ZE=",
         "owner": "MystiaFin",
         "repo": "amane",
-        "rev": "6b4a501ca2864717de493ff6fb1a1aaa85afb615",
+        "rev": "b2ca456e56f35a49391207664344ceb1f9c650dc",
         "type": "github"
       },
       "original": {
@@ -89,11 +89,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791630774,
-        "narHash": "sha256-jPT6jHubTFagrAvx+wXG6rUO5VEByx2FVB0vTUjXvDk=",
+        "lastModified": 1791636176,
+        "narHash": "sha256-i5En3yRYX2UuqJqSVqOT5h+2Q9knqwmQx25oggpMrNg=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "77e777378deb94e13b2d8512afb69ca591bde01d",
+        "rev": "839dbb50fbd2ad041089981441a82f2460dac455",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1791616998,
-        "narHash": "sha256-8cRiXiL53ymlsybpn5atzLFWKzpqwUxQYFvZDV/fCFY=",
+        "lastModified": 1791637539,
+        "narHash": "sha256-VPLlJMZSlOwZxSt5tC9z3AmlbAHvtCbst8jEgMriaMk=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "ca34a6ac32bba6ed7c778b91b837e702ecfc5e8b",
+        "rev": "4bdb92936d1db9ff77c38f043231db8acfac20f5",
         "type": "github"
       },
       "original": {
@@ -608,6 +608,26 @@
         "type": "github"
       }
     },
+    "noctalia-greeter": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791371992,
+        "narHash": "sha256-+M3rbqo/h5z0ayFIg+hWFa6hDewa79IBc0UUMSR0v0c=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "rev": "836071bcbc490c6ab7095d0aae5d0885bd2c5659",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "type": "github"
+      }
+    },
     "obscura": {
       "inputs": {
         "crane": "crane",
@@ -705,6 +725,7 @@
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "noctalia-greeter": "noctalia-greeter",
         "obscura-vpn": "obscura-vpn",
         "opera-flake": "opera-flake",
         "quickemu": "quickemu",
