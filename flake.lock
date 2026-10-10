@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791639078,
-        "narHash": "sha256-JvPT3Df/tSYRi77oCJpUmfm8l2w9E+mDKhPeWIM16ZE=",
+        "lastModified": 1791644806,
+        "narHash": "sha256-G1prx8enJ1dRqMr2yG04g8vT+FfNQWxoso08aGZtvEo=",
         "owner": "MystiaFin",
         "repo": "amane",
-        "rev": "b2ca456e56f35a49391207664344ceb1f9c650dc",
+        "rev": "1fe8ccc2366e892b6c6b1c96d715ff0a5cfadd1d",
         "type": "github"
       },
       "original": {
