@@ -19,6 +19,7 @@ let
     Aemeath = mkCursorTheme "Aemeath";
     Kama = mkCursorTheme "Kama";
     Alice_Kuonji = mkCursorTheme "Alice_Kuonji";
+    Saber = mkCursorTheme "Saber";
   };
 
   activeCursorTheme = "Aemeath";
@@ -129,7 +130,35 @@ in
       enableFishIntegration = true;
     };
   };
+  
+  programs.alacritty = {
+    enable = true;
+    
+    settings = {
+      general.import = ["~/.config/alacritty/themes/noctalia.toml"];
 
+      font = {
+        normal.family = "JetBrainsMono Nerd Font";
+        #size 12;
+      };
+
+      window.opacity = 0.90;
+    };
+  };
+
+  programs.foot = {
+    enable = true;
+
+    settings = {
+      main = {
+        font = "JetBrainsMono Nerd Font";
+        include = "~/.config/foot/themes/noctalia";
+      };
+
+      colors-dark.alpha = "0.90";
+      colors-light.alpha = "0.90";
+    };
+  };
   
   # tmux configurations.
   programs.tmux = {
@@ -188,6 +217,8 @@ in
       set -g window-status-current-format "#[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b6#[fg=#{@noctalia_on_primary},bg=#{@noctalia_primary},bold] #I #{E:@app} #[fg=#{@noctalia_primary},bg=#{@noctalia_surface_container_low},nobold]\ue0b4"
     '';
   };
+
+
   
   programs.zed-editor = {
     enable = true;
