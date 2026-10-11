@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791553281,
-        "narHash": "sha256-5HoxDAW10eWJjUOjfSxDV+jWt6WIGa5M6/C0MgsEW9Y=",
+        "lastModified": 1791691489,
+        "narHash": "sha256-B9YhDlurssVm+oYUK+WZiu/p03NnVEtIFntFHHJBnUQ=",
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
-        "rev": "77f51b9a20586ea448b87cd060a45492a4db59b7",
+        "rev": "578ff5fcfdf858adc3235428d97a16026c459730",
         "type": "github"
       },
       "original": {
@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791644806,
-        "narHash": "sha256-G1prx8enJ1dRqMr2yG04g8vT+FfNQWxoso08aGZtvEo=",
+        "lastModified": 1791703468,
+        "narHash": "sha256-8oQpaWTP2SiZqGApjd+ue/yGFiRA5eFAAX8M0ofBdNQ=",
         "owner": "MystiaFin",
         "repo": "amane",
-        "rev": "1fe8ccc2366e892b6c6b1c96d715ff0a5cfadd1d",
+        "rev": "da388ceb9d716c5db6ae6084893f6f554b035abd",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1791637539,
-        "narHash": "sha256-VPLlJMZSlOwZxSt5tC9z3AmlbAHvtCbst8jEgMriaMk=",
+        "lastModified": 1791711804,
+        "narHash": "sha256-twasOPX+QpYDot/S8gdiBiZrpGnAdZooURoMvp0Cfnw=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "4bdb92936d1db9ff77c38f043231db8acfac20f5",
+        "rev": "c3e7c0844c73e88dabab8de11c19b645d1516bc9",
         "type": "github"
       },
       "original": {
@@ -533,11 +533,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1791426274,
-        "narHash": "sha256-MWhktfFtFE8Jl7bf9Pkp7TR5MSdYCjCswSo0Gkb4ywc=",
+        "lastModified": 1791662279,
+        "narHash": "sha256-xI8L+UwJLIg75yVJwLPsY+AUEP1teCT3FyuvodyJu2Y=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7c8764b7c7b09b34f632464276218ef9090eaa11",
+        "rev": "6fcc160353f63555b560f25588925133c8f61f2a",
         "type": "github"
       },
       "original": {
@@ -615,11 +615,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791371992,
-        "narHash": "sha256-+M3rbqo/h5z0ayFIg+hWFa6hDewa79IBc0UUMSR0v0c=",
+        "lastModified": 1791686973,
+        "narHash": "sha256-2omKJnenFJbgPvD90TbZBb/EJKgFByFWQV1J0LaxZlk=",
         "owner": "noctalia-dev",
         "repo": "noctalia-greeter",
-        "rev": "836071bcbc490c6ab7095d0aae5d0885bd2c5659",
+        "rev": "f6714c9e04801a9f15dae0a543122925c86284b3",
         "type": "github"
       },
       "original": {
