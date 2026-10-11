@@ -407,6 +407,7 @@
     #dev slop
     #nodejs_26
     rustc
+    cargo
     python3
     rustup
     git
