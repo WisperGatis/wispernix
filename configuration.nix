@@ -104,7 +104,7 @@
   programs.gpu-screen-recorder = {
     enable = true;
   };
-  
+
   programs.ssh.askPassword = lib.mkForce
   "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
 
@@ -153,7 +153,7 @@
       package = pkgs.millennium-steam.override {
       extraArgs = "-system-composer -cef-disable-gpu-compositing";
       };
-   };
+    };
   
   programs.firefox.enable = true;
   
@@ -188,6 +188,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
   
     # QEMU / KVM / libvirt / Virt-Manager.
@@ -275,6 +276,10 @@
     # Dubious steam needs
     xwayland-satellite
     pavucontrol
+    wf-recorder
+    wl-screenrec
+    pipewire
+    ffmpeg
     
     # Dubious packages somehow needed.
     unstable.unrar
@@ -415,7 +420,7 @@
     fzf
     uv
     github-desktop
-    gitbutler
+    #gitbutler
     pkg-config
     zig
     python3Packages.ply

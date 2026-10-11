@@ -1,17 +1,27 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  aemeathCursor = pkgs.stdenvNoCC.mkDerivation {
-    pname = "Aemeath-cursor";
+  # Les deux thèmes sont empaquetés séparément. Pour changer de curseur,
+  # modifier uniquement activeCursorTheme ci-dessous.
+  mkCursorTheme = name: pkgs.stdenvNoCC.mkDerivation {
+    pname = "${name}-cursor-theme";
     version = "1.0";
-
-    src = ./config/cursors/Aemeath;
+    src = ./config/cursors/${name};
+    dontBuild = true;
 
     installPhase = ''
-      mkdir -p "$out/share/icons"
-      cp -r "$src" "$out/share/icons/Aemeath/"
+      mkdir -p "$out/share/icons/${name}"
+      cp -r "$src"/. "$out/share/icons/${name}/"
     '';
   };
+
+  cursorThemes = {
+    Aemeath = mkCursorTheme "Aemeath";
+    Kama = mkCursorTheme "Kama";
+  };
+
+  activeCursorTheme = "Aemeath";
+  activeCursorPackage = builtins.getAttr activeCursorTheme cursorThemes;
 
   spicePkgs =
     inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -19,6 +29,7 @@ in
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
+    inputs.simple-wallpaper-engine.homeManagerModules.default
   ];
 
   home.username = "wisp";
@@ -40,7 +51,7 @@ in
     TERMINAL = "kitty";
 
     # Disponible aux applis XWayland et aux applis qui lisent XCursor.
-    XCURSOR_THEME = "Aemeath";
+    XCURSOR_THEME = activeCursorTheme;
     XCURSOR_SIZE = "24";
   };
   
@@ -73,8 +84,8 @@ in
   # Pas de gestion GTK ici : Noctalia / Matugen s'en charge.
   home.pointerCursor = {
     enable = true;
-    package = aemeathCursor;
-    name = "Aemeath";
+    package = activeCursorPackage;
+    name = activeCursorTheme;
     size = 24;
 
     gtk.enable = false;
@@ -85,6 +96,8 @@ in
     name = "Dracula";
     package = pkgs.dracula-icon-theme;  
   };
+
+  programs.simple-wallpaper-engine.enable = true;
 
   programs.kitty = {
     enable = true;
@@ -443,6 +456,7 @@ in
     nwg-look
     adw-gtk3
     qt6Packages.qt6ct
+    #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     (python3.withPackages (ps: with ps; [
       pillow
