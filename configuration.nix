@@ -308,6 +308,7 @@
     lact
           
     vim
+    github-cli
     gdb
     unstable.vscodium
     fish
