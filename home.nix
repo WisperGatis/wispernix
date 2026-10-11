@@ -18,6 +18,7 @@ let
   cursorThemes = {
     Aemeath = mkCursorTheme "Aemeath";
     Kama = mkCursorTheme "Kama";
+    Alice_Kuonji = mkCursorTheme "Alice_Kuonji";
   };
 
   activeCursorTheme = "Aemeath";
@@ -29,7 +30,7 @@ in
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
-    inputs.simple-wallpaper-engine.homeManagerModules.default
+    #inputs.simple-wallpaper-engine.homeManagerModules.default
   ];
 
   home.username = "wisp";
@@ -97,7 +98,7 @@ in
     package = pkgs.dracula-icon-theme;  
   };
 
-  programs.simple-wallpaper-engine.enable = true;
+  #programs.simple-wallpaper-engine.enable = true;
 
   programs.kitty = {
     enable = true;
