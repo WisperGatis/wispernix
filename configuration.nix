@@ -19,19 +19,18 @@
     description = "polkit-gnome-authentication-agent-1";
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
   };
-};
 
   # storage optimizations cuz holy shit
   nix.settings.auto-optimise-store = true;
-
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -114,21 +113,22 @@
   };
   
 
-    fonts = {
+  fonts = {
     fontDir.enable = true;
 
     packages =
-      [
-        pkgs.noto-fonts
-        pkgs.noto-fonts-cjk-sans
-        pkgs.noto-fonts-color-emoji
-      ]
-      ++ builtins.filter lib.attrsets.isDerivation
-        (builtins.attrValues pkgs.nerd-fonts);
+    [
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-color-emoji
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation
+    (builtins.attrValues pkgs.nerd-fonts);
   };
 
   services.flatpak.enable = true;
-
+  
+  # xdg portal, Discord/vesktop/legcord streaming &&. Screen recorder for most Wayland setups
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -139,7 +139,7 @@
     ];
 
     config.umbriel = {
-      default = [ "gtk" ];
+      efault = [ "gtk" ];
       "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
       "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
@@ -154,13 +154,21 @@
     };
   };
 
-   # Millennium to make Steam better and allowing theming.
-   programs.steam = {
-      enable = true;
-      package = pkgs.millennium-steam.override {
-      extraArgs = "-system-composer -cef-disable-gpu-compositing";
-      };
+  # Any discord client streaming output selection 
+  xdg.portal.wlr.settings = {
+    screencast = {
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
     };
+  };
+
+  #Millennium to make Steam better and allowing theming.
+  programs.steam = {
+    enable = true;
+    package = pkgs.millennium-steam.override {
+      extraArgs = "-system-composer -cef-disable-gpu-compositing";
+    };
+  };
   
   programs.firefox.enable = true;
   
@@ -170,7 +178,7 @@
 
   services.printing.enable = true;
   
-    programs.thunar = {
+  programs.thunar = {
     enable = true;
 
     plugins = with pkgs.xfce; [
@@ -179,13 +187,13 @@
     ];
   };
 
-  # Nécessaire hors session XFCE complète pour conserver les préférences Thunar.
+  #Nécessaire hors session XFCE complète pour conserver les préférences Thunar.
   programs.xfconf.enable = true;
 
-  # Corbeille, montages USB, réseaux et emplacements distants.
+  #Corbeille, montages USB, réseaux et emplacements distants.
   services.gvfs.enable = true;
 
-  # Miniatures dans Thunar.
+  #Miniatures dans Thunar.
   services.tumbler.enable = true;
 
   services.pulseaudio.enable = false;
@@ -198,7 +206,7 @@
     wireplumber.enable = true;
   };
   
-    # QEMU / KVM / libvirt / Virt-Manager.
+  # QEMU / KVM / libvirt / Virt-Manager.
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -224,7 +232,7 @@
   # AMD overclocking.
   hardware.amdgpu.overdrive.enable = true;
   services.lact = {
-      enable = true;
+    enable = true;
   };
 
   # user(s)? 
@@ -233,11 +241,11 @@
     description = "wisp";
     shell = pkgs.fish;
     extraGroups = [
-     "networkmanager"
-     "wheel"
-     "video"
-     "libvirtd"
-     "docker"
+      "networkmanager"
+      "wheel"
+      "video"
+      "libvirtd"
+      "docker"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -255,7 +263,7 @@
   ];
   
   environment.sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   programs.nix-ld = {
@@ -282,6 +290,7 @@
       
     # Dubious steam needs
     xwayland-satellite
+    wayland-utils
     pavucontrol
     wf-recorder
     wl-screenrec
@@ -316,7 +325,7 @@
     gnome-clocks
     gnome-system-monitor
     
-    # hardware control
+    #hardware control
     lact
           
     vim
@@ -352,7 +361,7 @@
     roslyn
     unstable.roslyn-ls
 
-    # Niri, mango and Hyprland slop
+    #Niri, mango and Hyprland slop
     niri
     polkit_gnome
     #unstable.mango
@@ -367,25 +376,24 @@
     quickemu
     unstable.karere
 
-    # Terminals
+    #Terminals
     kitty
     ghostty
     alacritty
     rio
     foot
     ratty
-    
 
     vesktop
     telegram-desktop
     unstable.whatsapp-electron
     
-    # Burokrasy
+    #Burokrasy
     libreoffice
     onlyoffice-desktopeditors
 
-    # game slop
-    # steam
+    #game slop
+    #steam
     unstable.heroic
     lutris
     protonplus
@@ -394,7 +402,7 @@
     unstable.lunar-client
     unstable.gamescope
 
-    # Bigger dev slop
+    #Bigger dev slop
     t3code
     unstable.zed-editor
     vscode
@@ -434,8 +442,7 @@
     pkg-config
     zig
     python3Packages.ply
-    inputs.amane.packages.x86_64-linux.default
-    
+    inputs.amane.packages.x86_64-linux.default  
 
     mullvad-vpn
     mullvad
@@ -450,18 +457,18 @@
     unstable.brave-origin
     unstable.librewolf
     unstable.tor-browser
-    # pkgs.opera
+    #pkgs.opera
     floorp-bin
-    # inputs.waterfox.packages.${pkgs.system}.default
-    # Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
+    #inputs.waterfox.packages.${pkgs.system}.default
+    #Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
     
     thunar
 
-    # inputs from the flakes.
+    #inputs from the flakes.
     inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
     
-    # libvirt, qemu and kvm
+    #libvirt, qemu and kvm
     virt-viewer
     spice
     spice-gtk
@@ -470,15 +477,15 @@
   ];
   
   home-manager = {
-  useGlobalPkgs = true;
-  useUserPackages = true;
+    useGlobalPkgs = true;
+    useUserPackages = true;
   
-  extraSpecialArgs = {
+    extraSpecialArgs = {
       inherit inputs;
-  };
+    };
 
     users.wisp = import ./home.nix;
   };
 
- system.stateVersion = "26.05";
+  system.stateVersion = "26.05";
 }
