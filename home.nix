@@ -20,6 +20,10 @@ let
     Kama = mkCursorTheme "Kama";
     Alice_Kuonji = mkCursorTheme "Alice_Kuonji";
     Saber = mkCursorTheme "Saber";
+    Chisa = mkCursorTheme "Chisa";
+    Aemeath_sunglasses = mkCursorTheme "Aemeath_sunglasses";
+    remielle_black = mkCursorTheme "remielle_black";
+    remielle_white = mkCursorTheme "remielle_white";
   };
 
   activeCursorTheme = "Aemeath";

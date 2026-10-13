@@ -137,6 +137,13 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-wlr
     ];
+
+    config.umbriel = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+    };
     
     
     config.niri = {
@@ -408,6 +415,8 @@
     #nodejs_26
     rustc
     cargo
+    clippy
+    rustfmt
     python3
     rustup
     git
