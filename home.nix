@@ -30,6 +30,17 @@ let
   activeCursorTheme = "Aemeath";
   activeCursorPackage = builtins.getAttr activeCursorTheme cursorThemes;
 
+  palette-video = pkgs.runCommand "palette-video" {
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+  } ''
+    install -Dm755 ${./palette-video.fish} $out/bin/palette-video
+    substituteInPlace $out/bin/palette-video \
+      --replace-fail "#!/usr/bin/env fish" "#!${pkgs.fish}/bin/fish"
+    wrapProgram $out/bin/palette-video \
+      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.ffmpeg pkgs.dipc ]}
+    '';
+
+
   spicePkgs =
     inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
@@ -493,6 +504,7 @@ in
     nwg-look
     adw-gtk3
     qt6Packages.qt6ct
+    palette-video
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     (python3.withPackages (ps: with ps; [
