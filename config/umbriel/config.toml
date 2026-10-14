@@ -43,7 +43,7 @@ autostart = [
 
 [environment]
 XCURSOR_PATH = "/usr/share/icons:/home/wisp/.local/share/icons"
-XCURSOR_THEME = "remielle_black"
+XCURSOR_THEME = "remielle_white"
 XCURSOR_SIZE = "24"
 QT_QPA_PLATFORMTHEME = "qt6ct"
 
@@ -60,7 +60,7 @@ variant = "fr"
 # options = "grp:alt_shift_toggle"
 
 [input.cursor]
-theme = "remielle_black"
+theme = "remielle_white"
 size = 24
 follows_focus = true          # niri: warp-mouse-to-focus
 
