@@ -378,6 +378,7 @@
     wl-screenrec
     pipewire
     ffmpeg
+    wdisplays
     
     # Dubious packages somehow needed.
     unstable.unrar
@@ -518,6 +519,7 @@
     docker
     lazygit
     fzf
+    vis
     uv
     github-desktop
     #gitbutler

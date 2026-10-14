@@ -25,6 +25,7 @@ let
     remielle_black = mkCursorTheme "remielle_black";
     remielle_white = mkCursorTheme "remielle_white";
     Arlecchino = mkCursorTheme "Arlecchino";
+    ellen = mkCursorTheme "ellen";
   };
 
   activeCursorTheme = "Aemeath";
