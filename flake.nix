@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     obscura-vpn.url = "path:/home/wisp/obscura-vpn";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     
     # The bad bad browser
     opera-flake = {
@@ -94,7 +95,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    #nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
   outputs =
@@ -106,7 +107,7 @@
     zen-browser,
     millennium,
     helium-browser,
-    nix-cachyos-kernel,
+    #nix-cachyos-kernel,
     opera-flake,
     waterfox,
     mangowm,
@@ -120,6 +121,7 @@
     herdr-nix,
     amane,
     noctalia-greeter,
+    chaotic,
     ...
   }:
   {
@@ -137,7 +139,13 @@
         { services.obscura.enable = true; }
         helium-browser.nixosModules.default
         mangowm.nixosModules.mango
-
+        # Stable chaotic.
+        chaotic.nixosModules.nyx-cache
+        chaotic.nixosModules.nyx-overlay
+        chaotic.nixosModules.nyx-registry
+        
+        # For unstable chatoc branch.
+        #chaotic.nixosModules.default
         {
           nixpkgs.overlays = [ claude-code.overlays.default ];
           #environment.systemPackages = [ claude-code ];
@@ -171,7 +179,7 @@
             nixpkgs.overlays = [
               inputs.millennium.overlays.default
               helium-browser.overlays.default
-              nix-cachyos-kernel.overlays.pinned
+              #nix-cachyos-kernel.overlays.pinned
               opera-flake.overlays.default
               (final: prev: {
                 unstable = import nixpkgs-unstable {
@@ -195,14 +203,14 @@
 
               substituters = [
                 "https://cache.nixos.org"
-                "https://attic.xuyh0120.win/lantian"
+                #"https://attic.xuyh0120.win/lantian"
                 # Same as bellow, secondary cache for nix-cachyos-kernel which sould not be here, since the main one mostly misses we have to use it sadly.
                 #"https://cache.xinux.uz"
               ];
 
               trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+                #"lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
                 # Seconday cache should not be main nor be even present to begin with.
                 #"cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0=" # xinux
               ];
