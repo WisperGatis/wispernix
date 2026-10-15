@@ -5,9 +5,14 @@
     inputs.noctalia-greeter.nixosModules.default
   ];
 
+  # Kernels
   specialisation.cachyos.configuration = {
-    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    boot.kernelPackages = 
+      pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
   };
+  
+  # To uncomment and comment the above block to enable Zen kernel
+  #boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -329,6 +334,7 @@
       "libvirtd"
       "docker"
     ];
+
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
@@ -378,7 +384,6 @@
     wl-screenrec
     pipewire
     ffmpeg
-    wdisplays
     
     # Dubious packages somehow needed.
     unstable.unrar
@@ -450,7 +455,7 @@
     #unstable.mango
     hyprland
     unstable.noctalia
-    unstable.caelestia-cli
+    #unstable.caelestia-cli
     unstable.umbriel
     unstable.noctalia-greeter
     weathr
@@ -468,6 +473,8 @@
     ratty
 
     vesktop
+    unstable.spotifast
+    unstable.zapfast
     telegram-desktop
     unstable.whatsapp-electron
     
@@ -486,7 +493,7 @@
     unstable.gamescope
 
     #Bigger dev slop
-    t3code
+    unstable.t3code
     unstable.zed-editor
     vscode
     code-cursor
@@ -505,6 +512,7 @@
     #dev slop
     #nodejs_26
     rustc
+    nodejs_latest
     cargo
     clippy
     rustfmt
@@ -516,6 +524,7 @@
     dotnet-sdk_10
     ninja
     gcc
+    bubblewrap
     docker
     lazygit
     fzf

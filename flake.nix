@@ -197,14 +197,14 @@
                 "https://cache.nixos.org"
                 "https://attic.xuyh0120.win/lantian"
                 # Same as bellow, secondary cache for nix-cachyos-kernel which sould not be here, since the main one mostly misses we have to use it sadly.
-                "https://cache.xinux.uz"
+                #"https://cache.xinux.uz"
               ];
 
               trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
                 "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
                 # Seconday cache should not be main nor be even present to begin with.
-                "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0=" # xinux
+                #"cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0=" # xinux
               ];
             };
 
