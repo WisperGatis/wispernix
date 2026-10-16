@@ -1,10 +1,23 @@
+
 return {
+  {
+    "RRethy/base16-nvim",
+    lazy = false,
+    priority = 10001,
+  },
+
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = function()
-        dofile(vim.fn.expand("~/.config/lua/matugen.lua"))
+        local path = vim.fn.expand(
+          "~/.config/nvim/lua/matugen.lua"
+        )
+
+        local theme = dofile(path)
+        theme.setup()
       end,
     },
   },
 }
+

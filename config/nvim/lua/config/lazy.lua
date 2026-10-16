@@ -50,4 +50,17 @@ require("lazy").setup({
       },
     },
   },
+  {
+  "LazyVim/LazyVim",
+  opts = {
+    colorscheme = function()
+      local path = vim.fn.expand("~/.cache/noctalia/nvim/matugen.lua")
+      local ok, theme = pcall(dofile, path)
+
+      if ok and type(theme) == "table" and theme.setup then
+        theme.setup()
+        end
+      end,
+    },
+  },
 })
