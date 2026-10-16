@@ -380,6 +380,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+
+    #Chaotic packages.
+    pkgs.firefox_nightly
       
     # Stoopid font that doesn't wanna install itself properly through font packages.
     google-fonts

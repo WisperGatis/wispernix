@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792045406,
-        "narHash": "sha256-BRwOwGcWfvu+/8dA0oHeJq43Gao40iF89yjeIJ3iEEA=",
+        "lastModified": 1792117539,
+        "narHash": "sha256-Mf9KNs+/P1Qk8HFJFMiZcgctc22MgAfncavk19DGxb0=",
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
-        "rev": "bf0eeb7811652cd70eb8d7267b2f74e158c48965",
+        "rev": "ee5c417c42c936c7d1b8a3179b07d4c01c6f7fd7",
         "type": "github"
       },
       "original": {
@@ -110,11 +110,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792051266,
-        "narHash": "sha256-q5JDEVS3psVtizlX5BP6zmxZpfer5KO0s7EHtF+VyjE=",
+        "lastModified": 1792112810,
+        "narHash": "sha256-LL8wN3hPUua5ntg+2ysJzquwu2Xgceiq7ajZYpQmL18=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "1153895b6fe9101fcf777a4264ccaaf3a4ce55be",
+        "rev": "11d027be63f4e1ba5ddded514f7632db2ead9485",
         "type": "github"
       },
       "original": {

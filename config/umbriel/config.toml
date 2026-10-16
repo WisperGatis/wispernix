@@ -74,7 +74,7 @@ follows_mouse_max_scroll = 0.1
 
 [appearance]
 border_width = 3
-corner_radius = 14
+corner_radius = 2
 
 [appearance.blur]
 enabled = true
