@@ -7,12 +7,12 @@
 
   # Kernels
   # The spec ones are from Lantian which is down due to security concern so we fetch it from chaotic.
-  #specialisation.cachyos.configuration = {
+  specialisation.cachyos.configuration = {
     #boot.kernelPackages =  
-  #   pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
-  #};
-  
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+     boot.kernelPackages = pkgs.linuxPackages_cachyos-bore;
+  };
+
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos-bore;
 
   # To uncomment and comment the above block to enable Zen kernel
   #boot.kernelPackages = pkgs.linuxPackages_zen;
