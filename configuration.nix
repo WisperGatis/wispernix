@@ -383,6 +383,7 @@
 
     #Chaotic packages.
     pkgs.firefox_nightly
+    pkgs.gamescope_git
       
     # Stoopid font that doesn't wanna install itself properly through font packages.
     google-fonts
@@ -461,10 +462,13 @@
     unstable.roslyn-ls
 
     #Niri, mango and Hyprland slop
+    sway
     niri
     polkit_gnome
     #unstable.mango
+    unstable.dwm
     hyprland
+    unstable.labwc
     unstable.noctalia
     #unstable.caelestia-cli
     unstable.umbriel

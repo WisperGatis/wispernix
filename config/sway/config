@@ -1,0 +1,131 @@
+# =========================
+#  Sway config
+#  Wispie-chan edition 💜
+#  Noctalia V5 + Rio BLZ
+# =========================
+
+# Modificateur
+set $mod Super
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Autostart : Noctalia V5 + curseur + services
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Lancer Noctalia V5 (daemon)
+exec --no-startup-id noctalia
+
+#Autostart
+exec --no-startup-id ~/.config/sway/autostart
+
+# Curseur Rio BLZ
+exec --no-startup-id gsettings set org.gnome.desktop.interface cursor-theme "remielle_black"
+exec --no-startup-id gsettings set org.gnome.desktop.interface cursor-size 24
+
+# Polkit (lxqt-policykit-agent ou polkit-gnome-authentication-agent-1)
+exec --no-startup-id lxqt-policykit-agent &
+
+# Clipboard history
+exec --no-startup-id wl-paste --type text --watch cliphist store
+exec --no-startup-id wl-paste --type image --watch cliphist store
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Screenshot (grimshot)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+bindsym Print       exec grimshot save output ~/Images/Screenshots/screenshot_%Y%m%d_%H%M%S.png
+bindsym Shift+Print exec grimshot save area   ~/Images/Screenshots/screenshot_%Y%m%d_%H%M%S.png
+bindsym Ctrl+Print  exec grimshot save window ~/Images/Screenshots/screenshot_%Y%m%d_%H%M%S.png
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Noctalia V5 IPC
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Win+Space : launcher
+bindsym $mod+space exec noctalia msg panel-toggle launcher
+
+# Win+O : settings
+bindsym $mod+o exec noctalia msg settings-toggle
+
+# Win+V : clipboard manager
+bindsym $mod+v exec rofi -show clipboard -modi "clipboard:cliphist list" -clipboard -window-position br
+
+# Win+E : control center
+bindsym $mod+e exec noctalia msg panel-toggle control-center
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# GESTION DES FENÊTRES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+floating_modifier $mod normal
+
+bindsym $mod+F11       fullscreen toggle
+bindsym $mod+Shift+f   floating toggle
+bindsym $mod+b         splith
+# bindsym $mod+v         splitv
+bindsym $mod+s         layout stacking
+bindsym $mod+w         layout tabbed
+bindsym $mod+x         layout toggle split
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# MODE RESIZE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+mode "resize" {
+    bindsym Left  resize shrink width  20px
+    bindsym Right resize grow   width  20px
+    bindsym Up    resize shrink height 20px
+    bindsym Down  resize grow   height 20px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# RÈGLES FENÊTRES FLOTTANTES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+for_window [window_role="dialog"]        floating enable
+for_window [window_role="pop-up"]        floating enable
+for_window [window_type="dialog"]        floating enable
+for_window [window_type="utility"]       floating enable
+for_window [window_type="notification"]  floating enable, border none
+for_window [app_id="noctalia-options"]   floating enable
+for_window [app_id="noctalia-launcher"]  floating enable, border none
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ENTRÉES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+input "type:keyboard" {
+    xkb_layout ch
+    xkb_variant fr
+    repeat_delay 250
+    repeat_rate 40
+}
+
+input "type:pointer" {
+    accel_profile flat
+    pointer_accel 0
+}
+
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# RECHARGEMENT
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# INCLUDE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+include ~/.config/sway/config.d/*
+
+include ~/.config/sway/monitors.conf
+
+include ~/.config/sway/noctalia
+
+

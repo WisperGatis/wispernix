@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<labwc_config>
+  <keyboard>
+    <!-- On charge les binds par défaut -->
+    <default />
+
+    <!-- Win+Space : launcher Noctalia -->
+    <keybind key="W-space">
+      <action name="Execute" command="noctalia msg panel-toggle launcher" />
+    </keybind>
+
+    <!-- Win+Alt+Space : launcher DMS -->
+    <keybind key="W-A-space">
+      <action name="Execute" command="dms ipc call launcher toggle" />
+    </keybind>
+
+    <!-- Win+O : settings Noctalia -->
+    <keybind key="W-o">
+      <action name="Execute" command="noctalia msg settings-toggle" />
+    </keybind>
+
+    <!-- Win+Alt+O : settings DMS -->
+    <keybind key="W-A-o">
+      <action name="Execute" command="dms ipc call settings toggle" />
+    </keybind>
+
+    <!-- Win+V : clipboard manager (cliphist + rofi) -->
+    <keybind key="W-v">
+      <action name="Execute" command="rofi -show clipboard -modi \"clipboard:cliphist list\" -clipboard -window-position br" />
+    </keybind>
+
+    <!-- Win+E : control center Noctalia -->
+    <keybind key="W-e">
+      <action name="Execute" command="noctalia msg panel-toggle control-center" />
+    </keybind>
+
+    <!-- Win+Alt+E : control center DMS -->
+    <keybind key="W-A-e">
+      <action name="Execute" command="dms ipc call controlCenter toggle" />
+    </keybind>
+
+    <!-- Win+Q : fermer la fenêtre focus -->
+    <keybind key="W-q">
+      <action name="Close" />
+    </keybind>
+
+    <!-- Win+Tab : overview (vue de toutes les fenêtres) -->
+    <keybind key="W-Tab">
+      <action name="NextWindow" />
+    </keybind>
+
+    <!-- Win+F : toggle floating / tiling -->
+    <keybind key="W-f">
+      <action name="ToggleMaximize" />
+    </keybind>
+
+    <!-- Win+Shift+F : toggle plein écran -->
+    <keybind key="W-S-f">
+      <action name="ToggleFullscreen" />
+    </keybind>
+
+    <!-- Win+Shift+← / → : changer l'écran focus -->
+    <keybind key="W-S-Left">
+      <action name="FocusView" />
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="FocusView" />
+    </keybind>
+
+    <!-- Workspaces (desktops) -->
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2" />
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3" />
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4" />
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5" />
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop" to="6" />
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop" to="7" />
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop" to="8" />
+    </keybind>
+    <keybind key="W-9">
+      <action name="GoToDesktop" to="9" />
+    </keybind>
+    <keybind key="W-0">
+      <action name="GoToDesktop" to="10" />
+    </keybind>
+
+    <!-- Win+T : terminal -->
+    <keybind key="W-t">
+      <action name="Execute" command="kitty || alacritty || ghostty || foot" />
+    </keybind>
+
+    <!-- Print : screenshot Noctalia V5 -->
+    <keybind key="Print">
+      <action name="Execute" command="noctalia msg screenshot-region" />
+    </keybind>
+
+    <!-- Win+R : recharger la config labwc -->
+    <keybind key="W-r">
+      <action name="Reconfigure" />
+    </keybind>
+
+    <!-- Win+M : quitter labwc -->
+    <keybind key="W-m">
+      <action name="Exit" />
+    </keybind>
+  </keyboard>
+
+  <mouse>
+    <default />
+    <!-- Win + clic gauche : moveresize -->
+    <context name="Client">
+      <mousebind button="Left" action="Press">
+        <action name="Move" />
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Resize" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <desktops number="10" />
+
+  <theme>
+    <cornerRadius>14</cornerRadius>
+  </theme>
+</labwc_config>
+

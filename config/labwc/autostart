@@ -1,0 +1,15 @@
+#!/bin/sh
+# Noctalia V5
+noctalia
+
+# Curseur Rio BLZ
+gsettings set org.gnome.desktop.interface cursor-theme "remielle_black"
+gsettings set org.gnome.desktop.interface cursor-size 24
+
+# Polkit (lxqt-policykit-agent recommandé pour les compositors Wayland non-Hyprland)
+lxqt-policykit-agent &
+
+# Clipboard history
+wl-paste --type text --watch cliphist store
+wl-paste --type image --watch cliphist store
+

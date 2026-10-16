@@ -177,6 +177,20 @@ in
     };
   };
   
+  # labwc config path.
+  xdg.configFile."labwc" = {
+    source = ./config/labwc;
+    executable = true;
+    recursive = true;
+  };
+  
+  # sway config path.
+  xdg.configFile."sway" = {
+    source = ./config/sway;
+    executable = true;
+    recursive = true;
+  };
+  
   # tmux configurations.
   programs.tmux = {
     enable = true;
