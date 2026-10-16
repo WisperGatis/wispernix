@@ -415,6 +415,9 @@
     matugen
     glow
     awww
+
+    # Toyota.
+    obsidian
     
     # gnome-slope
     gnome-tweaks
