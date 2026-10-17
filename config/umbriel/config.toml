@@ -18,6 +18,13 @@ files = [
   "~/.config/umbriel/noctalia.toml",
 ]
 
+######################
+# fuck this shit dude#
+######################
+#[[window_rule]]
+#match.app_id = "^steam_app_311210$"
+#confine_pointer = true
+
 ###########
 # General
 ###########

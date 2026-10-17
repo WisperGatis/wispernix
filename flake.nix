@@ -12,6 +12,12 @@
       url = "github:yisuidenghua/opera-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # The shell i'm not even sure i wanna use.
+    #caelestia-shell = {
+    # url = "github:caelestia-dots/shell";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     herdr-nix = {
       url = "github:herdrdev/herdr-nix";
@@ -122,6 +128,7 @@
     amane,
     noctalia-greeter,
     chaotic,
+    #caelestia-shell,
     ...
   }:
   {
@@ -135,6 +142,7 @@
       modules = [
         ./hardware-configuration.nix
         ./configuration.nix
+        #./caelestia.nix
         inputs.obscura-vpn.nixosModules.default
         { services.obscura.enable = true; }
         helium-browser.nixosModules.default

@@ -576,8 +576,9 @@
     thunar
 
     #inputs from the flakes.
-    inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     
     #libvirt, qemu and kvm
     virt-viewer
