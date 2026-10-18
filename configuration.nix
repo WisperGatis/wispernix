@@ -326,9 +326,12 @@
 
   # AMD overclocking.
   hardware.amdgpu.overdrive.enable = true;
+  environment.sessionVariables.RUSTICL_ENABLE = "radeonsi";
   services.lact = {
     enable = true;
   };
+
+  hardware.graphics.extraPackages = [ pkgs.mesa.opencl ];
 
   # user(s)? 
   users.users.wisp = {
@@ -380,6 +383,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+
+    # Very fun OC software
+    corectrl
+    stress-ng
+    #inputs.occt-nix.packages.${pkgs.system}.occt
+    pkgs.occt
 
     #Chaotic packages.
     pkgs.firefox_nightly

@@ -46,6 +46,12 @@
       url = "github:MystiaFin/amane";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # occt
+    OCCT = {
+      url = "github:Daaboulex/OCCT-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #linux-wallpaper-engine = {
@@ -129,6 +135,7 @@
     noctalia-greeter,
     chaotic,
     #caelestia-shell,
+    OCCT,
     ...
   }:
   {
@@ -145,6 +152,7 @@
         #./caelestia.nix
         inputs.obscura-vpn.nixosModules.default
         { services.obscura.enable = true; }
+        #inputs.OCCT.overlays.default
         helium-browser.nixosModules.default
         mangowm.nixosModules.mango
         # Stable chaotic.
@@ -158,7 +166,10 @@
           nixpkgs.overlays = [ claude-code.overlays.default ];
           #environment.systemPackages = [ claude-code ];
         }
-
+        # Very stupid if it works.
+        {
+          nixpkgs.overlays = [ inputs.OCCT.overlays.default ];
+        }
 	      codex-desktop-linux.nixosModules.default
 
 	      claude-desktop.nixosModules.default
