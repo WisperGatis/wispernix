@@ -448,7 +448,7 @@
     unstable.lazygit
     cava
     yazi
-    linux-wallpaperengine
+    unstable.linux-wallpaperengine
     unstable.cmatrix
     unstable.zellij
     #herdr
@@ -495,6 +495,9 @@
     unstable.zapfast
     telegram-desktop
     unstable.whatsapp-electron
+    feishin
+    unstable.siyuan
+
     
     #Burokrasy
     libreoffice
@@ -553,7 +556,7 @@
     pkg-config
     zig
     python3Packages.ply
-    inputs.amane.packages.x86_64-linux.default  
+    inputs.amane.packages.x86_64-linux.default
 
     mullvad-vpn
     mullvad
@@ -575,8 +578,7 @@
     
     thunar
 
-    #inputs from the flakes.
-    #inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
     #inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     

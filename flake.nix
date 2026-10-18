@@ -52,13 +52,13 @@
     # url = "github:jagrat7/linux-wallpaper-engine";
     #};
     
-    #simple-wallpaper-engine = {
-    # url = "github:Maxnights/simple-linux-wallpaperengine-gui";
-    # inputs = {
-    #   nixpkgs.follows = "nixpkgs";
-    #   home-manager.follows = "home-manager";
-    # };
-    #};
+    simple-wallpaper-engine = {
+     url = "github:Maxnights/simple-linux-wallpaperengine-gui";
+     inputs = {
+       nixpkgs.follows = "nixpkgs";
+       #home-manager.follows = "home-manager";
+     };
+    };
     
     # Adding mangowm as a flake rather than from nixpkgs
     mangowm = {
@@ -122,7 +122,7 @@
     claude-desktop,
     ai-usagebar,
     #linux-wallpaper-engine,
-    #simple-wallpaper-engine,
+    simple-wallpaper-engine,
     claude-code,
     herdr-nix,
     amane,

@@ -48,7 +48,7 @@ in
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
-    #inputs.simple-wallpaper-engine.homeManagerModules.default
+    inputs.simple-wallpaper-engine.homeManagerModules.default
   ];
 
   home.username = "wisp";
@@ -56,6 +56,7 @@ in
   home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
+  programs.simple-wallpaper-engine.enable = true;
 
   home.sessionPath = [
     "$HOME/.local/bin"
