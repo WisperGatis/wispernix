@@ -297,6 +297,9 @@ in
       dotnet-sdk_8
       csharp-ls
 
+      #hardware funny things.
+      unstable.mangohud
+
       # Go
       go
       gopls
