@@ -33,5 +33,4 @@
       chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
     };
   };
-
 }

@@ -43,7 +43,7 @@ autostart = [
 
 [environment]
 XCURSOR_PATH = "/usr/share/icons:/home/wisp/.local/share/icons"
-XCURSOR_THEME = "Rio BLZ"
+XCURSOR_THEME = "remielle_black"
 XCURSOR_SIZE = "24"
 
 ###########################
@@ -59,7 +59,7 @@ variant = "fr"
 # options = "grp:alt_shift_toggle"
 
 [input.cursor]
-theme = "Rio BLZ"
+theme = "remielle_black"
 size = 24
 
 ###########################
@@ -154,40 +154,187 @@ workspaces = 10
 "Mod+Shift+D"     = "output-focus-right"
 
 # Extras from your niri config
-"Mod+Left"        = "window-focus-left"
-"Mod+Right"       = "window-focus-right"
-"Mod+Up"          = "window-focus-up"
-"Mod+Down"        = "window-focus-down"
+# =========================
+#  MangoWM config (TOML)
+#  Wispie-chan edition 💜
+#  Noctalia V5 + Rio BLZ
+# =========================
+#
+# NOTE: all top-level options ([global], [env], [var]) must come
+# BEFORE the first [bind.*] / [[rule.*]] table.
 
-# --- Workspaces: Mod+1..0 ---
-"Mod+1" = "workspace-switch:1"
-"Mod+2" = "workspace-switch:2"
-"Mod+3" = "workspace-switch:3"
-"Mod+4" = "workspace-switch:4"
-"Mod+5" = "workspace-switch:5"
-"Mod+6" = "workspace-switch:6"
-"Mod+7" = "workspace-switch:7"
-"Mod+8" = "workspace-switch:8"
-"Mod+9" = "workspace-switch:9"
-"Mod+0" = "workspace-switch:10"
+###########################
+# Global options
+###########################
 
-# Move window to workspace (extra, from your niri config)
-"Mod+Ctrl+1" = "window-move-to-workspace:1"
-"Mod+Ctrl+2" = "window-move-to-workspace:2"
-"Mod+Ctrl+3" = "window-move-to-workspace:3"
-"Mod+Ctrl+4" = "window-move-to-workspace:4"
-"Mod+Ctrl+5" = "window-move-to-workspace:5"
-"Mod+Ctrl+6" = "window-move-to-workspace:6"
-"Mod+Ctrl+7" = "window-move-to-workspace:7"
-"Mod+Ctrl+8" = "window-move-to-workspace:8"
-"Mod+Ctrl+9" = "window-move-to-workspace:9"
-"Mod+Ctrl+0" = "window-move-to-workspace:10"
+[global]
 
-# --- Programs ---
-# Kitty first, then Alacritty, Ghostty, Foot
-"Mod+T" = "spawn:kitty || alacritty || ghostty || foot"
-"Print" = "spawn:noctalia msg screenshot-region"
+# ---- Clavier / disposition ----
+xkb_rules_layout = "ch"
+xkb_rules_variant = "fr"
 
-# --- System ---
-"Mod+R" = "config-reload"
-"Mod+M" = "session-quit"
+# ---- Gaps / bordures (renamed in 0.18: gappih/gappiv/gappoh/gappov, borderpx) ----
+gap_inner_horizontal = 5
+gap_inner_vertical = 5
+gap_outer_horizontal = 10
+gap_outer_vertical = 10
+border_px = 3
+
+# ---- Effets de fenêtre (blur, opacité) ----
+blur = 1
+blur_layer = 0
+blur_optimized = 1
+blur_params_num_passes = 2
+blur_params_radius = 6
+
+border_radius = 14
+focused_opacity = 0.92
+unfocused_opacity = 0.75
+
+# ---- Autostart ----
+exec_once = [
+  "noctalia",                                              # Shell Noctalia V5
+  "/home/wisp/.local/bin/polkit-gnome-agent",
+  "gsettings set org.gnome.desktop.interface cursor-theme \"Rio BLZ\"",
+  "gsettings set org.gnome.desktop.interface cursor-size 24",
+  "wl-paste --type text --watch cliphist store",
+  "wl-paste --type image --watch cliphist store",
+]
+
+# ---- Thème Noctalia (désactivé) ----
+# Un fichier sourcé est lu selon sa propre extension, donc .conf ici est OK.
+# source = ["/home/wisp/.config/mango/noctalia.conf"]
+
+###########################
+# Environnement
+###########################
+
+# Curseur Rio BLZ (désactivé)
+# [env]
+# "XCURSOR_PATH" = "/usr/share/icons:/home/wisp/.local/share/icons"
+# "XCURSOR_THEME" = "Rio BLZ"
+# "XCURSOR_SIZE" = "24"
+
+###########################
+# Raccourcis clavier
+###########################
+
+[bind.default]
+
+# ---- Noctalia / DMS ----
+"SUPER+space"     = "spawn_shell,noctalia msg panel-toggle launcher"        # launcher Noctalia
+"SUPER+ALT+space" = "spawn_shell,dms ipc call launcher toggle"              # launcher DMS
+"SUPER+o"         = "spawn_shell,noctalia msg settings-toggle"              # settings Noctalia
+"SUPER+ALT+o"     = "spawn_shell,dms ipc call settings toggle"              # settings DMS
+"SUPER+v"         = "spawn_shell,noctalia msg panel-toggle clipboard"       # clipboard Noctalia
+"SUPER+e"         = "spawn_shell,noctalia msg panel-toggle control-center"  # control center Noctalia
+"SUPER+ALT+e"     = "spawn_shell,dms ipc call controlCenter toggle"         # control center DMS
+
+# ---- Fenêtres / navigation ----
+"SUPER+q"         = "killclient"                # fermer la fenêtre
+"SUPER+Tab"       = "focusstack,next"
+"SUPER+SHIFT+f"   = "togglefullscreen"
+"SUPER+SHIFT+a"   = "focusmon,left"             # écran de gauche
+"SUPER+SHIFT+d"   = "focusmon,right"            # écran de droite
+"SUPER+f"         = "togglefloating"            # mode flottant on/off
+
+# ---- Workspaces ----
+"SUPER+1" = "view,1,0"
+"SUPER+2" = "view,2,0"
+"SUPER+3" = "view,3,0"
+"SUPER+4" = "view,4,0"
+"SUPER+5" = "view,5,0"
+"SUPER+6" = "view,6,0"
+"SUPER+7" = "view,7,0"
+"SUPER+8" = "view,8,0"
+"SUPER+9" = "view,9,0"
+"SUPER+0" = "view,10,0"
+
+# ---- Programmes ----
+"SUPER+t" = "spawn_shell,kitty || alacritty || ghostty || foot"
+"Print"   = "spawn_shell,noctalia msg screenshot-region"
+
+# ---- Système ----
+"SUPER+r" = "reload_config"
+"SUPER+m" = "quit"
+
+# ---- Souris ----
+[mousebind.default]
+"SUPER+btn_left"  = "moveresize,curmove"
+"SUPER+btn_right" = "moveresize,curresize"
+
+###########################
+# Règles
+###########################
+
+# ---- Moniteurs ----
+
+# Samsung Electric Company LC24RG50 HNMT100624
+[[rule.monitor_rule]]
+make = "Samsung Electric Company"
+model = "LC24RG50"
+serial = "HNMT100624"
+width = 1920
+height = 1080
+refresh = 143.981
+x = 0
+y = 0
+scale = 1
+vrr = 1
+rr = 0
+
+# HP Inc. OMEN by HP 25 3CQ95007KT
+[[rule.monitor_rule]]
+make = "HP Inc."
+model = "OMEN by HP 25"
+serial = "3CQ95007KT"
+width = 1920
+height = 1080
+refresh = 143.992
+x = 1920
+y = 0
+scale = 1
+vrr = 1
+rr = 0
+
+# ---- Tags / layouts ----
+
+[[rule.tag_rule]]
+id = 1
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 2
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 3
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 4
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 5
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 6
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 7
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 8
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 9
+layout_name = "tile"
+
+[[rule.tag_rule]]
+id = 10
+layout_name = "tile"

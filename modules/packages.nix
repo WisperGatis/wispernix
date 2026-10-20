@@ -203,6 +203,7 @@
     prismlauncher
     unstable.lunar-client
     unstable.gamescope
+    unstable.mangohud
 
     # -- Containers & virtualization ---------------------------------
     docker

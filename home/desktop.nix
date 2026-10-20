@@ -23,8 +23,8 @@
     };
 
     "mango/config.toml" = {
-        source = ../config/mango/config.toml;
-        force = true;
+      source = ../config/mango/config.toml;
+      force = true;
     };
 
   };

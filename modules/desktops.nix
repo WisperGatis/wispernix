@@ -56,5 +56,6 @@
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt6ct";
+     PATH="$HOME/.cargo/bin:$PATH";
   };
 }
