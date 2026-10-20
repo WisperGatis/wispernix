@@ -1,0 +1,23 @@
+{
+  imports = [
+    ./boot.nix
+    ./locales.nix
+    ./network.nix
+    ./nix.nix
+    ./audio.nix
+    ./graphics.nix
+    ./display-manager.nix
+    ./desktops.nix
+    ./portals.nix
+    ./fonts.nix
+    ./gaming.nix
+    ./virtualisation.nix
+    ./storage.nix
+    ./files.nix
+    ./services.nix
+    ./programs.nix
+    ./users.nix
+    ./packages.nix
+    ./home-manager.nix
+  ];
+}
