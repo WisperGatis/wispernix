@@ -113,6 +113,12 @@
     #unstable.caelestia-cli
     #inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     polkit_gnome
+    xrandr
+    dmenu
+    st
+    feh
+    xclip
+    picom
 
     # -- Wayland & screen tools --------------------------------------
     # Dubious steam needs
@@ -155,6 +161,7 @@
     # -- Files -------------------------------------------------------
     thunar
     yazi
+    unstable.superfile
 
     # -- Browsers ----------------------------------------------------
     pkgs.firefox_nightly
@@ -204,6 +211,7 @@
     unstable.lunar-client
     unstable.gamescope
     unstable.mangohud
+    unstable.goverlay
 
     # -- Containers & virtualization ---------------------------------
     docker

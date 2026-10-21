@@ -7,5 +7,4 @@
       extraArgs = "-system-composer -cef-disable-gpu-compositing";
     };
   };
-
 }
