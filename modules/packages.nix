@@ -157,6 +157,7 @@
     gnome-calendar
     gnome-clocks
     gnome-system-monitor
+    gnome-extension-manager
 
     # -- Files -------------------------------------------------------
     thunar
