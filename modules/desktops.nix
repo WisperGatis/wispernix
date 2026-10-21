@@ -22,6 +22,7 @@
   programs.hyprland.enable = true;
   programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
+  programs.dconf.enable = true;
   services.displayManager.sessionPackages = [
     pkgs.unstable.mango
 

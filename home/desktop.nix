@@ -41,4 +41,13 @@
     executable = true;
     recursive = true;
   };
+
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enable-extensions = [
+        "dash-to-dock@micxgx.gmail.com"
+      ];
+    };
+  };
 }

@@ -17,6 +17,7 @@ in
     adw-gtk3
     qt6Packages.qt6ct
     palette-video
+    #dash-to-dock
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     (python3.withPackages (ps: with ps; [
