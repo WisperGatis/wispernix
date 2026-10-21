@@ -35,6 +35,7 @@
     fzf
     #herdr
     inputs.herdr-nix.packages.${system}.default
+    lsd
 
     # -- Editors -----------------------------------------------------
     vim
