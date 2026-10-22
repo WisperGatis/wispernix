@@ -17,6 +17,10 @@
   };
 
   services.desktopManager.plasma6.enable = true;
+  services.desktopManager.budgie.enable = true;
+
+  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR =
+  lib.mkForce "${pkgs.gnome-gsettings-overrides or pkgs.budgie-desktop}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas";
 
   programs.niri.enable = true;
   programs.hyprland.enable = true;
