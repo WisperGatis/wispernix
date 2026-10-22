@@ -23,6 +23,7 @@
   programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
+  services.xserver.enable = true;
   services.displayManager.sessionPackages = [
     pkgs.unstable.mango
 

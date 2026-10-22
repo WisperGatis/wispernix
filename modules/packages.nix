@@ -159,6 +159,14 @@
     gnome-clocks
     gnome-system-monitor
     gnome-extension-manager
+    gnome-disk-utility
+
+    # Budgie apps and slope.
+    loupe
+    file-roller
+    evince
+    dconf-editor
+
 
     # -- Files -------------------------------------------------------
     thunar
