@@ -50,11 +50,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792581072,
-        "narHash": "sha256-ab9TEAvr24WxKHymCag7L9gRkBfm0h8UayWzkM3w7Io=",
+        "lastModified": 1792598840,
+        "narHash": "sha256-fU20wtIC9wlOP9mvcCboSdB67zVq2ZSe9FjD7mwyHMc=",
         "owner": "MystiaFin",
         "repo": "amane",
-        "rev": "e2e29c97d9c3a1dd406cf559afdd17afdb2f82ef",
+        "rev": "544cbfc23af37f84ac237cd9bec53173981772b3",
         "type": "github"
       },
       "original": {
@@ -1122,11 +1122,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1792522695,
-        "narHash": "sha256-jTLo+OAKTDjIOEv2YA8xKTkqp1zZ+ZwXjztgXj6E7bk=",
+        "lastModified": 1792595242,
+        "narHash": "sha256-kH/E0uJDslOgYcnmU+c0cm6HrUjsEtvZQKZtuQ1+uvo=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "bb286c34998a498df925c7a7b4d69aea8c44931c",
+        "rev": "f19490ac889eabb05bdb7e8dcb85225ee75bd87b",
         "type": "github"
       },
       "original": {
