@@ -3,6 +3,9 @@
   #Umbriel enableFishIntegration
   xdg.configFile."umbriel/config.toml".source = ../config/umbriel/config.toml;
 
+  # dux imports (previously dank-material-shell.)
+  imports = [ inputs.dms.homeModules.dank-material-shell ];
+
   home.file.".local/bin/polkit-gnome-agent" = {
     executable = true;
     text = ''
