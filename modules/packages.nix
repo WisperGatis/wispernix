@@ -73,6 +73,7 @@
     unstable.bun
     zig
     cmake
+    gnumake
     ninja
     gcc
     gdb
