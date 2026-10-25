@@ -46,6 +46,21 @@
         EOF
       ''))
   ];
+
+  programs.dms-shell = {
+    enable = true;
+
+    systemd = {
+      enable = false;
+    };
+
+    enableSystemMonitoring = true;
+    enableVPN = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+  };
+
   # Ajouter COSMIC.
   services.desktopManager.cosmic = {
     enable = true;

@@ -16,6 +16,7 @@ in
     nwg-look
     adw-gtk3
     qt6Packages.qt6ct
+    libsForQt5.qt5ct
     palette-video
     #dash-to-dock
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default

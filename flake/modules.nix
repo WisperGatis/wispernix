@@ -33,6 +33,17 @@
     #remoteControl.enable = true;
   };
 
+  # If it works dude.
+  programs.dms-shell = {
+    enable = true;
+    package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+    systemd.enable = false;
+
+    enableSystemMonitoring = true;
+    enableDynamicTheming = true;
+  };
+
   nixpkgs.overlays = [
     inputs.claude-code.overlays.default
     # Very stupid if it works.
