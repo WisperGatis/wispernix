@@ -3,12 +3,13 @@
   programs.fish = {
     enable = true;
 
-    plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide.src;
-      }
-    ];
+    # Tide : désactivé au profit de Starship, gardé comme fallback temporaire.
+    # plugins = [
+    #   {
+    #     name = "tide";
+    #     src = pkgs.fishPlugins.tide.src;
+    #   }
+    # ];
 
     interactiveShellInit = ''
       set -g fish_greeting
