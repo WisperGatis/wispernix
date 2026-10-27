@@ -32,6 +32,7 @@
     dipc
     tmux
     unstable.zellij
+    unstable.starship
     glow
     fzf
     #herdr
