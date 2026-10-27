@@ -28,6 +28,8 @@
   services.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
   services.xserver.enable = true;
+  # Session XFCE (X11) : expose xfce.desktop pour le greeter.
+  services.xserver.desktopManager.xfce.enable = true;
   services.displayManager.sessionPackages = [
     pkgs.unstable.mango
 
