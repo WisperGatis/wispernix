@@ -27,6 +27,7 @@
 
     # -- Shell & CLI tools -------------------------------------------
     fish
+    unstable.oh-my-posh
     wget
     dipc
     tmux
@@ -48,6 +49,8 @@
     code-cursor
     jetbrains-toolbox
     vis
+    unstable.emacs
+    unstable.eclipses.eclipse-cpp
 
     # -- Git -----------------------------------------------------
     git

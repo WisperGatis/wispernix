@@ -16,6 +16,14 @@
     };
   };
 
+  # Very fun lines for KDE wallet.
+  # THIS IS ON HOLD.
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd = {
+    enableGnomeKeyring = true;
+    kwallet.enable = false;
+  };
+
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.budgie.enable = true;
 

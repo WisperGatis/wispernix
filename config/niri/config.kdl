@@ -12,14 +12,14 @@ input {
 }
 
 cursor {
-  xcursor-theme "Aemeath"
+  xcursor-theme "Cinderella"
   xcursor-size 24
   //XCURSOR_PATH "/usr/share/icons:/home/wisp/.local/share/icons"
 }
 
 environment {
   //DISPLAY ":0"
-  XCURSOR_THEME "Aemeath"
+  XCURSOR_THEME "Cinderella"
   XCURSOR_SIZE "24"
   XCURSOR_PATH "/usr/share/icons:/home/wisp/.local/share/icons"
   QT_QPA_PLATFORMTHEME "qt6ct"

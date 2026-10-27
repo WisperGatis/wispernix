@@ -14,4 +14,9 @@
       set -g fish_greeting
     '';
   };
+
+  #programs.starship = {
+  # enable = true;
+  #  
+  #};
 }
