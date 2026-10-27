@@ -187,6 +187,7 @@
     unstable.librewolf
     unstable.tor-browser
     floorp-bin
+    mullvad-browser
     #pkgs.opera
     #inputs.waterfox.packages.${pkgs.system}.default
     #Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
