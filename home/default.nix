@@ -41,6 +41,7 @@ in
 
     ./packages.nix
     ./shell.nix
+    ./starship.nix
     ./terminals.nix
     ./multiplexers.nix
     ./editors.nix
