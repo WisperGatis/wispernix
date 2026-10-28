@@ -38,6 +38,7 @@
     #herdr
     inputs.herdr-nix.packages.${system}.default
     lsd
+    htop
 
     # -- Editors -----------------------------------------------------
     vim
