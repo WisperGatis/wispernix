@@ -141,6 +141,7 @@
   };
 
   environment.systemPackages = [
+    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

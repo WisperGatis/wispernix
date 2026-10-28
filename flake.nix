@@ -20,10 +20,10 @@
     };
     
     # The shell i'm not even sure i wanna use.
-    #caelestia-shell = {
-    # url = "github:caelestia-dots/shell";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     herdr-nix = {
       url = "github:herdrdev/herdr-nix";
