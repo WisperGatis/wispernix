@@ -54,6 +54,8 @@
     #nix-cachyos-kernel.overlays.pinned
     inputs.opera-flake.overlays.default
     (final: prev: {
+      # test_afalg needs AF_ALG kernel support, which the builder sandbox lacks.
+      openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev) system;
         config = {
