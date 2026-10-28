@@ -14,10 +14,10 @@
     };
 
     # Dux shell, previously dank shell.
-    dms = {
-      url = "github:duxlabs-dev/dux-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #dms = {
+    # url = "github:duxlabs-dev/dux-shell";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    #};
     
     # The shell i'm not even sure i wanna use.
     caelestia-shell = {
