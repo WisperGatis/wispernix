@@ -44,7 +44,7 @@
     vim
     # neovim
     fresh-editor
-    sublime4
+    # sublime4 # needs insecure openssl_1_1
     unstable.vscodium
     unstable.zed-editor
     vscode
