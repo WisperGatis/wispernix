@@ -17,5 +17,4 @@
 
   #Miniatures dans Thunar.
   services.tumbler.enable = true;
-
 }
