@@ -46,6 +46,7 @@ in
     ./editors.nix
     ./apps.nix
     ./desktop.nix
+    ./wallpaper-engine.nix
   ];
 
   home.username = "wisp";
