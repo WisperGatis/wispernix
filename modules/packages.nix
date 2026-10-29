@@ -6,7 +6,7 @@
     # Very fun OC software
     corectrl
     stress-ng
-    #inputs.occt-nix.packages.${pkgs.system}.occt
+    #inputs.occt-nix.packages.${pkgs.stdenv.hostPlatform.system}.occt
     pkgs.occt
     lact
     vulkan-tools
@@ -36,7 +36,7 @@
     glow
     fzf
     #herdr
-    inputs.herdr-nix.packages.${system}.default
+    inputs.herdr-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     lsd
     htop
 
@@ -190,7 +190,7 @@
     floorp-bin
     mullvad-browser
     #pkgs.opera
-    #inputs.waterfox.packages.${pkgs.system}.default
+    #inputs.waterfox.packages.${pkgs.stdenv.hostPlatform.system}.default
     #Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
 
     # -- Communication -----------------------------------------------
