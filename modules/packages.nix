@@ -104,7 +104,10 @@
     unstable.antigravity-ide
     unstable.crush
     unstable.t3code
-    inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # Its test suite needs the gh CLI at build time, which the Nix sandbox lacks.
+    (inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_: {
+      doCheck = false;
+    }))
 
     # -- Compositors & window managers -------------------------------
     #Niri, mango and Hyprland slop
