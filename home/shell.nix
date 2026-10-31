@@ -3,17 +3,25 @@
   programs.fish = {
     enable = true;
 
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+    ];
+
     interactiveShellInit = ''
       set -g fish_greeting
     '';
   };
 
+  # fish keeps its Tide prompt; zsh uses Starship with the Noctalia palette.
   # zsh is a quick-switch shell only; fish remains the login default.
   programs.zsh.enable = true;
 
   programs.starship = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false;
     enableZshIntegration = true;
   };
 
