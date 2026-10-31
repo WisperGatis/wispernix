@@ -8,9 +8,13 @@
     '';
   };
 
+  # zsh is a quick-switch shell only; fish remains the login default.
+  programs.zsh.enable = true;
+
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 
   # Noctalia rewrites starship.toml on theme change, so it must stay a
