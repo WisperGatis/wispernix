@@ -3,20 +3,14 @@
   programs.fish = {
     enable = true;
 
-    plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide.src;
-      }
-    ];
-
     interactiveShellInit = ''
       set -g fish_greeting
     '';
   };
 
-  #programs.starship = {
-  # enable = true;
-  #  
-  #};
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = fromTOML (builtins.readFile ../config/starship/starship.toml);
+  };
 }
