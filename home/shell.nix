@@ -17,7 +17,10 @@
 
   # fish keeps its Tide prompt; zsh uses Starship with the Noctalia palette.
   # zsh is a quick-switch shell only; fish remains the login default.
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   programs.starship = {
     enable = true;
