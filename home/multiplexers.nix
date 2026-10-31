@@ -74,6 +74,23 @@
     };
   };
 
+  # Reload tmux whenever Noctalia rewrites its theme, regardless of which
+  # compositor is running (Umbriel's hooks used to do this).
+  systemd.user.paths.tmux-theme-reload = {
+    Unit.Description = "Watch the Noctalia tmux theme directory";
+    Path.PathChanged = "%h/.config/tmux/themes";
+    Install.WantedBy = [ "default.target" ];
+  };
+
+  systemd.user.services.tmux-theme-reload = {
+    Unit.Description = "Reload the Noctalia theme in running tmux sessions";
+    Service = {
+      Type = "oneshot";
+      # The leading "-" ignores the failure when no tmux server is running.
+      ExecStart = "-${pkgs.tmux}/bin/tmux source-file -q %h/.config/tmux/themes/noctalia.conf";
+    };
+  };
+
   xdg.configFile = {
     "noctalia/templates/zellij-theme.kdl".text = ''
       themes {
