@@ -27,6 +27,7 @@
 
     # -- Shell & CLI tools -------------------------------------------
     fish
+    zsh
     unstable.oh-my-posh
     wget
     dipc
