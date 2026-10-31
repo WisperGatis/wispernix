@@ -24,6 +24,13 @@
     autosuggestion.enable = true;
   };
 
+  # fzf history search: Ctrl+R opens fuzzy-searchable past commands in zsh.
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    enableFishIntegration = false;
+  };
+
   programs.starship = {
     enable = true;
     enableFishIntegration = false;
