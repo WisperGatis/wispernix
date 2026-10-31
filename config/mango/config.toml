@@ -106,9 +106,9 @@ source = ["/home/wisp/.config/mango/noctalia.conf"]
 [env]
 
 # Curseur Rio
-# "XCURSOR_PATH" = "/usr/share/icons:/home/wisp/.local/share/icons"
-# "XCURSOR_THEME" = "Rio"
-# "XCURSOR_SIZE" = "24"
+ "XCURSOR_PATH" = "/usr/share/icons:/home/wisp/.local/share/icons"
+ "XCURSOR_THEME" = "Rio"
+ "XCURSOR_SIZE" = "24"
 
 
 ###########
