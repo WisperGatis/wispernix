@@ -20,6 +20,8 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
+    # Suggests the rest of a command from past history as you type.
+    autosuggestion.enable = true;
   };
 
   programs.starship = {
