@@ -5,7 +5,7 @@ add_newline = false
 
 # Tout le prompt reste à gauche, sur une seule ligne.
 format = """
-$os$directory$cmd_duration$character"""
+$os$directory$git_branch$git_status$nix_shell$python$nodejs$rust$golang$cmd_duration$jobs$character"""
 
 [os]
 disabled = false
@@ -33,6 +33,59 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 style = "bold mauve"
 read_only = " "
 read_only_style = "bold red"
+
+[git_branch]
+# Nom de la branche Git courante.
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold pink"
+
+[git_status]
+# Résumé des changements : modifiés, ajoutés, supprimés, en avance ou en retard.
+format = "([$all_status$ahead_behind]($style)) "
+style = "bold peach"
+modified = "!"
+staged = "+"
+untracked = "?"
+deleted = "✘"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+
+[nix_shell]
+# Affiche quand un shell Nix (nix-shell ou nix develop) est actif.
+symbol = " "
+format = "[$symbol$state]($style) "
+style = "bold sky"
+
+[python]
+# Version de Python, seulement dans un projet Python.
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "bold yellow"
+
+[nodejs]
+# Version de Node.js, seulement dans un projet Node.
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "bold green"
+
+[rust]
+# Version de Rust, seulement dans un projet Rust.
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "bold peach"
+
+[golang]
+# Version de Go, seulement dans un projet Go.
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "bold teal"
+
+[jobs]
+# Nombre de tâches en arrière-plan.
+symbol = " "
+format = "[$symbol$number]($style) "
+style = "bold lavender"
 
 [cmd_duration]
 # N'affiche la durée qu'à partir de 500 ms.
