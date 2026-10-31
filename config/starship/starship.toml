@@ -12,7 +12,7 @@ disabled = false
 format = "[$symbol](bold blue) "
 
 [os.symbols]
-NixOS = ""
+NixOS = ""
 
 [directory]
 # Garde jusqu'à 8 segments dans le chemin.
@@ -36,7 +36,7 @@ read_only_style = "bold red"
 
 [git_branch]
 # Nom de la branche Git courante.
-symbol = " "
+symbol = " "
 format = "[$symbol$branch(:$remote_branch)]($style) "
 style = "bold pink"
 
@@ -53,37 +53,37 @@ behind = "⇣${count}"
 
 [nix_shell]
 # Affiche quand un shell Nix (nix-shell ou nix develop) est actif.
-symbol = " "
+symbol = " "
 format = "[$symbol$state]($style) "
 style = "bold sky"
 
 [python]
 # Version de Python, seulement dans un projet Python.
-symbol = " "
+symbol = " "
 format = "[$symbol$version]($style) "
 style = "bold yellow"
 
 [nodejs]
 # Version de Node.js, seulement dans un projet Node.
-symbol = " "
+symbol = " "
 format = "[$symbol$version]($style) "
 style = "bold green"
 
 [rust]
 # Version de Rust, seulement dans un projet Rust.
-symbol = " "
+symbol = " "
 format = "[$symbol$version]($style) "
 style = "bold peach"
 
 [golang]
 # Version de Go, seulement dans un projet Go.
-symbol = " "
+symbol = " "
 format = "[$symbol$version]($style) "
 style = "bold teal"
 
 [jobs]
 # Nombre de tâches en arrière-plan.
-symbol = " "
+symbol = " "
 format = "[$symbol$number]($style) "
 style = "bold lavender"
 
