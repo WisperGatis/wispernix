@@ -1,7 +1,7 @@
 # =========================
 # MangoWM config
 # Wispie-chan edition 💜
-# Noctalia V5 + Rio BLZ
+# Noctalia V5 + Rio
 # Format TOML
 # =========================
 
@@ -18,7 +18,7 @@
 # Environnement
 ###############
 
-# Curseur Rio BLZ
+# Curseur Rio
 # Les variables d'environnement sont définies
 # dans la section [env].
 
@@ -74,13 +74,13 @@ tag_num = 10
 
 # Shell Noctalia V5
 # Agent Polkit GNOME
-# Curseur Rio BLZ (appliqué via gsettings pour GTK3/GTK4 et apps compatibles)
+# Curseur Rio (appliqué via gsettings pour GTK3/GTK4 et apps compatibles)
 # Historique du presse-papiers (texte et images)
 
 exec_once = [
     "noctalia",
     "/home/wisp/.local/bin/polkit-gnome-agent",
-    'gsettings set org.gnome.desktop.interface cursor-theme "Rio BLZ"',
+    'gsettings set org.gnome.desktop.interface cursor-theme "Rio"',
     "gsettings set org.gnome.desktop.interface cursor-size 24",
     "wl-paste --type text --watch cliphist store",
     "wl-paste --type image --watch cliphist store"
@@ -105,9 +105,9 @@ source = ["/home/wisp/.config/mango/noctalia.conf"]
 
 [env]
 
-# Curseur Rio BLZ
+# Curseur Rio
 # "XCURSOR_PATH" = "/usr/share/icons:/home/wisp/.local/share/icons"
-# "XCURSOR_THEME" = "Rio BLZ"
+# "XCURSOR_THEME" = "Rio"
 # "XCURSOR_SIZE" = "24"
 
 
