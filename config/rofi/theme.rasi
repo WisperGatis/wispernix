@@ -1,0 +1,40 @@
+/* Thème Rofi : couleurs venant de Matugen (colors.rasi). */
+@import "colors.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+    background-color: transparent;
+    text-color: @on_surface;
+}
+
+window {
+    background-color: @surface;
+    border: 2px;
+    border-color: @primary;
+    border-radius: 0px;
+    width: 40%;
+    padding: 12px;
+}
+
+inputbar {
+    spacing: 8px;
+    padding: 8px;
+}
+
+prompt {
+    text-color: @primary;
+}
+
+listview {
+    lines: 10;
+    spacing: 4px;
+}
+
+element {
+    padding: 8px;
+}
+
+element selected.normal {
+    background-color: @primary;
+    text-color: @on_primary;
+}

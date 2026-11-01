@@ -1,0 +1,87 @@
+/* Waybar: barre pleine largeur, coins droits, collée en haut.
+   Les couleurs génériques viennent de Matugen (colors.css).
+   Les workspaces utilisent Catppuccin Mocha. */
+
+@import url("colors.css");
+
+/* Catppuccin Mocha */
+@define-color mocha_rosewater #f5e0dc;
+@define-color mocha_lavender #b4befe;
+@define-color mocha_overlay0 #6c7086;
+@define-color mocha_crust #11111b;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: alpha(@surface, 0.92);
+  color: @on_surface;
+  border-radius: 0;
+}
+
+/* Modules communs */
+#custom-nix,
+#custom-record,
+#custom-store,
+#custom-wallpaper,
+#clock,
+#tray {
+  padding: 0 10px;
+  color: @on_surface;
+}
+
+/* Logo NixOS, tout à gauche */
+#custom-nix {
+  color: @primary;
+  font-size: 16px;
+  padding: 0 12px;
+}
+
+/* Workspaces (Hyprland) */
+#workspaces button {
+  padding: 0 8px;
+  color: @mocha_lavender;
+  background: transparent;
+}
+
+#workspaces button.empty {
+  color: @mocha_overlay0;
+}
+
+#workspaces button.active {
+  color: @mocha_rosewater;
+  font-weight: bold;
+}
+
+#workspaces button:hover {
+  background: alpha(@on_surface, 0.1);
+}
+
+/* Enregistrement : rouge quand actif */
+#custom-record.recording {
+  color: @error;
+}
+
+/* Mise à jour du store Nix */
+#custom-store.update {
+  color: @tertiary;
+}
+
+#custom-store.current {
+  color: @primary;
+}
+
+#custom-wallpaper:hover,
+#custom-record:hover,
+#custom-store:hover {
+  background: alpha(@on_surface, 0.1);
+}
+
+#tray {
+  padding: 0 8px;
+}
