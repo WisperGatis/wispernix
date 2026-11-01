@@ -33,7 +33,7 @@ let
           if pgrep -x wf-recorder >/dev/null; then
             printf '{"text":"REC","class":"recording","tooltip":"Enregistrement en cours"}\n'
           else
-            printf '{"text":"REC","class":"idle","tooltip":"Démarrer l’enregistrement"}\n'
+            printf '{"text":"REC","class":"idle","tooltip":"Demarrer l enregistrement"}\n'
           fi
           ;;
         toggle)
@@ -58,12 +58,12 @@ let
       if out=$(nix build --dry-run --no-link "${flakeDir}#nixosConfigurations.nixos.config.system.build.toplevel" 2>&1); then
         n=$(printf '%s\n' "$out" | grep -c '\.drv$' || true)
         if [ "$n" -eq 0 ]; then
-          printf '{"text":"","class":"current","tooltip":"Système à jour"}\n'
+          printf '{"text":"","class":"current","tooltip":"Systeme a jour"}\n'
         else
-          printf '{"text":"%s","class":"update","tooltip":"%s dérivations à reconstruire : lancer nixos-rebuild"}\n' "$n" "$n"
+          printf '{"text":"%s","class":"update","tooltip":"%s derivations a reconstruire : lancer nixos-rebuild"}\n' "$n" "$n"
         fi
       else
-        printf '{"text":"?","class":"error","tooltip":"Évaluation du flake impossible"}\n'
+        printf '{"text":"?","class":"error","tooltip":"Evaluation du flake impossible"}\n'
       fi
     '';
   };
