@@ -87,6 +87,19 @@ in
   '';
   xdg.configFile."rofi/theme.rasi".source = ../config/rofi/theme.rasi;
 
+  # Matugen écrit colors.rasi et colors.css ; avant le premier passage, on pose des valeurs par défaut
+  # pour que Rofi et Waybar puissent lire leurs fichiers (un import manquant les bloque).
+  home.activation.matugenDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    rofi_colors="$HOME/.config/rofi/colors.rasi"
+    waybar_colors="$HOME/.config/waybar/colors.css"
+    if [ ! -e "$rofi_colors" ]; then
+      run install -D -m 644 ${../config/rofi/colors-default.rasi} "$rofi_colors"
+    fi
+    if [ ! -e "$waybar_colors" ]; then
+      run install -D -m 644 ${../config/waybar/colors-default.css} "$waybar_colors"
+    fi
+  '';
+
   # Matugen : modèles pour Waybar et Rofi.
   xdg.configFile."matugen/config.toml".source = ../config/matugen/config.toml;
   xdg.configFile."matugen/templates/waybar.css".source = ../config/matugen/templates/waybar.css;

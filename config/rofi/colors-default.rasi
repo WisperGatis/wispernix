@@ -1,0 +1,8 @@
+/* Couleurs par défaut (Catppuccin Mocha) avant le premier passage de Matugen. */
+* {
+    primary: #f5e0dc;
+    on_primary: #1e1e2e;
+    surface: #1e1e2e;
+    on_surface: #cdd6f4;
+    surface_variant: #313244;
+}
