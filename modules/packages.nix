@@ -86,6 +86,7 @@
     pkg-config
     bubblewrap
     nasm
+    zip
 
     # -- .NET --------------------------------------------------------
     #Dotnet while we are at it.
