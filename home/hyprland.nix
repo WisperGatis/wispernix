@@ -11,13 +11,13 @@ let
   # Choisit clair ou sombre, puis un fond d'écran ; Matugen régénère les couleurs.
   wallpaperMenu = pkgs.writeShellApplication {
     name = "wallpaper-menu";
-    runtimeInputs = [ pkgs.rofi pkgs.swww pkgs.matugen pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ pkgs.rofi pkgs.awww pkgs.matugen pkgs.findutils pkgs.coreutils ];
     text = ''
       mode=$(printf 'dark\nlight\n' | rofi -dmenu -p "Thème" -theme ${rofiTheme}) || exit 0
       img=$(find "${wallpaperDir}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.webp' \) -printf '%f\n' | sort | rofi -dmenu -p "Fond d'écran" -theme ${rofiTheme}) || exit 0
       [ -n "$img" ] || exit 0
       path="${wallpaperDir}/$img"
-      swww img "$path" --transition-type grow
+      awww img "$path" --transition-type grow
       matugen image "$path" --mode "$mode"
       pkill -SIGUSR2 waybar || true
     '';
@@ -110,7 +110,7 @@ in
     screenRecord
     storeStatus
     pkgs.rofi
-    pkgs.swww
+    pkgs.awww
     pkgs.wf-recorder
     pkgs.libnotify
     pkgs.matugen
