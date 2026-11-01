@@ -47,7 +47,6 @@ hl.config({
       enabled = true,
       size = 6,
       passes = 2,
-      optimized = true,
     },
   },
   input = {
