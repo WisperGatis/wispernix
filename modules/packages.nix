@@ -85,6 +85,7 @@
     gdb
     pkg-config
     bubblewrap
+    nasm
 
     # -- .NET --------------------------------------------------------
     #Dotnet while we are at it.
