@@ -3,7 +3,6 @@ let
   home = config.home.homeDirectory;
   wallpaperDir = "${home}/Pictures/Wallpapers";
   recordDir = "${home}/Videos/Recordings";
-  flakeDir = "${home}/wispernix";
 
   # Rofi lit le thème et les couleurs générées par Matugen.
   rofiTheme = "${home}/.config/rofi/theme.rasi";
@@ -50,21 +49,20 @@ let
     '';
   };
 
-  # Compare le système actuel à ce que le flake construirait ; affiche si une mise à jour est nécessaire.
-  storeStatus = pkgs.writeShellApplication {
-    name = "store-status";
-    runtimeInputs = [ pkgs.nix pkgs.gnugrep pkgs.coreutils ];
+  # Workspaces par écran : chaque écran a son 1-10, à partir de sa base (id × 10).
+  # "focus N" va sur l'écran focus ; "move N" envoie la fenêtre active dans ce workspace.
+  hyprWs = pkgs.writeShellApplication {
+    name = "hypr-ws";
+    runtimeInputs = [ pkgs.hyprland pkgs.jq ];
     text = ''
-      if out=$(nix build --dry-run --no-link "${flakeDir}#nixosConfigurations.nixos.config.system.build.toplevel" 2>&1); then
-        n=$(printf '%s\n' "$out" | grep -c '\.drv$' || true)
-        if [ "$n" -eq 0 ]; then
-          printf '{"text":"","class":"current","tooltip":"Systeme a jour"}\n'
-        else
-          printf '{"text":"%s","class":"update","tooltip":"%s derivations a reconstruire : lancer nixos-rebuild"}\n' "$n" "$n"
-        fi
-      else
-        printf '{"text":"?","class":"error","tooltip":"Evaluation du flake impossible"}\n'
-      fi
+      action=''${1:?usage: hypr-ws focus|move N}
+      n=''${2:?usage: hypr-ws focus|move N}
+      monitor_id=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .id')
+      target=$(( monitor_id * 10 + n ))
+      case "$action" in
+        focus) hyprctl dispatch workspace "$target" ;;
+        move) hyprctl dispatch movetoworkspace "$target" ;;
+      esac
     '';
   };
 in
@@ -105,14 +103,42 @@ in
   xdg.configFile."matugen/templates/waybar.css".source = ../config/matugen/templates/waybar.css;
   xdg.configFile."matugen/templates/rofi.rasi".source = ../config/matugen/templates/rofi.rasi;
 
+  # Verrouillage et veille : hyprlock verrouille, hypridle éteint l'écran puis verrouille.
+  programs.hyprlock.enable = true;
+
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "pidof hyprlock || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+      };
+      listener = [
+        {
+          # 10 min : écran éteint.
+          timeout = 600;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          # 15 min : verrouillage.
+          timeout = 900;
+          on-timeout = "loginctl lock-session";
+        }
+      ];
+    };
+  };
+
   home.packages = [
     wallpaperMenu
     screenRecord
-    storeStatus
+    hyprWs
     pkgs.rofi
     pkgs.awww
     pkgs.wf-recorder
     pkgs.libnotify
     pkgs.matugen
+    pkgs.hyprcursor
   ];
 }

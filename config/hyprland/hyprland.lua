@@ -8,7 +8,9 @@
 local left = "desc:Samsung Electric Company LC24RG50 HNMT100624"
 local right = "desc:HP Inc. OMEN by HP 25 3CQ95007KT"
 
-local wallpapers = os.getenv("HOME") .. "/Pictures/Wallpapers"
+-- Workspaces are per monitor: each monitor has its own 1-10, using ids
+-- base + N. The base comes from the monitor's id (see home/hyprland.nix,
+-- hypr-ws), so monitor 0 uses 1-10 and monitor 1 uses 11-20.
 
 -- ##########
 -- Moniteurs
@@ -16,18 +18,6 @@ local wallpapers = os.getenv("HOME") .. "/Pictures/Wallpapers"
 
 hl.monitor({ output = left, mode = "1920x1080@143.981", position = "0x0", scale = 1, vrr = 1 })
 hl.monitor({ output = right, mode = "1920x1080@143.992", position = "1920x0", scale = 1, vrr = 1 })
-
--- ##########################
--- Workspaces par écran
--- 1-5 sur le gauche, 6-10 sur le droit
--- ##########################
-
-for i = 1, 5 do
-  hl.workspace_rule({ workspace = tostring(i), monitor = left, persistent = true })
-end
-for i = 6, 10 do
-  hl.workspace_rule({ workspace = tostring(i), monitor = right, persistent = true })
-end
 
 -- ##################################
 -- Apparence / gaps / bordures / flou
@@ -53,7 +43,27 @@ hl.config({
     kb_layout = "ch",
     kb_variant = "fr",
   },
+  cursor = {
+    -- hyprcursor theme; Hyprland falls back to the XCursor theme of the same name.
+    hyprcursor_theme = "Rio",
+    hyprcursor_size = 24,
+  },
 })
+
+-- ##########
+-- Animations (rapides)
+-- ##########
+
+-- Ouverture et fermeture de fenêtres : courtes, sans rebond.
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "snap", style = "popin 80%" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 2, bezier = "snap", style = "popin 80%" })
+hl.animation({ leaf = "fadeIn", enabled = true, speed = 2, bezier = "snap" })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 2, bezier = "snap" })
+
+-- Changement de workspace : plus rapide que la valeur par défaut.
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "snap", style = "slide" })
+
+hl.curve("snap", { type = "bezier", points = { { 0.2, 0.9 }, { 0.1, 1.0 } } })
 
 -- ##########
 -- Autostart
@@ -62,7 +72,6 @@ hl.config({
 hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
   hl.exec_cmd("awww-daemon")
-  hl.exec_cmd("noctalia")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Rio'")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
@@ -71,7 +80,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- ##########
--- Raccourcis Noctalia (identiques à Mango)
+-- Raccourcis (identiques à Mango)
 -- ##########
 
 hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
@@ -91,13 +100,15 @@ hl.bind("SUPER + SHIFT + a", hl.dsp.focus({ monitor = "l" }))
 hl.bind("SUPER + SHIFT + d", hl.dsp.focus({ monitor = "r" }))
 
 -- ##########
--- Workspaces
+-- Workspaces (par écran, sur l'écran focus)
 -- ##########
 
 for i = 1, 9 do
-  hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
+  hl.bind("SUPER + " .. i, hl.dsp.exec_cmd("hypr-ws focus " .. i))
+  hl.bind("SUPER + SHIFT + " .. i, hl.dsp.exec_cmd("hypr-ws move " .. i))
 end
-hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
+hl.bind("SUPER + 0", hl.dsp.exec_cmd("hypr-ws focus 10"))
+hl.bind("SUPER + SHIFT + 0", hl.dsp.exec_cmd("hypr-ws move 10"))
 
 -- ##########
 -- Programmes
@@ -107,6 +118,7 @@ hl.bind("SUPER + t", hl.dsp.exec_cmd("kitty || alacritty || ghostty || foot"))
 hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
+hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
 
 -- ##########
 -- Système

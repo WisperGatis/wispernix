@@ -32,6 +32,11 @@
 
   programs.niri.enable = true;
   programs.hyprland.enable = true;
+  # hyprlock needs its own PAM service to check the password.
+  programs.hyprlock.enable = true;
+  security.pam.services.hyprlock = { };
+  # Power profiles (performance / balanced / power-saver) for the desktop.
+  services.power-profiles-daemon.enable = true;
   programs.mango.enable = true;
   services.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;

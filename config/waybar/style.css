@@ -27,7 +27,6 @@ window#waybar {
 /* Modules communs */
 #custom-nix,
 #custom-record,
-#custom-store,
 #custom-wallpaper,
 #clock,
 #tray {
@@ -67,18 +66,8 @@ window#waybar {
   color: @error;
 }
 
-/* Mise à jour du store Nix */
-#custom-store.update {
-  color: @tertiary;
-}
-
-#custom-store.current {
-  color: @primary;
-}
-
 #custom-wallpaper:hover,
-#custom-record:hover,
-#custom-store:hover {
+#custom-record:hover {
   background: alpha(@on_surface, 0.1);
 }
 
