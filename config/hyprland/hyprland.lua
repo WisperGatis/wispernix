@@ -59,6 +59,9 @@ hl.animation({ leaf = "fadeOut", enabled = true, speed = 2, bezier = "snap" })
 -- Changement de workspace : plus rapide que la valeur par défaut.
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "snap", style = "slide" })
 
+-- Déplacement et redimensionnement de fenêtres : rapides, sans rebond.
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap", style = "slide" })
+
 -- ##########
 -- Autostart
 -- ##########
