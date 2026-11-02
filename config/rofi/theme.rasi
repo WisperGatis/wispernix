@@ -4,7 +4,7 @@
 * {
     font: "JetBrainsMono Nerd Font 12";
     background-color: transparent;
-    text-color: @on_surface;
+    text-color: @on-surface;
 }
 
 window {
@@ -36,5 +36,5 @@ element {
 
 element selected.normal {
     background-color: @primary;
-    text-color: @on_primary;
+    text-color: @on-primary;
 }
