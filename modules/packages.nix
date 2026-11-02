@@ -116,7 +116,7 @@
     #Niri, mango and Hyprland slop
     sway
     niri
-    hyprland
+    unstable.hyprland
     unstable.dwm
     unstable.labwc
     unstable.noctalia
