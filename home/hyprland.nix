@@ -68,6 +68,26 @@ let
     '';
   };
 
+  # Menu de session (clic droit sur le logo) : verrouiller, déconnecter, redémarrer, éteindre.
+  # Les actions destructives demandent une confirmation.
+  sessionMenu = pkgs.writeShellApplication {
+    name = "session-menu";
+    runtimeInputs = [ rofi pkgs.systemd pkgs.hyprland pkgs.procps ];
+    text = ''
+      choice=$(printf 'Verrouiller\nDéconnexion\nRedémarrer\nÉteindre\n' | rofi -dmenu -p "Session" -theme ${rofiTheme}) || exit 0
+      confirm() {
+        answer=$(printf 'Non\nOui\n' | rofi -dmenu -p "$1 ?" -theme ${rofiTheme}) || return 1
+        [ "$answer" = "Oui" ]
+      }
+      case "$choice" in
+        Verrouiller) hyprlock ;;
+        Déconnexion) confirm "Déconnexion" && hyprctl dispatch "hl.dsp.exit()" ;;
+        Redémarrer) confirm "Redémarrer" && systemctl reboot ;;
+        Éteindre) confirm "Éteindre" && systemctl poweroff ;;
+      esac
+    '';
+  };
+
   # Enregistrement d'écran : bascule wf-recorder ; "status" pour Waybar.
   screenRecord = pkgs.writeShellApplication {
     name = "screen-record";
@@ -163,6 +183,7 @@ in
   home.packages = [
     wallpaperMenu
     clipboardMenu
+    sessionMenu
     screenshot
     screenRecord
     rofi

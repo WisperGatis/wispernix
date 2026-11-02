@@ -27,6 +27,7 @@ in
       "custom/nix" = {
         format = nixIcon;
         tooltip = false;
+        on-click-right = "session-menu";
       };
 
       "hyprland/workspaces" = {
