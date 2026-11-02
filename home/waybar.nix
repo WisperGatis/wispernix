@@ -20,7 +20,7 @@ in
       margin-left = 0;
       margin-right = 0;
 
-      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" ];
+      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
       modules-center = [ "clock" "custom/wallpaper" ];
       modules-right = [ "tray" ];
 
@@ -40,6 +40,18 @@ in
         return-type = "json";
         interval = 2;
         on-click = "screen-record toggle";
+      };
+
+      cpu = {
+        format = " {usage}%";
+        tooltip-format = "CPU {usage}% ({load} de charge)";
+        interval = 2;
+      };
+
+      memory = {
+        format = " {percentage}%";
+        tooltip-format = "RAM {used:0.1f}G / {total:0.1f}G";
+        interval = 2;
       };
 
       clock = {
