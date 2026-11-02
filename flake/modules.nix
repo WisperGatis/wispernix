@@ -7,7 +7,8 @@
     inputs.mangowm.nixosModules.mango
 
     # Stable chaotic.
-    inputs.chaotic.nixosModules.nyx-cache
+    # Disabled while Chaotic's cache is rate limiting; builds fall back to source.
+    #inputs.chaotic.nixosModules.nyx-cache
     inputs.chaotic.nixosModules.nyx-overlay
     inputs.chaotic.nixosModules.nyx-registry
 
