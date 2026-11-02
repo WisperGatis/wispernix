@@ -3,6 +3,7 @@ let
   # Glyphes Nerd Font écrits en échappement JSON pour éviter qu'ils soient perdus.
   nixIcon = builtins.fromJSON ''""'';
   wallIcon = builtins.fromJSON ''""'';
+  btIcon = builtins.fromJSON ''""'';
 in
 {
   programs.waybar = {
@@ -22,7 +23,7 @@ in
 
       modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
       modules-center = [ "clock" "custom/wallpaper" ];
-      modules-right = [ "custom/notification" "tray" ];
+      modules-right = [ "custom/notification" "bluetooth" "tray" ];
 
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
@@ -75,6 +76,15 @@ in
         format = wallIcon;
         tooltip-format = "Fond d'écran et thème";
         on-click = "wallpaper-menu";
+      };
+
+      bluetooth = {
+        format = btIcon;
+        format-connected = "{icon} {num_connections}";
+        format-disabled = "";
+        tooltip-format = "{controller_alias}\t{controller_address}";
+        tooltip-format-connected = "{device_enumerate}";
+        on-click = "blueman-manager";
       };
 
       tray = {
