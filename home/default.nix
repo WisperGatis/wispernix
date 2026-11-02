@@ -30,7 +30,7 @@ let
     Cinderella = mkCursorTheme "Cinderella";
   };
 
-  activeCursorTheme = "Aemeath";
+  activeCursorTheme = "remielle_black";
   activeCursorPackage = builtins.getAttr activeCursorTheme cursorThemes;
 
 in
@@ -46,6 +46,8 @@ in
     ./editors.nix
     ./apps.nix
     ./desktop.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
 
   home.username = "wisp";

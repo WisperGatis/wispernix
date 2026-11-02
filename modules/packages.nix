@@ -186,7 +186,7 @@
     unstable.superfile
 
     # -- Browsers ----------------------------------------------------
-    pkgs.firefox_nightly
+    #pkgs.firefox_nightly
     brave
     vivaldi
     google-chrome

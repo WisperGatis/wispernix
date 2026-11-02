@@ -1,0 +1,12 @@
+# Matugen : génère les couleurs Waybar et Rofi depuis le fond d'écran.
+# Lancé par wallpaper-menu (home/hyprland.nix).
+
+[config]
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css"
+output_path = "~/.config/waybar/colors.css"
+
+[templates.rofi]
+input_path = "~/.config/matugen/templates/rofi.rasi"
+output_path = "~/.config/rofi/colors.rasi"
