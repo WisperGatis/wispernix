@@ -76,9 +76,8 @@ end)
 -- ##########
 
 hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind("SUPER + o", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
-hl.bind("SUPER + v", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
-hl.bind("SUPER + e", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
+hl.bind("SUPER + v", hl.dsp.exec_cmd("clipboard-menu"))
+hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
 
 -- ##########
 -- Fenêtres / navigation
@@ -105,7 +104,9 @@ hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
 -- ##########
 
 hl.bind("SUPER + t", hl.dsp.exec_cmd("kitty || alacritty || ghostty || foot"))
-hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
+hl.bind("Print", hl.dsp.exec_cmd("screenshot region"))
+hl.bind("SUPER + Print", hl.dsp.exec_cmd("screenshot full"))
+hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("screenshot menu"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
 hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))

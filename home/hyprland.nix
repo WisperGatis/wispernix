@@ -3,22 +3,68 @@ let
   home = config.home.homeDirectory;
   wallpaperDir = "${home}/Pictures/Wallpapers";
   recordDir = "${home}/Videos/Recordings";
+  screenshotDir = "${home}/Pictures/Screenshots";
+
+  # Rofi avec le plugin emoji.
+  rofi = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
 
   # Rofi lit le thème et les couleurs générées par Matugen.
   rofiTheme = "${home}/.config/rofi/theme.rasi";
 
-  # Choisit clair ou sombre, puis un fond d'écran ; Matugen régénère les couleurs.
+  # Fond d'écran en grille de miniatures ; choix clair ou sombre, puis image. Matugen régénère les couleurs.
   wallpaperMenu = pkgs.writeShellApplication {
     name = "wallpaper-menu";
-    runtimeInputs = [ pkgs.rofi pkgs.awww pkgs.matugen pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ rofi pkgs.awww pkgs.matugen pkgs.findutils pkgs.coreutils ];
     text = ''
+      grid='listview { columns: 4; lines: 3; } element { orientation: vertical; } element-icon { size: 9em; }'
       mode=$(printf 'dark\nlight\n' | rofi -dmenu -p "Thème" -theme ${rofiTheme}) || exit 0
-      img=$(find "${wallpaperDir}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.webp' \) -printf '%f\n' | sort | rofi -dmenu -p "Fond d'écran" -theme ${rofiTheme}) || exit 0
+      # Chaque entrée affiche le nom et une miniature (\0icon).
+      img=$(find "${wallpaperDir}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.webp' \) \
+        -printf '%f\0icon\x1f%p\n' | sort | rofi -dmenu -show-icons -p "Fond d'écran" \
+        -theme ${rofiTheme} -theme-str "$grid") || exit 0
       [ -n "$img" ] || exit 0
       path="${wallpaperDir}/$img"
       awww img "$path" --transition-type grow
       matugen image "$path" --mode "$mode"
       pkill -SIGUSR2 waybar || true
+    '';
+  };
+
+  # Historique du presse-papiers (alimenté par wl-paste/cliphist au démarrage de Hyprland).
+  clipboardMenu = pkgs.writeShellApplication {
+    name = "clipboard-menu";
+    runtimeInputs = [ rofi pkgs.cliphist pkgs.wl-clipboard ];
+    text = ''
+      entry=$(cliphist list | rofi -dmenu -p "Presse-papiers" -theme ${rofiTheme}) || exit 0
+      [ -n "$entry" ] || exit 0
+      printf '%s' "$entry" | cliphist decode | wl-copy
+    '';
+  };
+
+  # Captures : région, écran entier, fenêtre active, ou menu. Copie dans le presse-papiers.
+  screenshot = pkgs.writeShellApplication {
+    name = "screenshot";
+    runtimeInputs = [ pkgs.grim pkgs.slurp pkgs.jq pkgs.wl-clipboard pkgs.libnotify pkgs.hyprland rofi pkgs.coreutils ];
+    text = ''
+      mode=''${1:-menu}
+      if [ "$mode" = menu ]; then
+        mode=$(printf 'region\nfull\nwindow\n' | rofi -dmenu -p "Capture" -theme ${rofiTheme}) || exit 0
+      fi
+      mkdir -p "${screenshotDir}"
+      file="${screenshotDir}/$(date +%Y-%m-%d_%H-%M-%S).png"
+      case "$mode" in
+        region)
+          geom=$(slurp) || exit 0
+          grim -g "$geom" "$file" ;;
+        full)
+          grim "$file" ;;
+        window)
+          geom=$(hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+          grim -g "$geom" "$file" ;;
+        *) exit 0 ;;
+      esac
+      wl-copy < "$file"
+      notify-send "Capture enregistrée" "$file"
     '';
   };
 
@@ -57,10 +103,10 @@ in
 
   xdg.configFile."hypr/hyprland.lua".source = ../config/hyprland/hyprland.lua;
 
-  # Rofi : menu de lancement, thème Matugen.
+  # Rofi : menu de lancement, émojis en mode "emoji", thème Matugen.
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
-      modi: "drun,run,window";
+      modi: "drun,run,window,emoji";
       show-icons: true;
       drun-display-format: "{name}";
     }
@@ -116,12 +162,18 @@ in
 
   home.packages = [
     wallpaperMenu
+    clipboardMenu
+    screenshot
     screenRecord
-    pkgs.rofi
+    rofi
     pkgs.awww
     pkgs.wf-recorder
     pkgs.libnotify
     pkgs.matugen
     pkgs.hyprcursor
+    pkgs.grim
+    pkgs.slurp
+    pkgs.cliphist
+    pkgs.wl-clipboard
   ];
 }
