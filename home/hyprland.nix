@@ -59,9 +59,10 @@ let
       n=''${2:?usage: hypr-ws focus|move N}
       monitor_id=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .id')
       target=$(( monitor_id * 10 + n ))
+      # hyprctl dispatch takes a Lua expression in the Lua config format.
       case "$action" in
-        focus) hyprctl dispatch workspace "$target" ;;
-        move) hyprctl dispatch movetoworkspace "$target" ;;
+        focus) hyprctl dispatch "hl.dsp.focus({ workspace = $target })" ;;
+        move) hyprctl dispatch "hl.dsp.window.move({ workspace = $target })" ;;
       esac
     '';
   };
