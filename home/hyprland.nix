@@ -242,6 +242,7 @@ in
     pkgs.matugen
     pkgs.hyprcursor
     pkgs.swaynotificationcenter
+    pkgs.networkmanagerapplet
     pkgs.grim
     pkgs.slurp
     pkgs.cliphist

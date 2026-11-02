@@ -3,6 +3,8 @@ let
   # Glyphes Nerd Font écrits en échappement JSON pour éviter qu'ils soient perdus.
   nixIcon = builtins.fromJSON ''""'';
   wallIcon = builtins.fromJSON ''""'';
+  # Glyphe Nerd Font à partir de son code hexadécimal (ex. "f028").
+  icon = hex: builtins.fromJSON ''"\u${hex}"'';
   btIcon = builtins.fromJSON ''""'';
 in
 {
@@ -23,7 +25,7 @@ in
 
       modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
       modules-center = [ "clock" "custom/wallpaper" ];
-      modules-right = [ "custom/notification" "bluetooth" "tray" ];
+      modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio" "bluetooth" "tray" ];
 
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
@@ -85,6 +87,45 @@ in
         tooltip-format = "{controller_alias}\t{controller_address}";
         tooltip-format-connected = "{device_enumerate}";
         on-click = "blueman-manager";
+      };
+
+      idle_inhibitor = {
+        format = "{icon}";
+        format-icons = {
+          activated = icon "f06e";
+          deactivated = icon "f070";
+        };
+        tooltip-format-activated = "Veille bloquée";
+        tooltip-format-deactivated = "Veille autorisée";
+      };
+
+      "hyprland/language" = {
+        format = "{short}";
+      };
+
+      "power-profiles-daemon" = {
+        format = "{icon}";
+        tooltip-format = "Profil : {profile}";
+        format-icons = {
+          performance = icon "f0e7";
+          balanced = icon "f24e";
+          power-saver = icon "f06c";
+        };
+      };
+
+      network = {
+        format-wifi = "${icon "f1eb"} {signalStrength}%";
+        format-ethernet = "${icon "f0e8"} {ipaddr}";
+        format-disconnected = "${icon "f071"}";
+        tooltip-format = "{ifname} : {ipaddr}";
+        on-click = "nm-connection-editor";
+      };
+
+      pulseaudio = {
+        format = "${icon "f028"} {volume}%";
+        format-muted = "${icon "f026"}";
+        tooltip-format = "{desc}";
+        on-click = "pavucontrol";
       };
 
       tray = {
