@@ -170,6 +170,7 @@ in
   wayland.windowManager.hyprland.enable = false;
 
   xdg.configFile."hypr/hyprland.lua".source = ../config/hyprland/hyprland.lua;
+  xdg.configFile."hypr/shaders/vibrance.frag".source = ../config/hyprland/shaders/vibrance.frag;
 
   # Rofi : menu de lancement, émojis en mode "emoji", thème Matugen.
   xdg.configFile."rofi/config.rasi".text = ''

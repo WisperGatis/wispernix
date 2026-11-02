@@ -27,6 +27,8 @@ hl.config({
   },
   decoration = {
     rounding = 0,
+    -- Shader d'écran : légère hausse de saturation (config/hyprland/shaders/vibrance.frag).
+    screen_shader = os.getenv("HOME") .. "/.config/hypr/shaders/vibrance.frag",
     active_opacity = 0.92,
     inactive_opacity = 0.75,
     blur = {
@@ -65,7 +67,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
-  hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Rio'")
+  hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'remielle_black'")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")

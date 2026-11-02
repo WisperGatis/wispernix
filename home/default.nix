@@ -30,7 +30,7 @@ let
     Cinderella = mkCursorTheme "Cinderella";
   };
 
-  activeCursorTheme = "Aemeath";
+  activeCursorTheme = "remielle_black";
   activeCursorPackage = builtins.getAttr activeCursorTheme cursorThemes;
 
 in
