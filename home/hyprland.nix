@@ -92,7 +92,7 @@ let
   # Captures : région, écran entier, fenêtre active, ou menu. Copie dans le presse-papiers.
   screenshot = pkgs.writeShellApplication {
     name = "screenshot";
-    runtimeInputs = [ pkgs.grim pkgs.slurp pkgs.jq pkgs.wl-clipboard pkgs.libnotify pkgs.hyprland rofi pkgs.coreutils ];
+    runtimeInputs = [ pkgs.grim pkgs.slurp pkgs.jq pkgs.wl-clipboard pkgs.libnotify pkgs.unstable.hyprland rofi pkgs.coreutils ];
     text = ''
       mode=''${1:-menu}
       if [ "$mode" = menu ]; then
@@ -120,7 +120,7 @@ let
   # Les actions destructives demandent une confirmation.
   sessionMenu = pkgs.writeShellApplication {
     name = "session-menu";
-    runtimeInputs = [ rofi pkgs.systemd pkgs.hyprland pkgs.procps ];
+    runtimeInputs = [ rofi pkgs.systemd pkgs.unstable.hyprland pkgs.procps ];
     text = ''
       choice=$(printf 'Verrouiller\nDéconnexion\nRedémarrer\nÉteindre\n' | rofi -dmenu -p "Session" -theme ${rofiTheme}) || exit 0
       confirm() {
@@ -241,6 +241,7 @@ in
     pkgs.libnotify
     pkgs.matugen
     pkgs.hyprcursor
+    pkgs.swaynotificationcenter
     pkgs.grim
     pkgs.slurp
     pkgs.cliphist

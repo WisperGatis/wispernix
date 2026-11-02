@@ -31,7 +31,12 @@
   lib.mkForce "${pkgs.gnome-gsettings-overrides or pkgs.budgie-desktop}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas";
 
   programs.niri.enable = true;
-  programs.hyprland.enable = true;
+  # Hyprland 0.57 (unstable). The portal comes from the same set so the two match.
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.unstable.hyprland;
+    portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
+  };
   # hyprlock needs its own PAM service to check the password.
   programs.hyprlock.enable = true;
   security.pam.services.hyprlock = { };
