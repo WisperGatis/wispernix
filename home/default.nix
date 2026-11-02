@@ -46,6 +46,8 @@ in
     ./editors.nix
     ./apps.nix
     ./desktop.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
 
   home.username = "wisp";
