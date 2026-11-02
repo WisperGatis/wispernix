@@ -8,10 +8,6 @@
 local left = "desc:Samsung Electric Company LC24RG50 HNMT100624"
 local right = "desc:HP Inc. OMEN by HP 25 3CQ95007KT"
 
--- Workspaces are per monitor: each monitor has its own 1-10, using ids
--- base + N. The base comes from the monitor's id (see home/hyprland.nix,
--- hypr-ws), so monitor 0 uses 1-10 and monitor 1 uses 11-20.
-
 -- ##########
 -- Moniteurs
 -- ##########
@@ -100,11 +96,9 @@ hl.bind("SUPER + SHIFT + d", hl.dsp.focus({ monitor = "r" }))
 -- ##########
 
 for i = 1, 9 do
-  hl.bind("SUPER + " .. i, hl.dsp.exec_cmd("hypr-ws focus " .. i))
-  hl.bind("SUPER + SHIFT + " .. i, hl.dsp.exec_cmd("hypr-ws move " .. i))
+  hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
 end
-hl.bind("SUPER + 0", hl.dsp.exec_cmd("hypr-ws focus 10"))
-hl.bind("SUPER + SHIFT + 0", hl.dsp.exec_cmd("hypr-ws move 10"))
+hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
 
 -- ##########
 -- Programmes

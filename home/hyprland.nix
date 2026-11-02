@@ -49,23 +49,6 @@ let
     '';
   };
 
-  # Workspaces par écran : chaque écran a son 1-10, à partir de sa base (id × 10).
-  # "focus N" va sur l'écran focus ; "move N" envoie la fenêtre active dans ce workspace.
-  hyprWs = pkgs.writeShellApplication {
-    name = "hypr-ws";
-    runtimeInputs = [ pkgs.hyprland pkgs.jq ];
-    text = ''
-      action=''${1:?usage: hypr-ws focus|move N}
-      n=''${2:?usage: hypr-ws focus|move N}
-      monitor_id=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .id')
-      target=$(( monitor_id * 10 + n ))
-      # hyprctl dispatch takes a Lua expression in the Lua config format.
-      case "$action" in
-        focus) hyprctl dispatch "hl.dsp.focus({ workspace = $target })" ;;
-        move) hyprctl dispatch "hl.dsp.window.move({ workspace = $target })" ;;
-      esac
-    '';
-  };
 in
 {
   # Hyprland : le fichier Lua est dans le dépôt et lié par Nix.
@@ -134,7 +117,6 @@ in
   home.packages = [
     wallpaperMenu
     screenRecord
-    hyprWs
     pkgs.rofi
     pkgs.awww
     pkgs.wf-recorder

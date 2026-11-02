@@ -31,14 +31,7 @@ in
 
       "hyprland/workspaces" = {
         all-outputs = false;
-        format = "{icon}";
-        # Chaque écran a 1-10 : les ids 11-20 (second écran) s'affichent comme 1-10.
-        format-icons = {
-          "1" = "1"; "2" = "2"; "3" = "3"; "4" = "4"; "5" = "5";
-          "6" = "6"; "7" = "7"; "8" = "8"; "9" = "9"; "10" = "10";
-          "11" = "1"; "12" = "2"; "13" = "3"; "14" = "4"; "15" = "5";
-          "16" = "6"; "17" = "7"; "18" = "8"; "19" = "9"; "20" = "10";
-        };
+        format = "{name}";
         on-click = "activate";
       };
 
