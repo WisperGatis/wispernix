@@ -43,16 +43,14 @@ hl.config({
     kb_layout = "ch",
     kb_variant = "fr",
   },
-  cursor = {
-    -- hyprcursor theme; Hyprland falls back to the XCursor theme of the same name.
-    hyprcursor_theme = "Rio",
-    hyprcursor_size = 24,
-  },
 })
 
 -- ##########
 -- Animations (rapides)
 -- ##########
+
+-- La courbe doit être déclarée avant les animations qui l'utilisent.
+hl.curve("snap", { type = "bezier", points = { { 0.2, 0.9 }, { 0.1, 1.0 } } })
 
 -- Ouverture et fermeture de fenêtres : courtes, sans rebond.
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "snap", style = "popin 80%" })
@@ -62,8 +60,6 @@ hl.animation({ leaf = "fadeOut", enabled = true, speed = 2, bezier = "snap" })
 
 -- Changement de workspace : plus rapide que la valeur par défaut.
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "snap", style = "slide" })
-
-hl.curve("snap", { type = "bezier", points = { { 0.2, 0.9 }, { 0.1, 1.0 } } })
 
 -- ##########
 -- Autostart
