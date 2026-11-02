@@ -11,13 +11,55 @@ let
   # Rofi lit le thème et les couleurs générées par Matugen.
   rofiTheme = "${home}/.config/rofi/theme.rasi";
 
-  # Fond d'écran en grille de miniatures ; choix clair ou sombre, puis image. Matugen régénère les couleurs.
+  # Palettes classiques (valeurs des thèmes publiés). Chacune produit colors.css (Waybar)
+  # et colors.rasi (Rofi), avec les mêmes noms que les modèles Matugen.
+  palettes = {
+    catppuccin-mocha = { primary = "#f5e0dc"; on_primary = "#1e1e2e"; surface = "#1e1e2e"; on_surface = "#cdd6f4"; surface_variant = "#313244"; tertiary = "#f9e2af"; error = "#f38ba8"; };
+    catppuccin-latte = { primary = "#dc8a78"; on_primary = "#eff1f5"; surface = "#eff1f5"; on_surface = "#4c4f69"; surface_variant = "#ccd0da"; tertiary = "#df8e1d"; error = "#d20f39"; };
+    gruvbox-dark = { primary = "#fabd2f"; on_primary = "#282828"; surface = "#282828"; on_surface = "#ebdbb2"; surface_variant = "#3c3836"; tertiary = "#b8bb26"; error = "#fb4934"; };
+    nord = { primary = "#88c0d0"; on_primary = "#2e3440"; surface = "#2e3440"; on_surface = "#d8dee9"; surface_variant = "#3b4252"; tertiary = "#a3be8c"; error = "#bf616a"; };
+    rose-pine = { primary = "#c4a7e7"; on_primary = "#191724"; surface = "#191724"; on_surface = "#e0def4"; surface_variant = "#26233a"; tertiary = "#f6c177"; error = "#eb6f92"; };
+    dracula = { primary = "#bd93f9"; on_primary = "#282a36"; surface = "#282a36"; on_surface = "#f8f8f2"; surface_variant = "#44475a"; tertiary = "#f1fa8c"; error = "#ff5555"; };
+    tokyo-night = { primary = "#7aa2f7"; on_primary = "#1a1b26"; surface = "#1a1b26"; on_surface = "#c0caf5"; surface_variant = "#292e42"; tertiary = "#9ece6a"; error = "#f7768e"; };
+    solarized-dark = { primary = "#268bd2"; on_primary = "#002b36"; surface = "#002b36"; on_surface = "#839496"; surface_variant = "#073642"; tertiary = "#859900"; error = "#dc322f"; };
+  };
+
+  waybarCss = p: ''
+    @define-color primary ${p.primary};
+    @define-color on_primary ${p.on_primary};
+    @define-color surface ${p.surface};
+    @define-color on_surface ${p.on_surface};
+    @define-color tertiary ${p.tertiary};
+    @define-color error ${p.error};
+  '';
+
+  rofiRasi = p: ''
+    * {
+        primary: ${p.primary};
+        on-primary: ${p.on_primary};
+        surface: ${p.surface};
+        on-surface: ${p.on_surface};
+        surface-variant: ${p.surface_variant};
+    }
+  '';
+
+  paletteDir = pkgs.linkFarm "palettes" (lib.concatLists (lib.mapAttrsToList (slug: p: [
+    { name = "${slug}/colors.css"; path = pkgs.writeText "${slug}-colors.css" (waybarCss p); }
+    { name = "${slug}/colors.rasi"; path = pkgs.writeText "${slug}-colors.rasi" (rofiRasi p); }
+  ]) palettes));
+
+  # Fond d'écran : choix du thème (Matugen clair/sombre ou palette), puis image en grille de miniatures.
   wallpaperMenu = pkgs.writeShellApplication {
     name = "wallpaper-menu";
     runtimeInputs = [ rofi pkgs.awww pkgs.matugen pkgs.findutils pkgs.coreutils ];
     text = ''
       grid='listview { columns: 4; lines: 3; } element { orientation: vertical; } element-icon { size: 9em; }'
-      mode=$(printf 'dark\nlight\n' | rofi -dmenu -p "Thème" -theme ${rofiTheme}) || exit 0
+      theme=$(printf 'Matugen sombre\nMatugen clair\n%s\n' "$(ls ${paletteDir})" | rofi -dmenu -p "Thème" -theme ${rofiTheme}) || exit 0
+      case "$theme" in
+        "Matugen sombre") mode=dark ;;
+        "Matugen clair") mode=light ;;
+        *) mode="" ;;
+      esac
       # Chaque entrée affiche le nom et une miniature (\0icon).
       img=$(find "${wallpaperDir}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.webp' \) \
         -printf '%f\0icon\x1f%p\n' | sort | rofi -dmenu -show-icons -p "Fond d'écran" \
@@ -25,7 +67,13 @@ let
       [ -n "$img" ] || exit 0
       path="${wallpaperDir}/$img"
       awww img "$path" --transition-type grow
-      matugen image "$path" --mode "$mode"
+      if [ -n "$mode" ]; then
+        matugen image "$path" --mode "$mode"
+      else
+        [ -d "${paletteDir}/$theme" ] || exit 1
+        install -D -m 644 "${paletteDir}/$theme/colors.css" "$HOME/.config/waybar/colors.css"
+        install -D -m 644 "${paletteDir}/$theme/colors.rasi" "$HOME/.config/rofi/colors.rasi"
+      fi
       pkill -SIGUSR2 waybar || true
     '';
   };
