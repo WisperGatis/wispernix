@@ -76,6 +76,24 @@ window#waybar {
   color: @error;
 }
 
+/* Modules de droite ajoutés : espacement entre les icônes */
+#idle_inhibitor,
+#language,
+#power-profiles-daemon,
+#network,
+#pulseaudio {
+  padding: 0 8px;
+  color: @on_surface;
+}
+
+#network.disconnected {
+  color: @error;
+}
+
+#pulseaudio.muted {
+  color: @error;
+}
+
 /* Enregistrement : rouge quand actif */
 #custom-record.recording {
   color: @error;
