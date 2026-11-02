@@ -22,7 +22,18 @@ in
 
       modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
       modules-center = [ "clock" "custom/wallpaper" ];
-      modules-right = [ "tray" ];
+      modules-right = [ "custom/notification" "tray" ];
+
+      # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
+      # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
+      "custom/notification" = {
+        exec = "swaync-client -swb";
+        exec-if = "which swaync-client";
+        return-type = "json";
+        escape = true;
+        on-click = "swaync-client -t -sw";
+        on-click-right = "swaync-client -d -sw";
+      };
 
       "custom/nix" = {
         format = nixIcon;

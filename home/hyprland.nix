@@ -241,6 +241,7 @@ in
     pkgs.libnotify
     pkgs.matugen
     pkgs.hyprcursor
+    pkgs.swaynotificationcenter
     pkgs.grim
     pkgs.slurp
     pkgs.cliphist

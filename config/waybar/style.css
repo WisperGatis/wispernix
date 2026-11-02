@@ -61,6 +61,21 @@ window#waybar {
   background: alpha(@on_surface, 0.1);
 }
 
+/* Notifications : couleur tertiaire quand il y en a, atténuée en mode silencieux */
+#custom-notification {
+  padding: 0 10px;
+  color: @on_surface;
+}
+
+#custom-notification.notification {
+  color: @tertiary;
+}
+
+#custom-notification.dnd-notification,
+#custom-notification.dnd-none {
+  color: @error;
+}
+
 /* Enregistrement : rouge quand actif */
 #custom-record.recording {
   color: @error;
