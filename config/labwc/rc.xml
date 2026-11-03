@@ -26,7 +26,7 @@
 
     <!-- Win+V : clipboard manager (cliphist + rofi) -->
     <keybind key="W-v">
-      <action name="Execute" command="rofi -show clipboard -modi \"clipboard:cliphist list\" -clipboard -window-position br" />
+      <action name="Execute" command='rofi -show clipboard -modi "clipboard:cliphist list" -clipboard -window-position br' />
     </keybind>
 
     <!-- Win+E : control center Noctalia -->
@@ -61,10 +61,10 @@
 
     <!-- Win+Shift+← / → : changer l'écran focus -->
     <keybind key="W-S-Left">
-      <action name="FocusView" />
+      <action name="FocusOutput" direction="left" />
     </keybind>
     <keybind key="W-S-Right">
-      <action name="FocusView" />
+      <action name="FocusOutput" direction="right" />
     </keybind>
 
     <!-- Workspaces (desktops) -->
@@ -97,6 +97,38 @@
     </keybind>
     <keybind key="W-0">
       <action name="GoToDesktop" to="10" />
+    </keybind>
+
+    <!-- Win+Shift+1..0 : envoie la fenêtre active vers le workspace N -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1" follow="no" />
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2" follow="no" />
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3" follow="no" />
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4" follow="no" />
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop" to="5" follow="no" />
+    </keybind>
+    <keybind key="W-S-6">
+      <action name="SendToDesktop" to="6" follow="no" />
+    </keybind>
+    <keybind key="W-S-7">
+      <action name="SendToDesktop" to="7" follow="no" />
+    </keybind>
+    <keybind key="W-S-8">
+      <action name="SendToDesktop" to="8" follow="no" />
+    </keybind>
+    <keybind key="W-S-9">
+      <action name="SendToDesktop" to="9" follow="no" />
+    </keybind>
+    <keybind key="W-S-0">
+      <action name="SendToDesktop" to="10" follow="no" />
     </keybind>
 
     <!-- Win+T : terminal -->
