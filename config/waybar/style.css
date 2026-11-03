@@ -41,20 +41,6 @@ window#waybar {
   padding: 0 12px;
 }
 
-/* Fenêtres ouvertes (wlr/taskbar) */
-#taskbar button {
-  padding: 0 6px;
-  background: transparent;
-}
-
-#taskbar button.active {
-  background: alpha(@primary, 0.2);
-}
-
-#taskbar button:hover {
-  background: alpha(@on_surface, 0.1);
-}
-
 /* Workspaces (Hyprland) */
 #workspaces button {
   padding: 0 8px;

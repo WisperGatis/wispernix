@@ -69,7 +69,6 @@ hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap",
 hl.on("hyprland.start", function()
   hl.exec_cmd("swaync")
   hl.exec_cmd("waybar")
-  hl.exec_cmd("waybar-taskbar")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'remielle_black'")
