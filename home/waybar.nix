@@ -23,7 +23,7 @@ in
       margin-left = 0;
       margin-right = 0;
 
-      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
+      modules-left = [ "custom/nix" "hyprland/workspaces" "wlr/taskbar" "custom/record" "cpu" "memory" ];
       modules-center = [ "clock" "custom/wallpaper" ];
       modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio" "bluetooth" "tray" ];
 
@@ -48,6 +48,15 @@ in
         all-outputs = false;
         format = "{name}";
         on-click = "activate";
+      };
+
+      # Fenêtres ouvertes : clic gauche pour passer dessus, clic milieu pour fermer.
+      "wlr/taskbar" = {
+        all-outputs = false;
+        icon-size = 16;
+        tooltip = true;
+        on-click = "activate";
+        on-click-middle = "close";
       };
 
       "custom/record" = {
