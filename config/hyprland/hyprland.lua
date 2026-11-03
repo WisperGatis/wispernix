@@ -92,6 +92,7 @@ hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
 
 hl.bind("SUPER + q", hl.dsp.window.close())
 hl.bind("SUPER + Tab", hl.dsp.window.cycle_next())
+hl.bind("ALT + Tab", hl.dsp.exec_cmd("rofi -show window"))
 hl.bind("SUPER + SHIFT + f", hl.dsp.window.fullscreen())
 hl.bind("SUPER + f", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + SHIFT + a", hl.dsp.focus({ monitor = "l" }))
