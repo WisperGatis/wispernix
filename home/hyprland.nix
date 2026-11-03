@@ -6,7 +6,7 @@ let
   screenshotDir = "${home}/Pictures/Screenshots";
 
   # Rofi avec le plugin emoji.
-  rofi = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
+  rofi = pkgs.rofi.override { plugins = [ pkgs.rofi-emoji pkgs.rofi-calc ]; };
 
   # Rofi lit le thème et les couleurs générées par Matugen.
   rofiTheme = "${home}/.config/rofi/theme.rasi";
@@ -175,7 +175,7 @@ in
   # Rofi : menu de lancement, émojis en mode "emoji", thème Matugen.
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
-      modi: "drun,run,window,emoji";
+      modi: "drun,run,window,emoji,calc";
       show-icons: true;
       drun-display-format: "{name}";
     }
