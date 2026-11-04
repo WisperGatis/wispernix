@@ -1,4 +1,4 @@
-// Quickshell : point d'entrée. Une barre par écran.
+// Quickshell : point d'entrée. Une barre et un panneau d'accueil par écran.
 import Quickshell
 import QtQuick
 
@@ -6,9 +6,16 @@ ShellRoot {
   Variants {
     model: Quickshell.screens
 
-    delegate: Bar {
+    delegate: Scope {
       required property var modelData
-      screen: modelData
+
+      Bar {
+        screen: modelData
+      }
+
+      HomePanel {
+        screen: modelData
+      }
     }
   }
 }

@@ -1,2 +1,6 @@
 singleton Theme 1.0 Theme.qml
+singleton Panels 1.0 Panels.qml
 Bar 1.0 Bar.qml
+HomePanel 1.0 HomePanel.qml
+MediaTab 1.0 MediaTab.qml
+SessionTab 1.0 SessionTab.qml

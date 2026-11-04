@@ -55,12 +55,22 @@ PanelWindow {
     }
   }
 
-  // Centre : horloge.
+  // Centre : horloge. Le survol ouvre le panneau d'accueil.
   Text {
     anchors.centerIn: parent
     text: Qt.formatDateTime(clock.date, "HH:mm")
     color: Theme.textColor
     font.family: Theme.font
     font.pixelSize: 13
+  }
+
+  MouseArea {
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    width: 200
+    hoverEnabled: true
+    onEntered: { Panels.hoverBar = true; Panels.refresh() }
+    onExited: { Panels.hoverBar = false; Panels.refresh() }
   }
 }
