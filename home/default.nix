@@ -46,6 +46,7 @@ in
     ./editors.nix
     ./apps.nix
     ./desktop.nix
+    ./quickshell.nix
     ./hyprland.nix
     ./waybar.nix
   ];
