@@ -144,7 +144,7 @@
   };
 
   environment.systemPackages = [
-    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
+    inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.rhun-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

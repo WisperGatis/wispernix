@@ -123,7 +123,7 @@
     unstable.umbriel
     unstable.noctalia-greeter
     #unstable.mango
-    unstable.caelestia-cli
+    #unstable.caelestia-cli (retiré : on n'utilise que le shell)
     #inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     polkit_gnome
     xrandr
