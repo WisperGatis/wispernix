@@ -68,7 +68,6 @@ hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap",
 -- ##########
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("swaync")
   -- Caelestia remplace Waybar sur cette branche de test.
   hl.exec_cmd("caelestia shell -d")
   hl.exec_cmd("awww-daemon")
@@ -83,9 +82,17 @@ end)
 -- Raccourcis (identiques à Mango)
 -- ##########
 
-hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind("SUPER + v", hl.dsp.exec_cmd("clipboard-menu"))
-hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind("SUPER + space", hl.dsp.exec_cmd("caelestia shell drawers toggle launcher"))
+hl.bind("SUPER + v", hl.dsp.exec_cmd("caelestia shell picker openClip"))
+hl.bind("SUPER + n", hl.dsp.exec_cmd("caelestia shell drawers toggle sidebar"))
+hl.bind("SUPER + SHIFT + n", hl.dsp.exec_cmd("caelestia shell notifs toggleDnd"))
+hl.bind("SUPER + c", hl.dsp.exec_cmd("caelestia shell idleInhibitor toggle"))
+hl.bind("SUPER + SHIFT + e", hl.dsp.exec_cmd("caelestia shell drawers toggle session"))
+
+-- Touches média : MPRIS via Caelestia.
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("caelestia shell mpris playPause"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("caelestia shell mpris next"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("caelestia shell mpris previous"))
 hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
 
 -- ##########
@@ -119,7 +126,7 @@ hl.bind("SUPER + Print", hl.dsp.exec_cmd("screenshot full"))
 hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("screenshot menu"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
-hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("SUPER + l", hl.dsp.exec_cmd("caelestia shell lock lock"))
 
 -- ##########
 -- Système
