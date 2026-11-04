@@ -98,8 +98,8 @@
     unstable.roslyn-ls
 
     # -- AI tools ----------------------------------------------------
-    unstable.opencode
-    unstable.opencode-desktop
+    #unstable.opencode
+    #unstable.opencode-desktop
     pkgs.claude-code
     #unstable.claude-code
     unstable.codex

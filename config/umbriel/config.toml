@@ -175,29 +175,29 @@ workspaces = 10
 [keybinds]
 
 # --- Noctalia (same as niri) ---
-"Mod+Space"        = "spawn:noctalia msg panel-toggle launcher"
-"Mod+E"            = "spawn:noctalia msg panel-toggle control-center"
-"Mod+O"            = "spawn:noctalia msg settings-toggle"
-"Mod+V"            = "spawn:noctalia msg panel-toggle clipboard"
-"Mod+Shift+Escape" = "spawn:noctalia msg session-menu-toggle"
+"Mod+Space"        = "spawn noctalia msg panel-toggle launcher"
+"Mod+E"            = "spawn noctalia msg panel-toggle control-center"
+"Mod+O"            = "spawn noctalia msg settings-toggle"
+"Mod+V"            = "spawn noctalia msg panel-toggle clipboard"
+"Mod+Shift+Escape" = "spawn noctalia msg session-menu-toggle"
 
 # --- DMS fallback ---
-"Mod+Alt+Space"        = "spawn:dms ipc call launcher toggle"
-"Mod+Alt+E"            = "spawn:dms ipc call controlCenter toggle"
-"Mod+Alt+O"            = "spawn:dms ipc call settings toggle"
-"Mod+Alt+V"            = "spawn:dms ipc call launcher clipboard"
-"Mod+Alt+Shift+Escape" = "spawn:dms ipc call sessionMenu toggle"
+"Mod+Alt+Space"        = "spawn dms ipc call launcher toggle"
+"Mod+Alt+E"            = "spawn dms ipc call controlCenter toggle"
+"Mod+Alt+O"            = "spawn dms ipc call settings toggle"
+"Mod+Alt+V"            = "spawn dms ipc call launcher clipboard"
+"Mod+Alt+Shift+Escape" = "spawn dms ipc call sessionMenu toggle"
 
 # --- Screenshot / recorder ---
-"Print"       = "spawn:noctalia msg screenshot-region"
-"Mod+Shift+R" = "spawn:noctalia msg plugin noctalia/screen_recorder:service all toggle"
+"Print"       = "spawn noctalia msg screenshot-region"
+"Mod+Shift+R" = "spawn noctalia msg plugin noctalia/screen_recorder:service all toggle"
 
 # --- Keyboard layout (only useful with 2+ layouts) ---
 "Mod+Shift+L" = "keyboard-layout-next"
 
 # --- Apps / session ---
 # Kitty first, then Alacritty, Ghostty, Foot
-"Mod+T"       = "spawn:kitty || alacritty || ghostty || foot"
+"Mod+T"       = "spawn kitty || alacritty || ghostty || foot"
 "Mod+Q"       = { action = "window-close", repeat = false }
 "Mod+Shift+E" = "session-quit"
 "Mod+Ctrl+R"  = "config-reload"     # niri's Mod+R is column width, see below
@@ -213,28 +213,28 @@ workspaces = 10
 "Mod+Shift+D" = "window-focus-or-output-right"
 
 # --- Workspaces: Mod+1..9 (+0 = 10th) ---
-"Mod+1" = "workspace-switch:1"
-"Mod+2" = "workspace-switch:2"
-"Mod+3" = "workspace-switch:3"
-"Mod+4" = "workspace-switch:4"
-"Mod+5" = "workspace-switch:5"
-"Mod+6" = "workspace-switch:6"
-"Mod+7" = "workspace-switch:7"
-"Mod+8" = "workspace-switch:8"
-"Mod+9" = "workspace-switch:9"
-"Mod+0" = "workspace-switch:10"
+"Mod+1" = "workspace-switch 1"
+"Mod+2" = "workspace-switch 2"
+"Mod+3" = "workspace-switch 3"
+"Mod+4" = "workspace-switch 4"
+"Mod+5" = "workspace-switch 5"
+"Mod+6" = "workspace-switch 6"
+"Mod+7" = "workspace-switch 7"
+"Mod+8" = "workspace-switch 8"
+"Mod+9" = "workspace-switch 9"
+"Mod+0" = "workspace-switch 10"
 
 # Move column to workspace
-"Mod+Ctrl+1" = "column-move-to-workspace:1"
-"Mod+Ctrl+2" = "column-move-to-workspace:2"
-"Mod+Ctrl+3" = "column-move-to-workspace:3"
-"Mod+Ctrl+4" = "column-move-to-workspace:4"
-"Mod+Ctrl+5" = "column-move-to-workspace:5"
-"Mod+Ctrl+6" = "column-move-to-workspace:6"
-"Mod+Ctrl+7" = "column-move-to-workspace:7"
-"Mod+Ctrl+8" = "column-move-to-workspace:8"
-"Mod+Ctrl+9" = "column-move-to-workspace:9"
-"Mod+Ctrl+0" = "column-move-to-workspace:10"
+"Mod+Ctrl+1" = "column-move-to-workspace 1"
+"Mod+Ctrl+2" = "column-move-to-workspace 2"
+"Mod+Ctrl+3" = "column-move-to-workspace 3"
+"Mod+Ctrl+4" = "column-move-to-workspace 4"
+"Mod+Ctrl+5" = "column-move-to-workspace 5"
+"Mod+Ctrl+6" = "column-move-to-workspace 6"
+"Mod+Ctrl+7" = "column-move-to-workspace 7"
+"Mod+Ctrl+8" = "column-move-to-workspace 8"
+"Mod+Ctrl+9" = "column-move-to-workspace 9"
+"Mod+Ctrl+0" = "column-move-to-workspace 10"
 
 # --- Window state (same as niri) ---
 "Mod+W"       = "window-toggle-floating"
@@ -254,10 +254,10 @@ workspaces = 10
 
 # --- Sizing (niri) ---
 "Mod+R"           = "window-cycle-primary-extent"    # switch-preset-column-width
-"Mod+Minus"       = "window-modify-primary-extent:-0.1"
-"Mod+Equal"       = "window-modify-primary-extent:0.1"
-"Mod+Shift+Minus" = "window-modify-height-down:-0.1"
-"Mod+Shift+Equal" = "window-modify-height-down:0.1"
+"Mod+Minus"       = "window-modify-primary-extent -0.1"
+"Mod+Equal"       = "window-modify-primary-extent 0.1"
+"Mod+Shift+Minus" = "window-modify-height-down -0.1"
+"Mod+Shift+Equal" = "window-modify-height-down 0.1"
 
 # --- Mouse wheel / drag ---
 "Mod+WheelUp"         = "window-focus-left"
