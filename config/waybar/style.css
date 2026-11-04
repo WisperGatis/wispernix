@@ -24,10 +24,24 @@ window#waybar {
   border-radius: 0;
 }
 
+/* Tooltips : même look que Rofi (fond surface, bordure primaire) */
+tooltip {
+  background: alpha(@surface, 0.96);
+  border: 2px solid @primary;
+  border-radius: 0;
+}
+
+tooltip label {
+  color: @on_surface;
+}
+
 /* Modules communs */
 #custom-nix,
 #custom-record,
 #custom-wallpaper,
+#custom-cpu,
+#custom-memory,
+#custom-gpu,
 #clock,
 #tray {
   padding: 0 10px;
@@ -103,8 +117,25 @@ window#waybar {
   color: @error;
 }
 
+/* CPU / RAM / GPU : couleur selon l'état calculé par hw-monitor */
+#custom-cpu.warning,
+#custom-memory.warning,
+#custom-gpu.warning {
+  color: @tertiary;
+}
+
+#custom-cpu.critical,
+#custom-memory.critical,
+#custom-gpu.critical {
+  color: @error;
+  font-weight: bold;
+}
+
 /* Survols : fond léger et transition douce */
 #clock,
+#custom-cpu,
+#custom-memory,
+#custom-gpu,
 #pulseaudio,
 #custom-notification,
 #idle_inhibitor,
@@ -115,6 +146,9 @@ window#waybar {
 }
 
 #clock:hover,
+#custom-cpu:hover,
+#custom-memory:hover,
+#custom-gpu:hover,
 #pulseaudio:hover,
 #custom-notification:hover,
 #idle_inhibitor:hover,

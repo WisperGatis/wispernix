@@ -27,7 +27,7 @@ in
       margin-left = 0;
       margin-right = 0;
 
-      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "cpu" "memory" ];
+      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "custom/cpu" "custom/memory" "custom/gpu" ];
       modules-center = [ "clock" "custom/wallpaper" ];
       modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio#mic" "pulseaudio" "bluetooth" "tray" ];
 
@@ -65,16 +65,31 @@ in
         on-click = "screen-record toggle";
       };
 
-      cpu = {
-        format = " {usage}%";
-        tooltip-format = "CPU {usage}% ({load} de charge)";
-        interval = 2;
+      "custom/cpu" = {
+        format = "${icon "f2db"} {text}";
+        # hw-monitor (config/waybar/hw-monitor.py) imprime une ligne JSON toutes les 2 s :
+        # classes warning / critical selon l'usage et la température, détails dans le tooltip.
+        exec = "hw-monitor cpu";
+        return-type = "json";
+        escape = false;
+        on-click = "kitty -e btop";
       };
 
-      memory = {
-        format = " {percentage}%";
-        tooltip-format = "RAM {used:0.1f}G / {total:0.1f}G";
-        interval = 2;
+      "custom/memory" = {
+        format = "${icon "f080"} {text}";
+        exec = "hw-monitor memory";
+        return-type = "json";
+        escape = false;
+        on-click = "kitty -e btop";
+      };
+
+      # GPU AMD (masqué automatiquement si aucune carte amdgpu n'est trouvée).
+      "custom/gpu" = {
+        format = "${icon "f26c"} {text}";
+        exec = "hw-monitor gpu";
+        return-type = "json";
+        escape = false;
+        on-click = "kitty -e btop";
       };
 
       # Survol : calendrier du mois (molette = mois suivant / précédent).

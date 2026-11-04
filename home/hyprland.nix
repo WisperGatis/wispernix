@@ -223,6 +223,16 @@ let
     '';
   };
 
+  # Infos matériel pour Waybar (CPU, mémoire, GPU AMD) : une ligne JSON toutes les 2 s,
+  # avec une classe warning / critical et un tooltip détaillé (températures, fréquences...).
+  hwMonitor = pkgs.writeShellApplication {
+    name = "hw-monitor";
+    runtimeInputs = [ pkgs.coreutils ];
+    text = ''
+      exec ${pkgs.python3}/bin/python3 -I ${../config/waybar/hw-monitor.py} "$@"
+    '';
+  };
+
 in
 {
   # Hyprland : le fichier Lua est dans le dépôt et lié par Nix.
@@ -297,6 +307,7 @@ in
     screenRecord
     calendarPopup
     calendarRofi
+    hwMonitor
     rofi
     pkgs.awww
     pkgs.wf-recorder
