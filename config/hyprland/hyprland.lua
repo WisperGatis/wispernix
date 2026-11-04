@@ -68,7 +68,8 @@ hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap",
 
 hl.on("hyprland.start", function()
   hl.exec_cmd("swaync")
-  hl.exec_cmd("waybar")
+  -- Dux shell (dms) remplace Waybar sur cette branche.
+  hl.exec_cmd("dms run")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'remielle_black'")
@@ -81,7 +82,9 @@ end)
 -- Raccourcis (identiques à Mango)
 -- ##########
 
-hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind("SUPER + space", hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
+hl.bind("SUPER + o", hl.dsp.exec_cmd("dms ipc call settings toggle"))
+hl.bind("SUPER + e", hl.dsp.exec_cmd("dms ipc call controlCenter toggle"))
 hl.bind("SUPER + v", hl.dsp.exec_cmd("clipboard-menu"))
 hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
