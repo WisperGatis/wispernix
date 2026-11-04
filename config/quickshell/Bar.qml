@@ -42,7 +42,7 @@ PanelWindow {
       Text {
         required property var modelData
         text: modelData.name
-        color: modelData.active ? Theme.primary : Theme.onSurface
+        color: modelData.active ? Theme.primary : Theme.textColor
         font.family: Theme.font
         font.pixelSize: 13
         font.bold: modelData.active
@@ -59,7 +59,7 @@ PanelWindow {
   Text {
     anchors.centerIn: parent
     text: Qt.formatDateTime(clock.date, "HH:mm")
-    color: Theme.onSurface
+    color: Theme.textColor
     font.family: Theme.font
     font.pixelSize: 13
   }

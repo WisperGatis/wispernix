@@ -5,9 +5,9 @@ import QtQuick
 QtObject {
   readonly property color surface: "#1e1e2e"
   readonly property color surfaceVariant: "#313244"
-  readonly property color onSurface: "#cdd6f4"
+  readonly property color textColor: "#cdd6f4"
   readonly property color primary: "#f5e0dc"
-  readonly property color onPrimary: "#1e1e2e"
+  readonly property color primaryContent: "#1e1e2e"
   readonly property color tertiary: "#f9e2af"
   readonly property color error: "#f38ba8"
 
