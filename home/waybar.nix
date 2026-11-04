@@ -30,7 +30,7 @@ in
 
       modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "custom/cpu" "custom/memory" "custom/gpu" ];
       modules-center = [ "clock" "mpris" "custom/wallpaper" ];
-      modules-right = [ "custom/notification" "custom/nightlight" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio#mic" "pulseaudio" "bluetooth" "tray" ];
+      modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio#mic" "pulseaudio" "bluetooth" "tray" ];
 
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
@@ -141,19 +141,6 @@ in
         on-click-middle = "previous";
         on-scroll-up = "${playerctl} next";
         on-scroll-down = "${playerctl} previous";
-      };
-
-      # Lumière nocturne (hyprsunset) : clic pour activer / désactiver le filtre chaud.
-      "custom/nightlight" = {
-        format = "{icon}";
-        format-icons = {
-          on = icon "f186";
-          off = icon "f185";
-        };
-        exec = "night-light status";
-        return-type = "json";
-        interval = 5;
-        on-click = "night-light toggle";
       };
 
       "custom/wallpaper" = {
