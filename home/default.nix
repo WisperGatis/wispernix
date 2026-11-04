@@ -74,6 +74,11 @@ in
     XCURSOR_SIZE = "24";
   };
 
+  # GTK3 (Thunar, etc.) : gtk.css importe la palette générée par Noctalia.
+  xdg.configFile."gtk-3.0/gtk.css".text = ''
+    @import url("noctalia.css");
+  '';
+
   # Pas de gestion GTK ici : Noctalia / Matugen s'en charge.
   home.pointerCursor = {
     enable = true;
