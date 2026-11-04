@@ -26,7 +26,8 @@ hl.config({
     border_size = 3,
   },
   decoration = {
-    rounding = 0,
+    -- Coins arrondis, propres à la branche Caelestia-test (le thème Caelestia encadre les fenêtres).
+    rounding = 14,
     -- Shader d'écran : légère hausse de saturation (config/hyprland/shaders/vibrance.frag).
     screen_shader = os.getenv("HOME") .. "/.config/hypr/shaders/vibrance.frag",
     active_opacity = 0.92,
@@ -68,7 +69,8 @@ hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap",
 
 hl.on("hyprland.start", function()
   hl.exec_cmd("swaync")
-  hl.exec_cmd("waybar")
+  -- Caelestia remplace Waybar sur cette branche de test.
+  hl.exec_cmd("caelestia shell -d")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'remielle_black'")
