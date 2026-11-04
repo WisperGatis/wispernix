@@ -2,6 +2,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Services.Mpris
+import Quickshell.Io
 
 Item {
   id: media
