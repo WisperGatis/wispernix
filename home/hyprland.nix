@@ -43,9 +43,27 @@ let
     }
   '';
 
+  # Fuzzel : couleurs en rrggbbaa (sans le #), mêmes rôles que le modèle Matugen.
+  fuzzelIni = p:
+    let h = lib.removePrefix "#"; in ''
+      [colors]
+      background=${h p.surface}f2
+      text=${h p.on_surface}ff
+      prompt=${h p.primary}ff
+      placeholder=${h p.on_surface}80
+      input=${h p.on_surface}ff
+      match=${h p.primary}ff
+      selection=${h p.primary}ff
+      selection-text=${h p.on_primary}ff
+      selection-match=${h p.on_primary}ff
+      counter=${h p.on_surface}80
+      border=${h p.primary}ff
+    '';
+
   paletteDir = pkgs.linkFarm "palettes" (lib.concatLists (lib.mapAttrsToList (slug: p: [
     { name = "${slug}/colors.css"; path = pkgs.writeText "${slug}-colors.css" (waybarCss p); }
     { name = "${slug}/colors.rasi"; path = pkgs.writeText "${slug}-colors.rasi" (rofiRasi p); }
+    { name = "${slug}/colors.ini"; path = pkgs.writeText "${slug}-colors.ini" (fuzzelIni p); }
   ]) palettes));
 
   # Fond d'écran : choix du thème (Matugen clair/sombre ou palette), puis image en grille de miniatures.
@@ -73,6 +91,7 @@ let
         [ -d "${paletteDir}/$theme" ] || exit 1
         install -D -m 644 "${paletteDir}/$theme/colors.css" "$HOME/.config/waybar/colors.css"
         install -D -m 644 "${paletteDir}/$theme/colors.rasi" "$HOME/.config/rofi/colors.rasi"
+        install -D -m 644 "${paletteDir}/$theme/colors.ini" "$HOME/.config/fuzzel/colors.ini"
       fi
       pkill -SIGUSR2 waybar || true
     '';
@@ -289,6 +308,10 @@ in
   home.activation.matugenDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     rofi_colors="$HOME/.config/rofi/colors.rasi"
     waybar_colors="$HOME/.config/waybar/colors.css"
+    fuzzel_colors="$HOME/.config/fuzzel/colors.ini"
+    if [ ! -e "$fuzzel_colors" ]; then
+      run install -D -m 644 ${../config/fuzzel/colors-default.ini} "$fuzzel_colors"
+    fi
     if [ ! -e "$rofi_colors" ]; then
       run install -D -m 644 ${../config/rofi/colors-default.rasi} "$rofi_colors"
     fi
@@ -301,6 +324,30 @@ in
   xdg.configFile."matugen/config.toml".source = ../config/matugen/config.toml;
   xdg.configFile."matugen/templates/waybar.css".source = ../config/matugen/templates/waybar.css;
   xdg.configFile."matugen/templates/rofi.rasi".source = ../config/matugen/templates/rofi.rasi;
+  xdg.configFile."matugen/templates/fuzzel.ini".source = ../config/matugen/templates/fuzzel.ini;
+
+  # Fuzzel : lanceur d'applications à tester (SUPER + espace). Les couleurs viennent de colors.ini (Matugen).
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        include = "${home}/.config/fuzzel/colors.ini";
+        font = "JetBrainsMono Nerd Font:size=12";
+        prompt = "> ";
+        terminal = "kitty -e";
+        icons-enabled = true;
+        width = 40;
+        lines = 10;
+        horizontal-pad = 20;
+        vertical-pad = 12;
+        inner-pad = 8;
+      };
+      border = {
+        width = 2;
+        radius = 0;
+      };
+    };
+  };
 
   # Lumière nocturne : hyprsunset applique des profils horaires (identité le jour, plus chaud le soir).
   # Le bouton de la barre (night-light toggle) force un filtre manuel jusqu'au prochain profil.
