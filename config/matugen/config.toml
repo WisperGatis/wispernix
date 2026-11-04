@@ -10,7 +10,3 @@ output_path = "~/.config/waybar/colors.css"
 [templates.rofi]
 input_path = "~/.config/matugen/templates/rofi.rasi"
 output_path = "~/.config/rofi/colors.rasi"
-
-[templates.fuzzel]
-input_path = "~/.config/matugen/templates/fuzzel.ini"
-output_path = "~/.config/fuzzel/colors.ini"

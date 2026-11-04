@@ -81,9 +81,7 @@ end)
 -- Raccourcis (identiques à Mango)
 -- ##########
 
--- Lanceur d'applications : Fuzzel en test, Rofi gardé sur SUPER + SHIFT + espace pour comparer.
-hl.bind("SUPER + space", hl.dsp.exec_cmd("fuzzel"))
-hl.bind("SUPER + SHIFT + space", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind("SUPER + v", hl.dsp.exec_cmd("clipboard-menu"))
 hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
