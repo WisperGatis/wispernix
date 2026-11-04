@@ -163,6 +163,66 @@ let
     '';
   };
 
+  # Python avec pygobject pour le calendrier GTK.
+  calendarPython = pkgs.python3.withPackages (ps: [ ps.pygobject3 ]);
+
+  # Typelibs GObject Introspection dont le calendrier a besoin (GTK3 + layer-shell).
+  calendarTypelibs = lib.makeSearchPath "lib/girepository-1.0" [
+    pkgs.gtk3
+    pkgs.gtk-layer-shell
+    pkgs.glib
+    pkgs.gdk-pixbuf
+    pkgs.pango
+    pkgs.harfbuzz
+    pkgs.at-spi2-core
+    pkgs.gobject-introspection
+  ];
+
+  # Calendrier interactif (clic droit sur l'horloge) : fenêtre GTK3 layer-shell sous la barre,
+  # couleurs lues dans ~/.config/waybar/colors.css (Matugen ou palette fixe).
+  # Un second appel referme la fenêtre déjà ouverte.
+  calendarPopup = pkgs.writeShellApplication {
+    name = "calendar-popup";
+    runtimeInputs = [ pkgs.coreutils ];
+    text = ''
+      lock="''${XDG_RUNTIME_DIR:-/tmp}/calendar-popup.pid"
+      if [ -f "$lock" ] && kill -0 "$(cat "$lock")" 2>/dev/null; then
+        kill "$(cat "$lock")"
+        exit 0
+      fi
+      echo $$ > "$lock"
+      export GI_TYPELIB_PATH="${calendarTypelibs}"
+      # gtk-layer-shell doit être chargé avant libwayland-client.
+      export LD_PRELOAD="${pkgs.gtk-layer-shell}/lib/libgtk-layer-shell.so"
+      exec ${calendarPython}/bin/python3 ${../config/waybar/calendar-popup.py}
+    '';
+  };
+
+  # Variante Rofi du calendrier : navigation de mois en mois, thème Matugen. À échanger avec
+  # calendar-popup dans on-click-right de l'horloge pour comparer.
+  calendarRofi = pkgs.writeShellApplication {
+    name = "calendar-rofi";
+    runtimeInputs = [ rofi pkgs.util-linux pkgs.coreutils ];
+    text = ''
+      offset=0
+      while true; do
+        first=$(date -d "$(date +%Y-%m-01) $offset month" +%Y-%m-%d)
+        month=$(date -d "$first" +%-m)
+        year=$(date -d "$first" +%Y)
+        title=$(cal -m "$month" "$year" | sed -n 1p | sed 's/^ *//')
+        grid=$(cal -m "$month" "$year" | tail -n +2)
+        choice=$(printf '‹ Mois précédent\n%s\n› Mois suivant\n' "$grid" \
+          | rofi -dmenu -p "$title" -theme ${rofiTheme} \
+              -theme-str 'window { width: 24em; } listview { lines: 9; } element-text { font: "JetBrainsMono Nerd Font 12"; }') || exit 0
+        case "$choice" in
+          "‹ Mois précédent") offset=$((offset - 1)) ;;
+          "› Mois suivant") offset=$((offset + 1)) ;;
+          *) exit 0 ;;
+        esac
+      done
+    '';
+  };
+
 in
 {
   # Hyprland : le fichier Lua est dans le dépôt et lié par Nix.
@@ -235,6 +295,8 @@ in
     sessionMenu
     screenshot
     screenRecord
+    calendarPopup
+    calendarRofi
     rofi
     pkgs.awww
     pkgs.wf-recorder

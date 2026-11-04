@@ -94,6 +94,39 @@ window#waybar {
   color: @error;
 }
 
+/* Micro : rouge uniquement quand le micro est coupé (et pas quand la sortie l'est) */
+#pulseaudio.mic {
+  color: @on_surface;
+}
+
+#pulseaudio.mic.source-muted {
+  color: @error;
+}
+
+/* Survols : fond léger et transition douce */
+#clock,
+#pulseaudio,
+#custom-notification,
+#idle_inhibitor,
+#power-profiles-daemon,
+#network,
+#workspaces button {
+  transition: background 0.2s;
+}
+
+#clock:hover,
+#pulseaudio:hover,
+#custom-notification:hover,
+#idle_inhibitor:hover,
+#power-profiles-daemon:hover,
+#network:hover {
+  background: alpha(@on_surface, 0.1);
+}
+
+#idle_inhibitor.activated {
+  color: @tertiary;
+}
+
 /* Enregistrement : rouge quand actif */
 #custom-record.recording {
   color: @error;
