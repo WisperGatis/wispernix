@@ -67,6 +67,9 @@ hl.animation({ leaf = "windowsMove", enabled = true, speed = 2, bezier = "snap",
 -- ##########
 
 hl.on("hyprland.start", function()
+  -- Trousseau GNOME : déverrouillé au login par PAM (greetd), démarré ici pour la session Hyprland.
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+  hl.exec_cmd("gnome-keyring-daemon --start --foreground --components=secrets,ssh,pkcs11")
   hl.exec_cmd("swaync")
   -- Dux shell (dms) remplace Waybar sur cette branche.
   hl.exec_cmd("dms run")
