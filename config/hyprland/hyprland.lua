@@ -26,8 +26,7 @@ hl.config({
     border_size = 3,
   },
   decoration = {
-    -- Coins arrondis, propres à la branche Caelestia-test (le thème Caelestia encadre les fenêtres).
-    rounding = 14,
+    rounding = 0,
     -- Shader d'écran : légère hausse de saturation (config/hyprland/shaders/vibrance.frag).
     screen_shader = os.getenv("HOME") .. "/.config/hypr/shaders/vibrance.frag",
     active_opacity = 0.92,
@@ -71,8 +70,8 @@ hl.on("hyprland.start", function()
   -- Trousseau GNOME : déverrouillé au login par PAM (greetd), démarré ici pour la session Hyprland.
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
   hl.exec_cmd("gnome-keyring-daemon --start --foreground --components=secrets,ssh,pkcs11")
-  -- Caelestia remplace Waybar sur cette branche de test.
-  hl.exec_cmd("caelestia-shell -d")
+  hl.exec_cmd("swaync")
+  hl.exec_cmd("waybar")
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("/home/wisp/.local/bin/polkit-gnome-agent")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'remielle_black'")
@@ -85,17 +84,9 @@ end)
 -- Raccourcis (identiques à Mango)
 -- ##########
 
-hl.bind("SUPER + space", hl.dsp.exec_cmd("caelestia-shell ipc call drawers toggle launcher"))
-hl.bind("SUPER + v", hl.dsp.exec_cmd("caelestia-shell ipc call picker openClip"))
-hl.bind("SUPER + n", hl.dsp.exec_cmd("caelestia-shell ipc call drawers toggle sidebar"))
-hl.bind("SUPER + SHIFT + n", hl.dsp.exec_cmd("caelestia-shell ipc call notifs toggleDnd"))
-hl.bind("SUPER + c", hl.dsp.exec_cmd("caelestia-shell ipc call idleInhibitor toggle"))
-hl.bind("SUPER + SHIFT + e", hl.dsp.exec_cmd("caelestia-shell ipc call drawers toggle session"))
-
--- Touches média : MPRIS via Caelestia.
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("caelestia-shell ipc call mpris playPause"))
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("caelestia-shell ipc call mpris next"))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("caelestia-shell ipc call mpris previous"))
+hl.bind("SUPER + space", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind("SUPER + v", hl.dsp.exec_cmd("clipboard-menu"))
+hl.bind("SUPER + n", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind("SUPER + period", hl.dsp.exec_cmd("rofi -show emoji -modi emoji"))
 
 -- ##########
@@ -129,7 +120,7 @@ hl.bind("SUPER + Print", hl.dsp.exec_cmd("screenshot full"))
 hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("screenshot menu"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
-hl.bind("SUPER + l", hl.dsp.exec_cmd("caelestia-shell ipc call lock lock"))
+hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
 
 -- ##########
 -- Système
