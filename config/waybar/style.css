@@ -131,8 +131,34 @@ tooltip label {
   font-weight: bold;
 }
 
+/* Lecteur de musique : accent quand ça joue, atténué en pause */
+#mpris {
+  padding: 0 10px;
+  color: @on_surface;
+}
+
+#mpris.playing {
+  color: @primary;
+}
+
+#mpris.paused {
+  color: alpha(@on_surface, 0.6);
+}
+
+/* Lumière nocturne : couleur d'accent quand le filtre est actif */
+#custom-nightlight {
+  padding: 0 8px;
+  color: @on_surface;
+}
+
+#custom-nightlight.on {
+  color: @tertiary;
+}
+
 /* Survols : fond léger et transition douce */
 #clock,
+#mpris,
+#custom-nightlight,
 #custom-cpu,
 #custom-memory,
 #custom-gpu,
@@ -146,6 +172,8 @@ tooltip label {
 }
 
 #clock:hover,
+#mpris:hover,
+#custom-nightlight:hover,
 #custom-cpu:hover,
 #custom-memory:hover,
 #custom-gpu:hover,

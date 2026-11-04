@@ -233,6 +233,36 @@ let
     '';
   };
 
+  # Lumière nocturne : "toggle" bascule le filtre chaud manuel (hyprsunset), "status" sert à Waybar.
+  # Au-dessus de 6000 K, on considère que le filtre est éteint.
+  nightLight = pkgs.writeShellApplication {
+    name = "night-light";
+    runtimeInputs = [ pkgs.unstable.hyprland pkgs.coreutils pkgs.gnugrep ];
+    text = ''
+      manual=3500
+      current() {
+        hyprctl hyprsunset temperature 2>/dev/null | grep -Eo '[0-9]+' | head -n 1 || true
+      }
+      temp=$(current)
+      case "''${1:-status}" in
+        status)
+          if [ -n "$temp" ] && [ "$temp" -lt 6000 ]; then
+            printf '{"text":"%sK","alt":"on","class":"on","tooltip":"Lumière nocturne : %s K"}\n' "$temp" "$temp"
+          else
+            printf '{"text":"","alt":"off","class":"off","tooltip":"Lumière nocturne désactivée"}\n'
+          fi
+          ;;
+        toggle)
+          if [ -n "$temp" ] && [ "$temp" -lt 6000 ]; then
+            hyprctl hyprsunset identity
+          else
+            hyprctl hyprsunset temperature "$manual"
+          fi
+          ;;
+      esac
+    '';
+  };
+
 in
 {
   # Hyprland : le fichier Lua est dans le dépôt et lié par Nix.
@@ -272,6 +302,20 @@ in
   xdg.configFile."matugen/templates/waybar.css".source = ../config/matugen/templates/waybar.css;
   xdg.configFile."matugen/templates/rofi.rasi".source = ../config/matugen/templates/rofi.rasi;
 
+  # Lumière nocturne : hyprsunset applique des profils horaires (identité le jour, plus chaud le soir).
+  # Le bouton de la barre (night-light toggle) force un filtre manuel jusqu'au prochain profil.
+  services.hyprsunset = {
+    enable = true;
+    settings = {
+      max-gamma = 150;
+      profile = [
+        { time = "7:30"; identity = true; }
+        { time = "20:00"; temperature = 4000; }
+        { time = "22:30"; temperature = 3000; }
+      ];
+    };
+  };
+
   # Verrouillage et veille : hyprlock verrouille, hypridle éteint l'écran puis verrouille.
   programs.hyprlock.enable = true;
 
@@ -308,6 +352,8 @@ in
     calendarPopup
     calendarRofi
     hwMonitor
+    nightLight
+    pkgs.playerctl
     rofi
     pkgs.awww
     pkgs.wf-recorder
