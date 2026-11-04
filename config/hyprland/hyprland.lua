@@ -122,6 +122,23 @@ hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
 hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
 
 -- ##########
+-- Multimédia (volume, micro, lecture) avec OSD via volume-ctl
+-- ##########
+
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volume-ctl up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volume-ctl down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volume-ctl mute"), { locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("volume-ctl mic-mute"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- Secours pour un clavier sans touches multimédia.
+hl.bind("SUPER + F10", hl.dsp.exec_cmd("volume-ctl mute"))
+hl.bind("SUPER + F11", hl.dsp.exec_cmd("volume-ctl down"), { repeating = true })
+hl.bind("SUPER + F12", hl.dsp.exec_cmd("volume-ctl up"), { repeating = true })
+
+-- ##########
 -- Système
 -- ##########
 

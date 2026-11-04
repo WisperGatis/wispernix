@@ -282,6 +282,48 @@ let
     '';
   };
 
+  # Volume et micro au clavier : règle le niveau puis affiche un petit OSD (notification swaync
+  # qui se remplace d'elle-même, avec barre de progression).
+  volumeCtl = pkgs.writeShellApplication {
+    name = "volume-ctl";
+    runtimeInputs = [ pkgs.wireplumber pkgs.libnotify pkgs.coreutils pkgs.gawk ];
+    text = ''
+      action=''${1:-up}
+      case "$action" in
+        up|down|mute) target=@DEFAULT_AUDIO_SINK@; kind=volume ;;
+        mic-up|mic-down|mic-mute) target=@DEFAULT_AUDIO_SOURCE@; kind=micro ;;
+        *) exit 1 ;;
+      esac
+      case "$action" in
+        up|mic-up) wpctl set-mute "$target" 0; wpctl set-volume -l 1 "$target" 5%+ ;;
+        down|mic-down) wpctl set-volume "$target" 5%- ;;
+        mute|mic-mute) wpctl set-mute "$target" toggle ;;
+      esac
+
+      # Sortie de wpctl : "Volume: 0.45" ou "Volume: 0.45 [MUTED]".
+      info=$(wpctl get-volume "$target")
+      percent=$(printf '%s\n' "$info" | awk '{ printf "%d", $2 * 100 + 0.5 }')
+      case "$info" in *MUTED*) muted=1 ;; *) muted=0 ;; esac
+
+      if [ "$kind" = volume ]; then
+        title="Volume"
+        if [ "$muted" = 1 ]; then icon=audio-volume-muted
+        elif [ "$percent" -lt 34 ]; then icon=audio-volume-low
+        elif [ "$percent" -lt 67 ]; then icon=audio-volume-medium
+        else icon=audio-volume-high
+        fi
+      else
+        title="Micro"
+        if [ "$muted" = 1 ]; then icon=microphone-sensitivity-muted; else icon=microphone-sensitivity-high; fi
+      fi
+
+      if [ "$muted" = 1 ]; then body="Muet"; value=0; else body="$percent %"; value=$percent; fi
+      notify-send -a osd -t 1500 -u low -i "$icon" \
+        -h "string:x-canonical-private-synchronous:osd-$kind" \
+        -h "int:value:$value" "$title" "$body"
+    '';
+  };
+
 in
 {
   # Hyprland : le fichier Lua est dans le dépôt et lié par Nix.
@@ -400,6 +442,7 @@ in
     calendarRofi
     hwMonitor
     nightLight
+    volumeCtl
     pkgs.playerctl
     rofi
     pkgs.awww
