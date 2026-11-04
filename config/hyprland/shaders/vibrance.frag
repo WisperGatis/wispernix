@@ -1,4 +1,5 @@
 #version 300 es
+// 이름: 선명한 색감
 // Hausse de saturation légère appliquée à tout l'écran.
 // 1.0 = inchangé ; au-dessus, les couleurs ressortent davantage.
 precision highp float;

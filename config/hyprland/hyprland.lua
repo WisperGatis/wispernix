@@ -19,6 +19,16 @@ hl.monitor({ output = right, mode = "1920x1080@143.992", position = "1920x0", sc
 -- Apparence / gaps / bordures / flou
 -- ##################################
 
+-- Shader d'écran : celui choisi avec shader-menu (SUPER + c), sinon la saturation par défaut.
+-- Fichier vide = shader désactivé.
+local shader = os.getenv("HOME") .. "/.config/hypr/shaders/vibrance.frag"
+local state = io.open((os.getenv("XDG_STATE_HOME") or (os.getenv("HOME") .. "/.local/state")) .. "/hypr-shader", "r")
+if state then
+  local saved = state:read("*l")
+  state:close()
+  if saved then shader = saved end
+end
+
 hl.config({
   general = {
     gaps_in = 5,
@@ -27,8 +37,8 @@ hl.config({
   },
   decoration = {
     rounding = 0,
-    -- Shader d'écran : légère hausse de saturation (config/hyprland/shaders/vibrance.frag).
-    screen_shader = os.getenv("HOME") .. "/.config/hypr/shaders/vibrance.frag",
+    -- Shaders dans config/hyprland/shaders/ (liés dans ~/.config/hypr/shaders).
+    screen_shader = shader,
     active_opacity = 0.92,
     inactive_opacity = 0.75,
     blur = {
@@ -117,6 +127,8 @@ hl.bind("SUPER + Print", hl.dsp.exec_cmd("screenshot full"))
 hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("screenshot menu"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
+hl.bind("SUPER + c", hl.dsp.exec_cmd("shader-menu"))
+hl.bind("SUPER + SHIFT + c", hl.dsp.exec_cmd("shader-menu off"))
 hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
 
 -- ##########
