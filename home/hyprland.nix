@@ -239,6 +239,29 @@ let
     '';
   };
 
+  # SwayNotificationCenter réservé à Hyprland. Le paquet installe un service D-Bus qui revendique
+  # org.freedesktop.Notifications : dans le profil, il pourrait démarrer dans les autres sessions
+  # (Noctalia, Umbriel, niri...) et leur voler le démon de notifications. On n'installe donc que deux
+  # wrappers (pas de fichiers D-Bus ni systemd) ; swaync refuse de démarrer hors de Hyprland.
+  swayncDaemon = pkgs.writeShellApplication {
+    name = "swaync";
+    text = ''
+      if [ -z "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+        echo "swaync : réservé à la session Hyprland (les autres sessions utilisent Noctalia)." >&2
+        exit 0
+      fi
+      # Config et style par défaut du paquet (le paquet n'est plus dans le profil).
+      export XDG_CONFIG_DIRS="${pkgs.swaynotificationcenter}/etc/xdg:''${XDG_CONFIG_DIRS:-/etc/xdg}"
+      exec ${pkgs.swaynotificationcenter}/bin/swaync "$@"
+    '';
+  };
+  swayncClient = pkgs.writeShellApplication {
+    name = "swaync-client";
+    text = ''
+      exec ${pkgs.swaynotificationcenter}/bin/swaync-client "$@"
+    '';
+  };
+
   # Volume et micro au clavier : règle le niveau puis affiche un petit OSD (notification swaync
   # qui se remplace d'elle-même, avec barre de progression).
   volumeCtl = pkgs.writeShellApplication {
@@ -404,7 +427,8 @@ in
     pkgs.libnotify
     pkgs.matugen
     pkgs.hyprcursor
-    pkgs.swaynotificationcenter
+    swayncDaemon
+    swayncClient
     pkgs.networkmanagerapplet
     pkgs.grim
     pkgs.slurp
