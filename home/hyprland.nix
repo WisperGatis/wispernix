@@ -239,6 +239,29 @@ let
     '';
   };
 
+  # SwayNotificationCenter réservé à Hyprland. Le paquet installe un service D-Bus qui revendique
+  # org.freedesktop.Notifications : dans le profil, il pourrait démarrer dans les autres sessions
+  # (Noctalia, Umbriel, niri...) et leur voler le démon de notifications. On n'installe donc que deux
+  # wrappers (pas de fichiers D-Bus ni systemd) ; swaync refuse de démarrer hors de Hyprland.
+  swayncDaemon = pkgs.writeShellApplication {
+    name = "swaync";
+    text = ''
+      if [ -z "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+        echo "swaync : réservé à la session Hyprland (les autres sessions utilisent Noctalia)." >&2
+        exit 0
+      fi
+      # Config et style par défaut du paquet (le paquet n'est plus dans le profil).
+      export XDG_CONFIG_DIRS="${pkgs.swaynotificationcenter}/etc/xdg:''${XDG_CONFIG_DIRS:-/etc/xdg}"
+      exec ${pkgs.swaynotificationcenter}/bin/swaync "$@"
+    '';
+  };
+  swayncClient = pkgs.writeShellApplication {
+    name = "swaync-client";
+    text = ''
+      exec ${pkgs.swaynotificationcenter}/bin/swaync-client "$@"
+    '';
+  };
+
   # Volume et micro au clavier : règle le niveau puis affiche un petit OSD (notification swaync
   # qui se remplace d'elle-même, avec barre de progression).
   volumeCtl = pkgs.writeShellApplication {
@@ -281,8 +304,9 @@ let
     '';
   };
 
-  # Shaders d'écran : menu Rofi pour choisir un shader ou le désactiver ("off" pour couper direct).
+  # Shaders d'écran (Hyprland) : menu Rofi pour choisir un shader ou le désactiver ("off" pour couper direct).
   # Le choix est mémorisé (hypr-shader) et relu par hyprland.lua au démarrage et au rechargement.
+  # Sous Umbriel, pas de menu : les raccourcis de config/umbriel/config.toml pilotent la pool d'effets.
   shaderMenu = pkgs.writeShellApplication {
     name = "shader-menu";
     runtimeInputs = [ rofi pkgs.unstable.hyprland pkgs.coreutils pkgs.gnused pkgs.gawk ];
@@ -403,7 +427,8 @@ in
     pkgs.libnotify
     pkgs.matugen
     pkgs.hyprcursor
-    pkgs.swaynotificationcenter
+    swayncDaemon
+    swayncClient
     pkgs.networkmanagerapplet
     pkgs.grim
     pkgs.slurp

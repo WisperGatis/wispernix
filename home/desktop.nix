@@ -2,6 +2,8 @@
 {
   #Umbriel enableFishIntegration
   xdg.configFile."umbriel/config.toml".source = ../config/umbriel/config.toml;
+  # Shaders d'écran d'Umbriel (presets déclarés dans config.toml).
+  xdg.configFile."umbriel/effects" = { source = ../config/umbriel/effects; recursive = true; };
 
   # dux imports (previously dank-material-shell.)
   #imports = [ inputs.dms.homeModules.dank-material-shell ];
