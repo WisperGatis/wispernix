@@ -24,10 +24,24 @@ window#waybar {
   border-radius: 0;
 }
 
+/* Tooltips : même look que Rofi (fond surface, bordure primaire) */
+tooltip {
+  background: alpha(@surface, 0.96);
+  border: 2px solid @primary;
+  border-radius: 0;
+}
+
+tooltip label {
+  color: @on_surface;
+}
+
 /* Modules communs */
 #custom-nix,
 #custom-record,
 #custom-wallpaper,
+#custom-cpu,
+#custom-memory,
+#custom-gpu,
 #clock,
 #tray {
   padding: 0 10px;
@@ -92,6 +106,75 @@ window#waybar {
 
 #pulseaudio.muted {
   color: @error;
+}
+
+/* Micro : rouge uniquement quand le micro est coupé (et pas quand la sortie l'est) */
+#pulseaudio.mic {
+  color: @on_surface;
+}
+
+#pulseaudio.mic.source-muted {
+  color: @error;
+}
+
+/* CPU / RAM / GPU : couleur selon l'état calculé par hw-monitor */
+#custom-cpu.warning,
+#custom-memory.warning,
+#custom-gpu.warning {
+  color: @tertiary;
+}
+
+#custom-cpu.critical,
+#custom-memory.critical,
+#custom-gpu.critical {
+  color: @error;
+  font-weight: bold;
+}
+
+/* Lecteur de musique : accent quand ça joue, atténué en pause */
+#mpris {
+  padding: 0 10px;
+  color: @on_surface;
+}
+
+#mpris.playing {
+  color: @primary;
+}
+
+#mpris.paused {
+  color: alpha(@on_surface, 0.6);
+}
+
+/* Survols : fond léger et transition douce */
+#clock,
+#mpris,
+#custom-cpu,
+#custom-memory,
+#custom-gpu,
+#pulseaudio,
+#custom-notification,
+#idle_inhibitor,
+#power-profiles-daemon,
+#network,
+#workspaces button {
+  transition: background 0.2s;
+}
+
+#clock:hover,
+#mpris:hover,
+#custom-cpu:hover,
+#custom-memory:hover,
+#custom-gpu:hover,
+#pulseaudio:hover,
+#custom-notification:hover,
+#idle_inhibitor:hover,
+#power-profiles-daemon:hover,
+#network:hover {
+  background: alpha(@on_surface, 0.1);
+}
+
+#idle_inhibitor.activated {
+  color: @tertiary;
 }
 
 /* Enregistrement : rouge quand actif */
