@@ -168,6 +168,49 @@ scale = 1.0
 vrr = "always"
 workspaces = 10
 
+###########################
+# Effets d'écran (shaders)
+###########################
+
+# Shaders GLSL de config/umbriel/effects/ (liés dans ~/.config/umbriel/effects/).
+# Choix en direct : shader-menu (Mod+Alt+C) ou `umbriel msg effect-screen-set <nom>`.
+# Même saturation par défaut que sous Hyprland ; Mod+Alt+Shift+C coupe / remet l'effet.
+[effects]
+screen = "vibrance"
+
+[effects.preset.vibrance]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/vibrance.glsl"
+
+[effects.preset.grayscale]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/grayscale.glsl"
+
+[effects.preset.sepia]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/sepia.glsl"
+
+[effects.preset.invert]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/invert.glsl"
+
+[effects.preset.contrast]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/contrast.glsl"
+
+[effects.preset.vignette]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/vignette.glsl"
+
+[effects.preset.crt]
+kind = "screen"
+shader = "/home/wisp/.config/umbriel/effects/crt.glsl"
+
+[effects.pool.ecran]
+kind = "screen"
+choose = ["vibrance", "grayscale", "sepia", "invert", "contrast", "vignette", "crt"]
+selection = "round_robin"
+
 #############
 # Keybinds
 #############
@@ -187,6 +230,10 @@ workspaces = 10
 "Mod+Alt+O"            = "spawn dms ipc call settings toggle"
 "Mod+Alt+V"            = "spawn dms ipc call launcher clipboard"
 "Mod+Alt+Shift+Escape" = "spawn dms ipc call sessionMenu toggle"
+
+# --- Shaders d'écran ---
+"Mod+Alt+C"       = "spawn shader-menu"
+"Mod+Alt+Shift+C" = "effect-screen-toggle"
 
 # --- Screenshot / recorder ---
 "Print"       = "spawn noctalia msg screenshot-region"

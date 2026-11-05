@@ -282,27 +282,46 @@ let
   };
 
   # Shaders d'écran : menu Rofi pour choisir un shader ou le désactiver ("off" pour couper direct).
-  # Le choix est mémorisé (hypr-shader) et relu par hyprland.lua au démarrage et au rechargement.
+  # Hyprland : le choix est mémorisé (hypr-shader) et relu par hyprland.lua au démarrage.
+  # Umbriel : presets déclarés dans config/umbriel/config.toml, choisis avec `umbriel msg effect-screen-set`
+  # (le choix n'est pas mémorisé, la config donne le shader par défaut).
   shaderMenu = pkgs.writeShellApplication {
     name = "shader-menu";
-    runtimeInputs = [ rofi pkgs.unstable.hyprland pkgs.coreutils pkgs.gnused pkgs.gawk ];
+    runtimeInputs = [ rofi pkgs.unstable.hyprland pkgs.unstable.umbriel pkgs.coreutils pkgs.gnused pkgs.gawk ];
     text = ''
-      dir="$HOME/.config/hypr/shaders"
+      # Hyprland ou Umbriel : même menu, commande différente.
+      if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+        compositor=hyprland
+        dir="$HOME/.config/hypr/shaders"
+        ext=frag
+      else
+        compositor=umbriel
+        dir="$HOME/.config/umbriel/effects"
+        ext=glsl
+      fi
       state="''${XDG_STATE_HOME:-$HOME/.local/state}/hypr-shader"
+      # $1 = chemin du shader, ou vide pour désactiver.
       apply() {
-        hyprctl dispatch "hl.config({ decoration = { screen_shader = \"$1\" } })"
-        mkdir -p "$(dirname "$state")"
-        printf '%s\n' "$1" > "$state"
+        if [ "$compositor" = hyprland ]; then
+          hyprctl dispatch "hl.config({ decoration = { screen_shader = \"$1\" } })"
+          mkdir -p "$(dirname "$state")"
+          printf '%s\n' "$1" > "$state"
+        elif [ -z "$1" ]; then
+          umbriel msg effect-screen-set off
+        else
+          # Le nom du preset Umbriel est le nom du fichier sans extension.
+          umbriel msg effect-screen-set "$(basename "$1" .glsl)"
+        fi
       }
       if [ "''${1:-menu}" = off ]; then
         apply ""
         exit 0
       fi
       # Chaque shader porte son nom dans une ligne "// 이름: ...".
-      list=$(for f in "$dir"/*.frag; do
+      list=$(for f in "$dir"/*."$ext"; do
         [ -e "$f" ] || continue
         label=$(sed -n 's|^// 이름: *||p' "$f" | head -n 1)
-        printf '%s\t%s\n' "''${label:-$(basename "$f" .frag)}" "$f"
+        printf '%s\t%s\n' "''${label:-$(basename "$f" ".$ext")}" "$f"
       done)
       choice=$( { printf '끄기 (비활성화)\n'; printf '%s\n' "$list" | cut -f1; } \
         | rofi -dmenu -p "셰이더" -theme ${rofiTheme}) || exit 0
