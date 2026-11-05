@@ -1,5 +1,5 @@
-// 이름: 선명한 색감
-// 채도를 살짝 높입니다 (1.0 = 원본).
+// nom: Couleurs vives
+// Augmente légèrement la saturation (1.0 = image d'origine).
 
 const float saturation = 1.15;
 

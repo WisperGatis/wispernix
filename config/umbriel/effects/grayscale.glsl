@@ -1,5 +1,5 @@
-// 이름: 흑백
-// 화면 전체를 흑백으로 표시합니다.
+// nom: Noir et blanc
+// Affiche tout l'écran en niveaux de gris.
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);

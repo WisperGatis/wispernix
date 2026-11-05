@@ -1,5 +1,5 @@
-// 이름: 고대비
-// 대비를 높이고 밝기는 그대로 둡니다.
+// nom: Contraste élevé
+// Augmente le contraste sans changer la luminosité.
 
 const float contrast = 1.25;
 

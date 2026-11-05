@@ -1,5 +1,5 @@
-// 이름: 세피아
-// 따뜻한 세피아 톤.
+// nom: Sépia
+// Teinte sépia chaude.
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);

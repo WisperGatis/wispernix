@@ -1,5 +1,5 @@
-// 이름: 비네트
-// 가장자리를 어둡게 해서 중앙에 시선을 모읍니다.
+// nom: Vignette
+// Assombrit les bords pour attirer l'œil au centre.
 
 const float strength = 0.45;
 

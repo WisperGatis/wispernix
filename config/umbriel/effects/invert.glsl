@@ -1,5 +1,5 @@
-// 이름: 색상 반전
-// 색상을 반전합니다 (네거티브).
+// nom: Négatif
+// Inverse les couleurs.
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);

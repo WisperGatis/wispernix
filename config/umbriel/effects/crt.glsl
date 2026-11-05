@@ -1,5 +1,5 @@
-// 이름: CRT 스캔라인
-// 옛날 CRT 느낌: 가로 줄무늬와 약한 비네트 (화면 높이에 맞춰 계산).
+// nom: CRT scanlines
+// Effet vieux CRT : lignes horizontales et légère vignette (calculé selon la hauteur de l'écran).
 
 const float intensity = 0.18;
 

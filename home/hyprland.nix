@@ -294,10 +294,12 @@ let
         compositor=hyprland
         dir="$HOME/.config/hypr/shaders"
         ext=frag
+        key="이름"; prompt="셰이더"; off="끄기 (비활성화)"
       else
         compositor=umbriel
         dir="$HOME/.config/umbriel/effects"
         ext=glsl
+        key="nom"; prompt="Shaders"; off="Désactiver"
       fi
       state="''${XDG_STATE_HOME:-$HOME/.local/state}/hypr-shader"
       # $1 = chemin du shader, ou vide pour désactiver.
@@ -317,15 +319,15 @@ let
         apply ""
         exit 0
       fi
-      # Chaque shader porte son nom dans une ligne "// 이름: ...".
+      # Chaque shader porte son nom dans une ligne "// 이름: ..." (Hyprland) ou "// nom: ..." (Umbriel).
       list=$(for f in "$dir"/*."$ext"; do
         [ -e "$f" ] || continue
-        label=$(sed -n 's|^// 이름: *||p' "$f" | head -n 1)
+        label=$(sed -n "s|^// $key: *||p" "$f" | head -n 1)
         printf '%s\t%s\n' "''${label:-$(basename "$f" ".$ext")}" "$f"
       done)
-      choice=$( { printf '끄기 (비활성화)\n'; printf '%s\n' "$list" | cut -f1; } \
-        | rofi -dmenu -p "셰이더" -theme ${rofiTheme}) || exit 0
-      if [ "$choice" = "끄기 (비활성화)" ]; then
+      choice=$( { printf '%s\n' "$off"; printf '%s\n' "$list" | cut -f1; } \
+        | rofi -dmenu -p "$prompt" -theme ${rofiTheme}) || exit 0
+      if [ "$choice" = "$off" ]; then
         apply ""
       else
         path=$(printf '%s\n' "$list" | awk -F'\t' -v c="$choice" '$1 == c { print $2; exit }')
