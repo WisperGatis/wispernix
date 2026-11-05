@@ -28,6 +28,7 @@ let
     ellen = mkCursorTheme "ellen";
     Rio = mkCursorTheme "Rio";
     Cinderella = mkCursorTheme "Cinderella";
+    jalter = mkCursorTheme "jalter";
   };
 
   activeCursorTheme = "remielle_black";
