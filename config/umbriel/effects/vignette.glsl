@@ -1,5 +1,5 @@
-// nom: Vignette
-// Assombrit les bords pour attirer l'œil au centre.
+// name: Vignette
+// Darkens the edges to draw the eye to the center.
 
 const float strength = 0.45;
 

@@ -1,5 +1,5 @@
-// nom: Sépia
-// Teinte sépia chaude.
+// name: Sepia
+// Warm sepia tone.
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);

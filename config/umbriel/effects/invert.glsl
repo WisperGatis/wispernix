@@ -1,5 +1,5 @@
-// nom: Négatif
-// Inverse les couleurs.
+// name: Invert
+// Inverts all colors (negative).
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);

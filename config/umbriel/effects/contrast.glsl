@@ -1,5 +1,5 @@
-// nom: Contraste élevé
-// Augmente le contraste sans changer la luminosité.
+// name: High contrast
+// Raises contrast and keeps brightness.
 
 const float contrast = 1.25;
 

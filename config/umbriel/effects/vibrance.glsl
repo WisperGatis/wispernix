@@ -1,5 +1,5 @@
-// nom: Couleurs vives
-// Augmente légèrement la saturation (1.0 = image d'origine).
+// name: Vivid colors
+// Slightly raises saturation (1.0 = original).
 
 const float saturation = 1.15;
 

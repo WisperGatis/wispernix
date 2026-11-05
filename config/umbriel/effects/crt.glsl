@@ -1,5 +1,5 @@
-// nom: CRT scanlines
-// Effet vieux CRT : lignes horizontales et légère vignette (calculé selon la hauteur de l'écran).
+// name: CRT scanlines
+// Old CRT look: horizontal lines and a light vignette (scaled to the screen height).
 
 const float intensity = 0.18;
 

@@ -281,53 +281,33 @@ let
     '';
   };
 
-  # Shaders d'écran : menu Rofi pour choisir un shader ou le désactiver ("off" pour couper direct).
-  # Hyprland : le choix est mémorisé (hypr-shader) et relu par hyprland.lua au démarrage.
-  # Umbriel : presets déclarés dans config/umbriel/config.toml, choisis avec `umbriel msg effect-screen-set`
-  # (le choix n'est pas mémorisé, la config donne le shader par défaut).
+  # Shaders d'écran (Hyprland) : menu Rofi pour choisir un shader ou le désactiver ("off" pour couper direct).
+  # Le choix est mémorisé (hypr-shader) et relu par hyprland.lua au démarrage et au rechargement.
+  # Sous Umbriel, pas de menu : les raccourcis de config/umbriel/config.toml pilotent la pool d'effets.
   shaderMenu = pkgs.writeShellApplication {
     name = "shader-menu";
-    runtimeInputs = [ rofi pkgs.unstable.hyprland pkgs.unstable.umbriel pkgs.coreutils pkgs.gnused pkgs.gawk ];
+    runtimeInputs = [ rofi pkgs.unstable.hyprland pkgs.coreutils pkgs.gnused pkgs.gawk ];
     text = ''
-      # Hyprland ou Umbriel : même menu, commande différente.
-      if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
-        compositor=hyprland
-        dir="$HOME/.config/hypr/shaders"
-        ext=frag
-        key="이름"; prompt="셰이더"; off="끄기 (비활성화)"
-      else
-        compositor=umbriel
-        dir="$HOME/.config/umbriel/effects"
-        ext=glsl
-        key="nom"; prompt="Shaders"; off="Désactiver"
-      fi
+      dir="$HOME/.config/hypr/shaders"
       state="''${XDG_STATE_HOME:-$HOME/.local/state}/hypr-shader"
-      # $1 = chemin du shader, ou vide pour désactiver.
       apply() {
-        if [ "$compositor" = hyprland ]; then
-          hyprctl dispatch "hl.config({ decoration = { screen_shader = \"$1\" } })"
-          mkdir -p "$(dirname "$state")"
-          printf '%s\n' "$1" > "$state"
-        elif [ -z "$1" ]; then
-          umbriel msg effect-screen-set off
-        else
-          # Le nom du preset Umbriel est le nom du fichier sans extension.
-          umbriel msg effect-screen-set "$(basename "$1" .glsl)"
-        fi
+        hyprctl dispatch "hl.config({ decoration = { screen_shader = \"$1\" } })"
+        mkdir -p "$(dirname "$state")"
+        printf '%s\n' "$1" > "$state"
       }
       if [ "''${1:-menu}" = off ]; then
         apply ""
         exit 0
       fi
-      # Chaque shader porte son nom dans une ligne "// 이름: ..." (Hyprland) ou "// nom: ..." (Umbriel).
-      list=$(for f in "$dir"/*."$ext"; do
+      # Chaque shader porte son nom dans une ligne "// 이름: ...".
+      list=$(for f in "$dir"/*.frag; do
         [ -e "$f" ] || continue
-        label=$(sed -n "s|^// $key: *||p" "$f" | head -n 1)
-        printf '%s\t%s\n' "''${label:-$(basename "$f" ".$ext")}" "$f"
+        label=$(sed -n 's|^// 이름: *||p' "$f" | head -n 1)
+        printf '%s\t%s\n' "''${label:-$(basename "$f" .frag)}" "$f"
       done)
-      choice=$( { printf '%s\n' "$off"; printf '%s\n' "$list" | cut -f1; } \
-        | rofi -dmenu -p "$prompt" -theme ${rofiTheme}) || exit 0
-      if [ "$choice" = "$off" ]; then
+      choice=$( { printf '끄기 (비활성화)\n'; printf '%s\n' "$list" | cut -f1; } \
+        | rofi -dmenu -p "셰이더" -theme ${rofiTheme}) || exit 0
+      if [ "$choice" = "끄기 (비활성화)" ]; then
         apply ""
       else
         path=$(printf '%s\n' "$list" | awk -F'\t' -v c="$choice" '$1 == c { print $2; exit }')

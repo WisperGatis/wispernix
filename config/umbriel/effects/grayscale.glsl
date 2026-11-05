@@ -1,5 +1,5 @@
-// nom: Noir et blanc
-// Affiche tout l'écran en niveaux de gris.
+// name: Grayscale
+// Shows the whole screen in black and white.
 
 vec4 screen(vec2 uv) {
     vec4 c = umbriel_sample(uv);
