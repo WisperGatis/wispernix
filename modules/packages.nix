@@ -48,7 +48,7 @@
     sublime4
     unstable.vscodium
     unstable.zed-editor
-    vscode
+    #vscode
     code-cursor
     jetbrains-toolbox
     vis
@@ -187,7 +187,7 @@
 
     # -- Browsers ----------------------------------------------------
     #pkgs.firefox_nightly
-    brave
+    #brave
     vivaldi
     google-chrome
     unstable.brave-origin
