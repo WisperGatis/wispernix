@@ -316,9 +316,9 @@ selection = "round_robin"
 "Mod+F"       = "window-toggle-maximize"      # niri: maximize-column
 "Mod+Shift+F" = "window-toggle-fullscreen"
 
-# --- Workspace layout: scrolling <-> master (tiling) ---
-# Mango's "tile" is Umbriel's "master". Other modes (dwindle, stacking) are left out of the cycle.
-"Mod+L" = "workspace-set-layout toggle scrolling master"
+# --- Global layout: scrolling <-> master (tiling) ---
+# Default stays scrolling. Each press flips every workspace (script from home/desktop.nix).
+"Mod+L" = "spawn umbriel-layout-toggle-all"
 
 # --- Columns (niri) ---
 "Mod+BracketLeft"  = "window-consume-or-expel-left"
