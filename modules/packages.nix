@@ -190,7 +190,7 @@
     #brave
     vivaldi
     google-chrome
-    unstable.brave-origin
+    #unstable.brave-origin
     unstable.librewolf
     unstable.tor-browser
     floorp-bin
