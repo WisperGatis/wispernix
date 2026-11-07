@@ -30,6 +30,7 @@ let
     Cinderella = mkCursorTheme "Cinderella";
     jalter = mkCursorTheme "jalter";
     jalter0 = mkCursorTheme "jalter0";
+    evernight = mkCursorTheme "evernight";
   };
 
   activeCursorTheme = "remielle_black";
