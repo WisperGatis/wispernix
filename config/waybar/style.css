@@ -1,5 +1,4 @@
-/* Pastilles flottantes sur fond transparent, inspirées de la barre de référence.
-   Les accents principaux suivent toujours les couleurs Matugen. */
+/* Fond Rosé Pine et pastilles flottantes ; les accents suivent aussi Matugen. */
 @import url("colors.css");
 
 * {
@@ -12,12 +11,12 @@
 }
 
 window#waybar {
-  background: transparent;
+  background: alpha(#191724, 0.88);
   color: @on_surface;
 }
 
 tooltip {
-  background: #10151a;
+  background: #1f1d2e;
   border: 1px solid @primary;
   border-radius: 10px;
 }
@@ -31,11 +30,11 @@ tooltip label {
 #custom-record, #window, #workspaces, #mpris, #pulseaudio,
 #custom-cpu, #custom-memory, #custom-gpu, #network, #bluetooth,
 #power-profiles-daemon, #custom-wallpaper, #tray, #clock, #custom-power {
-  background: alpha(#080c10, 0.94);
-  border: 1px solid alpha(#64727b, 0.5);
+  background: alpha(#1f1d2e, 0.96);
+  border: 1px solid alpha(#6e6a86, 0.6);
   border-radius: 14px;
   padding: 0 8px;
-  margin: 0;
+  margin: 2px 0;
 }
 
 #custom-nix { color: #57c7f4; font-size: 15px; padding: 0 8px; }
@@ -82,5 +81,5 @@ tooltip label {
 #custom-record:hover, #mpris:hover, #pulseaudio:hover, #custom-cpu:hover,
 #custom-memory:hover, #custom-gpu:hover, #network:hover, #bluetooth:hover,
 #power-profiles-daemon:hover, #custom-wallpaper:hover, #clock:hover, #custom-power:hover {
-  background: alpha(#26343c, 0.95);
+  background: #403d52;
 }

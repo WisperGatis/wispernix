@@ -23,10 +23,11 @@ in
       position = "top";
       height = 26;
       spacing = 4;
-      # Fond transparent : chaque module forme une petite pastille flottante.
+      # Fond Rosé Pine et modules en pastilles, centrés verticalement.
       margin-top = 4;
       margin-left = 8;
       margin-right = 8;
+      fixed-center = true;
 
       modules-left = [ "custom/nix" "custom/notification" "idle_inhibitor" "hyprland/language" "custom/record" "hyprland/window" ];
       modules-center = [ "hyprland/workspaces" ];
