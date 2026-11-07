@@ -21,16 +21,28 @@ in
     settings.mainBar = {
       layer = "top";
       position = "top";
-      height = 28;
-      spacing = 0;
-      # Barre pleine largeur, collée au bord supérieur. Affichée sur chaque écran.
-      margin-top = 0;
-      margin-left = 0;
-      margin-right = 0;
+      height = 26;
+      spacing = 4;
+      # Fond transparent : chaque module forme une petite pastille flottante.
+      margin-top = 4;
+      margin-left = 8;
+      margin-right = 8;
 
-      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "custom/cpu" "custom/memory" "custom/gpu" ];
-      modules-center = [ "clock" "mpris" "custom/wallpaper" ];
-      modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio#mic" "pulseaudio" "bluetooth" "tray" ];
+      modules-left = [ "custom/nix" "custom/notification" "idle_inhibitor" "hyprland/language" "custom/record" "hyprland/window" ];
+      modules-center = [ "hyprland/workspaces" ];
+      modules-right = [ "mpris" "pulseaudio" "custom/cpu" "custom/memory" "custom/gpu" "network" "pulseaudio#mic" "bluetooth" "power-profiles-daemon" "custom/wallpaper" "tray" "clock" "custom/power" ];
+
+      "hyprland/window" = {
+        format = "{title}";
+        max-length = 38;
+        separate-outputs = true;
+      };
+
+      "custom/power" = {
+        format = "⏻";
+        tooltip-format = "Menu de session";
+        on-click = "session-menu";
+      };
 
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
@@ -97,7 +109,8 @@ in
       # Clic gauche : date complète ; clic droit : calendrier interactif (calendar-popup).
       # Le tooltip est en Pango : les couleurs sont en dur (Catppuccin Mocha), pas celles de Matugen.
       clock = {
-        format = "{:%H:%M}";
+        format = "◷ {:%H:%M:%S}";
+        interval = 1;
         format-alt = "{:%A %d %B %Y}";
         tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
