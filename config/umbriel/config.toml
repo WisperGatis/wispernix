@@ -151,19 +151,27 @@ name = "spotify"
 spawn_when_empty = "spotify"
 
 [[window_rule]]
+# Floating + focused, so a revealed pad lifts above fullscreen games (Umbriel: focusing a
+# floating window reveals it above fullscreen). default_pinned is kept as a fallback.
+[[window_rule]]
 match.app_id = "^scratchpad-btop$"
 default_scratchpad = "btop"
-# Best effort, not verified: pinned windows sit above normal windows, to try to stay over fullscreen.
+default_floating = true
+default_focused = true
 default_pinned = true
 
 [[window_rule]]
 match.app_id = "^scratchpad-term$"
 default_scratchpad = "term"
+default_floating = true
+default_focused = true
 default_pinned = true
 
 [[window_rule]]
 match.app_id = "^[Ss]potify$"
 default_scratchpad = "spotify"
+default_floating = true
+default_focused = true
 default_pinned = true
 
 ##############
