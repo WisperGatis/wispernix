@@ -108,6 +108,43 @@ hl.bind("SUPER + f", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + SHIFT + a", hl.dsp.focus({ monitor = "l" }))
 hl.bind("SUPER + SHIFT + d", hl.dsp.focus({ monitor = "r" }))
 
+-- Scratchpads: mêmes applications et raccourcis que sous Umbriel.
+local scratchpads = {
+  btop = { class = "^scratchpad-btop$", command = "kitty --class scratchpad-btop -e btop" },
+  term = { class = "^scratchpad-term$", command = "kitty --class scratchpad-term -o initial_window_width=900 -o initial_window_height=500" },
+  spotify = { class = "^[Ss]potify$", command = "spotify" },
+}
+
+for name, pad in pairs(scratchpads) do
+  hl.window_rule({ match = { class = pad.class }, workspace = "special:" .. name, float = true })
+end
+
+local function toggle_scratchpad(name)
+  if hl.get_workspace("special:" .. name) then
+    hl.dispatch(hl.dsp.workspace.toggle_special(name))
+  else
+    hl.exec_cmd(scratchpads[name].command)
+  end
+end
+
+local function move_scratchpad(name)
+  local window = hl.get_active_window()
+  if not window then return end
+  local special = hl.get_active_special_workspace()
+  if special and special.name == "special:" .. name then
+    hl.dispatch(hl.dsp.window.move({ window = window, workspace = hl.get_active_workspace() }))
+  else
+    hl.dispatch(hl.dsp.window.move({ window = window, workspace = "special:" .. name, follow = false }))
+  end
+end
+
+hl.bind("SUPER + b", function() toggle_scratchpad("btop") end)
+hl.bind("SUPER + SHIFT + b", function() move_scratchpad("btop") end)
+hl.bind("SUPER + SHIFT + t", function() toggle_scratchpad("term") end)
+hl.bind("SUPER + CTRL + t", function() move_scratchpad("term") end)
+hl.bind("SUPER + s", function() toggle_scratchpad("spotify") end)
+hl.bind("SUPER + SHIFT + s", function() move_scratchpad("spotify") end)
+
 -- ##########
 -- Workspaces (par écran, sur l'écran focus)
 -- ##########
@@ -124,7 +161,7 @@ hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
 hl.bind("SUPER + t", hl.dsp.exec_cmd("kitty || alacritty || ghostty || foot"))
 hl.bind("Print", hl.dsp.exec_cmd("screenshot region"))
 hl.bind("SUPER + Print", hl.dsp.exec_cmd("screenshot full"))
-hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("screenshot menu"))
+hl.bind("SUPER + CTRL + Print", hl.dsp.exec_cmd("screenshot menu"))
 hl.bind("SUPER + SHIFT + r", hl.dsp.exec_cmd("screen-record toggle"))
 hl.bind("SUPER + w", hl.dsp.exec_cmd("wallpaper-menu"))
 hl.bind("SUPER + c", hl.dsp.exec_cmd("shader-menu"))
