@@ -1,4 +1,4 @@
-/* Fond Rosé Pine et pastilles flottantes ; les accents suivent aussi Matugen. */
+/* Barre sombre et blocs colorés inspirés de la référence. */
 @import url("colors.css");
 
 * {
@@ -11,75 +11,66 @@
 }
 
 window#waybar {
-  background: alpha(#191724, 0.88);
-  color: @on_surface;
+  background: alpha(#111820, 0.96);
+  color: #151922;
 }
 
 tooltip {
   background: #1f1d2e;
   border: 1px solid @primary;
-  border-radius: 10px;
+  border-radius: 6px;
 }
-
-tooltip label {
-  color: @on_surface;
-  padding: 5px;
-}
+tooltip label { color: @on_surface; padding: 5px; }
 
 #custom-nix, #custom-notification, #idle_inhibitor, #language,
 #custom-record, #window, #workspaces, #mpris, #pulseaudio,
 #custom-cpu, #custom-memory, #custom-gpu, #network, #bluetooth,
 #power-profiles-daemon, #custom-wallpaper, #tray, #clock, #custom-power {
-  background: alpha(#1f1d2e, 0.96);
-  border: 1px solid alpha(#6e6a86, 0.6);
-  border-radius: 14px;
+  color: #171a23;
+  border-radius: 5px;
   padding: 0 8px;
   margin: 2px 0;
 }
 
-#custom-nix { color: #57c7f4; font-size: 15px; padding: 0 8px; }
-#custom-notification { color: #ff5c62; }
-#custom-notification.dnd-notification, #custom-notification.dnd-none { color: @error; }
-#idle_inhibitor { color: #80df67; }
-#idle_inhibitor.activated { color: @tertiary; }
-#language { color: #d07bff; }
-#window { color: #e7e8e8; }
-#window.empty { background: transparent; border-color: transparent; padding: 0; }
+#custom-nix { background: #c4a55c; font-size: 16px; padding: 0 15px; }
+#custom-cpu { background: #c77a77; }
+#pulseaudio { background: #6d98b3; }
+#mpris { background: #8272a2; }
+#language { background: #ad789d; }
 
-#workspaces { padding: 0 5px; }
+#workspaces { background: #303e50; padding: 0 6px; }
 #workspaces button {
-  color: #46d4cc;
+  color: #7894b7;
   background: transparent;
-  border-radius: 10px;
   padding: 0 7px;
 }
-#workspaces button.empty { color: #68777f; }
-#workspaces button.active { color: #e77dff; background: alpha(@on_surface, 0.12); }
-#workspaces button.urgent { color: @error; }
-#workspaces button:hover { background: alpha(@on_surface, 0.15); }
+#workspaces button.active { color: #f4d151; }
+#workspaces button.urgent { color: #eb6f92; }
+#workspaces button:hover { background: alpha(#c4a7e7, 0.2); border-radius: 4px; }
 
-#mpris { color: #81de8e; }
-#mpris.paused { color: alpha(@on_surface, 0.65); }
-#pulseaudio { color: #52e5df; }
-#pulseaudio.mic { color: #ffc16b; }
-#pulseaudio.muted, #pulseaudio.mic.source-muted, #network.disconnected { color: @error; }
-#custom-cpu { color: #67caff; }
-#custom-memory { color: #d77cff; }
-#custom-gpu { color: #ffc965; }
-#network { color: #74dba9; }
-#bluetooth { color: #8fc5ff; }
-#power-profiles-daemon { color: #e9cf78; }
-#custom-wallpaper { color: @primary; }
-#clock { color: #6bd0ff; }
-#custom-power, #custom-record.recording { color: #ff656f; }
-#custom-record.idle { color: #78868c; }
+#custom-record { background: #ba8b85; }
+#custom-record.recording { background: #eb6f92; }
+#custom-gpu { background: #d0ab6b; }
+#network { background: #8fae9f; }
+#pulseaudio.mic { background: #d8aa75; }
+#bluetooth { background: #94b8c9; }
+#power-profiles-daemon { background: #d1bb79; }
+#custom-wallpaper { background: #b8a1bf; }
+#idle_inhibitor { background: #9aa8a0; }
+#tray { background: #889aa3; }
+#clock { background: #77b9bd; }
+#custom-memory { background: #b5b779; }
+#custom-notification { background: #c8a66b; }
+#custom-power { background: #c65f65; font-size: 15px; padding: 0 13px; }
 
-#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { color: @tertiary; }
-#custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical { color: @error; }
+#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { background: #f6c177; }
+#custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical,
+#pulseaudio.muted, #pulseaudio.mic.source-muted, #network.disconnected,
+#custom-notification.dnd-notification, #custom-notification.dnd-none { background: #eb6f92; }
 
 #custom-nix:hover, #custom-notification:hover, #idle_inhibitor:hover,
 #custom-record:hover, #mpris:hover, #pulseaudio:hover, #custom-cpu:hover,
 #custom-memory:hover, #custom-gpu:hover, #network:hover, #bluetooth:hover,
 #power-profiles-daemon:hover, #custom-wallpaper:hover, #clock:hover, #custom-power:hover {
-  background: #403d52;
+  box-shadow: inset 0 0 0 999px alpha(#ffffff, 0.15);
 }

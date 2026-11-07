@@ -23,15 +23,15 @@ in
       position = "top";
       height = 26;
       spacing = 4;
-      # Fond Rosé Pine et modules en pastilles, centrés verticalement.
-      margin-top = 4;
-      margin-left = 8;
-      margin-right = 8;
+      # Barre pleine largeur, avec les espaces de travail au centre de l'écran.
+      margin-top = 0;
+      margin-left = 0;
+      margin-right = 0;
       fixed-center = true;
 
-      modules-left = [ "custom/nix" "custom/notification" "idle_inhibitor" "hyprland/language" "custom/record" "hyprland/window" ];
+      modules-left = [ "custom/nix" "custom/cpu" "pulseaudio" "mpris" "hyprland/language" ];
       modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "mpris" "pulseaudio" "custom/cpu" "custom/memory" "custom/gpu" "network" "pulseaudio#mic" "bluetooth" "power-profiles-daemon" "custom/wallpaper" "tray" "clock" "custom/power" ];
+      modules-right = [ "custom/record" "custom/gpu" "network" "pulseaudio#mic" "bluetooth" "power-profiles-daemon" "custom/wallpaper" "idle_inhibitor" "tray" "clock" "custom/memory" "custom/notification" "custom/power" ];
 
       "hyprland/window" = {
         format = "{title}";
@@ -64,10 +64,15 @@ in
 
       "hyprland/workspaces" = {
         all-outputs = false;
-        format = "{name}";
+        format = "{icon}";
+        format-icons = {
+          active = "●";
+          urgent = "●";
+          default = "󰊠";
+        };
         on-click = "activate";
-        # Cinq workspaces toujours visibles ; la molette passe au précédent / suivant.
-        persistent-workspaces = { "*" = 5; };
+        # Huit icônes visibles ; la molette passe au précédent / suivant.
+        persistent-workspaces = { "*" = 8; };
         on-scroll-up = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'";
         on-scroll-down = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'";
       };
@@ -110,8 +115,8 @@ in
       # Clic gauche : date complète ; clic droit : calendrier interactif (calendar-popup).
       # Le tooltip est en Pango : les couleurs sont en dur (Catppuccin Mocha), pas celles de Matugen.
       clock = {
-        format = "◷ {:%H:%M:%S}";
-        interval = 1;
+        format = "{:%I:%M %p | %d-%b-%Y} 󰃭";
+        interval = 60;
         format-alt = "{:%A %d %B %Y}";
         tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
