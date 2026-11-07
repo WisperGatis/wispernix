@@ -1,4 +1,4 @@
-/* Barre sombre et blocs colorés inspirés de la référence. */
+/* Barre sombre et blocs pastel inspirés de Rosé Pine. */
 @import url("colors.css");
 
 * {
@@ -45,41 +45,41 @@ tooltip label { color: @on_surface; padding: 5px; }
   font-size: 20px;
   font-weight: normal;
 }
-#custom-nix { background: #c4a55c; }
-#custom-cpu { background: #c77a77; }
-#pulseaudio { background: #6d98b3; }
-#mpris { background: #8272a2; }
-#language { background: #ad789d; }
+#custom-nix { background: #f2d5a4; }
+#custom-cpu { background: #efb6b6; }
+#pulseaudio { background: #a8cce1; }
+#mpris { background: #c8b9df; }
+#language { background: #e1b9d1; }
 
-#workspaces { background: #303e50; padding: 0 6px; }
+#workspaces { background: #353449; padding: 0 6px; }
 #workspaces button {
-  color: #7894b7;
+  color: #a8b9d4;
   background: transparent;
   padding: 0 7px;
 }
-#workspaces button.active { color: #f4d151; }
-#workspaces button.urgent { color: #eb6f92; }
+#workspaces button.active { color: #f6d89c; }
+#workspaces button.urgent { color: #edabbc; }
 #workspaces button:hover { background: alpha(#c4a7e7, 0.2); border-radius: 4px; }
 
-#custom-record { background: #ba8b85; }
-#custom-record.recording { background: #eb6f92; }
-#custom-gpu { background: #d0ab6b; }
-#network { background: #8fae9f; }
-#pulseaudio.mic { background: #d8aa75; }
-#bluetooth { background: #94b8c9; }
-#power-profiles-daemon { background: #d1bb79; }
-#custom-wallpaper { background: #b8a1bf; }
-#idle_inhibitor { background: #9aa8a0; }
-#tray { background: #889aa3; }
-#clock { background: #77b9bd; }
-#custom-memory { background: #b5b779; }
-#custom-notification { background: #c8a66b; }
-#custom-power { background: #c65f65; font-size: 15px; }
+#custom-record { background: #dcbab3; }
+#custom-record.recording { background: #edabbc; }
+#custom-gpu { background: #efcd9b; }
+#network { background: #b8d8c7; }
+#pulseaudio.mic { background: #f1c7a1; }
+#bluetooth { background: #b8d7e5; }
+#power-profiles-daemon { background: #e9d6a4; }
+#custom-wallpaper { background: #d8c2df; }
+#idle_inhibitor { background: #c2d4c7; }
+#tray { background: #bbcbd1; }
+#clock { background: #a9d8d7; }
+#custom-memory { background: #d4dbad; }
+#custom-notification { background: #efd2a2; }
+#custom-power { background: #edafb5; font-size: 15px; }
 
-#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { background: #f6c177; }
+#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { background: #f6cf9b; }
 #custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical,
 #pulseaudio.muted, #pulseaudio.mic.source-muted, #network.disconnected,
-#custom-notification.dnd-notification, #custom-notification.dnd-none { background: #eb6f92; }
+#custom-notification.dnd-notification, #custom-notification.dnd-none { background: #edabbc; }
 
 #custom-nix:hover, #custom-notification:hover, #idle_inhibitor:hover,
 #custom-record:hover, #mpris:hover, #pulseaudio:hover, #custom-cpu:hover,
