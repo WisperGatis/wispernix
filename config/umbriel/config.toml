@@ -136,6 +136,36 @@ default_fullscreen = true
 opacity = 1.0
 blur = false
 
+# Scratchpads: btop, small terminal, spotify. Each one opens its app when first toggled,
+# and the window rules route the window into its pad instead of onto the workspace.
+[[scratchpad]]
+name = "btop"
+spawn_when_empty = "kitty --class scratchpad-btop -e btop"
+
+[[scratchpad]]
+name = "term"
+spawn_when_empty = "kitty --class scratchpad-term -o initial_window_width=900 -o initial_window_height=500"
+
+[[scratchpad]]
+name = "spotify"
+spawn_when_empty = "spotify"
+
+[[window_rule]]
+match.app_id = "^scratchpad-btop$"
+default_scratchpad = "btop"
+# Best effort, not verified: pinned windows sit above normal windows, to try to stay over fullscreen.
+default_pinned = true
+
+[[window_rule]]
+match.app_id = "^scratchpad-term$"
+default_scratchpad = "term"
+default_pinned = true
+
+[[window_rule]]
+match.app_id = "^[Ss]potify$"
+default_scratchpad = "spotify"
+default_pinned = true
+
 ##############
 # Layer rules
 ##############
@@ -290,6 +320,10 @@ selection = "round_robin"
 "Mod+F"       = "window-toggle-maximize"      # niri: maximize-column
 "Mod+Shift+F" = "window-toggle-fullscreen"
 
+# --- Global layout: scrolling <-> master (tiling) ---
+# Default stays scrolling. Each press flips every workspace (script from home/desktop.nix).
+"Mod+L" = "spawn umbriel-layout-toggle-all"
+
 # --- Columns (niri) ---
 "Mod+BracketLeft"  = "window-consume-or-expel-left"
 "Mod+BracketRight" = "window-consume-or-expel-right"
@@ -314,3 +348,11 @@ selection = "round_robin"
 "Mod+Shift+WheelUp"   = "column-move-left"
 "Mod+Shift+WheelDown" = "column-move-right"
 "Mod+MouseMiddle"     = "layout-scroll-drag"
+
+# --- Scratchpads (btop / small terminal / spotify) ---
+"Mod+B"           = "scratchpad-toggle btop"
+"Mod+Shift+B"     = "window-toggle-scratchpad btop"
+"Mod+Shift+T"     = "scratchpad-toggle term"
+"Mod+Ctrl+T"      = "window-toggle-scratchpad term"
+"Mod+S"           = "scratchpad-toggle spotify"
+"Mod+Shift+S"     = "window-toggle-scratchpad spotify"

@@ -5,6 +5,41 @@
   # Shaders d'écran d'Umbriel (presets déclarés dans config.toml).
   xdg.configFile."umbriel/effects" = { source = ../config/umbriel/effects; recursive = true; };
 
+  # Mod+L: flip EVERY workspace between scrolling and master (Umbriel's
+  # workspace-set-layout only touches the active workspace, so this visits each one).
+  # Remembers the global state in ~/.local/state/umbriel/layout-mode.
+  home.packages = [
+    (pkgs.writeShellApplication {
+      name = "umbriel-layout-toggle-all";
+      runtimeInputs = [ pkgs.jq pkgs.coreutils ];
+      text = ''
+        state=$HOME/.local/state/umbriel/layout-mode
+        mkdir -p "$(dirname "$state")"
+        cur=$(cat "$state" 2>/dev/null || echo scrolling)
+        if [ "$cur" = scrolling ]; then next=master; else next=scrolling; fi
+
+        ws=$(umbriel workspaces --json)
+
+        # Focused workspace, so we can return to it afterwards.
+        focus=$(printf '%s' "$ws" | jq -r '.. | objects | select(has("index") and has("output") and ((.focused // .active) == true)) | "\(.index) \(.output)"' | head -n1)
+
+        printf '%s' "$ws" \
+          | jq -r '.. | objects | select(has("index") and has("output")) | "\(.index) \(.output)"' \
+          | while read -r idx out; do
+              umbriel msg workspace-switch "$idx" --output "$out"
+              umbriel msg workspace-set-layout "$next"
+            done
+
+        if [ -n "$focus" ]; then
+          read -r fidx fout <<< "$focus"
+          umbriel msg workspace-switch "$fidx" --output "$fout"
+        fi
+
+        printf '%s\n' "$next" > "$state"
+      '';
+    })
+  ];
+
   # dux imports (previously dank-material-shell.)
   #imports = [ inputs.dms.homeModules.dank-material-shell ];
 
