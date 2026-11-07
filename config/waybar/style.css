@@ -30,9 +30,16 @@ tooltip label { color: @on_surface; padding: 5px; }
   border-radius: 5px;
   padding: 0 8px;
   margin: 2px 0;
+  min-height: 22px;
 }
 
-#custom-nix { background: #c4a55c; font-size: 16px; padding: 0 15px; }
+#custom-nix, #custom-power, #custom-wallpaper, #idle_inhibitor,
+#bluetooth, #power-profiles-daemon, #custom-notification {
+  min-width: 28px;
+  padding: 0;
+}
+
+#custom-nix { background: #c4a55c; font-size: 16px; }
 #custom-cpu { background: #c77a77; }
 #pulseaudio { background: #6d98b3; }
 #mpris { background: #8272a2; }
@@ -61,7 +68,7 @@ tooltip label { color: @on_surface; padding: 5px; }
 #clock { background: #77b9bd; }
 #custom-memory { background: #b5b779; }
 #custom-notification { background: #c8a66b; }
-#custom-power { background: #c65f65; font-size: 15px; padding: 0 13px; }
+#custom-power { background: #c65f65; font-size: 15px; }
 
 #custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { background: #f6c177; }
 #custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical,

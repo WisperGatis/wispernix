@@ -40,6 +40,7 @@ in
       };
 
       "custom/power" = {
+        align = 0.5;
         format = "⏻";
         tooltip-format = "Menu de session";
         on-click = "session-menu";
@@ -48,6 +49,7 @@ in
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
       "custom/notification" = {
+        align = 0.5;
         exec = "swaync-client -swb";
         exec-if = "which swaync-client";
         return-type = "json";
@@ -57,6 +59,7 @@ in
       };
 
       "custom/nix" = {
+        align = 0.5;
         format = nixIcon;
         tooltip = false;
         on-click-right = "session-menu";
@@ -78,6 +81,7 @@ in
       };
 
       "custom/record" = {
+        align = 0.5;
         exec = "screen-record status";
         return-type = "json";
         interval = 2;
@@ -85,6 +89,7 @@ in
       };
 
       "custom/cpu" = {
+        align = 0.5;
         format = "${icon "f2db"} {text}";
         # hw-monitor (config/waybar/hw-monitor.py) imprime une ligne JSON toutes les 2 s :
         # classes warning / critical selon l'usage et la température, détails dans le tooltip.
@@ -95,6 +100,7 @@ in
       };
 
       "custom/memory" = {
+        align = 0.5;
         format = "${icon "f080"} {text}";
         exec = "hw-monitor memory";
         return-type = "json";
@@ -104,6 +110,7 @@ in
 
       # GPU AMD (masqué automatiquement si aucune carte amdgpu n'est trouvée).
       "custom/gpu" = {
+        align = 0.5;
         format = "${icon "f26c"} {text}";
         exec = "hw-monitor gpu";
         return-type = "json";
@@ -115,6 +122,7 @@ in
       # Clic gauche : date complète ; clic droit : calendrier interactif (calendar-popup).
       # Le tooltip est en Pango : les couleurs sont en dur (Catppuccin Mocha), pas celles de Matugen.
       clock = {
+        align = 0.5;
         format = "{:%I:%M %p | %d-%b-%Y} 󰃭";
         interval = 60;
         format-alt = "{:%A %d %B %Y}";
@@ -141,6 +149,7 @@ in
       # Lecteur de musique (MPRIS : Spotify, navigateurs...). Masqué quand rien ne joue.
       # Clic : lecture / pause ; clic droit : suivant ; clic milieu : précédent ; molette : suivant / précédent.
       mpris = {
+        align = 0.5;
         format = "{player_icon} {title}";
         format-paused = "{status_icon} {title}";
         title-len = 28;
@@ -163,12 +172,14 @@ in
       };
 
       "custom/wallpaper" = {
+        align = 0.5;
         format = wallIcon;
         tooltip-format = "Fond d'écran et thème";
         on-click = "wallpaper-menu";
       };
 
       bluetooth = {
+        align = 0.5;
         format = btIcon;
         format-connected = "{icon} {num_connections}";
         format-disabled = "";
@@ -178,6 +189,7 @@ in
       };
 
       idle_inhibitor = {
+        align = 0.5;
         format = "{icon}";
         format-icons = {
           activated = icon "f06e";
@@ -188,10 +200,12 @@ in
       };
 
       "hyprland/language" = {
+        align = 0.5;
         format = "{short}";
       };
 
       "power-profiles-daemon" = {
+        align = 0.5;
         format = "{icon}";
         tooltip-format = "Profil : {profile}";
         format-icons = {
@@ -202,6 +216,7 @@ in
       };
 
       network = {
+        align = 0.5;
         format-wifi = "${icon "f1eb"} {signalStrength}%";
         format-ethernet = "${icon "f0e8"} {ipaddr}";
         format-disconnected = "${icon "f071"}";
@@ -211,6 +226,7 @@ in
 
       # Sortie audio : molette = volume (par pas de 5 %), clic droit = muet, clic milieu = pavucontrol.
       pulseaudio = {
+        align = 0.5;
         format = "{icon} {volume}%";
         format-bluetooth = "{icon} {volume}%";
         format-muted = "${icon "f026"}";
@@ -228,6 +244,7 @@ in
 
       # Micro : clic = muet, molette = volume d'entrée, clic droit = pavucontrol.
       "pulseaudio#mic" = {
+        align = 0.5;
         format = "{format_source}";
         format-muted = "{format_source}";
         format-source = "${icon "f130"} {volume}%";
