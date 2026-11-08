@@ -1,4 +1,4 @@
-/* Barre sombre et blocs pastel inspirés de Rosé Pine. */
+/* Blocs violets translucides et accents pastel, inspirés de la référence. */
 @import url("colors.css");
 
 * {
@@ -11,24 +11,25 @@
 }
 
 window#waybar {
-  background: alpha(#111820, 0.96);
-  color: #151922;
+  background: alpha(#21193b, 0.66);
+  color: #e8c9df;
 }
 
 tooltip {
-  background: #1f1d2e;
-  border: 1px solid @primary;
-  border-radius: 6px;
+  background: #252139;
+  border: 1px solid #c4a7e7;
+  border-radius: 5px;
 }
-tooltip label { color: @on_surface; padding: 5px; }
+tooltip label { color: #e8dff1; padding: 5px; }
 
 #custom-nix, #custom-notification, #idle_inhibitor, #language,
 #custom-record, #window, #workspaces, #mpris, #pulseaudio,
 #custom-cpu, #custom-memory, #custom-gpu, #network, #bluetooth,
 #power-profiles-daemon, #custom-wallpaper, #tray, #clock, #custom-power {
-  color: #171a23;
-  border-radius: 5px;
-  padding: 0 8px;
+  background: alpha(#27263f, 0.96);
+  color: #e7c4df;
+  border-radius: 3px;
+  padding: 0 9px;
   margin: 2px 0;
   min-height: 22px;
 }
@@ -36,54 +37,63 @@ tooltip label { color: @on_surface; padding: 5px; }
 #custom-nix, #custom-power, #custom-wallpaper, #idle_inhibitor,
 #bluetooth, #power-profiles-daemon, #custom-notification {
   min-width: 28px;
-  padding: 0;
+  padding: 0 5px;
 }
-
-/* Variante Mono : les glyphes Nerd Font gardent une largeur de cellule fixe. */
 #custom-nix, #idle_inhibitor {
   font-family: "JetBrainsMono Nerd Font Mono", monospace;
   font-size: 20px;
   font-weight: normal;
 }
-#custom-nix { background: #f2d5a4; }
-#custom-cpu { background: #efb6b6; }
-#pulseaudio { background: #a8cce1; }
-#mpris { background: #c8b9df; }
-#language { background: #e1b9d1; }
+#custom-nix { color: #f2d5a4; }
+#window { color: #e8badb; }
+#window.empty { background: transparent; padding: 0; min-height: 0; }
 
-#workspaces { background: #353449; padding: 0 6px; }
+#workspaces { padding: 0 6px; }
 #workspaces button {
-  color: #a8b9d4;
   background: transparent;
-  padding: 0 7px;
+  color: #e9bfd1;
+  border-radius: 10px;
+  font-size: 11px;
+  padding: 0 5px;
 }
-#workspaces button.active { color: #f6d89c; }
+#workspaces button.empty { color: #99d6df; }
+#workspaces button.active {
+  background: #e2b9d9;
+  color: transparent;
+  min-width: 25px;
+  min-height: 10px;
+  margin: 6px 2px;
+  padding: 0;
+}
 #workspaces button.urgent { color: #edabbc; }
-#workspaces button:hover { background: alpha(#c4a7e7, 0.2); border-radius: 4px; }
+#workspaces button:hover { background: alpha(#c4a7e7, 0.25); }
 
-#custom-record { background: #dcbab3; }
-#custom-record.recording { background: #edabbc; }
-#custom-gpu { background: #efcd9b; }
-#network { background: #b8d8c7; }
-#pulseaudio.mic { background: #f1c7a1; }
-#bluetooth { background: #b8d7e5; }
-#power-profiles-daemon { background: #e9d6a4; }
-#custom-wallpaper { background: #d8c2df; }
-#idle_inhibitor { background: #c2d4c7; }
-#tray { background: #bbcbd1; }
-#clock { background: #a9d8d7; }
-#custom-memory { background: #d4dbad; }
-#custom-notification { background: #efd2a2; }
-#custom-power { background: #edafb5; font-size: 15px; }
+#mpris { color: #bec9f0; }
+#mpris.paused { color: #b3a9ca; }
+#pulseaudio { color: #edb3c5; }
+#network { color: #d6b9e7; }
+#bluetooth { color: #9bdce0; }
+#custom-cpu { color: #f2c6ae; }
+#custom-memory { color: #d5dbaf; }
+#custom-gpu { color: #f0d2a4; }
+#pulseaudio.mic { color: #edb7cf; }
+#language, #custom-wallpaper { color: #dfb8e5; }
+#power-profiles-daemon { color: #e9d6a4; }
+#idle_inhibitor { color: #bed9d0; }
+#tray { color: #d8d1ea; }
+#clock { color: #edc7e1; }
+#custom-notification { color: #b9c9f1; }
+#custom-power, #custom-record.recording { color: #f0aebf; }
+#custom-record.idle { color: #a9a1b8; }
 
-#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { background: #f6cf9b; }
+#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { color: #f6cf9b; }
 #custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical,
 #pulseaudio.muted, #pulseaudio.mic.source-muted, #network.disconnected,
-#custom-notification.dnd-notification, #custom-notification.dnd-none { background: #edabbc; }
+#custom-notification.dnd-notification, #custom-notification.dnd-none { color: #f08ca9; }
 
 #custom-nix:hover, #custom-notification:hover, #idle_inhibitor:hover,
 #custom-record:hover, #mpris:hover, #pulseaudio:hover, #custom-cpu:hover,
 #custom-memory:hover, #custom-gpu:hover, #network:hover, #bluetooth:hover,
 #power-profiles-daemon:hover, #custom-wallpaper:hover, #clock:hover, #custom-power:hover {
-  box-shadow: inset 0 0 0 999px alpha(#ffffff, 0.15);
+  background: #403754;
 }

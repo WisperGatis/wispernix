@@ -23,15 +23,15 @@ in
       position = "top";
       height = 26;
       spacing = 4;
-      # Barre pleine largeur, avec les espaces de travail au centre de l'écran.
+      # Barre transparente : workspaces et fenêtre à gauche, commandes à droite.
       margin-top = 0;
       margin-left = 0;
       margin-right = 0;
       fixed-center = true;
 
-      modules-left = [ "custom/nix" "custom/cpu" "pulseaudio" "mpris" "hyprland/language" ];
-      modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "custom/record" "custom/gpu" "network" "pulseaudio#mic" "bluetooth" "power-profiles-daemon" "custom/wallpaper" "idle_inhibitor" "tray" "clock" "custom/memory" "custom/notification" "custom/power" ];
+      modules-left = [ "custom/nix" "hyprland/workspaces" "hyprland/window" ];
+      modules-center = [ ];
+      modules-right = [ "mpris" "pulseaudio" "network" "bluetooth" "custom/cpu" "custom/memory" "custom/gpu" "pulseaudio#mic" "hyprland/language" "power-profiles-daemon" "idle_inhibitor" "custom/wallpaper" "custom/record" "tray" "clock" "custom/notification" "custom/power" ];
 
       "hyprland/window" = {
         format = "{title}";
@@ -67,15 +67,10 @@ in
 
       "hyprland/workspaces" = {
         all-outputs = false;
-        format = "{icon}";
-        format-icons = {
-          active = "●";
-          urgent = "●";
-          default = "󰊠";
-        };
+        format = "●";
         on-click = "activate";
-        # Huit icônes visibles ; la molette passe au précédent / suivant.
-        persistent-workspaces = { "*" = 8; };
+        # Cinq pastilles visibles ; la molette passe au précédent / suivant.
+        persistent-workspaces = { "*" = 5; };
         on-scroll-up = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'";
         on-scroll-down = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'";
       };
@@ -123,8 +118,8 @@ in
       # Le tooltip est en Pango : les couleurs sont en dur (Catppuccin Mocha), pas celles de Matugen.
       clock = {
         align = 0.5;
-        format = "{:%I:%M %p | %d-%b-%Y} 󰃭";
-        interval = 60;
+        format = "󰃭 {:%a %b %d  %I:%M:%S %p}";
+        interval = 1;
         format-alt = "{:%A %d %B %Y}";
         tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
