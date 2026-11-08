@@ -29,6 +29,16 @@
       <action name="Execute" command='rofi -show clipboard -modi "clipboard:cliphist list" -clipboard -window-position br' />
     </keybind>
 
+    <!-- Win+N : Noctalia notes -->
+    <keybind key="W-n">
+      <action name="Execute" command="noctalia msg panel-toggle noctalia/notes:panel" />
+    </keybind>
+
+    <!-- Win+Shift+W : Noctalia wallpaper selector -->
+    <keybind key="W-S-w">
+      <action name="Execute" command="noctalia msg panel-toggle wallpaper" />
+    </keybind>
+
     <!-- Win+E : control center Noctalia -->
     <keybind key="W-e">
       <action name="Execute" command="noctalia msg panel-toggle control-center" />

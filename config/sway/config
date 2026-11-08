@@ -49,6 +49,12 @@ bindsym $mod+o exec noctalia msg settings-toggle
 # Win+V : clipboard manager
 bindsym $mod+v exec rofi -show clipboard -modi "clipboard:cliphist list" -clipboard -window-position br
 
+# Win+N : Noctalia notes
+bindsym $mod+n exec noctalia msg panel-toggle noctalia/notes:panel
+
+# Win+Shift+W : wallpaper selector
+bindsym $mod+Shift+w exec noctalia msg panel-toggle wallpaper
+
 # Win+E : control center
 bindsym $mod+e exec noctalia msg panel-toggle control-center
 
