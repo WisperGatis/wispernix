@@ -48,12 +48,16 @@ let
     { name = "${slug}/colors.rasi"; path = pkgs.writeText "${slug}-colors.rasi" (rofiRasi p); }
   ]) palettes));
 
+  thumbnailPython = pkgs.python3.withPackages (ps: [ ps.pillow ]);
+
   # Fond d'écran : choix du thème (Matugen clair/sombre ou palette), puis image en grille de miniatures.
   wallpaperMenu = pkgs.writeShellApplication {
     name = "wallpaper-menu";
     runtimeInputs = [ rofi pkgs.awww pkgs.matugen pkgs.findutils pkgs.coreutils ];
     text = ''
       grid='listview { columns: 4; lines: 3; } element { orientation: vertical; } element-icon { size: 9em; }'
+      # Génération en arrière-plan pendant le choix du thème, sans retarder le menu.
+      ${thumbnailPython}/bin/python3 ${../config/rofi/wallpaper-thumbnails.py} warm "${wallpaperDir}" >/dev/null 2>&1 &
       theme=$(printf 'Matugen 다크\nMatugen 라이트\n%s\n' "$(ls ${paletteDir})" | rofi -dmenu -p "테마" -theme ${rofiTheme}) || exit 0
       case "$theme" in
         "Matugen 다크") mode=dark ;;
@@ -61,8 +65,8 @@ let
         *) mode="" ;;
       esac
       # Chaque entrée affiche le nom et une miniature (\0icon).
-      img=$(find "${wallpaperDir}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.webp' \) \
-        -printf '%f\0icon\x1f%p\n' | sort | rofi -dmenu -show-icons -p "배경화면" \
+      img=$(${thumbnailPython}/bin/python3 ${../config/rofi/wallpaper-thumbnails.py} list "${wallpaperDir}" \
+        | rofi -dmenu -show-icons -p "배경화면" \
         -theme ${rofiTheme} -theme-str "$grid") || exit 0
       [ -n "$img" ] || exit 0
       path="${wallpaperDir}/$img"
