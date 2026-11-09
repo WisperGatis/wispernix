@@ -149,10 +149,40 @@ hl.bind("SUPER + SHIFT + s", function() move_scratchpad("spotify") end)
 -- Workspaces (par écran, sur l'écran focus)
 -- ##########
 
-for i = 1, 9 do
-  hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
+-- Hyprland n'a que des workspaces globaux : chaque écran reçoit donc sa propre tranche de dix
+-- (gauche : 1-10, droite : 11-20). SUPER + N ouvre le N-ième workspace de l'écran focus.
+-- Waybar réaffiche 11-20 en 1-10 (format-icons dans home/waybar.nix).
+local per_monitor = 10
+local persistent = 5 -- workspaces toujours visibles dans la barre, par écran
+
+for index, monitor in ipairs({ left, right }) do
+  local offset = (index - 1) * per_monitor
+  for i = 1, per_monitor do
+    hl.workspace_rule({
+      workspace = tostring(offset + i),
+      monitor = monitor,
+      default = i == 1,
+      persistent = i <= persistent,
+    })
+  end
 end
-hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
+
+-- Décalage de l'écran focus : 10 sur l'écran de droite, 0 ailleurs.
+local function workspace_offset()
+  local monitor = hl.get_active_monitor()
+  local description = right:gsub("^desc:", "")
+  if monitor and monitor.description:sub(1, #description) == description then
+    return per_monitor
+  end
+  return 0
+end
+
+for i = 1, per_monitor do
+  -- La touche 0 sert de dixième workspace.
+  hl.bind("SUPER + " .. (i % 10), function()
+    hl.dispatch(hl.dsp.focus({ workspace = tostring(workspace_offset() + i) }))
+  end)
+end
 
 -- ##########
 -- Programmes

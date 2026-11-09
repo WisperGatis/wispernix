@@ -51,10 +51,16 @@ in
 
       "hyprland/workspaces" = {
         all-outputs = false;
-        format = "{name}";
+        # Workspaces par écran : 11-20 (écran de droite) s'affichent 1-10, comme à gauche.
+        # Les cinq workspaces toujours visibles viennent des règles "persistent" de hyprland.lua.
+        format = "{icon}";
+        format-icons = lib.listToAttrs (map (n: {
+          name = toString n;
+          value = toString (if n > 10 then n - 10 else n);
+        }) (lib.range 1 20));
+        sort-by = "number";
         on-click = "activate";
-        # Cinq workspaces toujours visibles ; la molette passe au précédent / suivant.
-        persistent-workspaces = { "*" = 5; };
+        # La molette passe au workspace précédent / suivant de l'écran.
         on-scroll-up = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'";
         on-scroll-down = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'";
       };
