@@ -59,6 +59,17 @@
       openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev.stdenv.hostPlatform) system;
+        overlays = [
+          (unstableFinal: unstablePrev: {
+            codex = unstablePrev.codex.overrideAttrs (old: {
+              # The Rust hook requires a system AWS-LC, but Codex only supplies
+              # OpenSSL. Let aws-lc-sys build its bundled copy instead.
+              preBuild = (old.preBuild or "") + ''
+                export AWS_LC_SYS_USE_SYSTEM=0
+              '';
+            });
+          })
+        ];
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
