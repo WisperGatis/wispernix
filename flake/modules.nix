@@ -59,6 +59,27 @@
       openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev.stdenv.hostPlatform) system;
+        # Applied inside the unstable set so dependents (e.g. t3code) get it too.
+        overlays = [
+          (_: uprev:
+            let
+              # cargo-setup-hook forces every -sys crate onto system libraries (aws-lc,
+              # zstd, oniguruma, libgit2, ...). These packages don't declare them, so
+              # turn that mode off and let the crates build their bundled copies.
+              bundled = pkg: pkg.overrideAttrs (_: { dontCargoUseSystemLibs = true; });
+            in
+            {
+              codex = bundled uprev.codex;
+              herdr-desktop = bundled uprev.herdr-desktop;
+              concord-tui = bundled uprev.concord-tui;
+              zapfast = (bundled uprev.zapfast).overrideAttrs (old: {
+                # openssl-sys is needed on Linux but isn't declared.
+                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
+                buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
+              });
+            }
+          )
+        ];
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
