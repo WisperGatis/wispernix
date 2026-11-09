@@ -102,13 +102,7 @@
     #unstable.opencode-desktop
     pkgs.claude-code
     #unstable.claude-code
-    # nixpkgs' cargo-setup-hook exports AWS_LC_SYS_USE_SYSTEM=1, but openssl has
-    # no AWS-LC headers, so aws-lc-sys panics. Unset it to build AWS-LC from source.
-    (unstable.codex.overrideAttrs (old: {
-      preBuild = (old.preBuild or "") + ''
-        unset AWS_LC_SYS_USE_SYSTEM
-      '';
-    }))
+    unstable.codex
     unstable.antigravity-cli
     unstable.antigravity-ide
     unstable.crush
