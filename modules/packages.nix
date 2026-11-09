@@ -205,7 +205,7 @@
     telegram-desktop
     unstable.whatsapp-electron
     mailspring
-    unstable.concord-tui
+    #unstable.concord-tui
     unstable.karere
 
     # -- Notes & office ----------------------------------------------
