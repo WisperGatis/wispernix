@@ -66,6 +66,9 @@
             # AWS-LC headers, so aws-lc-sys panics. Unset it to build from source.
             # The same hook sets SYSTEM_DEPS_BUILD_INTERNAL=never, so zstd-sys needs a
             # system libzstd.
+            herdr-desktop = uprev.herdr-desktop.overrideAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
+            });
             codex = uprev.codex.overrideAttrs (old: {
               buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
               preBuild = (old.preBuild or "") + ''
