@@ -61,30 +61,24 @@
         inherit (prev.stdenv.hostPlatform) system;
         # Applied inside the unstable set so dependents (e.g. t3code) get it too.
         overlays = [
-          (_: uprev: {
-            # cargo-setup-hook exports AWS_LC_SYS_USE_SYSTEM=1, but openssl has no
-            # AWS-LC headers, so aws-lc-sys panics. Unset it to build from source.
-            # The same hook sets SYSTEM_DEPS_BUILD_INTERNAL=never, so zstd-sys needs a
-            # system libzstd.
-            # Found by scanning every uncached unstable.* Rust package's Cargo.lock:
-            # concord-tui pulls zstd-sys, zapfast pulls openssl-sys; neither declares them.
-            concord-tui = uprev.concord-tui.overrideAttrs (old: {
-              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
-            });
-            zapfast = uprev.zapfast.overrideAttrs (old: {
-              nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
-              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
-            });
-            herdr-desktop =uprev.herdr-desktop.overrideAttrs (old: {
-              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
-            });
-            codex = uprev.codex.overrideAttrs (old: {
-              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
-              preBuild = (old.preBuild or "") + ''
-                unset AWS_LC_SYS_USE_SYSTEM
-              '';
-            });
-          })
+          (_: uprev:
+            let
+              # cargo-setup-hook forces every -sys crate onto system libraries (aws-lc,
+              # zstd, oniguruma, libgit2, ...). These packages don't declare them, so
+              # turn that mode off and let the crates build their bundled copies.
+              bundled = pkg: pkg.overrideAttrs (_: { dontCargoUseSystemLibs = true; });
+            in
+            {
+              codex = bundled uprev.codex;
+              herdr-desktop = bundled uprev.herdr-desktop;
+              concord-tui = bundled uprev.concord-tui;
+              zapfast = (bundled uprev.zapfast).overrideAttrs (old: {
+                # openssl-sys is needed on Linux but isn't declared.
+                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
+                buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
+              });
+            }
+          )
         ];
         config = {
           allowUnfree = true;
