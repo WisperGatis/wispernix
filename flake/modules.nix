@@ -66,7 +66,16 @@
             # AWS-LC headers, so aws-lc-sys panics. Unset it to build from source.
             # The same hook sets SYSTEM_DEPS_BUILD_INTERNAL=never, so zstd-sys needs a
             # system libzstd.
-            herdr-desktop = uprev.herdr-desktop.overrideAttrs (old: {
+            # Found by scanning every uncached unstable.* Rust package's Cargo.lock:
+            # concord-tui pulls zstd-sys, zapfast pulls openssl-sys; neither declares them.
+            concord-tui = uprev.concord-tui.overrideAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
+            });
+            zapfast = uprev.zapfast.overrideAttrs (old: {
+              nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
+              buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
+            });
+            herdr-desktop =uprev.herdr-desktop.overrideAttrs (old: {
               buildInputs = (old.buildInputs or [ ]) ++ [ uprev.zstd ];
             });
             codex = uprev.codex.overrideAttrs (old: {
