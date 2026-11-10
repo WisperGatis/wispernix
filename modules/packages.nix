@@ -10,6 +10,7 @@
     pkgs.occt
     lact
     vulkan-tools
+    nh
 
     # -- Monitoring & system info ------------------------------------
     btop
@@ -187,11 +188,11 @@
     unstable.superfile
 
     # -- Browsers ----------------------------------------------------
-    #pkgs.firefox_nightly
-    #brave
+    #pkgs.firefox_night 
+    brave
+    brave-origin
     vivaldi
     google-chrome
-    #unstable.brave-origin
     unstable.librewolf
     unstable.tor-browser
     floorp-bin

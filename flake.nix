@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    brave = {
+      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Dux shell, previously dank shell.
     #dms = {
     # url = "github:duxlabs-dev/dux-shell";
@@ -135,6 +140,7 @@
         ./hardware-configuration.nix
         ./configuration.nix
         ./flake/modules.nix
+        inputs.brave.nixosModules.default
       ];
     };
   };
