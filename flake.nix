@@ -88,6 +88,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Ryoku shell (Hyprland + Quickshell desktop), used by the `ryoku` specialisation.
+    # No `nixpkgs.follows` on purpose: Ryoku pins its own package set.
+    ryoku.url = "github:Ryoku-dev/Ryoku-on-NixOS";
+
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   
     zen-browser.url = "github:0xc000022070/zen-browser-flake";

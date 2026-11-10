@@ -21,6 +21,7 @@ Flakes 기반 NixOS 설정 저장소입니다. 시스템 모듈, 사용자 홈 �
 
 - **데스크톱:** niri, sway, mango(mangowm), labwc
 - **셸과 UI:** dms(dux shell), caelestia shell, noctalia greeter
+- **Ryoku 프로필:** 부팅 메뉴의 `ryoku` specialisation (`modules/ryoku.nix`). 기본 시스템은 그대로 두고 Ryoku 셸 + SDDM으로 부팅합니다. 처음 한 번 `nix flake update ryoku`로 락 항목을 추가하세요.
 - **브라우저:** Helium, Zen, Waterfox 등 (`flake/modules.nix`와 `modules/`에서 설정)
 - **AI 도구:** Claude Desktop, Codex Desktop, Claude Code
 - **게임:** Steam 관련 모듈(Millennium), `modules/gaming.nix`

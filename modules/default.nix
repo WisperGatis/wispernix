@@ -1,6 +1,7 @@
 {
   imports = [
     ./boot.nix
+    ./ryoku.nix
     ./locales.nix
     ./network.nix
     ./nix.nix
