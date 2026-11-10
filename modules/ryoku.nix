@@ -30,6 +30,17 @@
     services.displayManager.sddm.enable = lib.mkOverride 40 true;
     services.displayManager.cosmic-greeter.enable = lib.mkOverride 40 false;
 
+    # programs.mango (mangowm flake) also fills xdg.portal.config.mango, so its
+    # values clash with Ryoku's. Inside this profile Ryoku's win (same values as
+    # the Ryoku module, just at priority 40).
+    xdg.portal.config.mango = lib.mapAttrs (_: lib.mkOverride 40) {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenShot" = [ "wlr" ];
+      "org.freedesktop.impl.portal.Inhibit" = [ "none" ];
+    };
+
     # One shell at a time: keep DMS from fighting Ryoku for the bar, notifications
     # and the layer-shell surfaces.
     programs.dms-shell.enable = lib.mkForce false;
