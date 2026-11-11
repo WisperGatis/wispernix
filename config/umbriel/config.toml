@@ -21,6 +21,8 @@ files = [
 ######################
 # fuck this shit dude#
 ######################
+# Cursor confinement (Steam fullscreen menus escaping to the other monitor).
+# Feature request: https://github.com/noctalia-dev/umbriel/issues/270 (closed, PR #399)
 #[[window_rule]]
 #match.app_id = "^steam_app_311210$"
 #confine_pointer = true
