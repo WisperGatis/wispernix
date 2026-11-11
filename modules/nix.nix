@@ -9,6 +9,6 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-40.10.5"
     "ladybird-0-unstable-2026-06-05"
-    "openssl-1.1.1w"
+    # "openssl-1.1.1w" # only needed by sublime4
   ];
 }
