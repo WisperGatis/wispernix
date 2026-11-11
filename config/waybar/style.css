@@ -1,192 +1,99 @@
-/* Waybar: barre pleine largeur, coins droits, collée en haut.
-   Les couleurs génériques viennent de Matugen (colors.css).
-   Les workspaces utilisent Catppuccin Mocha. */
-
+/* Blocs violets translucides et accents pastel, inspirés de la référence. */
 @import url("colors.css");
 
-/* Catppuccin Mocha */
-@define-color mocha_rosewater #f5e0dc;
-@define-color mocha_lavender #b4befe;
-@define-color mocha_overlay0 #6c7086;
-@define-color mocha_crust #11111b;
-
 * {
-  font-family: "JetBrainsMono Nerd Font", sans-serif;
-  font-size: 13px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 11px;
+  font-weight: bold;
   min-height: 0;
   border: none;
   border-radius: 0;
 }
 
 window#waybar {
-  background: alpha(@surface, 0.92);
-  color: @on_surface;
-  border-radius: 0;
+  background: alpha(#21193b, 0.66);
+  color: #e8c9df;
 }
 
-/* Tooltips : même look que Rofi (fond surface, bordure primaire) */
 tooltip {
-  background: alpha(@surface, 0.96);
-  border: 2px solid @primary;
-  border-radius: 0;
+  background: #252139;
+  border: 1px solid #c4a7e7;
+  border-radius: 5px;
+}
+tooltip label { color: #e8dff1; padding: 5px; }
+
+#custom-nix, #custom-notification, #idle_inhibitor, #language,
+#custom-record, #window, #workspaces, #mpris, #pulseaudio,
+#custom-cpu, #custom-memory, #custom-gpu, #network, #bluetooth,
+#power-profiles-daemon, #custom-wallpaper, #tray, #clock, #custom-power {
+  background: alpha(#27263f, 0.96);
+  color: #e7c4df;
+  border-radius: 3px;
+  padding: 0 9px;
+  margin: 2px 0;
+  min-height: 22px;
 }
 
-tooltip label {
-  color: @on_surface;
+#custom-nix, #custom-power, #custom-wallpaper, #idle_inhibitor,
+#bluetooth, #power-profiles-daemon, #custom-notification {
+  min-width: 28px;
+  padding: 0 5px;
 }
-
-/* Modules communs */
-#custom-nix,
-#custom-record,
-#custom-wallpaper,
-#custom-cpu,
-#custom-memory,
-#custom-gpu,
-#clock,
-#tray {
-  padding: 0 10px;
-  color: @on_surface;
+#custom-nix, #idle_inhibitor {
+  font-family: "JetBrainsMono Nerd Font Mono", monospace;
+  font-size: 20px;
+  font-weight: normal;
 }
+#custom-nix { color: #f2d5a4; }
+#window { color: #e8badb; }
+#window.empty { background: transparent; padding: 0; min-height: 0; }
 
-/* Logo NixOS, tout à gauche */
-#custom-nix {
-  color: @primary;
-  font-size: 16px;
-  padding: 0 12px;
-}
-
-/* Workspaces (Hyprland) */
+#workspaces { padding: 0 6px; }
 #workspaces button {
-  padding: 0 8px;
-  color: @mocha_lavender;
   background: transparent;
+  color: #e9bfd1;
+  border-radius: 10px;
+  font-size: 11px;
+  padding: 0 5px;
 }
-
-#workspaces button.empty {
-  color: @mocha_overlay0;
-}
-
+#workspaces button.empty { color: #99d6df; }
 #workspaces button.active {
-  color: @mocha_rosewater;
-  font-weight: bold;
+  background: #e2b9d9;
+  color: transparent;
+  min-width: 25px;
+  min-height: 10px;
+  margin: 6px 2px;
+  padding: 0;
 }
+#workspaces button.urgent { color: #edabbc; }
+#workspaces button:hover { background: alpha(#c4a7e7, 0.25); }
 
-#workspaces button:hover {
-  background: alpha(@on_surface, 0.1);
-}
+#mpris { color: #bec9f0; }
+#mpris.paused { color: #b3a9ca; }
+#pulseaudio { color: #edb3c5; }
+#network { color: #d6b9e7; }
+#bluetooth { color: #9bdce0; }
+#custom-cpu { color: #f2c6ae; }
+#custom-memory { color: #d5dbaf; }
+#custom-gpu { color: #f0d2a4; }
+#pulseaudio.mic { color: #edb7cf; }
+#language, #custom-wallpaper { color: #dfb8e5; }
+#power-profiles-daemon { color: #e9d6a4; }
+#idle_inhibitor { color: #bed9d0; }
+#tray { color: #d8d1ea; }
+#clock { color: #edc7e1; }
+#custom-notification { color: #b9c9f1; }
+#custom-power, #custom-record.recording { color: #f0aebf; }
+#custom-record.idle { color: #a9a1b8; }
 
-/* Notifications : couleur tertiaire quand il y en a, atténuée en mode silencieux */
-#custom-notification {
-  padding: 0 10px;
-  color: @on_surface;
-}
+#custom-cpu.warning, #custom-memory.warning, #custom-gpu.warning { color: #f6cf9b; }
+#custom-cpu.critical, #custom-memory.critical, #custom-gpu.critical,
+#pulseaudio.muted, #pulseaudio.mic.source-muted, #network.disconnected,
+#custom-notification.dnd-notification, #custom-notification.dnd-none { color: #f08ca9; }
 
-#custom-notification.notification {
-  color: @tertiary;
-}
-
-#custom-notification.dnd-notification,
-#custom-notification.dnd-none {
-  color: @error;
-}
-
-/* Modules de droite ajoutés : espacement entre les icônes */
-#idle_inhibitor,
-#language,
-#power-profiles-daemon,
-#network,
-#pulseaudio {
-  padding: 0 8px;
-  color: @on_surface;
-}
-
-#network.disconnected {
-  color: @error;
-}
-
-#pulseaudio.muted {
-  color: @error;
-}
-
-/* Micro : rouge uniquement quand le micro est coupé (et pas quand la sortie l'est) */
-#pulseaudio.mic {
-  color: @on_surface;
-}
-
-#pulseaudio.mic.source-muted {
-  color: @error;
-}
-
-/* CPU / RAM / GPU : couleur selon l'état calculé par hw-monitor */
-#custom-cpu.warning,
-#custom-memory.warning,
-#custom-gpu.warning {
-  color: @tertiary;
-}
-
-#custom-cpu.critical,
-#custom-memory.critical,
-#custom-gpu.critical {
-  color: @error;
-  font-weight: bold;
-}
-
-/* Lecteur de musique : accent quand ça joue, atténué en pause */
-#mpris {
-  padding: 0 10px;
-  color: @on_surface;
-}
-
-#mpris.playing {
-  color: @primary;
-}
-
-#mpris.paused {
-  color: alpha(@on_surface, 0.6);
-}
-
-/* Survols : fond léger et transition douce */
-#clock,
-#mpris,
-#custom-cpu,
-#custom-memory,
-#custom-gpu,
-#pulseaudio,
-#custom-notification,
-#idle_inhibitor,
-#power-profiles-daemon,
-#network,
-#workspaces button {
-  transition: background 0.2s;
-}
-
-#clock:hover,
-#mpris:hover,
-#custom-cpu:hover,
-#custom-memory:hover,
-#custom-gpu:hover,
-#pulseaudio:hover,
-#custom-notification:hover,
-#idle_inhibitor:hover,
-#power-profiles-daemon:hover,
-#network:hover {
-  background: alpha(@on_surface, 0.1);
-}
-
-#idle_inhibitor.activated {
-  color: @tertiary;
-}
-
-/* Enregistrement : rouge quand actif */
-#custom-record.recording {
-  color: @error;
-}
-
-#custom-wallpaper:hover,
-#custom-record:hover {
-  background: alpha(@on_surface, 0.1);
-}
-
-#tray {
-  padding: 0 8px;
+#custom-nix:hover, #custom-notification:hover, #idle_inhibitor:hover,
+#custom-record:hover, #mpris:hover, #pulseaudio:hover, #custom-cpu:hover,
+#custom-memory:hover, #custom-gpu:hover, #network:hover, #bluetooth:hover,
+#power-profiles-daemon:hover, #custom-wallpaper:hover, #clock:hover, #custom-power:hover {
+  background: #403754;
 }

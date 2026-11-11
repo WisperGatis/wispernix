@@ -21,20 +21,35 @@ in
     settings.mainBar = {
       layer = "top";
       position = "top";
-      height = 28;
-      spacing = 0;
-      # Barre pleine largeur, collée au bord supérieur. Affichée sur chaque écran.
+      height = 26;
+      spacing = 4;
+      # Barre transparente : workspaces et fenêtre à gauche, commandes à droite.
       margin-top = 0;
       margin-left = 0;
       margin-right = 0;
+      fixed-center = true;
 
-      modules-left = [ "custom/nix" "hyprland/workspaces" "custom/record" "custom/cpu" "custom/memory" "custom/gpu" ];
-      modules-center = [ "clock" "mpris" "custom/wallpaper" ];
-      modules-right = [ "custom/notification" "idle_inhibitor" "hyprland/language" "power-profiles-daemon" "network" "pulseaudio#mic" "pulseaudio" "bluetooth" "tray" ];
+      modules-left = [ "custom/nix" "hyprland/workspaces" "hyprland/window" ];
+      modules-center = [ ];
+      modules-right = [ "mpris" "pulseaudio" "network" "bluetooth" "custom/cpu" "custom/memory" "custom/gpu" "pulseaudio#mic" "hyprland/language" "power-profiles-daemon" "idle_inhibitor" "custom/wallpaper" "custom/record" "tray" "clock" "custom/notification" "custom/power" ];
+
+      "hyprland/window" = {
+        format = "{title}";
+        max-length = 38;
+        separate-outputs = true;
+      };
+
+      "custom/power" = {
+        align = 0.5;
+        format = "⏻";
+        tooltip-format = "Menu de session";
+        on-click = "session-menu";
+      };
 
       # État de SwayNotificationCenter : nombre de notifications et mode Ne pas déranger.
       # Clic gauche : centre de notifications ; clic droit : ne pas déranger.
       "custom/notification" = {
+        align = 0.5;
         exec = "swaync-client -swb";
         exec-if = "which swaync-client";
         return-type = "json";
@@ -44,6 +59,7 @@ in
       };
 
       "custom/nix" = {
+        align = 0.5;
         format = nixIcon;
         tooltip = false;
         on-click-right = "session-menu";
@@ -51,15 +67,16 @@ in
 
       "hyprland/workspaces" = {
         all-outputs = false;
-        format = "{name}";
+        format = "●";
         on-click = "activate";
-        # Cinq workspaces toujours visibles ; la molette passe au précédent / suivant.
+        # Cinq pastilles visibles ; la molette passe au précédent / suivant.
         persistent-workspaces = { "*" = 5; };
         on-scroll-up = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'";
         on-scroll-down = "${hyprctl} dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'";
       };
 
       "custom/record" = {
+        align = 0.5;
         exec = "screen-record status";
         return-type = "json";
         interval = 2;
@@ -67,6 +84,7 @@ in
       };
 
       "custom/cpu" = {
+        align = 0.5;
         format = "${icon "f2db"} {text}";
         # hw-monitor (config/waybar/hw-monitor.py) imprime une ligne JSON toutes les 2 s :
         # classes warning / critical selon l'usage et la température, détails dans le tooltip.
@@ -77,6 +95,7 @@ in
       };
 
       "custom/memory" = {
+        align = 0.5;
         format = "${icon "f080"} {text}";
         exec = "hw-monitor memory";
         return-type = "json";
@@ -86,6 +105,7 @@ in
 
       # GPU AMD (masqué automatiquement si aucune carte amdgpu n'est trouvée).
       "custom/gpu" = {
+        align = 0.5;
         format = "${icon "f26c"} {text}";
         exec = "hw-monitor gpu";
         return-type = "json";
@@ -97,7 +117,9 @@ in
       # Clic gauche : date complète ; clic droit : calendrier interactif (calendar-popup).
       # Le tooltip est en Pango : les couleurs sont en dur (Catppuccin Mocha), pas celles de Matugen.
       clock = {
-        format = "{:%H:%M}";
+        align = 0.5;
+        format = "󰃭 {:%a %b %d  %I:%M:%S %p}";
+        interval = 1;
         format-alt = "{:%A %d %B %Y}";
         tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
@@ -122,6 +144,7 @@ in
       # Lecteur de musique (MPRIS : Spotify, navigateurs...). Masqué quand rien ne joue.
       # Clic : lecture / pause ; clic droit : suivant ; clic milieu : précédent ; molette : suivant / précédent.
       mpris = {
+        align = 0.5;
         format = "{player_icon} {title}";
         format-paused = "{status_icon} {title}";
         title-len = 28;
@@ -144,12 +167,14 @@ in
       };
 
       "custom/wallpaper" = {
+        align = 0.5;
         format = wallIcon;
         tooltip-format = "Fond d'écran et thème";
         on-click = "wallpaper-menu";
       };
 
       bluetooth = {
+        align = 0.5;
         format = btIcon;
         format-connected = "{icon} {num_connections}";
         format-disabled = "";
@@ -159,6 +184,7 @@ in
       };
 
       idle_inhibitor = {
+        align = 0.5;
         format = "{icon}";
         format-icons = {
           activated = icon "f06e";
@@ -169,10 +195,12 @@ in
       };
 
       "hyprland/language" = {
+        align = 0.5;
         format = "{short}";
       };
 
       "power-profiles-daemon" = {
+        align = 0.5;
         format = "{icon}";
         tooltip-format = "Profil : {profile}";
         format-icons = {
@@ -183,6 +211,7 @@ in
       };
 
       network = {
+        align = 0.5;
         format-wifi = "${icon "f1eb"} {signalStrength}%";
         format-ethernet = "${icon "f0e8"} {ipaddr}";
         format-disconnected = "${icon "f071"}";
@@ -192,6 +221,7 @@ in
 
       # Sortie audio : molette = volume (par pas de 5 %), clic droit = muet, clic milieu = pavucontrol.
       pulseaudio = {
+        align = 0.5;
         format = "{icon} {volume}%";
         format-bluetooth = "{icon} {volume}%";
         format-muted = "${icon "f026"}";
@@ -209,6 +239,7 @@ in
 
       # Micro : clic = muet, molette = volume d'entrée, clic droit = pavucontrol.
       "pulseaudio#mic" = {
+        align = 0.5;
         format = "{format_source}";
         format-muted = "{format_source}";
         format-source = "${icon "f130"} {volume}%";
