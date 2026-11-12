@@ -56,16 +56,6 @@
     (final: prev: {
       # test_afalg needs AF_ALG kernel support, which the builder sandbox lacks.
       openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
-      # Millennium's build pulls in minizip-ng, whose CMake config calls
-      # find_dependency() for LibLZMA, zstd and Iconv. Each of those checks
-      # fails inside Millennium's build, so turn those optional backends off.
-      minizip-ng = prev.minizip-ng.overrideAttrs (old: {
-        cmakeFlags = (old.cmakeFlags or [ ]) ++ [
-          "-DMZ_LZMA=OFF"
-          "-DMZ_ZSTD=OFF"
-          "-DMZ_ICONV=OFF"
-        ];
-      });
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev.stdenv.hostPlatform) system;
         # Applied inside the unstable set so dependents (e.g. t3code) get it too.
