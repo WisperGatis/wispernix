@@ -265,6 +265,7 @@
     # -- Fun & misc --------------------------------------------------
     unstable.cmatrix
     weathr
+    inputs.betterbird-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.amane.packages.x86_64-linux.default
   ];
 }

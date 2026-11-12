@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    betterbird-nix = {
+      url = "github:bootlegsorcery/betterbird-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     brave = {
       url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
