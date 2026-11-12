@@ -1,0 +1,128 @@
+# Modèle de thème Helix, rendu par Noctalia (Matugen).
+# Ne pas éditer le fichier généré : il est écrit dans ~/.config/helix/themes/noctalia.toml.
+# Géré par home/editors.nix (noctalia/helix.toml).
+
+"ui.background" = { bg = "surface" }
+"ui.text" = "on_surface"
+"ui.text.focus" = { fg = "primary", modifiers = ["bold"] }
+"ui.text.inactive" = "on_surface_variant"
+"ui.text.info" = "secondary"
+"ui.virtual.ruler" = { bg = "surface_container" }
+"ui.virtual.whitespace" = "outline_variant"
+"ui.virtual.indent-guide" = "outline_variant"
+"ui.virtual.inlay-hint" = "outline"
+"ui.virtual.jump-label" = { fg = "on_primary", bg = "tertiary", modifiers = ["bold"] }
+
+"ui.cursor" = { fg = "surface", bg = "on_surface" }
+"ui.cursor.primary" = { fg = "on_primary", bg = "primary" }
+"ui.cursor.primary.normal" = { fg = "on_primary", bg = "primary" }
+"ui.cursor.primary.insert" = { fg = "on_tertiary", bg = "tertiary" }
+"ui.cursor.primary.select" = { fg = "on_secondary", bg = "secondary" }
+"ui.cursor.match" = { fg = "on_secondary_container", bg = "secondary_container" }
+"ui.selection" = { bg = "secondary_container" }
+"ui.selection.primary" = { bg = "primary_container" }
+"ui.cursorline.primary" = { bg = "surface_container_low" }
+"ui.highlight.frameline" = { bg = "surface_container_high" }
+
+"ui.linenr" = "outline"
+"ui.linenr.selected" = { fg = "primary", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "on_surface", bg = "surface_container_high" }
+"ui.statusline.inactive" = { fg = "on_surface_variant", bg = "surface_container_low" }
+"ui.statusline.normal" = { fg = "on_primary", bg = "primary", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "on_tertiary", bg = "tertiary", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "on_secondary", bg = "secondary", modifiers = ["bold"] }
+
+"ui.bufferline" = { fg = "on_surface_variant", bg = "surface_container_low" }
+"ui.bufferline.active" = { fg = "on_primary_container", bg = "primary_container", modifiers = ["bold"] }
+
+"ui.popup" = { bg = "surface_container" }
+"ui.window" = { bg = "surface_container" }
+"ui.help" = { fg = "on_surface", bg = "surface_container" }
+"ui.menu" = { fg = "on_surface", bg = "surface_container" }
+"ui.menu.selected" = { fg = "on_secondary_container", bg = "secondary_container" }
+"ui.menu.scroll" = { fg = "primary", bg = "surface_container_high" }
+
+# Syntaxe
+"comment" = { fg = "outline", modifiers = ["italic"] }
+"keyword" = "primary"
+"keyword.control" = "primary"
+"keyword.operator" = "secondary"
+"keyword.function" = "primary"
+"keyword.storage" = "primary"
+"function" = "tertiary"
+"function.builtin" = "tertiary"
+"function.macro" = "secondary"
+"function.method" = "tertiary"
+"type" = "secondary"
+"type.builtin" = "secondary"
+"type.enum.variant" = "secondary"
+"constructor" = "secondary"
+"constant" = "primary"
+"constant.builtin" = "primary"
+"constant.numeric" = "primary"
+"constant.character.escape" = "tertiary"
+"string" = "tertiary"
+"string.regexp" = "tertiary"
+"string.special" = "tertiary"
+"variable" = "on_surface"
+"variable.builtin" = "primary"
+"variable.parameter" = "on_surface_variant"
+"variable.other.member" = "on_surface"
+"property" = "on_surface"
+"attribute" = "secondary"
+"namespace" = "secondary"
+"label" = "tertiary"
+"operator" = "on_surface_variant"
+"punctuation" = "on_surface_variant"
+"punctuation.bracket" = "on_surface_variant"
+"punctuation.delimiter" = "on_surface_variant"
+"special" = "primary"
+"tag" = "primary"
+
+# Markup (Markdown, etc.)
+"markup.heading" = { fg = "primary", modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "tertiary", modifiers = ["underlined"] }
+"markup.link.text" = "secondary"
+"markup.raw" = "tertiary"
+"markup.list" = "primary"
+"markup.quote" = { fg = "on_surface_variant", modifiers = ["italic"] }
+
+# Diff
+"diff.plus" = "tertiary"
+"diff.minus" = "error"
+"diff.delta" = "secondary"
+
+# Diagnostics
+"error" = "error"
+"warning" = "tertiary"
+"info" = "secondary"
+"hint" = "outline"
+"diagnostic.error" = { underline = { color = "error", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "tertiary", style = "curl" } }
+"diagnostic.info" = { underline = { color = "secondary", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "outline", style = "curl" } }
+
+[palette]
+primary = "{{colors.primary.default.hex}}"
+on_primary = "{{colors.on_primary.default.hex}}"
+primary_container = "{{colors.primary_container.default.hex}}"
+on_primary_container = "{{colors.on_primary_container.default.hex}}"
+secondary = "{{colors.secondary.default.hex}}"
+on_secondary = "{{colors.on_secondary.default.hex}}"
+secondary_container = "{{colors.secondary_container.default.hex}}"
+on_secondary_container = "{{colors.on_secondary_container.default.hex}}"
+tertiary = "{{colors.tertiary.default.hex}}"
+on_tertiary = "{{colors.on_tertiary.default.hex}}"
+error = "{{colors.error.default.hex}}"
+surface = "{{colors.surface.default.hex}}"
+surface_container = "{{colors.surface_container.default.hex}}"
+surface_container_low = "{{colors.surface_container_low.default.hex}}"
+surface_container_high = "{{colors.surface_container_high.default.hex}}"
+on_surface = "{{colors.on_surface.default.hex}}"
+on_surface_variant = "{{colors.on_surface_variant.default.hex}}"
+outline = "{{colors.outline.default.hex}}"
+outline_variant = "{{colors.outline_variant.default.hex}}"
