@@ -1,10 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  #Millennium to make Steam better and allowing theming.
-  programs.steam = {
-    enable = true;
-    package = pkgs.millennium-steam.override {
-      extraArgs = "-system-composer -cef-disable-gpu-compositing";
-    };
-  };
+  programs.steam.enable = true;
+
+  # Millennium from nixpkgs-unstable, installed as a regular system package.
+  environment.systemPackages = [ pkgs.unstable.millennium ];
 }
