@@ -1,7 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  # Plain Steam. The Millennium preload stops Steam from launching
-  # (verified: Steam runs once the preload is removed). The Millennium
-  # package stays in millennium/ for when the injection is fixed.
-  programs.steam.enable = true;
+  # Steam with Millennium (experimental, see millennium/flake.nix).
+  # Revert to plain programs.steam.enable = true if it fails to launch.
+  programs.steam = {
+    enable = true;
+    package = inputs.millennium-local.packages.${pkgs.stdenv.hostPlatform.system}.steamWithMillennium;
+  };
 }
