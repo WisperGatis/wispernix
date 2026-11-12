@@ -26,20 +26,20 @@
           });
         }
       );
-      # Steam wrapper that loads Millennium's bootstrap library at launch.
-      # UNVERIFIED: the preloaded library name and the nixpkgs steam override
-      # arguments are best guesses; check them against the build output.
-      steam = pkgs.steam.override {
+      # Steam with Millennium preloaded. STEAM_RUNTIME=0 stops Steam from
+      # re-launching into the pressure-vessel container, which is the suspected
+      # place the preload gets dropped. UNVERIFIED.
+      steamWithMillennium = pkgs.steam.override {
         extraArgs = "-system-composer -cef-disable-gpu-compositing";
-        # TEST: preload removed to see whether Steam starts without Millennium.
-        # extraEnv = {
-        #   LD_PRELOAD = "${millennium}/lib/libmillennium_bootstrap_x86.so:${millennium}/lib/libmillennium_bootstrap_hhx64.so";
-        # };
+        extraEnv = {
+          STEAM_RUNTIME = "0";
+          LD_PRELOAD = "${millennium}/lib/libmillennium_bootstrap_x86.so:${millennium}/lib/libmillennium_bootstrap_hhx64.so";
+        };
       };
     in
     {
       packages.${system} = {
-        inherit millennium steam;
+        inherit millennium steamWithMillennium;
         default = millennium;
       };
     };
