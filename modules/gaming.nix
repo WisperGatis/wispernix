@@ -1,9 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  # Steam with Millennium (experimental, see millennium/flake.nix).
-  # Revert to plain programs.steam.enable = true if it fails to launch.
-  programs.steam = {
-    enable = true;
-    package = inputs.millennium-local.packages.${pkgs.stdenv.hostPlatform.system}.steamWithMillennium;
-  };
+  # Plain Steam. steamWithMillennium (millennium/flake.nix) still exits right
+  # after the launcher, even with STEAM_RUNTIME=0. Re-enable it there once the
+  # injection is fixed. Tracked in issue #38.
+  programs.steam.enable = true;
 }
