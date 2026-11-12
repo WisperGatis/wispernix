@@ -22,10 +22,19 @@
           });
         }
       );
+      # Steam wrapper that loads Millennium's bootstrap library at launch.
+      # UNVERIFIED: the preloaded library name and the nixpkgs steam override
+      # arguments are best guesses; check them against the build output.
+      steam = pkgs.steam.override {
+        extraArgs = "-system-composer -cef-disable-gpu-compositing";
+        extraEnv = {
+          LD_PRELOAD = "${millennium}/lib/libmillennium_bootstrap_hhx64.so";
+        };
+      };
     in
     {
       packages.${system} = {
-        inherit millennium;
+        inherit millennium steam;
         default = millennium;
       };
     };

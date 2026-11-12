@@ -1,7 +1,10 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  programs.steam.enable = true;
+  # Steam wrapped with Millennium, built from the local millennium/ flake.
+  programs.steam = {
+    enable = true;
+    package = inputs.millennium-local.packages.${pkgs.stdenv.hostPlatform.system}.steam;
+  };
 
-  # Millennium, built from the local millennium/ flake with a corrected hash.
-  environment.systemPackages = [ inputs.millennium-local.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+  environment.systemPackages = [ inputs.millennium-local.packages.${pkgs.stdenv.hostPlatform.system}.millennium ];
 }
