@@ -82,6 +82,9 @@
               herdr-desktop = bundled uprev.herdr-desktop;
               concord-tui = bundled uprev.concord-tui;
               zapfast = (bundled uprev.zapfast).overrideAttrs (old: {
+                # Use the system OpenSSL instead of building it from source,
+                # which needs perl that isn't in the build environment.
+                OPENSSL_NO_VENDOR = "1";
                 # openssl-sys is needed on Linux but isn't declared.
                 nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
                 buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
