@@ -32,7 +32,8 @@
       steam = pkgs.steam.override {
         extraArgs = "-system-composer -cef-disable-gpu-compositing";
         extraEnv = {
-          LD_PRELOAD = "${millennium}/lib/libmillennium_bootstrap_hhx64.so";
+          # 32-bit bootstrap for Steam's main process, 64-bit for steamwebhelper.
+          LD_PRELOAD = "${millennium}/lib/libmillennium_bootstrap_x86.so:${millennium}/lib/libmillennium_bootstrap_hhx64.so";
         };
       };
     in
