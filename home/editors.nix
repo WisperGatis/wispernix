@@ -226,4 +226,45 @@
       source = ../config/nvim;
       recursive = true;
   };
+
+  # Helix : config.toml généré ici, thème noctalia rendu par Noctalia.
+  programs.helix = {
+    enable = true;
+
+    settings = {
+      theme = "noctalia";
+
+      editor = {
+        line-number = "relative";
+        cursorline = true;
+        true-color = true;
+        auto-format = true;
+        bufferline = "multiple";
+        color-modes = true;
+        idle-timeout = 250;
+
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+
+        indent-guides.render = true;
+        lsp.display-messages = true;
+        file-picker.hidden = false;
+      };
+    };
+  };
+
+  # Noctalia rend config/helix/themes/noctalia.toml (modèle) vers
+  # ~/.config/helix/themes/noctalia.toml, même schéma que zellij (home/multiplexers.nix).
+  xdg.configFile = {
+    "noctalia/templates/helix-theme.toml".source = ../config/helix/themes/noctalia.toml;
+
+    "noctalia/helix.toml".text = ''
+      [theme.templates.user.helix]
+      input_path = "templates/helix-theme.toml"
+      output_path = "$XDG_CONFIG_HOME/helix/themes/noctalia.toml"
+    '';
+  };
 }
