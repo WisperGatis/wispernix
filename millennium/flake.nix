@@ -11,7 +11,11 @@
     { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      # Steam is unfree, so this package set has to allow it.
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       millennium = pkgs.millennium.overrideAttrs (
         finalAttrs: prevAttrs: {
