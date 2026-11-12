@@ -50,7 +50,6 @@
     # Very stupid if it works.
     inputs.OCCT.overlays.default
 
-    inputs.millennium.overlays.default
     inputs.helium-browser.overlays.default
     #nix-cachyos-kernel.overlays.pinned
     inputs.opera-flake.overlays.default
