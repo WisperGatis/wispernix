@@ -50,13 +50,22 @@
     # Very stupid if it works.
     inputs.OCCT.overlays.default
 
-    inputs.millennium.overlays.default
     inputs.helium-browser.overlays.default
     #nix-cachyos-kernel.overlays.pinned
     inputs.opera-flake.overlays.default
     (final: prev: {
       # test_afalg needs AF_ALG kernel support, which the builder sandbox lacks.
       openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
+      # Millennium's build pulls in minizip-ng, whose CMake config calls
+      # find_dependency() for LibLZMA, zstd and Iconv. Each of those checks
+      # fails inside Millennium's build, so turn those optional backends off.
+      minizip-ng = prev.minizip-ng.overrideAttrs (old: {
+        cmakeFlags = (old.cmakeFlags or [ ]) ++ [
+          "-DMZ_LZMA=OFF"
+          "-DMZ_ZSTD=OFF"
+          "-DMZ_ICONV=OFF"
+        ];
+      });
       unstable = import inputs.nixpkgs-unstable {
         inherit (prev.stdenv.hostPlatform) system;
         # Applied inside the unstable set so dependents (e.g. t3code) get it too.
@@ -73,6 +82,9 @@
               herdr-desktop = bundled uprev.herdr-desktop;
               concord-tui = bundled uprev.concord-tui;
               zapfast = (bundled uprev.zapfast).overrideAttrs (old: {
+                # Use the system OpenSSL instead of building it from source,
+                # which needs perl that isn't in the build environment.
+                OPENSSL_NO_VENDOR = "1";
                 # openssl-sys is needed on Linux but isn't declared.
                 nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
                 buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
