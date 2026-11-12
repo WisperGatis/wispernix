@@ -50,7 +50,6 @@
     # Very stupid if it works.
     inputs.OCCT.overlays.default
 
-    inputs.millennium.overlays.default
     inputs.helium-browser.overlays.default
     #nix-cachyos-kernel.overlays.pinned
     inputs.opera-flake.overlays.default
@@ -73,8 +72,9 @@
               herdr-desktop = bundled uprev.herdr-desktop;
               concord-tui = bundled uprev.concord-tui;
               zapfast = (bundled uprev.zapfast).overrideAttrs (old: {
-                # openssl-sys is needed on Linux but isn't declared.
-                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config ];
+                # openssl-sys is needed on Linux but isn't declared. It also
+                # builds OpenSSL from source, which needs perl.
+                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ uprev.pkg-config uprev.perl ];
                 buildInputs = (old.buildInputs or [ ]) ++ [ uprev.openssl ];
               });
             }

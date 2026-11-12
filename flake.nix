@@ -92,7 +92,6 @@
   
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     
-    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     
     quickemu.url = "https://flakehub.com/f/quickemu-project/quickemu/4.9.9";
 
