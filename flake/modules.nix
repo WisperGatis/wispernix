@@ -53,6 +53,16 @@
     inputs.helium-browser.overlays.default
     #nix-cachyos-kernel.overlays.pinned
     inputs.opera-flake.overlays.default
+    # Twintail launcher: pnpm deps need fetcherVersion 4 to build.
+    (final: prev: {
+      twintaillauncher = prev.twintaillauncher.overrideAttrs (new: old: {
+        pnpmDeps = final.fetchPnpmDeps {
+          inherit (new) pname version src;
+          fetcherVersion = 4;
+          hash = "sha256-q2FYYJ2NabXo5efcaulsdN78+tSaqRIUChIXpomGPx0=";
+        };
+      });
+    })
     (final: prev: {
       # test_afalg needs AF_ALG kernel support, which the builder sandbox lacks.
       openssl_1_1 = prev.openssl_1_1.overrideAttrs (_: { doCheck = false; });
