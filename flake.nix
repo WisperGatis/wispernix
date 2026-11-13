@@ -18,6 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #twintail nixos flake since WuWa is now absolute dogshit on steam since the Launcher update.
+    twintail = {
+      url = "github:Yuna404/TwintailFlake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     brave = {
       url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";

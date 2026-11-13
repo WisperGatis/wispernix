@@ -168,6 +168,7 @@
     inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.rhun-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.twintail.packages.${pkgs.stdenv.hostPlatform.system}.default
     #inputs.brave.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
