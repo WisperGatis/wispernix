@@ -31,6 +31,10 @@ let
     jalter = mkCursorTheme "jalter";
     jalter0 = mkCursorTheme "jalter0";
     evernight = mkCursorTheme "evernight";
+    shorekeeper = mkCursorTheme "shorekeeper";
+    furina = mkCursorTheme "furina";
+    galbrena_default = mkCursorTheme "galbrena_default";
+    galbrena_gold = mkCursorTheme "galbrena_gold";
   };
 
   activeCursorTheme = "remielle_black";
