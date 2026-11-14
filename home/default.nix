@@ -37,6 +37,7 @@ let
     galbrena_gold = mkCursorTheme "galbrena_gold";
     vivan = mkCursorTheme "vivan";
     robin = mkCursorTheme "robin";
+    castorice = mkCursorTheme "castorice";
   };
 
   activeCursorTheme = "remielle_black";
