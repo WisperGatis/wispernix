@@ -5,7 +5,7 @@
   # Shaders d'écran d'Umbriel (presets déclarés dans config.toml).
   xdg.configFile."umbriel/effects" = { source = ../config/umbriel/effects; recursive = true; };
 
-  # Mod+L: flip EVERY workspace between scrolling and master (Umbriel's
+  # Mod+L: flip EVERY workspace between scrolling and dwindle (Umbriel's
   # workspace-set-layout only touches the active workspace, so this visits each one).
   # Remembers the global state in ~/.local/state/umbriel/layout-mode.
   home.packages = [
@@ -16,7 +16,7 @@
         state=$HOME/.local/state/umbriel/layout-mode
         mkdir -p "$(dirname "$state")"
         cur=$(cat "$state" 2>/dev/null || echo scrolling)
-        if [ "$cur" = scrolling ]; then next=master; else next=scrolling; fi
+        if [ "$cur" = scrolling ]; then next=dwindle; else next=scrolling; fi
 
         ws=$(umbriel workspaces --json)
 
