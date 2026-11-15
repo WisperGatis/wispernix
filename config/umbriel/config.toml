@@ -330,7 +330,7 @@ selection = "round_robin"
 "Mod+F"       = "window-toggle-maximize"      # niri: maximize-column
 "Mod+Shift+F" = "window-toggle-fullscreen"
 
-# --- Global layout: scrolling <-> master (tiling) ---
+# --- Global layout: scrolling <-> dwindle (tiling) ---
 # Default stays scrolling. Each press flips every workspace (script from home/desktop.nix).
 "Mod+L" = "spawn umbriel-layout-toggle-all"
 
