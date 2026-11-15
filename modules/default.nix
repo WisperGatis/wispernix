@@ -19,5 +19,6 @@
     ./users.nix
     ./packages.nix
     ./home-manager.nix
+    ./web-palette.nix
   ];
 }
