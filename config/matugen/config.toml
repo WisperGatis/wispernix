@@ -10,3 +10,8 @@ output_path = "~/.config/waybar/colors.css"
 [templates.rofi]
 input_path = "~/.config/matugen/templates/rofi.rasi"
 output_path = "~/.config/rofi/colors.rasi"
+
+# Palette JSON lue par l'extension navigateur (browser-extension/).
+[templates.web_palette]
+input_path = "~/.config/matugen/templates/web-palette.json"
+output_path = "~/.config/web-palette/palette.json"
