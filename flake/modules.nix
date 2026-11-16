@@ -94,6 +94,8 @@
           allowUnfree = true;
           permittedInsecurePackages = [
             "electron-40.10.5"
+            # Needed by linux-wallpaper-engine (jagrat7 flake pins Electron 39, EOL).
+            "electron-39.8.10"
           ];
         };
       };
