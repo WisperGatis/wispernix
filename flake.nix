@@ -111,10 +111,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rhun-nix = {
-      url = "github:michnicki/rhun-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #rhun-nix = {
+    #  url = "github:michnicki/rhun-nix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     waterfox = {
       url = "github:sammypanda/nixos-waterfox";
