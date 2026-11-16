@@ -6,6 +6,17 @@
   # Software-only profile, run with: fastfetch -c software
   xdg.configFile."fastfetch/software.jsonc".source = ../config/fastfetch/software.jsonc;
 
+  # fetch-box: pixel-art emblem with the software specs framed in boxes next
+  # to it (fastfetch can't draw borders, so config/fastfetch/box.py does it).
+  home.packages = [
+    (pkgs.writeShellScriptBin "fetch-box" ''
+      exec ${pkgs.python3}/bin/python3 ${../config/fastfetch/box.py} \
+        ${../config/fastfetch/logo.txt} \
+        "$HOME/.config/fastfetch/software.jsonc" \
+        ${pkgs.fastfetch}/bin/fastfetch
+    '')
+  ];
+
   programs.fastfetch = {
     enable = true;
 
