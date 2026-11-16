@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
-"""Render the pixel-art emblem with fastfetch specs inside rounded boxes.
+"""Render the pixel-art emblem with fastfetch categories in square boxes.
 
 Usage: box.py <logo.txt> <software.jsonc> <fastfetch-binary>
 
-fastfetch prints the specs with its own colors and icons; this script frames
-them. The line produced by the `separator` module splits the output into two
-boxes: the specs on top, the palette row below (same layout as the reference).
+Layout (same as the reference): the category keys (icon + name) sit inside a
+square box, their values are printed to the right of the box. The palette
+row gets its own small box labelled "colors".
+
+fastfetch's config sets display.separator to U+2063 (an invisible separator),
+which lets this script split each line into key and value.
 """
 import re
 import subprocess
 import sys
 
 ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
-SEPARATOR = re.compile(r"^-{3,}$")
-GAP = 4
+SEPARATOR_LINE = re.compile(r"^-{3,}$")
+KEY_VALUE_MARK = "⁣"
+COLORS_LABEL = " colors"  # palette icon, same role as the reference
+GAP = 4        # space between the logo and the key box
+VALUE_GAP = 2  # space between the key box and the values
 
 
 def vis(s):
@@ -30,6 +36,40 @@ def trim_blank(lines):
     return lines
 
 
+def to_items(lines, palette_label=None):
+    """Turn raw fastfetch lines into (key, value) pairs; blank lines stay blank."""
+    items = []
+    labelled = False
+    for line in lines:
+        if KEY_VALUE_MARK in line:
+            key, value = line.split(KEY_VALUE_MARK, 1)
+            items.append((key, value))
+        elif not ANSI.sub("", line):
+            # A true blank line (the fastfetch "break" module).
+            items.append(("", ""))
+        else:
+            # Palette rows have no key. Only the first one gets the label, so
+            # the two palette rows share one "colors" entry.
+            items.append((palette_label if palette_label and not labelled else "", line))
+            labelled = True
+    return items
+
+
+def boxed(items, key_width):
+    """Return (box_part, value_part) pairs for one square box of keys."""
+    width = key_width + 2
+    rows = [("┌" + "─" * width + "┐", "")]
+    for key, value in items:
+        if key == "" and value == "":
+            content = ""
+        else:
+            content = key
+        pad = " " * (key_width - vis(content))
+        rows.append(("│ " + content + pad + " │", value))
+    rows.append(("└" + "─" * width + "┘", ""))
+    return rows
+
+
 def main():
     logo_path, cfg, ff = sys.argv[1], sys.argv[2], sys.argv[3]
 
@@ -38,37 +78,38 @@ def main():
         capture_output=True, text=True, check=True,
     ).stdout.splitlines()
 
-    sep = next((i for i, l in enumerate(raw) if SEPARATOR.match(ANSI.sub("", l).strip())), None)
+    sep = next((i for i, l in enumerate(raw) if SEPARATOR_LINE.match(ANSI.sub("", l).strip())), None)
     if sep is None:
         top, bottom = raw, []
     else:
         top, bottom = raw[:sep], raw[sep + 1:]
-    top, bottom = trim_blank(top), trim_blank(bottom)
+    top = trim_blank(top)
+    bottom = trim_blank(bottom)
 
-    inner = max([vis(l) for l in top + bottom] or [0])
-    width = inner + 2  # one space of padding on each side of the content
+    top_items = to_items(top)
+    bottom_items = to_items(bottom, palette_label=COLORS_LABEL)
 
-    def row(content):
-        return "│ " + content + " " * (inner - vis(content)) + " │"
+    key_width = max([vis(k) for k, _ in top_items + bottom_items if k] or [0])
 
-    box = ["╭" + "─" * (width) + "╮"]
-    box += [row(l) for l in top]
-    if bottom:
-        box.append("├" + "─" * width + "┤")
-        box += [row(l) for l in bottom]
-    box.append("╰" + "─" * width + "╯")
+    rows = boxed(top_items, key_width)
+    if bottom_items:
+        rows.append(("", ""))
+        rows += boxed(bottom_items, key_width)
 
     with open(logo_path, encoding="utf-8") as f:
         logo = f.read().rstrip("\n").split("\n")
     logo_w = max(vis(l) for l in logo)
 
-    rows = max(len(logo), len(box))
     out = []
-    for i in range(rows):
+    for i in range(max(len(logo), len(rows))):
         left = logo[i] if i < len(logo) else ""
-        right = box[i] if i < len(box) else ""
-        left_pad = " " * (logo_w - vis(left))
-        out.append(left + left_pad + " " * GAP + right if right else left)
+        box, value = rows[i] if i < len(rows) else ("", "")
+        line = left + " " * (logo_w - vis(left))
+        if box:
+            line += " " * GAP + box
+        if value:
+            line += " " * VALUE_GAP + value
+        out.append(line)
     print("\n".join(out) + "\x1b[0m")
 
 

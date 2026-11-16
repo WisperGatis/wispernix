@@ -9,7 +9,7 @@
     "key": {
       "type": "both"
     },
-    "separator": "  "
+    "separator": "⁣"
   },
   "modules": [
     { "type": "users", "key": "user" },
