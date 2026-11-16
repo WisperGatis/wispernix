@@ -19,7 +19,7 @@ in
     libsForQt5.qt5ct
     palette-video
     #dash-to-dock
-    #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     (python3.withPackages (ps: with ps; [
       pillow
