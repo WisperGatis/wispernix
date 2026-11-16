@@ -3,6 +3,9 @@
   # fastfetch: pixel-art emblem logo (half-block ANSI art in config/fastfetch).
   # The logo is referenced as a Nix store path so it works without any
   # ~ expansion inside fastfetch itself.
+  # Software-only profile, run with: fastfetch -c software
+  xdg.configFile."fastfetch/software.jsonc".source = ../config/fastfetch/software.jsonc;
+
   programs.fastfetch = {
     enable = true;
 
