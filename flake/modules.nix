@@ -177,7 +177,7 @@
   environment.systemPackages = [
     inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    #inputs.rhun-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.rhun-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # The twintail flake hardcodes a stale pnpm hash, so override it here.
     (inputs.twintail.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (new: old: {
       pnpmDeps = pkgs.fetchPnpmDeps {
