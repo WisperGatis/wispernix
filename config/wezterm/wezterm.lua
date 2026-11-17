@@ -36,7 +36,9 @@ config.scrollback_lines = 10000
 -- Fenêtre : marges généreuses, léger voile transparent
 config.window_padding = { left = 14, right = 14, top = 12, bottom = 10 }
 config.window_background_opacity = 0.90
-config.window_decorations = 'RESIZE'
+-- Pas de barre de titre ni de boutons dessinés par WezTerm : le compositeur gère la fenêtre.
+config.window_decorations = 'NONE'
+config.integrated_title_buttons = {}
 config.window_close_confirmation = 'NeverPrompt'
 config.window_frame = {
   font = wezterm.font { family = 'JetBrainsMono Nerd Font', weight = 'Bold' },
