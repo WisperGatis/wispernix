@@ -50,6 +50,7 @@ in
     inputs.simple-wallpaper-engine.homeManagerModules.default
 
     ./packages.nix
+    ./fastfetch.nix
     ./shell.nix
     ./terminals.nix
     ./multiplexers.nix
