@@ -26,6 +26,15 @@ def vis(s):
     return len(ANSI.sub("", s))
 
 
+def dotify(palette_line):
+    """Turn fastfetch's background swatches into small colored dots.
+
+    Each swatch is a background-colored block (ESC[4Xm plus spaces); keep its
+    color but draw a "●" in the foreground instead, as in the reference.
+    """
+    return re.sub(r"\x1b\[4([0-7])m +", lambda m: f"\x1b[3{m.group(1)}m● ", palette_line)
+
+
 def trim_blank(lines):
     # Only drop truly empty lines: the palette row is spaces with background
     # colors, which look blank once ANSI codes are stripped but must be kept.
@@ -50,7 +59,7 @@ def to_items(lines, palette_label=None):
         else:
             # Palette rows have no key. Only the first one gets the label, so
             # the two palette rows share one "colors" entry.
-            items.append((palette_label if palette_label and not labelled else "", line))
+            items.append((palette_label if palette_label and not labelled else "", dotify(line)))
             labelled = True
     return items
 
