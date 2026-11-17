@@ -42,10 +42,8 @@ let
         key = "shell";
         text = "printf '%s %s' \"\${SHELL##*/}\" \"$(\"\$SHELL\" --version 2>/dev/null | grep -oE '[0-9]+(\\.[0-9]+)+' | head -n1)\"";
       }
-      { type = "packages"; key = "packages"; }
       { type = "locale"; key = "locale"; }
       { type = "theme"; key = "theme"; }
-      { type = "icons"; key = "icons"; }
       "separator"
       "colors"
     ];
