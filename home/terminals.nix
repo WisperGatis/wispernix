@@ -59,16 +59,15 @@
     };
   };
 
-  # WezTerm : configuration dans config/wezterm/wezterm.lua.
-  programs.wezterm = {
-    enable = true;
-    extraConfig = builtins.readFile ../config/wezterm/wezterm.lua;
-    enableFishIntegration = true;
-  };
+  # WezTerm : paquet + config Lua brute (pas de module programs.wezterm,
+  # pour ne dépendre d'aucune option spécifique de Home Manager).
+  home.packages = [ pkgs.wezterm ];
 
   # Noctalia rend config/wezterm/colors/noctalia.lua (modèle) vers
   # ~/.config/wezterm/colors/noctalia.lua, même schéma que helix (home/editors.nix).
   xdg.configFile = {
+    "wezterm/wezterm.lua".source = ../config/wezterm/wezterm.lua;
+
     "noctalia/templates/wezterm-colors.lua".source = ../config/wezterm/colors/noctalia.lua;
 
     "noctalia/wezterm.toml".text = ''
