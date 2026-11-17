@@ -58,4 +58,22 @@
       colors-light.alpha = "0.90";
     };
   };
+
+  # WezTerm : paquet + config Lua brute (pas de module programs.wezterm,
+  # pour ne dépendre d'aucune option spécifique de Home Manager).
+  home.packages = [ pkgs.wezterm ];
+
+  # Noctalia rend config/wezterm/colors/noctalia.lua (modèle) vers
+  # ~/.config/wezterm/colors/noctalia.lua, même schéma que helix (home/editors.nix).
+  xdg.configFile = {
+    "wezterm/wezterm.lua".source = ../config/wezterm/wezterm.lua;
+
+    "noctalia/templates/wezterm-colors.lua".source = ../config/wezterm/colors/noctalia.lua;
+
+    "noctalia/wezterm.toml".text = ''
+      [theme.templates.user.wezterm]
+      input_path = "templates/wezterm-colors.lua"
+      output_path = "$XDG_CONFIG_HOME/wezterm/colors/noctalia.lua"
+    '';
+  };
 }
