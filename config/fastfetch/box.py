@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Render the pixel-art emblem with fastfetch categories in square boxes.
 
-Usage: box.py <logo.txt> <software.jsonc> <fastfetch-binary>
+Usage: box.py <logo.txt> <config.jsonc> <fastfetch-binary> [noctalia-theme.jsonc]
+
+The logo uses $1 placeholders, filled from the Noctalia theme's logo.color.1,
+so the emblem follows matugen/Noctalia colors.
 
 Layout (same as the reference): the category keys (icon + name) sit inside a
 square box, their values are printed to the right of the box. The palette
@@ -10,6 +13,7 @@ row gets its own small box labelled "colors".
 fastfetch's config sets display.separator to U+2063 (an invisible separator),
 which lets this script split each line into key and value.
 """
+import json
 import re
 import subprocess
 import sys
@@ -20,6 +24,23 @@ KEY_VALUE_MARK = "⁣"
 COLORS_LABEL = "\U000f03d8 colors"  # nf-md-palette, matches the reference's palette icon
 GAP = 4        # space between the logo and the key box
 VALUE_GAP = 2  # space between the key box and the values
+
+
+FALLBACK_LOGO_COLOR = "\x1b[31m"  # terminal palette red, if no theme is set
+
+
+def logo_color(theme_path):
+    """Logo color from the Noctalia fastfetch theme (logo.color.1), as truecolor.
+
+    Falls back to the palette red when the theme file is missing or unreadable.
+    """
+    try:
+        with open(theme_path, encoding="utf-8") as f:
+            value = json.load(f)["logo"]["color"]["1"].lstrip("#")
+        r, g, b = (int(value[i:i + 2], 16) for i in (0, 2, 4))
+        return f"\x1b[38;2;{r};{g};{b}m"
+    except (OSError, ValueError, KeyError, TypeError):
+        return FALLBACK_LOGO_COLOR
 
 
 def vis(s):
@@ -86,9 +107,11 @@ def single_box(top_items, bottom_items, key_width):
 
 def main():
     logo_path, cfg, ff = sys.argv[1], sys.argv[2], sys.argv[3]
+    theme = sys.argv[4] if len(sys.argv) > 4 else ""
 
+    # The box draws the logo itself, so fastfetch's own logo is turned off.
     raw = subprocess.run(
-        [ff, "-c", cfg, "--pipe", "false"],
+        [ff, "-c", cfg, "--logo", "none", "--pipe", "false"],
         capture_output=True, text=True, check=True,
     ).stdout.splitlines()
 
@@ -112,6 +135,8 @@ def main():
 
     with open(logo_path, encoding="utf-8") as f:
         logo = f.read().rstrip("\n").split("\n")
+    color = logo_color(theme)
+    logo = [line.replace("$1", color) for line in logo]
     logo_w = max(vis(l) for l in logo)
 
     out = []
