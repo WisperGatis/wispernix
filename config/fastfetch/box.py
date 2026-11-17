@@ -17,7 +17,7 @@ import sys
 ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 SEPARATOR_LINE = re.compile(r"^-{3,}$")
 KEY_VALUE_MARK = "⁣"
-COLORS_LABEL = " colors"  # palette icon, same role as the reference
+COLORS_LABEL = "\U000f03d8 colors"  # nf-md-palette, matches the reference's palette icon
 GAP = 4        # space between the logo and the key box
 VALUE_GAP = 2  # space between the key box and the values
 
