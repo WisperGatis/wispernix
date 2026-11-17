@@ -55,18 +55,23 @@ def to_items(lines, palette_label=None):
     return items
 
 
-def boxed(items, key_width):
-    """Return (box_part, value_part) pairs for one square box of keys."""
+def frame_row(content, key_width, value=""):
+    pad = " " * (key_width - vis(content))
+    return ("│ " + content + pad + " │", value)
+
+
+def single_box(top_items, bottom_items, key_width):
+    """One rounded box holding the keys, a divider, then the palette row.
+
+    Returns (box_part, value_part) pairs; values sit outside the box.
+    """
     width = key_width + 2
-    rows = [("┌" + "─" * width + "┐", "")]
-    for key, value in items:
-        if key == "" and value == "":
-            content = ""
-        else:
-            content = key
-        pad = " " * (key_width - vis(content))
-        rows.append(("│ " + content + pad + " │", value))
-    rows.append(("└" + "─" * width + "┘", ""))
+    rows = [("╭" + "─" * width + "╮", "")]
+    rows += [frame_row(key, key_width, value) for key, value in top_items]
+    if bottom_items:
+        rows.append(("├" + "─" * width + "┤", ""))
+        rows += [frame_row(key, key_width, value) for key, value in bottom_items]
+    rows.append(("╰" + "─" * width + "╯", ""))
     return rows
 
 
@@ -86,15 +91,15 @@ def main():
     top = trim_blank(top)
     bottom = trim_blank(bottom)
 
-    top_items = to_items(top)
-    bottom_items = to_items(bottom, palette_label=COLORS_LABEL)
+    # Blank lines are not drawn inside the box, so the rows stay packed.
+    top_items = [i for i in to_items(top) if i != ("", "")]
+    # fastfetch prints the palette as two rows (normal and bright); the
+    # reference shows one row of dots, so only the first row is used.
+    bottom_items = [i for i in to_items(bottom, palette_label=COLORS_LABEL) if i != ("", "")][:1]
 
     key_width = max([vis(k) for k, _ in top_items + bottom_items if k] or [0])
 
-    rows = boxed(top_items, key_width)
-    if bottom_items:
-        rows.append(("", ""))
-        rows += boxed(bottom_items, key_width)
+    rows = single_box(top_items, bottom_items, key_width)
 
     with open(logo_path, encoding="utf-8") as f:
         logo = f.read().rstrip("\n").split("\n")
