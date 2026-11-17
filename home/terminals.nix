@@ -58,4 +58,23 @@
       colors-light.alpha = "0.90";
     };
   };
+
+  # WezTerm : configuration dans config/wezterm/wezterm.lua.
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ../config/wezterm/wezterm.lua;
+    enableFishIntegration = true;
+  };
+
+  # Noctalia rend config/wezterm/colors/noctalia.lua (modèle) vers
+  # ~/.config/wezterm/colors/noctalia.lua, même schéma que helix (home/editors.nix).
+  xdg.configFile = {
+    "noctalia/templates/wezterm-colors.lua".source = ../config/wezterm/colors/noctalia.lua;
+
+    "noctalia/wezterm.toml".text = ''
+      [theme.templates.user.wezterm]
+      input_path = "templates/wezterm-colors.lua"
+      output_path = "$XDG_CONFIG_HOME/wezterm/colors/noctalia.lua"
+    '';
+  };
 }
