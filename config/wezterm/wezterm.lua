@@ -52,10 +52,12 @@ config.inactive_pane_hsb = {
 }
 
 -- Barre d'onglets : style moderne, sans bouton "+"
-config.use_fancy_tab_bar = true
+-- Retro bar : rend uniquement nos pastilles (pas de "×" ni de séparateurs).
+config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
+config.show_close_tab_button_in_tabs = false
 config.tab_max_width = 32
 
 -- Onglets en pastilles arrondies, couleurs tirées du thème Noctalia.
