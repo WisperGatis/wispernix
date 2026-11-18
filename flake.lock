@@ -180,11 +180,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1794870087,
-        "narHash": "sha256-JggThKdK7+7Dm0J2Mg6k3F7+rdU4uD25MW1t48FeEB4=",
+        "lastModified": 1794960137,
+        "narHash": "sha256-+pARhHaJijnv8acZJR93NoQjgud6NsoYa0zEpmgA5nc=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "ab27a02c0f2d046e8d4ed53fb03c0649bdfae191",
+        "rev": "409e35c59fab5c280bebb72a997ff505b419bba3",
         "type": "github"
       },
       "original": {
@@ -574,11 +574,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794965185,
-        "narHash": "sha256-qUbBeqU9cbi/NMT6INuUUAubmdK9kmQuJWPp6EQkY0c=",
+        "lastModified": 1794966311,
+        "narHash": "sha256-BUeZY4Nx5XH1D2HeZjUNRPJXkhcfCMadX60Pyei/B8g=",
         "ref": "refs/heads/main",
-        "rev": "181f38a2a1d6da259238a3f936017c619d2eeda2",
-        "revCount": 328,
+        "rev": "2a348d5af0de226125b52f7d63a68e13f0f78cf8",
+        "revCount": 329,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
