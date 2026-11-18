@@ -53,6 +53,7 @@ in
     ./fastfetch.nix
     ./shell.nix
     ./terminals.nix
+    ./luciole.nix
     ./multiplexers.nix
     ./editors.nix
     ./apps.nix

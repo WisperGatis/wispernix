@@ -567,6 +567,26 @@
         "type": "github"
       }
     },
+    "luciole": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794965185,
+        "narHash": "sha256-qUbBeqU9cbi/NMT6INuUUAubmdK9kmQuJWPp6EQkY0c=",
+        "ref": "refs/heads/main",
+        "rev": "181f38a2a1d6da259238a3f936017c619d2eeda2",
+        "revCount": 328,
+        "type": "git",
+        "url": "https://github.com/noctalia-dev/luciole"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/noctalia-dev/luciole"
+      }
+    },
     "m3shapes": {
       "inputs": {
         "nixpkgs": [
@@ -937,6 +957,7 @@
         "helium-browser": "helium-browser",
         "herdr-nix": "herdr-nix",
         "home-manager": "home-manager_2",
+        "luciole": "luciole",
         "mangowm": "mangowm",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
