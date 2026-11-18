@@ -63,6 +63,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Luciole : gestionnaire de fichiers Wayland de Noctalia.
+    luciole = {
+      url = "github:noctalia-dev/luciole";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Amane
     amane = {
       url = "github:MystiaFin/amane";
