@@ -66,7 +66,7 @@
     # Luciole : gestionnaire de fichiers Wayland de Noctalia.
     # Exige wayland-protocols >= 1.49, absent de nixos-26.05 : on suit unstable.
     luciole = {
-      url = "github:noctalia-dev/luciole";
+      url = "git+https://github.com/noctalia-dev/luciole";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
