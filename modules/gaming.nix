@@ -1,6 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  # Plain Steam. Millennium is disabled until upstream fixes its Steam injection
-  # (see issue #38).
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    package = pkgs.millennium-steam.override {
+      extraArgs = "-system-composer -cef-disable-gpu-compositing";
+    };
+  };
 }
