@@ -12,7 +12,7 @@ function fish_right_prompt
         test $p -ne 0; and set failed 1
     end
     if test $failed -eq 1; and test $last_status -ne 0
-        set -a out (set_color -o $__wp_red)"✘ "(string join '|' -- $pipes)$reset
+        set -a out (set_color -o $__wp_red)"✘ "(string join '|' -- (for p in $pipes; _wp_exit_name $p; end))$reset
     end
     set -a out (set_color -o $__wp_subtext0)(date +%H:%M)$reset
     string join ' ' -- $out
