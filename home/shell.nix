@@ -3,19 +3,24 @@
   programs.fish = {
     enable = true;
 
+    # Prompt = native functions in config/fish (a port of the starship layout,
+    # same Noctalia palette). Tide is gone.
     plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide.src;
-      }
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }   # Ctrl+R history, Ctrl+Alt+F files, Ctrl+Alt+L git log
+      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }   # closes ( [ { " '
+      { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }       # drops failed commands from history
+      { name = "done"; src = pkgs.fishPlugins.done.src; }           # desktop notification when a long command ends
     ];
-
-    interactiveShellInit = ''
-      set -g fish_greeting
-    '';
   };
 
-  # fish keeps its Tide prompt; zsh uses Starship with the Noctalia palette.
+  xdg.configFile."fish/functions" = { source = ../config/fish/functions; recursive = true; };
+  xdg.configFile."fish/conf.d/wispernix.fish".source = ../config/fish/conf.d/wispernix.fish;
+
+  programs.zoxide = { enable = true; enableFishIntegration = true; enableZshIntegration = true; };   # `z dir`, `zi`
+  programs.eza = { enable = true; enableFishIntegration = true; icons = "auto"; git = true; };         # ls/ll/la/lt
+  programs.bat.enable = true;                                                                          # fzf.fish previews
+
+  # fish has its own native prompt; zsh uses Starship with the Noctalia palette.
   # zsh is a quick-switch shell only; fish remains the login default.
   programs.zsh = {
     enable = true;
