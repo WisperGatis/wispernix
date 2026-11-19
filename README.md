@@ -14,7 +14,7 @@ Flakes 기반 NixOS 설정 저장소입니다. 시스템 모듈, 사용자 홈 �
 | `flake/modules.nix` | 추가 NixOS 모듈과 overlay (`nixpkgs.overlays`) |
 | `modules/` | 시스템 모듈: 부팅, 네트워크, 오디오, 그래픽, 디스플레이 매니저, 폰트, 게임, 가상화, 스토리지, 사용자 등 |
 | `home/` | Home Manager 설정: 셸, 터미널, 편집기, 멀티플렉서, 앱, 스크립트 |
-| `config/` | 실제 적용되는 dotfile: `fish`, `starship`, `nvim`, `niri`, `sway`, `mango`, `labwc`, `umbriel`, 커서 테마 |
+| `config/` | 실제 적용되는 dotfile: `fish`(네이티브 프롬프트), `starship`, `nvim`, `niri`, `sway`, `mango`, `labwc`, `umbriel`, 커서 테마 |
 | `obscura-vpn/` | Obscura VPN NixOS 모듈 (별도 flake) |
 
 ## 주요 구성 요소
