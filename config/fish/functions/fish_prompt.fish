@@ -49,9 +49,9 @@ function fish_prompt
     set -l pwd (prompt_pwd)
     set -l parts (string match -r '^(.*/)?([^/]*)$' -- $pwd)
     set -l dircol $__wp_mauve
-    # Home gets its own look: a house icon and a warm colour.
+    # Home gets its own look: a house icon, the username and a warm colour.
     if test "$PWD" = "$HOME"
-        set pwd \uf015" ~"
+        set pwd \uf015" "(id -un)" ~"
         set parts $pwd "" $pwd
         set dircol $__wp_yellow
     end
