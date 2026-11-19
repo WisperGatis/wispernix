@@ -13,7 +13,7 @@ function _wp_palette --description "Load the Noctalia palette (cached by mtime)"
     set -l defaults \
         blue 9ccfd8 red eb6f92 green 3e8fb0 yellow f6c177 \
         mauve c4a7e7 pink c4a7e7 peach f6c177 teal ea9a97 sky ea9a97 \
-        lavender c4a7e7 text e0def4 subtext0 6e6a86 surface1 393552
+        lavender c4a7e7 base 232136 text e0def4 subtext0 6e6a86 surface1 393552
     for i in (seq 1 2 (count $defaults))
         set -g __wp_$defaults[$i] $defaults[(math $i + 1)]
     end
