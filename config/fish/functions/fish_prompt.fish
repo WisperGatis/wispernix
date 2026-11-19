@@ -23,9 +23,19 @@ function fish_prompt
         set cc $__wp_red
     end
 
-    # Transient (scrollback) rendering: just the character.
+    # Transient (scrollback) rendering. `wp_transient` picks the style:
+    #   time (default)  14:32 ❯      dir  wispernix ❯      char  ❯
     if set -q _flag_final_rendering
-        printf '%s❯%s ' (set_color -o $cc) $reset
+        set -l t $wp_transient
+        test -z "$t"; and set t time
+        set -l pre
+        switch $t
+            case time
+                set pre (set_color $__wp_subtext0)(date +%H:%M)$reset" "
+            case dir
+                set pre (set_color $__wp_mauve)(path basename $PWD)$reset" "
+        end
+        printf '%s%s❯%s ' "$pre" (set_color -o $cc) $reset
         return
     end
 

@@ -1,7 +1,13 @@
 # One `git status` call -> "<branch> <flags>" (flags in starship's style).
 # Prints nothing outside a repository.
 function _wp_git --description "Git branch and status summary for the prompt"
-    set -l out (command git --no-optional-locks status --porcelain=v2 --branch 2>/dev/null); or return 1
+    set -l out (command git --no-optional-locks status --porcelain=v2 --branch 2>/dev/null)
+    # git refuses repos we don't own ("dubious ownership") or can't fully read:
+    # fall back to reading .git/HEAD by hand (no git process, no safe.directory bypass).
+    or begin
+        _wp_git_head
+        return
+    end
     set -l branch ""
     set -l oid ""
     set -l upstream ""
