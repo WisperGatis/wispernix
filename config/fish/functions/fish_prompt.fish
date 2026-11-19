@@ -48,7 +48,14 @@ function fish_prompt
 
     set -l pwd (prompt_pwd)
     set -l parts (string match -r '^(.*/)?([^/]*)$' -- $pwd)
-    set -a names dir; set -a cols $__wp_mauve; set -a texts $pwd
+    set -l dircol $__wp_mauve
+    # Home gets its own look: a house icon and a warm colour.
+    if test "$PWD" = "$HOME"
+        set pwd \uf015" ~"
+        set parts $pwd "" $pwd
+        set dircol $__wp_yellow
+    end
+    set -a names dir; set -a cols $dircol; set -a texts $pwd
     if not test -w $PWD
         set -a names ro; set -a cols $__wp_red; set -a texts 
     end
@@ -120,7 +127,7 @@ function fish_prompt
     switch $layout
         case minimal
             # dir, branch, a dot when dirty, character
-            set -l out (set_color -o $__wp_mauve)(path basename $pwd)$reset
+            set -l out (set_color -o $dircol)(path basename $pwd)$reset
             test -n "$branch"; and set out $out (set_color $__wp_pink)$branch$reset
             contains flags $names; and set out $out(set_color -o $__wp_peach)" ●"$reset
             printf '%s %s ' (string join ' ' -- $out) $ch
@@ -159,7 +166,7 @@ function fish_prompt
             set -l buf
             for i in (seq $n)
                 if test $names[$i] = dir
-                    set -a buf (set_color $__wp_mauve)$parts[2](set_color -o $__wp_mauve)$parts[3]$reset
+                    set -a buf (set_color $dircol)$parts[2](set_color -o $dircol)$parts[3]$reset
                 else
                     set -a buf (set_color -o $cols[$i])$texts[$i]$reset
                 end
