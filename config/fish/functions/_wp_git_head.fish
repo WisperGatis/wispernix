@@ -1,6 +1,6 @@
 # Branch-only fallback for repos `git status` refuses to read (not owned by us,
 # unreadable index...). Walks up to find .git, parses HEAD. Prints the same
-# 3-line shape as _wp_git, with empty flags/upstream.
+# 3-line shape as _wp_git, with a ⚠ flag (status unknown) and no upstream.
 function _wp_git_head
     set -l d $PWD
     set -l gd
@@ -23,5 +23,6 @@ function _wp_git_head
     set -l branch (string replace -r '^ref: refs/heads/' '' -- $head)
     # detached: raw hash
     test "$branch" = "$head"; and set branch (string sub -l 7 -- $head)
-    printf '%s\n%s\n%s\n' $branch '' ''
+    # ⚠ = status unavailable (git refused or failed): run `wp_git_doctor`
+    printf '%s\n%s\n%s\n' $branch ⚠ ''
 end

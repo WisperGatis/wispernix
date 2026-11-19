@@ -1,18 +1,7 @@
 # One `git status` call -> "<branch> <flags>" (flags in starship's style).
 # Prints nothing outside a repository.
 function _wp_git --description "Git branch and status summary for the prompt"
-    # Repos we explicitly trust (default /etc/nixos, see $wp_git_trusted) get
-    # safe.directory passed for this one call; every other repo keeps git's
-    # ownership check, so an untrusted checkout can never run code from the prompt.
-    set -l trust
-    set -l here (path resolve $PWD)
-    for t in $wp_git_trusted
-        set t (path resolve $t)
-        if test "$here" = "$t"; or string match -q -- "$t/*" $here
-            set trust -c safe.directory=$t
-            break
-        end
-    end
+    set -l trust (_wp_git_trust)
     set -l out (command git $trust --no-optional-locks status --porcelain=v2 --branch 2>/dev/null)
     # git refuses repos we don't own ("dubious ownership") or can't fully read:
     # fall back to reading .git/HEAD by hand (no git process, no safe.directory bypass).
