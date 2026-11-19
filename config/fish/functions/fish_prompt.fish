@@ -166,8 +166,6 @@ function fish_prompt
             set -l buf
             for i in (seq $n)
                 if test $names[$i] = dir
-                    # at home, a dim bar separates the OS icon from the house
-                    test "$PWD" = "$HOME"; and set -a buf (set_color $__wp_subtext0)│$reset
                     set -a buf (set_color $dircol)$parts[2](set_color -o $dircol)$parts[3]$reset
                 else
                     set -a buf (set_color -o $cols[$i])$texts[$i]$reset
