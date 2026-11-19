@@ -4,6 +4,10 @@ status is-interactive; or return
 set -g fish_greeting
 set -g fish_transient_prompt 1
 
+# Repos owned by someone else (e.g. root-owned /etc/nixos) whose git status the
+# prompt may read despite git's "dubious ownership" check. Add more paths here.
+set -q wp_git_trusted; or set -g wp_git_trusted /etc/nixos
+
 # Syntax highlighting + pager in the Noctalia palette (set once per shell;
 # the prompt itself hot-reloads, `exec fish` refreshes these after a theme change).
 _wp_palette
