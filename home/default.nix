@@ -38,6 +38,7 @@ let
     vivan = mkCursorTheme "vivan";
     robin = mkCursorTheme "robin";
     castorice = mkCursorTheme "castorice";
+    nero = mkCursorTheme "nero";
   };
 
   activeCursorTheme = "remielle_black";
