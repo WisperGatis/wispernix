@@ -73,7 +73,7 @@ size = 24
 follows_focus = true          # niri: warp-mouse-to-focus
 
 [input.focus]
-follows_mouse = true          # niri: focus-follows-mouse
+follows_mouse = "always"      # "off" | "sloppy" | "always" (niri: focus-follows-mouse)
 follows_mouse_max_scroll = 0.1
 
 ###########################
