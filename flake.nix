@@ -23,11 +23,12 @@
       url = "github:Yuna404/TwintailFlake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    brave = {
-      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    
+    #Disabled since Brave is back to nixpkgs.
+    #brave = {
+    #  url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # Dux shell, previously dank shell.
     #dms = {
@@ -158,7 +159,7 @@
         ./hardware-configuration.nix
         ./configuration.nix
         ./flake/modules.nix
-        inputs.brave.nixosModules.default
+        #inputs.brave.nixosModules.default
       ];
     };
   };
