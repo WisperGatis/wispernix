@@ -40,6 +40,9 @@ let
     castorice = mkCursorTheme "castorice";
     nero = mkCursorTheme "nero";
     mika = mkCursorTheme "mika";
+    arcueid = mkCursorTheme "arcueid";
+    seia = mkCursorTheme "seia";
+    BB = mkCursorTheme "BB";
   };
 
   activeCursorTheme = "remielle_black";
