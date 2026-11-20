@@ -43,6 +43,7 @@ let
     arcueid = mkCursorTheme "arcueid";
     seia = mkCursorTheme "seia";
     BB = mkCursorTheme "BB";
+    morgan = mkCursorTheme "morgan";
 
     # Ben cursors converted using currust since they somehow renders better in size via this path.
     BBWin = mkCursorTheme "BBWin";
