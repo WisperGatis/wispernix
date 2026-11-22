@@ -553,11 +553,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795276834,
-        "narHash": "sha256-hsTQRh/rlV2kjN4ajTrqcuM4OButHuSdljU+TDhLjPQ=",
+        "lastModified": 1795296786,
+        "narHash": "sha256-P3zCypD3nfhJfVBMWJM6Omd4Ne21joBuYWZifzEDsH4=",
         "ref": "refs/heads/main",
-        "rev": "7f26a9f6d081e4227071d7a5a3df6aee63ca97ac",
-        "revCount": 404,
+        "rev": "bae75c541ce1d863438d013f1f157b0db85e87df",
+        "revCount": 411,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
@@ -597,11 +597,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1795277159,
-        "narHash": "sha256-SMCAoNFkllrW/fUmeebkBjUp/B52Jr0wKv/onDlz4eY=",
+        "lastModified": 1795279084,
+        "narHash": "sha256-bUkMjW5RNY1wnhZIdFRd4/jmVVvpAvlCiUKZKN2hhpA=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "978a92e6f5af1717f1c5306ed6653f8d3ad099dd",
+        "rev": "578a2efccea00d6909d5751d0d4058e86fc11598",
         "type": "github"
       },
       "original": {
@@ -618,11 +618,11 @@
       },
       "locked": {
         "dir": "packages/nix",
-        "lastModified": 1794710897,
-        "narHash": "sha256-WZVbAUAyHuzop86IGGfcsqctVtjHLPhBnDAPt/+BfEM=",
+        "lastModified": 1795299394,
+        "narHash": "sha256-BPZeT1hnHARhoEQwkUjW6WCUC4c7A7tE3Zrh9z76EeQ=",
         "owner": "SteamClientHomebrew",
         "repo": "Millennium",
-        "rev": "ca8976dcd2822d9e4363b38bf5038bd5b1687260",
+        "rev": "3b3702aa4838a22dbf7277dbd535d40499f26e4a",
         "type": "github"
       },
       "original": {
@@ -770,11 +770,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1795137884,
-        "narHash": "sha256-iKXCN36qYfBni+3nH4vAd98/kshoIsPB2S9mYWhma30=",
+        "lastModified": 1795258312,
+        "narHash": "sha256-IEuDsf80ubivfpidbRsIm30HVo7PZIdZt1stRsbaY4Y=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ab5c18fdedfc8f9bbc9d773f10a540790e2787a7",
+        "rev": "94c3211b0ee8ba969a3f12eb4aff8ba0f72971dd",
         "type": "github"
       },
       "original": {

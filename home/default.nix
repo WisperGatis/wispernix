@@ -44,6 +44,9 @@ let
     seia = mkCursorTheme "seia";
     BB = mkCursorTheme "BB";
     morgan = mkCursorTheme "morgan";
+    Anis_star1 = mkCursorTheme "Anis_star1";
+    Syndy_crystal_wave = mkCursorTheme "Syndy_crystal_wave";
+    scarlet_goddeath = mkCursorTheme "scarlet_goddeath";
 
     # Ben cursors converted using currust since they somehow renders better in size via this path.
     BBWin = mkCursorTheme "BBWin";
