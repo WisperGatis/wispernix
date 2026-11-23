@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    artcraft = {
+      url = "github:devitek/artcraft-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     betterbird-nix = {
       url = "github:bootlegsorcery/betterbird-nix";
       inputs.nixpkgs.follows = "nixpkgs";

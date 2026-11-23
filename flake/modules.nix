@@ -14,7 +14,7 @@
 
     # For unstable chatoc branch.
     #inputs.chaotic.nixosModules.default
-
+    inputs.artcraft.nixosModules.default
     inputs.codex-desktop-linux.nixosModules.default
     inputs.claude-desktop.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
@@ -34,6 +34,11 @@
     #remoteControl.enable = true;
   };
 
+  programs.artcraft = {
+    enable = true;
+    apps = [ "photocraft" ];
+  };
+
   # If it works dude.
   #programs.dms-shell = {
   # enable = true;
@@ -49,6 +54,7 @@
     inputs.claude-code.overlays.default
     # Very stupid if it works.
     inputs.OCCT.overlays.default
+    inputs.artcraft.overlays.default
 
     inputs.millennium.overlays.default
     inputs.helium-browser.overlays.default
