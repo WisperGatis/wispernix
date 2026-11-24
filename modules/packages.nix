@@ -49,7 +49,7 @@
     sublime4
     unstable.vscodium
     unstable.zed-editor
-    #vscode
+    vscode
     code-cursor
     jetbrains-toolbox
     vis
@@ -225,7 +225,8 @@
     winetricks
     protontricks
     gamemode
-    pkgs.gamescope_git
+    gamescope
+    #pkgs.gamescope_git
     # game slop
     #steam
     unstable.heroic

@@ -36,7 +36,7 @@
 
   programs.artcraft = {
     enable = true;
-    apps = [ "photocraft" ];
+    apps = [ "photocraft" "pdfcraft" ];
   };
 
   # If it works dude.
