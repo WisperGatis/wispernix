@@ -106,6 +106,7 @@
     unstable.codex
     unstable.antigravity-cli
     unstable.antigravity-ide
+    unstable.antigravity-hub
     unstable.crush
     unstable.t3code
     # Its test suite needs the gh CLI at build time, which the Nix sandbox lacks.

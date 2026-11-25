@@ -70,11 +70,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795471522,
-        "narHash": "sha256-/vfz0v4wmzlK2sYKR5Zzhb37e4HQfaPnlBtwM608ZJk=",
+        "lastModified": 1795637134,
+        "narHash": "sha256-TsVAqJWGmhChQFHIBDj3gkGq/2q5/r8tMT65OLeZXN0=",
         "owner": "devitek",
         "repo": "artcraft-nixos",
-        "rev": "5525d39d6daa439baf1078c3617e56555e9274c6",
+        "rev": "cf9c1187ef463a4ee5e6c46f9536b5334e681059",
         "type": "github"
       },
       "original": {
@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795566933,
-        "narHash": "sha256-9CsgL/Kjz2FnCN+HFRu3yMq5PIp8brosACJkerguI1w=",
+        "lastModified": 1795640402,
+        "narHash": "sha256-fksZI4x61HXWB24q0J02sMK01AVCU6EXEt9Q+1Fj0y0=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "bda8c7e36f9a1313a7facf35832f00998a2c9f06",
+        "rev": "70f34382fa40530b4a2527ef834278590aced1e9",
         "type": "github"
       },
       "original": {
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795632256,
-        "narHash": "sha256-Gkq01QTnU3YeG3VOz6C8uX62ZJ+3k+nJ0AoxVg0LAko=",
+        "lastModified": 1795647117,
+        "narHash": "sha256-zFbB2fBiQN/TTvs06lBKomGy9lvz0ZHYE7r6JL6g7C4=",
         "ref": "refs/heads/main",
-        "rev": "3978159ae64f8fa94a9be43cd5651e32cf041471",
-        "revCount": 464,
+        "rev": "0eff9bf97f741144da3c21acf402c31c60f0b842",
+        "revCount": 469,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
