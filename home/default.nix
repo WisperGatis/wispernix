@@ -47,6 +47,7 @@ let
     Anis_star1 = mkCursorTheme "Anis_star1";
     Syndy_crystal_wave = mkCursorTheme "Syndy_crystal_wave";
     scarlet_goddeath = mkCursorTheme "scarlet_goddeath";
+    liberalio = mkCursorTheme "liberalio";
 
     #liberalio_test = mkCursorTheme "liberalio_test";
 
