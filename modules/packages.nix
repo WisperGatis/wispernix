@@ -139,6 +139,9 @@
     # Dubious steam needs
     xwayland-satellite
     wayland-utils
+    # GUI monitor manager (resolution, refresh, position, scale, VRR).
+    # Generic wlr-output-management client, so it works on Hyprland, mango and Umbriel.
+    wdisplays
     wf-recorder
     wl-screenrec
 
