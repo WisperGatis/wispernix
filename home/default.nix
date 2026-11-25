@@ -48,6 +48,8 @@ let
     Syndy_crystal_wave = mkCursorTheme "Syndy_crystal_wave";
     scarlet_goddeath = mkCursorTheme "scarlet_goddeath";
 
+    #liberalio_test = mkCursorTheme "liberalio_test";
+
     # Ben cursors converted using currust since they somehow renders better in size via this path.
     BBWin = mkCursorTheme "BBWin";
     Kawin = mkCursorTheme "Kawin";
