@@ -202,10 +202,19 @@ workspaces = 10
 
 [output.DP-1]
 mode = "1920x1080@143.992"
-position = [1920, 0]
+position = [4480, 0]
 scale = 1.0
 vrr = "always"
 workspaces = 10
+
+# 1440p au centre (ASUS TUF VG27AQ5A) : décommenter et mettre le connecteur
+# (umbriel layers / log) et le taux réel une fois branché.
+# [output.<CONNECTEUR>]
+# mode = "2560x1440@<hz>"
+# position = [1920, 0]
+# scale = 1.0
+# vrr = "always"
+# workspaces = 10
 
 ###########################
 # Screen effects (shaders)

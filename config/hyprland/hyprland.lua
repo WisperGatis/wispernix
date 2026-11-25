@@ -7,13 +7,17 @@
 
 local left = "desc:Samsung Electric Company LC24RG50 HNMT100624"
 local right = "desc:HP Inc. OMEN by HP 25 3CQ95007KT"
+-- 1440p au centre (ASUS TUF VG27AQ5A) : remplir la desc une fois branché
+-- (hyprctl monitors -> ligne "description:").
+-- local middle = "desc:ASUS ... <serial>"
 
 -- ##########
 -- Moniteurs
 -- ##########
 
 hl.monitor({ output = left, mode = "1920x1080@143.981", position = "0x0", scale = 1, vrr = 1 })
-hl.monitor({ output = right, mode = "1920x1080@143.992", position = "1920x0", scale = 1, vrr = 1 })
+hl.monitor({ output = right, mode = "1920x1080@143.992", position = "4480x0", scale = 1, vrr = 1 })
+-- hl.monitor({ output = middle, mode = "2560x1440@<hz>", position = "1920x0", scale = 1, vrr = 1 })
 
 -- ##################################
 -- Apparence / gaps / bordures / flou
