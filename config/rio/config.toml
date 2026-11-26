@@ -1,0 +1,23 @@
+# Configuration de Rio, gérée par home/terminals.nix.
+# Les couleurs viennent du thème "noctalia", rendu par Noctalia (Matugen)
+# dans ~/.config/rio/themes/noctalia.toml.
+
+theme = "noctalia"
+
+confirm-before-quit = false
+
+[shell]
+program = "fish"
+
+# Nerd Font installée système-wide par modules/fonts.nix (pkgs.nerd-fonts).
+[fonts]
+family = "JetBrainsMono Nerd Font"
+size = 16
+
+[window]
+opacity = 0.90
+decorations = "Disabled"
+
+[cursor]
+shape = "beam"
+blinking = true
