@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
 
     # -- Hardware, overclocking & GPU --------------------------------
-    # Very fun OC software
+
     corectrl
     stress-ng
     #inputs.occt-nix.packages.${pkgs.stdenv.hostPlatform.system}.occt
@@ -13,12 +13,14 @@
     nh
 
     # -- Monitoring & system info ------------------------------------
+
     btop
     fastfetch
     unstable.fetch
     hyfetch
 
     # -- Terminal emulators ------------------------------------------
+
     kitty
     ghostty
     alacritty
@@ -27,6 +29,7 @@
     ratty
 
     # -- Shell & CLI tools -------------------------------------------
+
     fish
     zsh
     unstable.oh-my-posh
@@ -43,6 +46,7 @@
     htop
 
     # -- Editors -----------------------------------------------------
+
     vim
     # neovim
     fresh-editor
@@ -57,6 +61,7 @@
     unstable.eclipses.eclipse-cpp
 
     # -- Git -----------------------------------------------------
+
     git
     github-cli
     github-desktop
@@ -65,6 +70,7 @@
     #gitbutler
 
     # -- Languages & toolchains --------------------------------------
+
     #nodejs_26
     rustc
     cargo
@@ -90,7 +96,7 @@
     zip
 
     # -- .NET --------------------------------------------------------
-    #Dotnet while we are at it.
+
     unstable.dotnet-sdk_10
     unstable.dotnet-sdk_11
     dotnet-sdk
@@ -99,6 +105,7 @@
     unstable.roslyn-ls
 
     # -- AI tools ----------------------------------------------------
+
     #unstable.opencode
     #unstable.opencode-desktop
     pkgs.claude-code
@@ -116,7 +123,7 @@
     unstable.herdr-desktop
 
     # -- Compositors & window managers -------------------------------
-    #Niri, mango and Hyprland slop
+
     sway
     niri
     unstable.hyprland
@@ -137,13 +144,14 @@
     picom
 
     # -- Wayland & screen tools --------------------------------------
-    # Dubious steam needs
+
     xwayland-satellite
     wayland-utils
     wf-recorder
     wl-screenrec
 
     # -- Audio, video & media ----------------------------------------
+
     pipewire
     ffmpeg
     pavucontrol
@@ -153,7 +161,7 @@
     unstable.zapfast
 
     # -- Theming & wallpapers ----------------------------------------
-    # Wallslop
+
     pkgs.mpvpaper
     matugen
     awww
@@ -161,11 +169,11 @@
     #inputs.linux-wallpaper-engine.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # -- Fonts -------------------------------------------------------
-    # Stoopid font that doesn't wanna install itself properly through font packages.
+
     google-fonts
 
     # -- GNOME apps --------------------------------------------------
-    # gnome-slope
+
     gnome-tweaks
     nautilus
     gnome-console
@@ -176,7 +184,7 @@
     gnome-extension-manager
     gnome-disk-utility
 
-    # Budgie apps and slope.
+
     loupe
     file-roller
     evince
@@ -184,12 +192,13 @@
 
 
     # -- Files -------------------------------------------------------
+
     thunar
     yazi
     unstable.superfile
 
     # -- Browsers ----------------------------------------------------
-    #pkgs.firefox_night 
+
     brave
     brave-origin
     vivaldi
@@ -203,6 +212,7 @@
     #Currently broken due to missing deps from Mozilla, not obtainable due to Nix sandboxing blocking it.
 
     # -- Communication -----------------------------------------------
+
     vesktop
     telegram-desktop
     unstable.whatsapp-electron
@@ -211,7 +221,7 @@
     unstable.karere
 
     # -- Notes & office ----------------------------------------------
-    # Toyota.
+
     obsidian
     unstable.siyuan
     # Burokrasy
@@ -219,7 +229,7 @@
     onlyoffice-desktopeditors
 
     # -- Gaming ------------------------------------------------------
-    # Gaming packages.
+
     wine
     wine-staging
     wine-wayland
@@ -241,6 +251,7 @@
     unstable.goverlay
 
     # -- Containers & virtualization ---------------------------------
+
     docker
     waydroid
     winboat
@@ -253,18 +264,21 @@
     win-spice
 
     # -- Networking & VPN --------------------------------------------
+
     mullvad-vpn
     mullvad
     proton-vpn
     softether
 
     # -- Downloads, archives & filesystems ---------------------------
+
     qbittorrent
-    # Dubious packages somehow needed.
+    # Needed for Ladybird and some other packages.
     unstable.unrar
     ntfs3g
 
     # -- Fun & misc --------------------------------------------------
+
     unstable.cmatrix
     weathr
     inputs.betterbird-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
