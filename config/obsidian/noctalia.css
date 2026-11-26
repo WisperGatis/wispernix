@@ -24,8 +24,8 @@
   --noctalia-outline-variant: {{colors.outline_variant.default.hex}};
 }
 
-.theme-dark,
-.theme-light {
+body.theme-dark,
+body.theme-light {
   /* Typographie */
   --font-monospace-theme: "JetBrainsMono Nerd Font", var(--font-monospace-default);
 
@@ -57,11 +57,15 @@
   --background-modifier-form-field: var(--noctalia-surface-container);
   --background-modifier-message: var(--noctalia-surface-container-high);
   --background-modifier-error: var(--noctalia-error);
+  --background-modifier-error-rgb: {{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}};
   --background-modifier-error-hover: var(--noctalia-error);
   --background-modifier-success: var(--noctalia-tertiary);
   --background-modifier-cover: color-mix(in srgb, var(--noctalia-surface) 75%, transparent);
 
   /* Texte & accents */
+  --color-accent: var(--noctalia-primary);
+  --color-accent-1: var(--noctalia-primary);
+  --color-accent-2: var(--noctalia-secondary);
   --text-normal: var(--noctalia-on-surface);
   --text-muted: var(--noctalia-on-surface-variant);
   --text-faint: var(--noctalia-outline);
@@ -79,6 +83,7 @@
   --interactive-hover: var(--noctalia-surface-container-high);
   --interactive-accent: var(--noctalia-primary);
   --interactive-accent-hover: var(--noctalia-secondary);
+  --interactive-accent-rgb: {{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}};
   --caret-color: var(--noctalia-primary);
 
   /* Navigation & onglets */
