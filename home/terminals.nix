@@ -75,5 +75,17 @@
       input_path = "templates/wezterm-colors.lua"
       output_path = "$XDG_CONFIG_HOME/wezterm/colors/noctalia.lua"
     '';
+
+    # Rio : config.toml statique (thème "noctalia"), couleurs rendues par Noctalia.
+    # Le paquet rio est déjà installé par modules/packages.nix.
+    "rio/config.toml".source = ../config/rio/config.toml;
+
+    "noctalia/templates/rio-theme.toml".source = ../config/rio/colors/noctalia.toml;
+
+    "noctalia/rio.toml".text = ''
+      [theme.templates.user.rio]
+      input_path = "templates/rio-theme.toml"
+      output_path = "$XDG_CONFIG_HOME/rio/themes/noctalia.toml"
+    '';
   };
 }
