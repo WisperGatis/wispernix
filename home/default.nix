@@ -74,6 +74,7 @@ in
     ./luciole.nix
     ./multiplexers.nix
     ./editors.nix
+    ./obsidian.nix
     ./apps.nix
     ./desktop.nix
     ./hyprland.nix

@@ -1,0 +1,169 @@
+/* Modèle de thème Obsidian, rendu par Noctalia (Matugen).
+ * Ne pas éditer le fichier généré : il est écrit dans ~/.config/obsidian/noctalia.css
+ * et lié dans <vault>/.obsidian/snippets/noctalia.css par home/obsidian.nix. */
+
+:root {
+  --noctalia-primary: {{colors.primary.default.hex}};
+  --noctalia-on-primary: {{colors.on_primary.default.hex}};
+  --noctalia-primary-container: {{colors.primary_container.default.hex}};
+  --noctalia-on-primary-container: {{colors.on_primary_container.default.hex}};
+  --noctalia-secondary: {{colors.secondary.default.hex}};
+  --noctalia-on-secondary: {{colors.on_secondary.default.hex}};
+  --noctalia-secondary-container: {{colors.secondary_container.default.hex}};
+  --noctalia-on-secondary-container: {{colors.on_secondary_container.default.hex}};
+  --noctalia-tertiary: {{colors.tertiary.default.hex}};
+  --noctalia-on-tertiary: {{colors.on_tertiary.default.hex}};
+  --noctalia-error: {{colors.error.default.hex}};
+  --noctalia-surface: {{colors.surface.default.hex}};
+  --noctalia-surface-container-low: {{colors.surface_container_low.default.hex}};
+  --noctalia-surface-container: {{colors.surface_container.default.hex}};
+  --noctalia-surface-container-high: {{colors.surface_container_high.default.hex}};
+  --noctalia-on-surface: {{colors.on_surface.default.hex}};
+  --noctalia-on-surface-variant: {{colors.on_surface_variant.default.hex}};
+  --noctalia-outline: {{colors.outline.default.hex}};
+  --noctalia-outline-variant: {{colors.outline_variant.default.hex}};
+}
+
+.theme-dark,
+.theme-light {
+  /* Typographie */
+  --font-monospace-theme: "JetBrainsMono Nerd Font", var(--font-monospace-default);
+
+  /* Surfaces & fenêtres */
+  --background-primary: var(--noctalia-surface);
+  --background-primary-alt: var(--noctalia-surface-container-low);
+  --background-secondary: var(--noctalia-surface-container-low);
+  --background-secondary-alt: var(--noctalia-surface-container);
+
+  --ribbon-background: var(--noctalia-surface-container-low);
+  --ribbon-background-collapsed: var(--noctalia-surface-container-low);
+  --titlebar-background: var(--noctalia-surface-container-low);
+  --titlebar-background-focused: var(--noctalia-surface-container-low);
+  --tab-container-background: var(--noctalia-surface-container-low);
+  --tab-background-active: var(--noctalia-surface);
+  --status-bar-background: var(--noctalia-surface-container-low);
+  --modal-background: var(--noctalia-surface-container);
+  --modal-border-color: var(--noctalia-outline-variant);
+  --prompt-border-color: var(--noctalia-outline-variant);
+  --divider-color: var(--noctalia-outline-variant);
+  --divider-color-hover: var(--noctalia-primary);
+
+  /* Modificateurs & bordures */
+  --background-modifier-hover: var(--noctalia-surface-container-high);
+  --background-modifier-active-hover: color-mix(in srgb, var(--noctalia-primary) 18%, transparent);
+  --background-modifier-border: var(--noctalia-outline-variant);
+  --background-modifier-border-hover: var(--noctalia-outline);
+  --background-modifier-border-focus: var(--noctalia-primary);
+  --background-modifier-form-field: var(--noctalia-surface-container);
+  --background-modifier-message: var(--noctalia-surface-container-high);
+  --background-modifier-error: var(--noctalia-error);
+  --background-modifier-error-hover: var(--noctalia-error);
+  --background-modifier-success: var(--noctalia-tertiary);
+  --background-modifier-cover: color-mix(in srgb, var(--noctalia-surface) 75%, transparent);
+
+  /* Texte & accents */
+  --text-normal: var(--noctalia-on-surface);
+  --text-muted: var(--noctalia-on-surface-variant);
+  --text-faint: var(--noctalia-outline);
+  --text-on-accent: var(--noctalia-on-primary);
+  --text-on-accent-inverted: var(--noctalia-primary);
+  --text-accent: var(--noctalia-primary);
+  --text-accent-hover: var(--noctalia-secondary);
+  --text-error: var(--noctalia-error);
+  --text-warning: var(--noctalia-tertiary);
+  --text-success: var(--noctalia-tertiary);
+  --text-selection: color-mix(in srgb, var(--noctalia-primary) 28%, transparent);
+  --text-highlight-bg: color-mix(in srgb, var(--noctalia-tertiary) 30%, transparent);
+
+  --interactive-normal: var(--noctalia-surface-container);
+  --interactive-hover: var(--noctalia-surface-container-high);
+  --interactive-accent: var(--noctalia-primary);
+  --interactive-accent-hover: var(--noctalia-secondary);
+  --caret-color: var(--noctalia-primary);
+
+  /* Navigation & onglets */
+  --nav-item-color: var(--noctalia-on-surface-variant);
+  --nav-item-color-hover: var(--noctalia-on-surface);
+  --nav-item-color-active: var(--noctalia-primary);
+  --nav-item-background-hover: var(--noctalia-surface-container);
+  --nav-item-background-active: color-mix(in srgb, var(--noctalia-primary) 16%, transparent);
+  --tab-text-color: var(--noctalia-on-surface-variant);
+  --tab-text-color-active: var(--noctalia-on-surface);
+  --tab-text-color-focused: var(--noctalia-on-surface);
+  --tab-text-color-focused-active: var(--noctalia-primary);
+  --tab-text-color-focused-active-current: var(--noctalia-primary);
+  --icon-color: var(--noctalia-on-surface-variant);
+  --icon-color-hover: var(--noctalia-on-surface);
+  --icon-color-active: var(--noctalia-primary);
+  --icon-color-focused: var(--noctalia-primary);
+
+  /* Barres de défilement */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--noctalia-outline-variant);
+  --scrollbar-active-thumb-bg: var(--noctalia-outline);
+
+  /* Titres Markdown */
+  --h1-color: var(--noctalia-primary);
+  --h2-color: var(--noctalia-secondary);
+  --h3-color: var(--noctalia-tertiary);
+  --h4-color: var(--noctalia-on-surface);
+  --h5-color: var(--noctalia-on-surface-variant);
+  --h6-color: var(--noctalia-on-surface-variant);
+
+  /* Liens & tags */
+  --link-color: var(--noctalia-primary);
+  --link-color-hover: var(--noctalia-secondary);
+  --link-external-color: var(--noctalia-tertiary);
+  --link-external-color-hover: var(--noctalia-primary);
+  --link-unresolved-color: var(--noctalia-on-surface-variant);
+
+  --tag-color: var(--noctalia-on-secondary-container);
+  --tag-background: var(--noctalia-secondary-container);
+  --tag-color-hover: var(--noctalia-on-primary-container);
+  --tag-background-hover: var(--noctalia-primary-container);
+
+  /* Code & syntaxe */
+  --code-normal: var(--noctalia-tertiary);
+  --code-background: var(--noctalia-surface-container);
+  --code-comment: var(--noctalia-outline);
+  --code-keyword: var(--noctalia-primary);
+  --code-function: var(--noctalia-tertiary);
+  --code-string: var(--noctalia-tertiary);
+  --code-value: var(--noctalia-primary);
+  --code-property: var(--noctalia-secondary);
+  --code-important: var(--noctalia-error);
+  --code-operator: var(--noctalia-on-surface-variant);
+  --code-punctuation: var(--noctalia-on-surface-variant);
+  --code-tag: var(--noctalia-primary);
+
+  /* Citations, listes, cases à cocher, tableaux */
+  --blockquote-border-color: var(--noctalia-primary);
+  --blockquote-background-color: var(--noctalia-surface-container-low);
+  --list-marker-color: var(--noctalia-primary);
+  --checkbox-color: var(--noctalia-primary);
+  --checkbox-color-hover: var(--noctalia-secondary);
+  --checkbox-border-color: var(--noctalia-outline);
+  --checklist-done-color: var(--noctalia-on-surface-variant);
+  --hr-color: var(--noctalia-outline-variant);
+  --table-header-background: var(--noctalia-surface-container);
+  --table-border-color: var(--noctalia-outline-variant);
+  --table-row-alt-background: var(--noctalia-surface-container-low);
+
+  /* Callouts (format R, G, B attendu par Obsidian) */
+  --callout-default: {{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}};
+  --callout-info: {{colors.secondary.default.red}}, {{colors.secondary.default.green}}, {{colors.secondary.default.blue}};
+  --callout-tip: {{colors.tertiary.default.red}}, {{colors.tertiary.default.green}}, {{colors.tertiary.default.blue}};
+  --callout-success: {{colors.tertiary.default.red}}, {{colors.tertiary.default.green}}, {{colors.tertiary.default.blue}};
+  --callout-warning: {{colors.tertiary.default.red}}, {{colors.tertiary.default.green}}, {{colors.tertiary.default.blue}};
+  --callout-error: {{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}};
+  --callout-fail: {{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}};
+  --callout-bug: {{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}};
+
+  /* Graphe */
+  --graph-line: var(--noctalia-outline-variant);
+  --graph-node: var(--noctalia-on-surface-variant);
+  --graph-node-focused: var(--noctalia-primary);
+  --graph-node-tag: var(--noctalia-tertiary);
+  --graph-node-attachment: var(--noctalia-secondary);
+  --graph-node-unresolved: var(--noctalia-outline);
+}
