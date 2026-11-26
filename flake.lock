@@ -137,11 +137,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1795617314,
-        "narHash": "sha256-dRY/7PnF+plAUyutwrCCZeVLvMrkWVnaBj3BO3HZI2M=",
+        "lastModified": 1795655776,
+        "narHash": "sha256-0iiPMGLslamdvI7CDuy5+/PTtokJingmC/iblXLxqpk=",
         "owner": "caelestia-dots",
         "repo": "shell",
-        "rev": "a1a2be817cd4359be6b22d5fe5f7ec9f23140850",
+        "rev": "3605357e1e3d48346943509153c000e3facf4126",
         "type": "github"
       },
       "original": {
@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795640402,
-        "narHash": "sha256-fksZI4x61HXWB24q0J02sMK01AVCU6EXEt9Q+1Fj0y0=",
+        "lastModified": 1795671149,
+        "narHash": "sha256-u+x/ZfXBZ+2PsQlctfCuLm3DpK89QEPunavFhs5ol/c=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "70f34382fa40530b4a2527ef834278590aced1e9",
+        "rev": "a5a15d2eb0b73cc2eaea8f5af60b1fd1b293ebf4",
         "type": "github"
       },
       "original": {
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795647117,
-        "narHash": "sha256-zFbB2fBiQN/TTvs06lBKomGy9lvz0ZHYE7r6JL6g7C4=",
+        "lastModified": 1795689986,
+        "narHash": "sha256-x8mxFmX81qeW0GcrEA5FaU9TkHbOjUIjRPAGEmRWOAo=",
         "ref": "refs/heads/main",
-        "rev": "0eff9bf97f741144da3c21acf402c31c60f0b842",
-        "revCount": 469,
+        "rev": "ba8139e9561f15a573a1db79a44255aab321f91d",
+        "revCount": 479,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
@@ -617,11 +617,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1795620409,
-        "narHash": "sha256-PhFc7w1Y+NthwWe2I5P42jDshIeQhbpJLbhV6TW6JAw=",
+        "lastModified": 1795689684,
+        "narHash": "sha256-VV/rXgnUcblEZODU35DGfBIyRf4fR19cqbo0d6ymKYM=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "75fc5275a7679c72a29b239bd9c05cde69089789",
+        "rev": "b2ddb1a5d0b4b67c3964466c3bd275f535a75386",
         "type": "github"
       },
       "original": {
@@ -1370,11 +1370,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1795577370,
-        "narHash": "sha256-kbm3rhM5/EX5AJEPV9Svkcdk9f1RTqfX+YWQvROKX8w=",
+        "lastModified": 1795668840,
+        "narHash": "sha256-hZTHT7oXTrxXi36tKUN4G0lElMgnHQ1nVEV02qxXRZ0=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "6c4d107744ba0760c5176a3993115b9842c19249",
+        "rev": "abbd61739b1d73fe0c2c4413143efb9ccafea59e",
         "type": "github"
       },
       "original": {
