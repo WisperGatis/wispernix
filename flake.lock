@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795558591,
-        "narHash": "sha256-d+A1ooFvZs6YXJCRi8fV6kSC9nOUUDzGCFWfQ2Cx7z4=",
+        "lastModified": 1795704950,
+        "narHash": "sha256-LNS154zSHYhZF59eH4L1ohE+m77GGpD3rlCSJNjlvHk=",
         "owner": "akitaonrails",
         "repo": "ai-usagebar",
-        "rev": "e43640eec552809fb7444b932946de46ed15907c",
+        "rev": "f2b806c9953cc215ff9cee825635cdd83a4ab856",
         "type": "github"
       },
       "original": {
@@ -157,11 +157,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1795615879,
-        "narHash": "sha256-oHOHVsCc1XuD5dFxZsjxsPaWGchucLyW/TGGejVZU2A=",
+        "lastModified": 1795687360,
+        "narHash": "sha256-WISN40xYVW/RDFftpKK0K/h4KmVx3xpxod3iID8fNeo=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "9de511ade162ab7d645f8b2bf04cf65531e19c34",
+        "rev": "66cba9612c6367dc98f7da8040f50b84f6765b8d",
         "type": "github"
       },
       "original": {
@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795671149,
-        "narHash": "sha256-u+x/ZfXBZ+2PsQlctfCuLm3DpK89QEPunavFhs5ol/c=",
+        "lastModified": 1795695714,
+        "narHash": "sha256-9t1I3vLnWi920lqYDSHMtJXwn1iY3OYa1K+SqfEjv0o=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "a5a15d2eb0b73cc2eaea8f5af60b1fd1b293ebf4",
+        "rev": "ebb97799faa1a3437608e8f1812801a1c7b14b74",
         "type": "github"
       },
       "original": {
@@ -469,11 +469,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795631174,
-        "narHash": "sha256-cAJyi5Bzj0NmeG0Li2VvLFcAsM0Wf7VBHjCX+kj/nvY=",
+        "lastModified": 1795716490,
+        "narHash": "sha256-1t9mbb3lMkGY/NDqRvlHsiybCpK2TKoWRNhRYbfF9io=",
         "owner": "oxcl",
         "repo": "nix-flake-helium-browser",
-        "rev": "5ffc9e7498b8d893fa33122bb994249a723e788b",
+        "rev": "e78a6de9e4c918b1b6d1bf0692f49f19e2729b1b",
         "type": "github"
       },
       "original": {
@@ -511,11 +511,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795534022,
-        "narHash": "sha256-xkRZ+PcPWaAyf9YrEBszYD5w2S6/Ac2tIfsufzd4dEQ=",
+        "lastModified": 1795618997,
+        "narHash": "sha256-d9Osol//t6hqeo1xlspsYMbhTJK507h6t0EmPyF5Db0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b56bcd042b5e69ad188eca20d9bec1bfbf3dd453",
+        "rev": "6a13737c0ed27c7c285f59e3be423ed972aa605f",
         "type": "github"
       },
       "original": {
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795689986,
-        "narHash": "sha256-x8mxFmX81qeW0GcrEA5FaU9TkHbOjUIjRPAGEmRWOAo=",
+        "lastModified": 1795709856,
+        "narHash": "sha256-bkX8Xtx7VI+dqo8Xb7QslAEJa2HQ/ibwJjKXJKQ1O+8=",
         "ref": "refs/heads/main",
-        "rev": "ba8139e9561f15a573a1db79a44255aab321f91d",
-        "revCount": 479,
+        "rev": "94db0a89bbacd2480f4d890766d3603f866b3755",
+        "revCount": 486,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
@@ -617,11 +617,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1795689684,
-        "narHash": "sha256-VV/rXgnUcblEZODU35DGfBIyRf4fR19cqbo0d6ymKYM=",
+        "lastModified": 1795699415,
+        "narHash": "sha256-VtKyFRD7kN0Q5n+qrwPB6ttOoUTIG/yHdOUGp0gGw20=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "b2ddb1a5d0b4b67c3964466c3bd275f535a75386",
+        "rev": "cc9571fd9fd6b21ef5e605565959a0e88467e15e",
         "type": "github"
       },
       "original": {
