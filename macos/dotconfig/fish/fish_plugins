@@ -1,0 +1,7 @@
+# Managed by fisher (https://github.com/jorgebucaran/fisher).
+# Equivalents of the NixOS plugins in home/shell.nix.
+jorgebucaran/fisher
+PatrickF1/fzf.fish        # Ctrl+R history, Ctrl+Alt+F files, Ctrl+Alt+L git log
+jorgebucaran/autopair.fish # closes ( [ { " '
+meaningful-ooo/sponge     # drops failed commands from history
+franciscolourenco/done    # notification when a long command ends
