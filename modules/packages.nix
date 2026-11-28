@@ -120,7 +120,7 @@
     (inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_: {
       doCheck = false;
     }))
-    unstable.herdr-desktop
+    #unstable.herdr-desktop
 
     # -- Compositors & window managers -------------------------------
 

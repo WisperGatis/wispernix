@@ -10,11 +10,11 @@
         "std": "std"
       },
       "locked": {
-        "lastModified": 1795350304,
-        "narHash": "sha256-bddv/tDPfbC4beHge2+UWNyffM+WWWVosqLilD5OpxI=",
+        "lastModified": 1795831425,
+        "narHash": "sha256-e1pU4M6wUvRybeJppjbIleKR1x+/6EuNMELn6/GFp4o=",
         "owner": "Daaboulex",
         "repo": "OCCT-nix",
-        "rev": "ebf58d913e37aa5f9591f1777cc7dfb1fffffc03",
+        "rev": "8d911e42479b3c7382f98bae48a91ab80b2dedec",
         "type": "github"
       },
       "original": {
@@ -137,11 +137,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1795655776,
-        "narHash": "sha256-0iiPMGLslamdvI7CDuy5+/PTtokJingmC/iblXLxqpk=",
+        "lastModified": 1795840711,
+        "narHash": "sha256-YD3Kr0WBlw72iaQIMPXB5dgNOLFaqAzVOazD9nbMEKI=",
         "owner": "caelestia-dots",
         "repo": "shell",
-        "rev": "3605357e1e3d48346943509153c000e3facf4126",
+        "rev": "77a7e1e7acd35581dd278cd97de25f1e889c0a7c",
         "type": "github"
       },
       "original": {
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795829948,
-        "narHash": "sha256-/P5iDkryU556m1qN8/dAUFRQnRsF+9xqWn6Q/FQ4fcI=",
+        "lastModified": 1795870254,
+        "narHash": "sha256-olEiw/mi4pyMtBESWvQ1UO/birx0r3J4zYDspS2o8dE=",
         "ref": "refs/heads/main",
-        "rev": "549112ca3eb8a0189e6ba75ad0777e94d03e2297",
-        "revCount": 516,
+        "rev": "2ab9fb481a02c5994bf11916d9c9833ba539da14",
+        "revCount": 534,
         "type": "git",
         "url": "https://github.com/noctalia-dev/luciole"
       },
@@ -617,11 +617,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1795824696,
-        "narHash": "sha256-+5rVqbpXDXBmw7pcgm1+VW01U2RgDcEeewjHPBoO0qQ=",
+        "lastModified": 1795871430,
+        "narHash": "sha256-hri36APyFTbFl/OT2SRm2lNfF8DccMGku6+CVBlrVKw=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "91b13265bbb988bb4ac03ce470d183e24cbc3d77",
+        "rev": "3ed263bf58d97afc5058e1337d4f7bbb440bb156",
         "type": "github"
       },
       "original": {
@@ -761,11 +761,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1795234589,
-        "narHash": "sha256-f/VVvxf5RsQgWVhUtefoca5ktVg0DA2bnkMOcmSnozo=",
+        "lastModified": 1795546490,
+        "narHash": "sha256-fD1nLSQM8tFob51/thCOr49JIAIjoqybAY27/+hwZQI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
+        "rev": "58d0d3e9d527ca7263be6a45d1f86eacdc700dab",
         "type": "github"
       },
       "original": {
@@ -1155,11 +1155,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795014718,
-        "narHash": "sha256-QqPzqJSiKJsyVs7WMNYw4iqGY6DBBoeT1Ypd2KIQzAg=",
+        "lastModified": 1795826118,
+        "narHash": "sha256-VFCIj1YKCQCnJdgN19FvdDpTsm/9/Gal3zKPeqL+BJc=",
         "owner": "Daaboulex",
         "repo": "nix-packaging-standard",
-        "rev": "e9c3795f662cf273844c2df0b3bcb2926e06a951",
+        "rev": "0f269b0918ed91119e090278aa31a23f4716afe7",
         "type": "github"
       },
       "original": {
